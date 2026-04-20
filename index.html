@@ -19,16 +19,93 @@ body {
   align-items: center;
   background: #8b5a2b;
   padding: 15px 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .nome-site {
   color: white;
-  font-size: 22px;
+  font-size: 20px;
   margin: 0;
 }
 
+/* LOGO */
 .logo {
-  width: 50px;
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+  background: white;
+  border-radius: 50%;
+  padding: 5px;
+}
+
+/* MENU */
+.menu {
+  display: flex;
+  gap: 20px;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+  position: relative;
+  transition: 0.3s;
+}
+
+.menu a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: white;
+  left: 0;
+  bottom: -5px;
+  transition: 0.3s;
+}
+
+.menu a:hover::after {
+  width: 100%;
+}
+
+.menu a:hover {
+  opacity: 0.8;
+}
+
+/* PARALLAX */
+.parallax {
+  width: 100%;
+  height: 400px;
+  background-image: url("Foto1EntradaIgreja.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+}
+
+/* CAMADA ESCURA */
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.overlay h2 {
+  font-size: 40px;
+  margin: 0;
+}
+
+.overlay p {
+  font-size: 18px;
 }
 
 /* CONTEÚDO */
@@ -70,48 +147,12 @@ body {
   width: 80%;
 }
 
-  /* PARALLAX (BANNER DA IGREJA) */
-.parallax {
-  width: 100%;
-  height: 400px;
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .menu {
+    display: none;
+  }
 
-  background-image: url("Foto1EntradaIgreja.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  background-attachment: fixed;
-
-  position: relative;
-}
-
-/* CAMADA ESCURA */
-.overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-
-  background: rgba(0, 0, 0, 0.4);
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  color: white;
-  text-align: center;
-}
-
-.overlay h2 {
-  font-size: 40px;
-  margin: 0;
-}
-
-.overlay p {
-  font-size: 18px;
-}
-
-  @media (max-width: 768px) {
   .parallax {
     height: 250px;
     background-attachment: scroll;
@@ -121,19 +162,29 @@ body {
     font-size: 24px;
   }
 }
-  
 </style>
 
 </head>
 <body>
 
-<!-- TOPO DO SITE TITULO -->
+<!-- TOPO -->
 <header class="topo">
   <h1 class="nome-site">Paróquia Nossa Senhora do Livramento</h1>
+
+  <nav class="menu">
+    <a href="#">Início</a>
+    <a href="#">A Igreja</a>
+    <a href="#missas">Missas</a>
+    <a href="#">Doação</a>
+    <a href="#">Galeria</a>
+    <a href="#">Ao Vivo</a>
+    <a href="#">Contato</a>
+  </nav>
+
   <img src="LogoBrasaoDaParoquia.png" class="logo">
 </header>
 
-  <!-- IMAGEM PARALLAX -->
+<!-- BANNER -->
 <div class="parallax">
   <div class="overlay">
     <h2>Paróquia Livramento</h2>
@@ -141,8 +192,8 @@ body {
   </div>
 </div>
 
-<!-- HORÁRIOS DAS MISSAS NA SEMANA -->
-<div class="missa-container">
+<!-- MISSAS -->
+<div id="missas" class="missa-container">
 
   <h1 class="titulo">Santa Missa</h1>
   <p class="subtitulo">Semanal</p>
