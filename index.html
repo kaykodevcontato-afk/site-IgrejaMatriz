@@ -6,6 +6,12 @@
 
 <style>
 
+/* FONTE PERSONALIZADA */
+@font-face {
+  font-family: 'Peristiwa';
+  src: url('Peristiwa.otf') format('opentype');
+}
+
 /* FUNDO COM GRADIENTE */
 body {
   font-family: Arial;
@@ -95,9 +101,13 @@ body {
   color: white;
 }
 
+/* 🔥 AQUI A FONTE FOI APLICADA */
 .overlay h2 {
-  font-size: 40px;
+  font-family: 'Peristiwa', serif;
+  font-size: 42px;
   margin: 0;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.6);
 }
 
 .overlay p {
@@ -111,6 +121,7 @@ body {
 
 /* TÍTULO */
 .titulo {
+  font-family: 'Peristiwa', serif;
   font-size: 36px;
   color: #0EAFEA;
   margin-bottom: 10px;
@@ -196,7 +207,7 @@ body {
   }
 
   .overlay h2 {
-    font-size: 24px;
+    font-size: 26px;
   }
 }
 
@@ -225,7 +236,7 @@ body {
 <!-- BANNER -->
 <div class="parallax">
   <div class="overlay">
-    <h2>Paróquia Livramento</h2>
+    <h2>Paróquia Nossa Senhora do Livramento</h2>
     <p>Seja bem-vindo</p>
   </div>
 </div>
