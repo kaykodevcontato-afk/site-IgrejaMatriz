@@ -9,8 +9,29 @@ body {
   font-family: Arial;
   background: #f8f5f0;
   text-align: center;
+  margin: 0;
 }
 
+/* TOPO */
+.topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #8b5a2b;
+  padding: 15px 20px;
+}
+
+.nome-site {
+  color: white;
+  font-size: 22px;
+  margin: 0;
+}
+
+.logo {
+  width: 50px;
+}
+
+/* CONTEÚDO */
 .missa-container {
   padding: 30px;
 }
@@ -52,13 +73,14 @@ body {
 
 </head>
 <body>
-    /* TOPO DO SITE */
-  <header class="topo">
-  <img src="logo.png" alt="Logo do site" class="logo">
+
+<!-- TOPO DO SITE -->
+<header class="topo">
   <h1 class="nome-site">Paróquia Livramento</h1>
+  <img src="logo.png" alt="Logo do site" class="logo">
 </header>
 
-   /* HORARIO DE MISSAS NA SEMANA */
+<!-- HORÁRIOS -->
 <div class="missa-container">
 
   <h1 class="titulo">Santa Missa</h1>
