@@ -78,23 +78,16 @@ body {
   width: 100%;
 }
 
-.menu a:hover {
-  opacity: 0.8;
-}
-
 /* PARALLAX */
 .parallax {
   width: 100%;
   height: 400px;
-
   background-image: url("Foto1EntradaIgreja.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
   background-attachment: fixed;
   position: relative;
-  overflow: hidden;
 }
 
 /* OVERLAY */
@@ -110,17 +103,12 @@ body {
   color: white;
 }
 
-/* TÍTULO DO BANNER */
 .overlay h2 {
   font-family: 'Peristiwa', serif;
   font-size: 42px;
   margin: 0;
   letter-spacing: 2px;
   text-shadow: 2px 2px 10px rgba(0,0,0,0.6);
-}
-
-.overlay p {
-  font-size: 18px;
 }
 
 /* CONTEÚDO */
@@ -133,11 +121,6 @@ body {
   color: #0EAFEA;
 }
 
-.subtitulo {
-  font-size: 20px;
-  margin-bottom: 20px;
-}
-
 /* CARDS */
 .linha {
   display: flex;
@@ -146,7 +129,7 @@ body {
   flex-wrap: wrap;
 }
 
-.card {
+.card, .destaque, .doacao-box {
   background: #0EAFEA;
   color: white;
   padding: 20px;
@@ -155,15 +138,19 @@ body {
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-/* DESTAQUE */
 .destaque {
-  margin: 20px auto;
-  background: #0EAFEA;
-  color: white;
-  padding: 20px;
-  border-radius: 12px;
   width: 80%;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* DOAÇÃO */
+.doacao-container {
+  padding: 30px;
+}
+
+.doacao-box {
+  width: 80%;
+  max-width: 400px;
+  margin: 15px auto;
 }
 
 /* RESPONSIVO */
@@ -175,15 +162,10 @@ body {
   .parallax {
     height: 260px;
     background-attachment: scroll;
-    background-position: center 50%;
   }
 
   .overlay h2 {
     font-size: 26px;
-  }
-
-  .overlay p {
-    font-size: 14px;
   }
 }
 
@@ -200,7 +182,7 @@ body {
     <a href="#">Início</a>
     <a href="#">A Igreja</a>
     <a href="#missas">Missas</a>
-    <a href="#">Doação</a>
+    <a href="#doacao">Doação</a>
     <a href="#">Galeria</a>
     <a href="#">Ao Vivo</a>
     <a href="#">Contato</a>
@@ -219,27 +201,42 @@ body {
 
 <!-- MISSAS -->
 <div id="missas" class="missa-container">
-
   <h1 class="titulo">Santa Missa</h1>
-  <p class="subtitulo">Semanal</p>
 
   <div class="linha">
     <div class="card">
       <h3>Terças</h3>
-      <p>19h - Matriz do Livramento</p>
+      <p>19h</p>
     </div>
 
     <div class="card">
       <h3>Quintas</h3>
-      <p>17h - Matriz do Livramento</p>
+      <p>17h</p>
     </div>
   </div>
 
   <div class="destaque">
     <h3>1ª Sexta-feira do mês</h3>
-    <p>19h - Matriz do Livramento</p>
+    <p>19h</p>
+  </div>
+</div>
+
+<!-- DOAÇÃO -->
+<div id="doacao" class="doacao-container">
+  <h1 class="titulo">Doações</h1>
+
+  <div class="doacao-box">
+    <h3>PIX</h3>
+    <p><strong>Chave:</strong> 10.714.251/0028-01 (CNPJ)</p>
   </div>
 
+  <div class="doacao-box">
+    <h3>Conta Bancária</h3>
+    <p><strong>Banco:</strong> Caixa Econômica Federal</p>
+    <p><strong>Agência:</strong> 0915</p>
+    <p><strong>Conta:</strong> 2898-2</p>
+    <p><strong>Operação:</strong> 003</p>
+  </div>
 </div>
 
 </body>
