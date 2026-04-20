@@ -149,17 +149,22 @@ body {
 
 /* RESPONSIVO */
 @media (max-width: 768px) {
-  .menu {
-    display: none;
-  }
-
   .parallax {
     height: 250px;
+
+    /* remove o parallax (obrigatório no mobile) */
     background-attachment: scroll;
+
+    /* melhora o enquadramento da imagem */
+    background-position: center top;
   }
 
   .overlay h2 {
     font-size: 24px;
+  }
+
+  .overlay p {
+    font-size: 14px;
   }
 }
 </style>
