@@ -69,6 +69,48 @@ body {
   border-radius: 12px;
   width: 80%;
 }
+
+  /* PARALLAX (BANNER DA IGREJA) */
+.parallax {
+  width: 100%;
+  height: 400px;
+
+  background-image: url("Foto1EntradaIgreja.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  background-attachment: fixed;
+
+  position: relative;
+}
+
+/* CAMADA ESCURA */
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0, 0, 0, 0.4);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  color: white;
+  text-align: center;
+}
+
+.overlay h2 {
+  font-size: 40px;
+  margin: 0;
+}
+
+.overlay p {
+  font-size: 18px;
+}
+  
 </style>
 
 </head>
