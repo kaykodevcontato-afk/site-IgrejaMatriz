@@ -78,7 +78,9 @@
 
         .dia { font-weight: bold; font-size: 1.2rem; color: #0b8fc0; text-transform: uppercase; }
         .hora { font-size: 1.4rem; color: #b8860b; font-weight: 700; margin: 5px 0; }
-        .local { font-size: 0.95rem; color: #666; font-style: italic; }
+        .exposicao-box { background: #f0faff; border: 1px dashed #0EAFEA; border-radius: 10px; padding: 10px; margin: 10px 0; width: 90%; }
+        .exposicao-box strong { color: #0b8fc0; font-size: 0.9rem; }
+        .exposicao-box span { display: block; font-size: 1.1rem; font-weight: bold; color: #0EAFEA; }
 
         /* SEÇÃO YOUTUBE */
         .youtube-section { margin: 80px auto 50px; max-width: 900px; background: white; border-radius: 20px; overflow: hidden; display: flex; flex-wrap: wrap; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid #eee; scroll-margin-top: 100px; }
@@ -87,7 +89,7 @@
         .youtube-info { flex: 1.2; padding: 40px; text-align: left; display: flex; flex-direction: column; justify-content: center; }
         .btn-assista { background: #FF0000; color: white; text-decoration: none; padding: 12px 25px; border-radius: 30px; font-weight: bold; display: inline-flex; align-items: center; gap: 10px; }
 
-        /* SEÇÃO A IGREJA (HISTÓRIA) */
+        /* SEÇÃO A IGREJA */
         .historia-container {
             max-width: 1100px; margin: 50px auto 100px; padding: 40px;
             display: flex; align-items: flex-start; gap: 40px; text-align: left;
@@ -106,7 +108,6 @@
         .foto-box img { width: 100%; display: block; }
         .legenda-foto { position: absolute; bottom: 0; background: rgba(11, 143, 192, 0.85); color: white; width: 100%; padding: 8px; font-size: 11px; font-weight: bold; text-align: center; text-transform: uppercase; }
 
-        /* RESPONSIVO */
         @media (max-width: 768px) {
             .historia-container { flex-direction: column; text-align: center; padding: 20px; margin: 30px 15px; }
             .youtube-info { text-align: center; align-items: center; }
@@ -150,6 +151,7 @@
             <div class="agenda-item" data-dia="4">
                 <span class="dia">Quinta-feira</span>
                 <span class="local" style="font-weight:bold; color:#d4af37;">Quinta Eucarística</span>
+                <div class="exposicao-box"><strong>Exposição do Santíssimo</strong><span>07h30 às 16h</span></div>
                 <span class="hora">17h</span>
                 <span class="local">Matriz do Livramento</span>
             </div>
@@ -184,18 +186,16 @@
         <section id="a-igreja" class="historia-container">
             <div class="historia-texto">
                 <h2>Nossa História</h2>
-                <p>
-                    A Paróquia de Nossa Senhora do Livramento em Arcoverde foi criada em <strong>21 de agosto de 1919</strong> por Dom José Antônio de Oliveira Lopes, desmembrada da Diocese de Pesqueira. Com raízes na devoção iniciada em 1865 com uma imagem vinda de Portugal, a paróquia cresceu junto com a cidade, sendo fundamental na fé local.
-                </p>
+                <p>A Paróquia de Nossa Senhora do Livramento em Arcoverde foi criada em <strong>21 de agosto de 1919</strong> por Dom José Antônio de Oliveira Lopes, desmembrada da Diocese de Pesqueira. Com raízes na devoção iniciada em 1865 com uma imagem vinda de Portugal, a paróquia cresceu junto com a cidade, sendo fundamental na fé local.</p>
                 <ul>
                     <li><strong>Origem da Devoção:</strong> A veneração começou em 1865 com uma imagem trazida de Portugal por um fazendeiro, instalada na antiga Fazenda Olhos d'Água dos Bredos.</li>
-                    <li><strong>Criação Oficial:</strong> A freguesia foi oficialmente criada em 1919, sob decreto de Monsenhor D. José Antônio de Oliveira Lopes.</li>
-                    <li><strong>Igreja Matriz:</strong> Em 1920, a igrejinha era simples, evoluindo ao longo do século para se tornar a paróquia central da cidade.</li>
-                    <li><strong>Centenário:</strong> Em 2019, celebramos 100 anos com uma peregrinação histórica da réplica da imagem.</li>
-                    <li><strong>Padroeira:</strong> Nossa Senhora do Livramento é a padroeira de Arcoverde, com festa celebrada em 23 de setembro.</li>
+                    <li><strong>Criação Oficial:</strong> A freguesia foi oficialmente criada em 21 de agosto de 1919, sob decreto de Monsenhor D. José Antônio de Oliveira Lopes.</li>
+                    <li><strong>Igreja Matriz:</strong> Em 1920, a igrejinha era simples, sem bancos, e evoluiu ao longo do século para se tornar a paróquia central da cidade.</li>
+                    <li><strong>Centenário:</strong> A paróquia celebrou seus 100 anos com uma peregrinação da réplica da imagem em 2019.</li>
+                    <li><strong>Padroeira:</strong> Nossa Senhora do Livramento é a padroeira de Arcoverde, com a festa principal em 23 de setembro.</li>
                 </ul>
                 <p style="font-style: italic; margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px;">
-                    <strong>Nota Histórica:</strong> Pelo estilo do Altar original, a Missa era celebrada com o celebrante de costas para a assembleia, conforme a antiga liturgia realizada inteiramente em latim.
+                    <strong>Sobre o Altar:</strong> Pelo seu estilo, entendemos que a Missa era celebrada com o celebrante de costas para a assembleia, como determinava a antiga liturgia realizada em latim.
                 </p>
             </div>
             <div class="historia-fotos">
