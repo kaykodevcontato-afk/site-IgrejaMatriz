@@ -237,7 +237,6 @@
             text-align: left;
         }
 
-        /* Layout em colunas para o topo da história */
         .historia-topo {
             display: flex;
             align-items: flex-start;
@@ -251,17 +250,30 @@
         .historia-texto li { margin-bottom: 12px; line-height: 1.4; }
         .historia-texto li strong { color: #0b8fc0; }
         
-        /* NOVO CONTAINER PARA ALINHAR TEXTO E SEGUNDO ALTAR */
+        /* SEÇÃO REFORMA (SEGUNDO ALTAR) */
         .secao-reforma {
             display: flex;
-            align-items: center; /* Centraliza o texto verticalmente com a foto */
+            align-items: center;
             gap: 40px;
             border-top: 1px solid #eee;
             padding-top: 40px;
             margin-top: 20px;
+            flex-direction: row-reverse; /* Inverte para criar o efeito zigue-zague */
         }
 
         .texto-reforma { flex: 1.2; }
+
+        /* SEÇÃO ATUAL (TERCEIRO ALTAR) */
+        .secao-altar-atual {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            border-top: 1px solid #eee;
+            padding-top: 40px;
+            margin-top: 40px;
+        }
+
+        .texto-altar-atual { flex: 1.2; }
 
         .galeria-historica {
             flex: 1;
@@ -270,7 +282,7 @@
             gap: 20px;
         }
 
-        .comparison-slider, .foto-segundo-altar {
+        .comparison-slider, .foto-container {
             width: 100%;
             max-width: 500px;
             border-radius: 15px;
@@ -282,7 +294,7 @@
 
         .comparison-slider { cursor: ew-resize; line-height: 0; }
 
-        .comparison-slider img, .foto-segundo-altar img {
+        .comparison-slider img, .foto-container img {
             width: 100%;
             height: auto;
             display: block;
@@ -336,14 +348,14 @@
             .youtube-info { text-align: center; align-items: center; padding: 30px 20px; }
             .youtube-thumb { min-height: 200px; }
             
-            .historia-topo, .secao-reforma { 
+            .historia-topo, .secao-reforma, .secao-altar-atual { 
                 flex-direction: column; 
                 text-align: center; 
                 gap: 20px;
             }
             
             .historia-container { padding: 20px; margin: 30px 15px; }
-            .comparison-slider, .foto-segundo-altar { max-width: 100%; margin: 0 auto; }
+            .comparison-slider, .foto-container { max-width: 100%; margin: 0 auto; }
             .historia-texto ul { text-align: left; }
         }
     </style>
@@ -452,14 +464,12 @@
     <section class="historia-container">
         <div class="historia-topo">
             <div class="historia-texto">
-                <p>A Paróquia de Nossa Senhora do Livramento em Arcoverde foi criada em <strong>21 de agosto de 1919</strong> por Dom José Antônio de Oliveira Lopes, desmembrada da Diocese de Pesqueira. Com raízes na devoção iniciada em 1865 com uma imagem vinda de Portugal, a paróquia cresceu junto com a cidade, sendo fundamental na fé local.</p>
+                <p>A Paróquia de Nossa Senhora do Livramento em Arcoverde foi criada em <strong>21 de agosto de 1919</strong> por Dom José Antônio de Oliveira Lopes, desmembrada da Diocese de Pesqueira.</p>
                 
                 <ul>
-                    <li><strong>Origem da Devoção:</strong> A veneração a Nossa Senhora do Livramento começou com uma imagem trazida de Portugal por um fazendeiro em 1865.</li>
-                    <li><strong>Criação Oficial:</strong> Criada em 1919, sob decreto de D. José Antônio de Oliveira Lopes.</li>
-                    <li><strong>Igreja Matriz:</strong> Em 1920, a igrejinha era simples e evoluiu ao longo do século para o marco atual.</li>
-                    <li><strong>Centenário:</strong> Celebrou seus 100 anos com peregrinação e festa em 2019.</li>
-                    <li><strong>Padroeira:</strong> Nossa Senhora do Livramento, com festa em 23 de setembro.</li>
+                    <li><strong>Origem:</strong> Devoção iniciada em 1865 com uma imagem vinda de Portugal.</li>
+                    <li><strong>Criação Oficial:</strong> Criada em 1919, sob decreto de D. José Antônio.</li>
+                    <li><strong>Centenário:</strong> Celebrou seus 100 anos com festa em 2019.</li>
                 </ul>
 
                 <p style="font-style: italic; margin-top: 20px; color: #777;">
@@ -483,14 +493,32 @@
 
         <div class="secao-reforma">
             <div class="texto-reforma">
+                <h3 style="color: #0b8fc0;">A Reforma Litúrgica</h3>
                 <p>
-                    Posteriormente, houve a <strong>Reforma do Altar Principal</strong> para acompanhar as diretrizes da nova liturgia imposta pelo <strong>Vaticano II</strong>. Nesta fase, o altar tornou-se mais simples, permitindo que o celebrante ficasse de frente para a assembleia e realizasse a celebração em língua portuguesa.
+                    Posteriormente, houve a <strong>Reforma do Altar Principal</strong> para acompanhar as diretrizes da nova liturgia do <strong>Vaticano II</strong>. O altar tornou-se mais simples, permitindo que o celebrante ficasse de frente para a assembleia.
                 </p>
             </div>
             
-            <div class="foto-segundo-altar">
-                <img src="FotoSegundoAltar.png" alt="Segundo Altar da Matriz">
+            <div class="foto-container">
+                <img src="FotoSegundoAltar.jpg" alt="Segundo Altar da Matriz">
                 <span class="label-fixo">SEGUNDO ALTAR (PÓS-REFORMA)</span>
+            </div>
+        </div>
+
+        <div class="secao-altar-atual">
+            <div class="foto-container">
+                <img src="FotoTerceiroAltarAtual.jpeg" alt="Novo Altar Mor da Paróquia">
+                <span class="label-fixo">ALTAR MOR ATUAL</span>
+            </div>
+
+            <div class="texto-altar-atual">
+                <h3 style="color: #0b8fc0;">O Novo Altar Mor</h3>
+                <p>
+                    Com alguns detalhes a serem ajustados e finalizados, apresentamos oficialmente o novo <strong>Altar Mor da Paróquia Nossa Senhora do Livramento</strong>.
+                </p>
+                <p>
+                    Esta nova fase representa o resgate da imponência sacra, unindo a tradição estética com a funcionalidade litúrgica atual, servindo como o novo coração espiritual de nossa comunidade.
+                </p>
             </div>
         </div>
     </section>
