@@ -111,87 +111,114 @@
             text-shadow: 2px 2px 10px rgba(0,0,0,0.6);
         }
 
-      /* GRID DOS CARDS */
-        .missas-grid {
-            display: flex;
-            flex-wrap: wrap; /* Faz os itens quebrarem de linha se não couberem */
-            gap: 20px;
-            justify-content: center;
+        /* CONTEÚDO */
+        .missa-container {
+            padding: 50px 20px;
         }
 
-        /* ESTILO DO CARD INDIVIDUAL */
-        .card-missa {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            width: 280px; /* Largura fixa para manter o padrão de "blocos" */
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            border-top: 5px solid #d4af37; /* Detalhe dourado no topo */
-            transition: transform 0.3s ease;
+        .titulo {
+            font-size: 2.2rem;
+            color: #0b8fc0;
+            margin-bottom: 5px;
+        }
+
+        .linha-azul {
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(to right, #d4af37, #f2d27a);
+            margin: 10px auto 30px;
+            border-radius: 10px;
+        }
+
+        .agenda {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .agenda-grid {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .card-missa:hover {
-            transform: translateY(-5px);
-        }
-
-        .dia-semana {
-            background-color: #0EAFEA;
-            color: white;
-            padding: 8px;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 18px;
-            margin-bottom: 15px;
-        }
-
-        .horario-item {
-            margin: 10px 0;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .horario-item:last-child {
-            border-bottom: none;
-        }
-
-        .hora {
-            display: block;
-            font-size: 22px;
-            color: #333;
-            font-weight: bold;
-        }
-
-        .local {
-            display: block;
-            font-size: 14px;
-            color: #666;
-            margin-top: 3px;
-        }
-
-        /* BLOCO DE TRANSMISSÃO */
-        .youtube-info {
-            margin-top: 40px;
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            padding: 15px;
-            display: inline-flex;
-            align-items: center;
             gap: 15px;
         }
 
-        .youtube-icon {
-            color: #FF0000;
-            font-weight: bold;
+        .agenda-item {
+            background: white;
+            border-left: 6px solid #d4af37;
+            padding: 20px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            transition: transform 0.2s ease;
         }
 
-        /* RESPONSIVIDADE */
-        @media (max-width: 600px) {
-            .card-missa {
-                width: 100%; /* No celular, o bloco ocupa a largura toda */
+        .agenda-item:hover {
+            transform: translateY(-3px);
+        }
+
+        .dia {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .hora {
+            font-size: 1.2rem;
+            color: #b8860b; /* Dourado levemente mais escuro para leitura */
+            font-weight: 700;
+        }
+
+        .local {
+            width: 100%;
+            font-size: 0.9rem;
+            color: #777;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        /* DESTAQUE */
+        .destaque {
+            margin: 40px auto;
+            background: linear-gradient(135deg, #0EAFEA, #d4af37);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            max-width: 500px;
+            box-shadow: 0 6px 20px rgba(14, 175, 234, 0.2);
+        }
+
+        .destaque h3 { margin-top: 0; }
+
+        /* RESPONSIVO */
+        @media (max-width: 768px) {
+            .topo {
+                flex-direction: column;
+                padding: 15px;
+            }
+            
+            .menu {
+                margin-top: 15px;
+                width: 100%;
+                overflow-x: auto;
+                padding-bottom: 5px;
+                justify-content: center;
+            }
+
+            .menu a {
+                white-space: nowrap;
+                font-size: 13px;
+            }
+
+            .parallax {
+                height: 300px;
+                background-attachment: scroll; /* Melhor performance em mobile */
+            }
+
+            .agenda-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 5px;
             }
         }
     </style>
@@ -252,71 +279,6 @@
         </aside>
     </section>
 </main>
-
-    <div class="container">
-    <h2 class="titulo-secao">Santa Missa</h2>
-    <div class="linha-decorativa"></div>
-
-    <div class="missas-grid">
-        
-        <div class="card-missa">
-            <div class="dia-semana">Terças</div>
-            <div class="horario-item">
-                <span class="hora">19h</span>
-                <span class="local">Matriz do Livramento</span>
-            </div>
-        </div>
-
-        <div class="card-missa">
-            <div class="dia-semana">Quintas</div>
-            <div class="horario-item">
-                <span class="local" style="font-weight: bold; color: #d4af37;">Quinta Eucarística</span>
-                <span class="local">Exposição: 07:30 às 16h</span>
-                <span class="hora">17h</span>
-                <span class="local">Missa - Matriz</span>
-            </div>
-        </div>
-
-        <div class="card-missa">
-            <div class="dia-semana">1ª Sexta do Mês</div>
-            <div class="horario-item">
-                <span class="local">Missa do Sagrado Coração</span>
-                <span class="hora">19h</span>
-                <span class="local">Matriz do Livramento</span>
-            </div>
-        </div>
-
-        <div class="card-missa">
-            <div class="dia-semana">Sábados</div>
-            <div class="horario-item">
-                <span class="hora">16:30h</span>
-                <span class="local">Com. São Francisco | Sucupira</span>
-            </div>
-            <div class="horario-item">
-                <span class="hora">19h</span>
-                <span class="local">Matriz do Livramento</span>
-            </div>
-        </div>
-
-        <div class="card-missa">
-            <div class="dia-semana">Domingos</div>
-            <div class="horario-item">
-                <span class="hora">09h</span>
-                <span class="local">Matriz do Livramento</span>
-            </div>
-            <div class="horario-item">
-                <span class="hora">19h</span>
-                <span class="local">Matriz do Livramento</span>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="youtube-info">
-        <span class="youtube-icon">▶ YouTube</span>
-        <span>As missas das 19h são transmitidas ao vivo.</span>
-    </div>
-</div>
 
 </body>
 </html>
