@@ -608,129 +608,118 @@ Com raízes na devoção iniciada em 1865 com uma imagem vinda de Portugal, a pa
 </main>
 
 <script>
-    <script>
-document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
+        // Lógica do cartão "HOJE"
+        const hoje = new Date().getDay();
+        const cards = document.querySelectorAll('.agenda-item');
+        cards.forEach(card => {
+            if (card.getAttribute('data-dia') == hoje) {
+                card.classList.add('hoje');
+            }
+        });
 
-    // HOJE
-    const hoje = new Date().getDay();
-    document.querySelectorAll('.agenda-item').forEach(card => {
-        if (card.getAttribute('data-dia') == hoje) {
-            card.classList.add('hoje');
-        }
+        // Lógica do Slider
+        const slider = document.getElementById('slider');
+        const restaurada = document.getElementById('restaurada');
+        const imgInterna = restaurada.querySelector('img');
+
+        const moverDivisor = (e) => {
+            const rect = slider.getBoundingClientRect();
+            let x;
+            
+            if (e.type === 'mousemove') {
+                x = e.clientX - rect.left;
+            } else if (e.type === 'touchmove') {
+                x = e.touches[0].clientX - rect.left;
+            }
+
+            imgInterna.style.width = rect.width + 'px';
+
+            let percentual = (x / rect.width) * 100;
+            if (percentual < 0) percentual = 0;
+            if (percentual > 100) percentual = 100;
+
+            restaurada.style.width = percentual + '%';
+        };
+
+        slider.addEventListener('mousemove', moverDivisor);
+        slider.addEventListener('touchmove', moverDivisor);
+
+        const ajustarTamanho = () => {
+            imgInterna.style.width = slider.offsetWidth + 'px';
+        };
+        
+        window.addEventListener('load', ajustarTamanho);
+        window.addEventListener('resize', ajustarTamanho);
     });
 
-    // SLIDER
-    const slider = document.getElementById('slider');
-    const restaurada = document.getElementById('restaurada');
-    const imgInterna = restaurada.querySelector('img');
-
-    const moverDivisor = (e) => {
-        const rect = slider.getBoundingClientRect();
-        let x = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
-        x -= rect.left;
-
-        let percentual = (x / rect.width) * 100;
-        percentual = Math.max(0, Math.min(100, percentual));
-
-        restaurada.style.width = percentual + '%';
-        imgInterna.style.width = rect.width + 'px';
-    };
-
-    slider.addEventListener('mousemove', moverDivisor);
-    slider.addEventListener('touchmove', moverDivisor);
-});
-
-// RELÓGIO
 function atualizarRelogio() {
     const agora = new Date();
-    const opcoes = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-
-    document.getElementById('data-atual').innerText =
-        agora.toLocaleDateString('pt-BR', opcoes);
-
-    document.getElementById('hora-atual').innerText =
-        agora.toLocaleTimeString('pt-BR');
+    const opcoesData = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    
+    document.getElementById('data-atual').innerText = agora.toLocaleDateString('pt-BR', opcoesData);
+    document.getElementById('hora-atual').innerText = agora.toLocaleTimeString('pt-BR');
 }
 
-// CLIMA + PREVISÃO
 async function buscarClima() {
     const cidade = "Arcoverde,BR";
-    const apiKey = "54a7a48f470d2f1425ae20e621892a13"; // ⚠️ TROQUE ISSO
+    const apiKey = "54a7a48f470d2f1425ae20e621892a13";
+
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&units=metric&lang=pt_br&appid=${apiKey}`;
 
     try {
+        const resposta = await fetch(url);
+        const dados = await resposta.json();
 
-        // TEMPO ATUAL
-        const atual = await fetch(
-            `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&units=metric&lang=pt_br&appid=${apiKey}`
-        );
+        // Temperatura
+        document.getElementById('temp-valor').innerText = Math.floor(dados.main.temp);
 
-        const dados = await atual.json();
-
-        if (dados.cod !== 200) throw new Error("Erro API");
-
-        document.getElementById('temp-valor').innerText = Math.round(dados.main.temp);
+        // Descrição
         document.getElementById('clima-desc').innerText = dados.weather[0].description;
-        document.getElementById('vento-valor').innerText = Math.round(dados.wind.speed * 3.6) + " km/h";
-        document.getElementById('umidade-valor').innerText = dados.main.humidity + "%";
 
-        // Ícone e fundo
+        // Vento
+        document.getElementById('vento-valor').innerText = `${dados.wind.speed} km/h`;
+
+        // Umidade
+        document.getElementById('umidade-valor').innerText = `${dados.main.humidity}%`;
+
+        // CONDIÇÃO DO CLIMA
         const condicao = dados.weather[0].main;
+
         let icone = "☀️";
         let fundo = "linear-gradient(135deg, #0EAFEA, #0b8fc0)";
 
-        if (condicao === "Clouds") icone = "☁️";
-        if (condicao === "Rain") icone = "🌧️";
-        if (condicao === "Thunderstorm") icone = "⛈️";
+        if (condicao === "Clouds") {
+            icone = "☁️";
+            fundo = "linear-gradient(135deg, #757f9a, #d7dde8)";
+        } 
+        else if (condicao === "Rain") {
+            icone = "🌧️";
+            fundo = "linear-gradient(135deg, #314755, #26a0da)";
+        } 
+        else if (condicao === "Thunderstorm") {
+            icone = "⛈️";
+            fundo = "linear-gradient(135deg, #141e30, #243b55)";
+        } 
+        else if (condicao === "Clear") {
+            icone = "☀️";
+            fundo = "linear-gradient(135deg, #0EAFEA, #0b8fc0)";
+        }
 
+        // Atualiza visual
         document.getElementById('clima-icone').innerText = icone;
         document.getElementById('clima-container').style.background = fundo;
 
-        // PREVISÃO
-        const forecast = await fetch(
-            `https://api.openweathermap.org/data/2.5/forecast?q=${cidade}&units=metric&lang=pt_br&appid=${apiKey}`
-        );
-
-        const prev = await forecast.json();
-
-        let dias = {};
-
-        prev.list.forEach(item => {
-            const data = new Date(item.dt_txt);
-            const dia = data.toLocaleDateString('pt-BR', { weekday: 'short' });
-
-            if (!dias[dia]) dias[dia] = item;
-        });
-
-        let html = '<div style="width:100%;display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;">';
-
-        Object.keys(dias).slice(0,6).forEach(dia => {
-            const temp = Math.round(dias[dia].main.temp);
-
-            html += `
-                <div style="flex:1;min-width:70px;text-align:center;">
-                    <strong>${dia}</strong><br>
-                    ${temp}°C
-                </div>
-            `;
-        });
-
-        html += '</div>';
-
-        document.getElementById('clima-desc').innerHTML += html;
-
     } catch (erro) {
-        document.getElementById('clima-desc').innerText = "Erro ao carregar clima";
-        console.error(erro);
+        console.log("Erro ao buscar clima", erro);
     }
 }
 
-// LOOP
 setInterval(atualizarRelogio, 1000);
-setInterval(buscarClima, 600000);
+setInterval(buscarClima, 600000); // atualiza clima a cada 10 min
 
 buscarClima();
 atualizarRelogio();
-</script>
     
 </script>
 
