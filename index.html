@@ -9,9 +9,7 @@
 
     <style>
         /* ROLAGEM SUAVE */
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         /* FONTE PERSONALIZADA */
         @font-face {
@@ -41,90 +39,28 @@
             z-index: 1000;
         }
 
-        .nome-site {
-            color: white;
-            font-size: 1.2rem;
-            margin: 0;
-            font-weight: bold;
-        }
-
-        .logo {
-            width: 50px;
-            height: 50px;
-            object-fit: contain;
-            background: white;
-            border-radius: 50%;
-            padding: 5px;
-            border: 2px solid #f2d27a;
-            flex-shrink: 0;
-        }
+        .nome-site { color: white; font-size: 1.2rem; margin: 0; font-weight: bold; }
+        .logo { width: 50px; height: 50px; object-fit: contain; background: white; border-radius: 50%; padding: 5px; border: 2px solid #f2d27a; flex-shrink: 0; }
 
         /* MENU */
-        .menu {
-            display: flex;
-            gap: 20px;
-            overflow-x: auto;
-            white-space: nowrap;
-            padding: 5px 0;
-            scrollbar-width: none;
-            -webkit-overflow-scrolling: touch;
-        }
-
+        .menu { display: flex; gap: 20px; overflow-x: auto; white-space: nowrap; padding: 5px 0; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
         .menu::-webkit-scrollbar { display: none; }
-
-        .menu a {
-            color: white;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            position: relative;
-            transition: 0.3s;
-            flex-shrink: 0;
-        }
-
-        .menu a::after {
-            content: "";
-            position: absolute;
-            width: 0%;
-            height: 2px;
-            background: #f2d27a;
-            left: 0;
-            bottom: -5px;
-            transition: 0.3s;
-        }
-
+        .menu a { color: white; text-decoration: none; font-size: 14px; font-weight: 500; position: relative; transition: 0.3s; flex-shrink: 0; }
+        .menu a::after { content: ""; position: absolute; width: 0%; height: 2px; background: #f2d27a; left: 0; bottom: -5px; transition: 0.3s; }
         .menu a:hover::after { width: 100%; }
 
         /* PARALLAX */
         .parallax {
-            width: 100%;
-            height: 450px;
+            width: 100%; height: 450px;
             background-image: url("Foto1EntradaIgreja.jpg");
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            background-size: cover; background-position: center; background-attachment: fixed;
             position: relative;
         }
-
         .overlay {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.45);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            color: white;
+            position: absolute; width: 100%; height: 100%; background: rgba(0,0,0,0.45);
+            display: flex; justify-content: center; align-items: center; flex-direction: column; color: white;
         }
-
-        .overlay h2 {
-            font-family: 'Peristiwa', serif;
-            font-size: clamp(2rem, 5vw, 3rem);
-            margin: 0;
-            letter-spacing: 2px;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.6);
-        }
+        .overlay h2 { font-family: 'Peristiwa', serif; font-size: clamp(2rem, 5vw, 3rem); margin: 0; letter-spacing: 2px; text-shadow: 2px 2px 10px rgba(0,0,0,0.6); }
 
         /* MISSAS GRID */
         .missa-container { padding: 50px 20px; }
@@ -134,58 +70,24 @@
         .agenda-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
         
         .agenda-item { 
-            background: white; 
-            border-top: 6px solid #d4af37; 
-            padding: 25px; 
-            border-radius: 15px; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center; 
-            box-shadow: 0 6px 18px rgba(0,0,0,0.06); 
-            transition: 0.3s ease;
-            position: relative;
+            background: white; border-top: 6px solid #d4af37; padding: 25px; border-radius: 15px; 
+            display: flex; flex-direction: column; justify-content: center; align-items: center; 
+            box-shadow: 0 6px 18px rgba(0,0,0,0.06); transition: 0.3s ease; position: relative;
         }
 
         .agenda-item.hoje {
-            border-top: 6px solid #0EAFEA;
-            background-color: #f0faff;
-            transform: translateY(-10px);
-            box-shadow: 0 12px 24px rgba(14, 175, 234, 0.2);
-            z-index: 2;
+            border-top: 6px solid #0EAFEA; background-color: #f0faff; transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(14, 175, 234, 0.2); z-index: 2;
         }
-
-        .agenda-item.hoje::before {
-            content: "HOJE";
-            position: absolute;
-            top: -15px;
-            background: #0EAFEA;
-            color: white;
-            padding: 2px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-        }
+        .agenda-item.hoje::before { content: "HOJE"; position: absolute; top: -15px; background: #0EAFEA; color: white; padding: 2px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; }
 
         .dia { font-weight: bold; font-size: 1.2rem; color: #0b8fc0; margin-bottom: 10px; text-transform: uppercase; }
         .hora { font-size: 1.4rem; color: #b8860b; font-weight: 700; margin: 5px 0; }
         .local { font-size: 0.95rem; color: #666; font-style: italic; }
         
-        .exposicao-box {
-            background: #f0faff;
-            border: 1px dashed #0EAFEA;
-            border-radius: 10px;
-            padding: 10px;
-            margin: 10px 0;
-            width: 90%;
-        }
+        .exposicao-box { background: #f0faff; border: 1px dashed #0EAFEA; border-radius: 10px; padding: 10px; margin: 10px 0; width: 90%; }
         .exposicao-box strong { color: #0b8fc0; font-size: 0.9rem; }
-        .exposicao-box span { 
-            display: block; 
-            font-size: 1.1rem; 
-            font-weight: bold; 
-            color: #0EAFEA;
-        }
+        .exposicao-box span { display: block; font-size: 1.1rem; font-weight: bold; color: #0EAFEA; }
 
         .destaque-card { background: linear-gradient(135deg, #0EAFEA, #0b8fc0); color: white; border-top: 6px solid #f2d27a; }
         .destaque-card .dia, .destaque-card .hora, .destaque-card .local { color: white; }
@@ -196,22 +98,8 @@
             overflow: hidden; display: flex; flex-wrap: wrap; box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
             border: 1px solid #eee; scroll-margin-top: 100px; 
         }
-        .youtube-thumb { 
-            flex: 1; 
-            min-width: 300px; 
-            background: #000; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            position: relative; 
-            min-height: 280px; 
-        }
-        .youtube-thumb iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
+        .youtube-thumb { flex: 1; min-width: 300px; background: #000; display: flex; justify-content: center; align-items: center; position: relative; min-height: 280px; }
+        .youtube-thumb iframe { width: 100%; height: 100%; border: 0; }
         .youtube-info { flex: 1.2; padding: 40px; text-align: left; display: flex; flex-direction: column; justify-content: center; }
         
         .live-badge { display: inline-flex; align-items: center; background: #ffe6e6; color: #ff0000; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; text-transform: uppercase; margin-bottom: 10px; width: fit-content; }
@@ -219,10 +107,9 @@
         @keyframes pulse { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7); } 70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(255, 0, 0, 0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); } }
         
         .live-horario { color: #b8860b; font-weight: bold; font-size: 1.1rem; margin-bottom: 15px; display: block; }
-
         .btn-assista { background: #FF0000; color: white; text-decoration: none; padding: 12px 25px; border-radius: 30px; font-weight: bold; display: inline-flex; align-items: center; gap: 10px; transition: 0.3s; width: fit-content; }
 
-        /* SEÇÃO HISTÓRIA (A IGREJA) */
+        /* SEÇÃO HISTÓRIA */
         .historia-container {
             max-width: 1100px; margin: 50px auto 100px; padding: 40px;
             display: flex; align-items: flex-start; gap: 40px; text-align: left;
@@ -238,12 +125,8 @@
         .historia-fotos { flex: 1; display: flex; flex-direction: column; gap: 20px; }
         .foto-box { position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border: 4px solid white; }
         .foto-box img { width: 100%; display: block; }
-        .legenda-foto { 
-            position: absolute; bottom: 0; background: rgba(14, 175, 234, 0.85); 
-            color: white; width: 100%; padding: 10px; font-size: 11px; font-weight: bold; text-align: center;
-        }
+        .legenda-foto { position: absolute; bottom: 0; background: rgba(14, 175, 234, 0.85); color: white; width: 100%; padding: 10px; font-size: 11px; font-weight: bold; text-align: center; }
 
-        /* RESPONSIVO */
         @media (max-width: 768px) {
             .topo { flex-direction: row; flex-wrap: wrap; justify-content: center; padding: 15px 5%; }
             .nome-site { width: 80%; font-size: 1rem; margin-bottom: 10px; }
@@ -251,7 +134,6 @@
             .parallax { height: 300px; background-attachment: scroll; }
             .agenda-grid { grid-template-columns: 1fr; }
             .youtube-info { text-align: center; align-items: center; padding: 30px 20px; }
-            .youtube-thumb { min-height: 200px; }
             .historia-container { flex-direction: column; text-align: center; padding: 20px; margin: 30px 15px; }
         }
     </style>
@@ -332,21 +214,14 @@
 
         <section id="ao-vivo" class="youtube-section">
             <div class="youtube-thumb">
-                <iframe 
-                    src="https://www.youtube.com/embed/WIKrWRck6ZU" 
-                    title="Última Transmissão Paróquia Livramento" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
+                <iframe src="https://www.youtube.com/embed/WIKrWRck6ZU" title="Última Transmissão" allowfullscreen></iframe>
             </div>
             <div class="youtube-info">
                 <div class="live-badge"><span class="dot"></span> Transmissão ao Vivo</div>
                 <h3>Acompanhe de onde estiver</h3>
                 <span class="live-horario">Todas as celebrações às 19h</span>
-                <p>Assista à última celebração diretamente aqui ou acompanhe em tempo real pelo canal oficial do Youtube.</p>
-                <a href="https://www.youtube.com/@PascomLivramento" target="_blank" class="btn-assista">
-                    <span>Acessar Canal Youtube</span>
-                </a>
+                <p>Assista à última celebração diretamente aqui ou acompanhe em tempo real pelo canal oficial.</p>
+                <a href="https://www.youtube.com/@PascomLivramento" target="_blank" class="btn-assista">Acessar Canal Youtube</a>
             </div>
         </section>
 
@@ -355,18 +230,15 @@
 
         <section id="a-igreja" class="historia-container">
             <div class="historia-texto">
-                <p>A Paróquia de Nossa Senhora do Livramento em Arcoverde foi criada em <strong>21 de agosto de 1919</strong> por Dom José Antônio de Oliveira Lopes, desmembrada da Diocese de Pesqueira. Com raízes na devoção iniciada em 1865 com uma imagem vinda de Portugal, a paróquia cresceu junto com a cidade, sendo fundamental na fé local.</p>
-                
+                <p>A Paróquia de Nossa Senhora do Livramento em Arcoverde foi criada em <strong>21 de agosto de 1919</strong> por Dom José Antônio de Oliveira Lopes. Com raízes na devoção iniciada em 1865 com uma imagem vinda de Portugal, a paróquia cresceu junto com a cidade.</p>
                 <ul>
-                    <li><strong>Origem da Devoção:</strong> Começou com uma imagem trazida de Portugal por um fazendeiro em 1865, instalada na antiga Fazenda Olhos d'Água dos Bredos.</li>
-                    <li><strong>Criação Oficial:</strong> A freguesia foi oficialmente criada em 1919, sob decreto de Monsenhor D. José Antônio de Oliveira Lopes.</li>
-                    <li><strong>Igreja Matriz:</strong> Em 1920, a igrejinha era simples, sem bancos, e evoluiu tornando-se a paróquia central da cidade.</li>
-                    <li><strong>Centenário:</strong> Celebrou seus 100 anos com uma peregrinação da réplica da imagem em 2019.</li>
-                    <li><strong>Padroeira:</strong> Nossa Senhora do Livramento é a padroeira de Arcoverde, com festa em 23 de setembro.</li>
+                    <li><strong>Origem:</strong> Imagem trazida de Portugal em 1865 por um fazendeiro.</li>
+                    <li><strong>Criação:</strong> Oficializada em 1919, desmembrada de Pesqueira.</li>
+                    <li><strong>Igreja Matriz:</strong> Evoluiu de uma construção simples em 1920 para o marco atual.</li>
+                    <li><strong>Padroeira:</strong> Nossa Senhora do Livramento, com festa em 23 de setembro.</li>
                 </ul>
-
                 <p style="font-style: italic; margin-top: 20px; color: #777;">
-                    <strong>Sobre o Primeiro Altar:</strong> Entendemos que, pelo estilo do Altar, a Missa era celebrada com o celebrante de costas para a assembleia, como determinava a antiga liturgia, sendo toda realizada em latim.
+                    <strong>Sobre o Primeiro Altar:</strong> Pelo estilo, a Missa era celebrada com o celebrante de costas para a assembleia, conforme a antiga liturgia em latim.
                 </p>
             </div>
             
@@ -381,7 +253,6 @@
                 </div>
             </div>
         </section>
-
     </section>
 </main>
 
@@ -390,9 +261,7 @@
         const hoje = new Date().getDay();
         const cards = document.querySelectorAll('.agenda-item');
         cards.forEach(card => {
-            if (card.getAttribute('data-dia') == hoje) {
-                card.classList.add('hoje');
-            }
+            if (card.getAttribute('data-dia') == hoje) card.classList.add('hoje');
         });
     });
 </script>
