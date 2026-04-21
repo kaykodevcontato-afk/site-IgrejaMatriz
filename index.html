@@ -9,7 +9,9 @@
 
     <style>
         /* ROLAGEM SUAVE */
-        html { scroll-behavior: smooth; }
+        html {
+            scroll-behavior: smooth;
+        }
 
         /* FONTE PERSONALIZADA */
         @font-face {
@@ -17,6 +19,7 @@
             src: url('Peristiwa.otf') format('opentype');
         }
 
+        /* FUNDO */
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
             background: linear-gradient(to bottom, #ffffff 40%, #eaf8ff);
@@ -38,97 +41,162 @@
             z-index: 1000;
         }
 
-        .identificacao { display: flex; flex-direction: column; align-items: center; flex-grow: 1; }
-        .nome-site { color: white; font-size: 1.2rem; margin: 0; font-weight: bold; }
-        .cidade-estado { color: rgba(255, 255, 255, 0.9); font-size: 0.85rem; font-weight: 500; margin-top: 2px; }
-        .logo { width: 50px; height: 50px; object-fit: contain; background: white; border-radius: 50%; padding: 5px; border: 2px solid #f2d27a; flex-shrink: 0; }
+        .nome-site {
+            color: white;
+            font-size: 1.2rem;
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            background: white;
+            border-radius: 50%;
+            padding: 5px;
+            border: 2px solid #f2d27a;
+            flex-shrink: 0;
+        }
 
         /* MENU */
-        .menu { display: flex; gap: 20px; overflow-x: auto; white-space: nowrap; padding: 5px 0; scrollbar-width: none; }
-        .menu::-webkit-scrollbar { display: none; }
-        .menu a { color: white; text-decoration: none; font-size: 14px; font-weight: 500; position: relative; transition: 0.3s; }
-        .menu a:hover { color: #f2d27a; }
-
-        /* WIDGET DE CLIMA ATUALIZADO */
-        .clima-widget {
-            max-width: 1100px;
-            margin: 20px auto;
-            padding: 20px;
-            background: linear-gradient(135deg, #0EAFEA, #0b8fc0);
-            border-radius: 20px;
+        .menu {
             display: flex;
             gap: 20px;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 5px 0;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .menu::-webkit-scrollbar { display: none; }
+
+        .menu a {
             color: white;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-            align-items: center;
-            transition: background 1s ease;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            position: relative;
+            transition: 0.3s;
+            flex-shrink: 0;
         }
 
-        .clima-principal { flex: 1.2; text-align: left; display: flex; flex-direction: column; gap: 10px; }
-        .data-hora #data-atual { display: block; font-size: 0.9rem; opacity: 0.9; text-transform: capitalize; }
-        .data-hora #hora-atual { font-size: 1.8rem; font-weight: bold; }
-
-        .clima-status { display: flex; align-items: center; gap: 15px; }
-        #clima-icone { font-size: 3.5rem; animation: flutuar 3s ease-in-out infinite; }
-        .temp-box #temp-valor { font-size: 2.8rem; font-weight: bold; }
-        #clima-desc { display: block; font-size: 0.9rem; text-transform: capitalize; opacity: 0.9; }
-
-        .divisor-clima { width: 1px; height: 100px; background: rgba(255,255,255,0.2); }
-
-        .previsao-semana {
-            flex: 2;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-        }
-
-        .dia-previsao {
-            text-align: center;
-            background: rgba(255,255,255,0.1);
-            padding: 12px 5px;
-            border-radius: 12px;
+        .menu a::after {
+            content: "";
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            background: #f2d27a;
+            left: 0;
+            bottom: -5px;
             transition: 0.3s;
         }
-        .dia-previsao:hover { background: rgba(255,255,255,0.25); }
-        .dia-nome { font-size: 0.75rem; font-weight: bold; text-transform: uppercase; display: block; margin-bottom: 5px; }
-        .dia-icone { font-size: 1.6rem; display: block; margin: 5px 0; }
-        .dia-temp { font-size: 0.95rem; font-weight: bold; }
 
-        @keyframes flutuar {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
+        .menu a:hover::after { width: 100%; }
 
         /* PARALLAX */
         .parallax {
-            width: 100%; height: 450px;
+            width: 100%;
+            height: 450px;
             background-image: url("Foto1EntradaIgreja.jpg");
-            background-size: cover; background-position: center; background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             position: relative;
         }
 
         .overlay {
-            position: absolute; width: 100%; height: 100%;
+            position: absolute;
+            width: 100%;
+            height: 100%;
             background: rgba(0,0,0,0.45);
-            display: flex; justify-content: center; align-items: center; flex-direction: column; color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
         }
-        .overlay h2 { font-family: 'Peristiwa', serif; font-size: clamp(2rem, 5vw, 3rem); margin: 0; text-shadow: 2px 2px 10px rgba(0,0,0,0.6); }
+
+        .overlay h2 {
+            font-family: 'Peristiwa', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin: 0;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.6);
+        }
 
         /* MISSAS GRID */
         .missa-container { padding: 50px 20px; }
-        .titulo { font-size: 2.2rem; color: #0b8fc0; margin-bottom: 5px; scroll-margin-top: 100px; }
+        
+        .titulo { 
+            font-size: 2.2rem; 
+            color: #0b8fc0; 
+            margin-bottom: 5px; 
+            scroll-margin-top: 100px; 
+        }
+
         .linha-azul { display: block; width: 60px; height: 4px; background: linear-gradient(to right, #d4af37, #f2d27a); margin: 10px auto 30px; border-radius: 10px; }
-        .agenda-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto; }
+        
+        .agenda { max-width: 1100px; margin: 0 auto; }
+        .agenda-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
         
         .agenda-item { 
-            background: white; border-top: 6px solid #d4af37; padding: 25px; border-radius: 15px; 
-            box-shadow: 0 6px 18px rgba(0,0,0,0.06); transition: 0.3s ease; position: relative;
+            background: white; 
+            border-top: 6px solid #d4af37; 
+            padding: 25px; 
+            border-radius: 15px; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            box-shadow: 0 6px 18px rgba(0,0,0,0.06); 
+            transition: 0.3s ease;
+            position: relative;
         }
-        .agenda-item.hoje { border-top-color: #0EAFEA; background-color: #f0faff; transform: translateY(-10px); box-shadow: 0 12px 24px rgba(14, 175, 234, 0.2); }
-        .agenda-item.hoje::before { content: "HOJE"; position: absolute; top: -15px; background: #0EAFEA; color: white; padding: 2px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; }
 
-        .dia { font-weight: bold; font-size: 1.2rem; color: #0b8fc0; display: block; margin-bottom: 10px; }
-        .hora { font-size: 1.4rem; color: #b8860b; font-weight: 700; }
+        .agenda-item.hoje {
+            border-top: 6px solid #0EAFEA;
+            background-color: #f0faff;
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(14, 175, 234, 0.2);
+            z-index: 2;
+        }
+
+        .agenda-item.hoje::before {
+            content: "HOJE";
+            position: absolute;
+            top: -15px;
+            background: #0EAFEA;
+            color: white;
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .dia { font-weight: bold; font-size: 1.2rem; color: #0b8fc0; margin-bottom: 10px; text-transform: uppercase; }
+        .hora { font-size: 1.4rem; color: #b8860b; font-weight: 700; margin: 5px 0; }
+        .local { font-size: 0.95rem; color: #666; font-style: italic; }
+        
+        .exposicao-box {
+            background: #f0faff;
+            border: 1px dashed #0EAFEA;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            width: 90%;
+        }
+        .exposicao-box strong { color: #0b8fc0; font-size: 0.9rem; }
+        .exposicao-box span { 
+            display: block; 
+            font-size: 1.1rem; 
+            font-weight: bold; 
+            color: #0EAFEA;
+        }
+
+        .destaque-card { background: linear-gradient(135deg, #0EAFEA, #0b8fc0); color: white; border-top: 6px solid #f2d27a; }
+        .destaque-card .dia, .destaque-card .hora, .destaque-card .local { color: white; }
 
         /* SEÇÃO YOUTUBE */
         .youtube-section { 
@@ -136,27 +204,159 @@
             overflow: hidden; display: flex; flex-wrap: wrap; box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
             border: 1px solid #eee; 
         }
-        .youtube-thumb { flex: 1; min-width: 300px; background: #000; min-height: 280px; }
-        .youtube-thumb iframe { width: 100%; height: 100%; border: 0; }
-        .youtube-info { flex: 1.2; padding: 40px; text-align: left; }
-        .btn-assista { background: #FF0000; color: white; text-decoration: none; padding: 12px 25px; border-radius: 30px; font-weight: bold; display: inline-block; margin-top: 15px; }
+        .youtube-thumb { 
+            flex: 1; 
+            min-width: 300px; 
+            background: #000; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            position: relative; 
+            min-height: 280px; 
+        }
+        .youtube-thumb iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
 
-        /* HISTÓRIA E SLIDER */
-        .historia-container { max-width: 1100px; margin: 0 auto 100px; padding: 40px; background: white; border-radius: 20px; text-align: left; }
-        .secao-reforma, .secao-altar-atual { display: flex; align-items: center; gap: 40px; margin-top: 40px; border-top: 1px solid #eee; padding-top: 40px; }
-        .secao-reforma { flex-direction: row-reverse; }
-        .comparison-slider, .foto-container { width: 100%; max-width: 500px; border-radius: 15px; overflow: hidden; position: relative; border: 4px solid white; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
-        .img-restaurada { position: absolute; top: 0; left: 0; width: 50%; height: 100%; overflow: hidden; z-index: 2; border-right: 3px solid #f2d27a; }
-        .label-fixo { position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); background: rgba(14, 175, 234, 0.85); color: white; padding: 5px 10px; font-size: 10px; border-radius: 4px; font-weight: bold; }
+        .youtube-info { flex: 1.2; padding: 40px; text-align: left; display: flex; flex-direction: column; justify-content: center; }
+        
+        .live-badge { display: inline-flex; align-items: center; background: #ffe6e6; color: #ff0000; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; text-transform: uppercase; margin-bottom: 10px; width: fit-content; }
+        .dot { height: 8px; width: 8px; background-color: #ff0000; border-radius: 50%; display: inline-block; margin-right: 8px; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7); } 70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(255, 0, 0, 0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); } }
+        
+        .live-horario { color: #b8860b; font-weight: bold; font-size: 1.1rem; margin-bottom: 15px; display: block; }
+
+        .btn-assista { background: #FF0000; color: white; text-decoration: none; padding: 12px 25px; border-radius: 30px; font-weight: bold; display: inline-flex; align-items: center; gap: 10px; transition: 0.3s; width: fit-content; }
+
+        /* SEÇÃO HISTÓRIA */
+        .historia-container {
+            max-width: 1100px; margin: 0 auto 100px; padding: 40px;
+            background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            text-align: left;
+        }
+
+        .historia-topo {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .historia-texto { flex: 1.2; }
+        .historia-texto p { line-height: 1.6; color: #555; font-size: 1.05rem; margin-bottom: 15px; }
+        .historia-texto ul { padding-left: 20px; color: #555; list-style-type: square; }
+        .historia-texto li { margin-bottom: 12px; line-height: 1.4; }
+        .historia-texto li strong { color: #0b8fc0; }
+        
+        /* SEÇÃO REFORMA (SEGUNDO ALTAR) */
+        .secao-reforma {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            border-top: 1px solid #eee;
+            padding-top: 40px;
+            margin-top: 20px;
+            flex-direction: row-reverse; /* Inverte para criar o efeito zigue-zague */
+        }
+
+        .texto-reforma { flex: 1.2; }
+
+        /* SEÇÃO ATUAL (TERCEIRO ALTAR) */
+        .secao-altar-atual {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            border-top: 1px solid #eee;
+            padding-top: 40px;
+            margin-top: 40px;
+        }
+
+        .texto-altar-atual { flex: 1.2; }
+
+        .galeria-historica {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .comparison-slider, .foto-container {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 15px;
+            border: 4px solid white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .comparison-slider { cursor: ew-resize; line-height: 0; }
+
+        .comparison-slider img, .foto-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            pointer-events: none;
+        }
+
+        .camada-original {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .img-restaurada {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 2;
+            border-right: 3px solid #f2d27a;
+        }
+
+        .img-restaurada img {
+            width: 100%; 
+            height: 100%;
+            object-fit: cover;
+            object-position: left;
+        }
+
+        .label-before, .label-after, .label-fixo {
+            position: absolute; bottom: 15px; padding: 4px 10px;
+            background: rgba(14, 175, 234, 0.85); color: white; font-size: 10px; border-radius: 4px; font-weight: bold;
+            white-space: nowrap;
+        }
+        
+        .label-before { right: 15px; z-index: 1; }
+        .label-after { left: 15px; z-index: 3; }
+        .label-fixo { left: 50%; transform: translateX(-50%); bottom: 15px; }
 
         /* RESPONSIVO */
         @media (max-width: 768px) {
-            .clima-widget { flex-direction: column; text-align: center; }
-            .divisor-clima { display: none; }
-            .previsao-semana { grid-template-columns: repeat(2, 1fr); width: 100%; }
-            .clima-principal { align-items: center; }
-            .secao-reforma, .secao-altar-atual { flex-direction: column; text-align: center; }
-            .topo { flex-direction: column; gap: 10px; }
+            .topo { flex-direction: row; flex-wrap: wrap; justify-content: center; padding: 15px 5%; }
+            .nome-site { width: 80%; font-size: 1rem; margin-bottom: 10px; }
+            .menu { width: 100%; justify-content: flex-start; padding: 10px 0; }
+            .parallax { height: 300px; background-attachment: scroll; }
+            .agenda-grid { grid-template-columns: 1fr; }
+            .youtube-info { text-align: center; align-items: center; padding: 30px 20px; }
+            .youtube-thumb { min-height: 200px; }
+            
+            .historia-topo, .secao-reforma, .secao-altar-atual { 
+                flex-direction: column; 
+                text-align: center; 
+                gap: 20px;
+            }
+            
+            .historia-container { padding: 20px; margin: 30px 15px; }
+            .comparison-slider, .foto-container { max-width: 100%; margin: 0 auto; }
+            .historia-texto ul { text-align: left; }
         }
     </style>
 </head>
@@ -164,10 +364,7 @@
 
 <header class="topo">
     <img src="LogoBrasaoDaParoquia.png" alt="Brasão da Paróquia" class="logo">
-    <div class="identificacao">
-        <h1 class="nome-site">Paróquia Nª. Sra. do Livramento</h1>
-        <span class="cidade-estado">Arcoverde - PE</span>
-    </div>
+    <h1 class="nome-site">Paróquia Nª. Sra. do Livramento</h1>
     <nav class="menu">
         <a href="#">Início</a>
         <a href="#missas">Missas</a>
@@ -178,27 +375,6 @@
         <a href="#">Contato</a>
     </nav>
 </header>
-
-<div id="clima-container" class="clima-widget">
-    <div class="clima-principal">
-        <div class="data-hora">
-            <span id="data-atual">Carregando data...</span>
-            <span id="hora-atual">00:00:00</span>
-        </div>
-        <div class="clima-status">
-            <div id="clima-icone">☀️</div>
-            <div class="temp-box">
-                <span id="temp-valor">--</span><span class="unidade">°C</span>
-                <span id="clima-desc">Buscando clima...</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="divisor-clima"></div>
-
-    <div class="previsao-semana" id="previsao-lista">
-        </div>
-</div>
 
 <main>
     <section class="parallax">
@@ -211,124 +387,192 @@
     <section class="missa-container">
         <h1 class="titulo" id="missas">Santa Missa</h1>
         <span class="linha-azul"></span>
-        <div class="agenda-grid">
-            <div class="agenda-item" data-dia="2"><span class="dia">Terça-feira</span><span class="hora">19h</span></div>
-            <div class="agenda-item" data-dia="4">
-                <span class="dia">Quinta-feira</span>
-                <span style="color:#d4af37; font-weight:bold;">Exposição do Santíssimo</span><br>
-                <span>07h30 às 16h</span><br>
-                <span class="hora">17h</span>
+
+        <div class="agenda">
+            <div class="agenda-grid">
+                <div class="agenda-item" data-dia="2">
+                    <span class="dia">Terça-feira</span>
+                    <span class="hora">19h</span>
+                    <span class="local">Matriz do Livramento</span>
+                </div>
+                
+                <div class="agenda-item" data-dia="4">
+                    <span class="dia">Quinta-feira</span>
+                    <span class="local" style="font-weight:bold; color:#d4af37;">Quinta Eucarística</span>
+                    <div class="exposicao-box">
+                        <strong>Exposição do Santíssimo</strong>
+                        <span>07h30 às 16h</span>
+                    </div>
+                    <span class="hora">17h</span>
+                    <span class="local">Matriz do Livramento</span>
+                </div>
+
+                <div class="agenda-item destaque-card" data-dia="5">
+                    <span class="dia">1ª Sexta do Mês</span>
+                    <span class="local">Missa do Sagrado Coração</span>
+                    <span class="hora">19h</span>
+                    <span class="local">Matriz do Livramento</span>
+                </div>
+
+                <div class="agenda-item" data-dia="6">
+                    <span class="dia">Sábado</span>
+                    <span class="hora">16h30</span>
+                    <span class="local">Com. São Francisco | Sucupira</span>
+                    <hr style="width: 80%; border: 0; border-top: 1px solid #eee; margin: 10px 0;">
+                    <span class="hora">19h</span>
+                    <span class="local">Matriz do Livramento</span>
+                </div>
+
+                <div class="agenda-item" data-dia="0">
+                    <span class="dia">Domingo</span>
+                    <span class="hora">09h</span>
+                    <span class="local">Matriz do Livramento</span>
+                    <hr style="width: 80%; border: 0; border-top: 1px solid #eee; margin: 10px 0;">
+                    <span class="hora">19h</span>
+                    <span class="local">Matriz do Livramento</span>
+                </div>
             </div>
-            <div class="agenda-item destaque-card" data-dia="5"><span class="dia">1ª Sexta do Mês</span><span class="hora">19h</span></div>
-            <div class="agenda-item" data-dia="6"><span class="dia">Sábado</span><span class="hora">19h</span></div>
-            <div class="agenda-item" data-dia="0"><span class="dia">Domingo</span><span class="hora">09h e 19h</span></div>
         </div>
     </section>
 
     <h1 class="titulo" id="ao-vivo">Transmissões ao Vivo</h1>
     <span class="linha-azul"></span>
+
     <section class="youtube-section">
         <div class="youtube-thumb">
-            <iframe src="https://www.youtube.com/embed/WIKrWRck6ZU" allowfullscreen></iframe>
+            <iframe 
+                src="https://www.youtube.com/embed/WIKrWRck6ZU" 
+                title="Última Transmissão Paróquia Livramento" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
         </div>
         <div class="youtube-info">
+            <div class="live-badge"><span class="dot"></span> Transmissão ao Vivo</div>
             <h3>Acompanhe de onde estiver</h3>
-            <p>Todas as celebrações às 19h no nosso canal oficial.</p>
-            <a href="https://www.youtube.com/@PascomLivramento" target="_blank" class="btn-assista">Acessar Youtube</a>
+            <span class="live-horario">Todas as celebrações às 19h</span>
+            <p>Assista à última celebração diretamente aqui ou acompanhe em tempo real pelo canal oficial do Youtube.</p>
+            <a href="https://www.youtube.com/@PascomLivramento" target="_blank" class="btn-assista">
+                <span>Acessar Canal Youtube</span>
+            </a>
         </div>
     </section>
 
-    <h1 class="titulo" id="a-igreja">A História da Igreja</h1>
+    <h1 class="titulo" id="a-igreja">História da Igreja</h1>
     <span class="linha-azul"></span>
+
     <section class="historia-container">
-        <div class="secao-altar-atual">
-             <div class="comparison-slider" id="slider">
-                <img src="FotoPrimeiraAltarCelebracaomissas.png" alt="Original">
-                <div class="img-restaurada" id="restaurada">
-                    <img src="FotoPrimeiroAltarrestauradocomIA.png" alt="Restaurada">
-                </div>
-                <span class="label-fixo">DESLIZE PARA COMPARAR</span>
+        <div class="historia-topo">
+            <div class="historia-texto">
+                <p>A Paróquia de Nossa Senhora do Livramento em Arcoverde foi criada em <strong>21 de agosto de 1919</strong> por Dom José Antônio de Oliveira Lopes, desmembrada da Diocese de Pesqueira.
+Com raízes na devoção iniciada em 1865 com uma imagem vinda de Portugal, a paróquia cresceu junto com a cidade, sendo fundamental na fé local.</p>
+                
+                <ul>
+                    <li><strong>Origem da Devoção:</strong> A veneração a Nossa Senhora do Livramento começou com uma imagem trazida de Portugal por um fazendeiro em 1865, instalada na antiga Fazenda Olhos d'Água dos Bredos.</li>
+                    <li><strong>Criação Oficial:</strong> A freguesia foi oficialmente criada em 21 de agosto de 1919, sob decreto de Monsenhor D. José Antônio de Oliveira Lopes.</li>
+                    <li><strong>Igreja Matriz:</strong> Em 1920, a igrejinha era simples, sem bancos, e evoluiu ao longo do século, tornando-se a paróquia central da cidade, que mais tarde mudou de nome para Arcoverde.</li>
+                    <li><strong>Centenário:</strong> A paróquia celebrou seus 100 anos de criação com uma peregrinação da réplica da imagem em 2019, destacando a forte religiosidade local.</li>
+                    <li><strong>Padroeira:</strong> Nossa Senhora do Livramento é a padroeira de Arcoverde, com a festa principal celebrada em 23 de setembro.</li>
+                </ul>
+
+                <p style="font-style: italic; margin-top: 20px; color: #777;">
+                    <strong>Sobre o Primeiro Altar:</strong> Pelo estilo, a Missa era celebrada com o celebrante de costas para a assembleia, conforme a antiga liturgia em latim.
+                </p>
             </div>
-            <div class="texto-historia">
-                <h3>Centenário de Fé</h3>
-                <p>Criada em 1919, a Paróquia é o coração de Arcoverde. Desde a imagem vinda de Portugal em 1865 até o novo Altar Mor, cada detalhe conta nossa história.</p>
+
+            <div class="galeria-historica">
+                <div class="comparison-slider" id="slider">
+                    <img src="FotoPrimeiraAltarCelebracaomissas.png" alt="Foto Original do Altar">
+                    <div class="camada-original">
+                        <span class="label-before">ORIGINAL</span>
+                    </div>
+                    <div class="img-restaurada" id="restaurada">
+                        <img src="FotoPrimeiroAltarrestauradocomIA.png" alt="Foto Restaurada do Altar">
+                        <span class="label-after">RESTAURAÇÃO IA</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="secao-reforma">
+            <div class="texto-reforma">
+                <h3 style="color: #0b8fc0;">A Reforma Litúrgica</h3>
+                <p>
+                    Posteriormente, houve a <strong>Reforma do Altar Principal</strong> para acompanhar as diretrizes da nova liturgia do <strong>Vaticano II</strong>. O altar tornou-se mais simples, permitindo que o celebrante ficasse de frente para a assembleia, fazendo toda a celebração em língua portuguesa.
+                </p>
+            </div>
+            
+            <div class="foto-container">
+                <img src="FotoSegundoAltar.png" alt="Segundo Altar da Matriz">
+                <span class="label-fixo">SEGUNDO ALTAR (PÓS-REFORMA)</span>
+            </div>
+        </div>
+
+        <div class="secao-altar-atual">
+            <div class="foto-container">
+                <img src="FotoTerceiroAltarAtual.jpeg" alt="Novo Altar Mor da Paróquia">
+                <span class="label-fixo">ALTAR MOR ATUAL</span>
+            </div>
+
+            <div class="texto-altar-atual">
+                <h3 style="color: #0b8fc0;">O Novo Altar Mor</h3>
+                <p>
+                    Com alguns detalhes a serem ajustados e finalizados, apresentamos oficialmente o novo <strong>Altar Mor da Paróquia Nossa Senhora do Livramento</strong>.
+                </p>
+                <p>
+                    Esta nova fase representa o resgate da imponência sacra, unindo a tradição estética com a funcionalidade litúrgica atual, servindo como o novo coração espiritual de nossa comunidade.
+                </p>
             </div>
         </div>
     </section>
+
 </main>
 
 <script>
-    // RELÓGIO E DATA
-    function atualizarRelogio() {
-        const agora = new Date();
-        const opcoesData = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        document.getElementById('data-atual').innerText = agora.toLocaleDateString('pt-BR', opcoesData);
-        document.getElementById('hora-atual').innerText = agora.toLocaleTimeString('pt-BR');
-    }
-
-    // CLIMA E PREVISÃO
-    async function buscarClima() {
-        const agora = new Date();
-        const hora = agora.getHours();
-        const ehNoite = hora >= 18 || hora < 5;
-        
-        // Configuração Visual Baseada no Horário
-        const container = document.getElementById('clima-container');
-        const iconePrincipal = document.getElementById('clima-icone');
-        
-        if (ehNoite) {
-            container.style.background = "linear-gradient(135deg, #1e3c72, #2a5298)";
-            iconePrincipal.innerText = "🌙";
-            document.getElementById('clima-desc').innerText = "Noite Limpa";
-        } else {
-            container.style.background = "linear-gradient(135deg, #0EAFEA, #0b8fc0)";
-            iconePrincipal.innerText = "☀️";
-            document.getElementById('clima-desc').innerText = "Céu Aberto";
-        }
-
-        // Simulação de valores (Substituir pela API real quando tiver a Key)
-        document.getElementById('temp-valor').innerText = ehNoite ? "24" : "31";
-        
-        // Gerar Próximos Dias
-        const lista = document.getElementById('previsao-lista');
-        const diasSemana = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
-        lista.innerHTML = '';
-
-        for (let i = 1; i <= 4; i++) {
-            const dataF = new Date();
-            dataF.setDate(agora.getDate() + i);
-            const item = document.createElement('div');
-            item.className = 'dia-previsao';
-            item.innerHTML = `
-                <span class="dia-nome">${diasSemana[dataF.getDay()]}</span>
-                <span class="dia-icone">⛅</span>
-                <span class="dia-temp">29°</span>
-            `;
-            lista.appendChild(item);
-        }
-    }
-
-    // SLIDER DE COMPARAÇÃO
-    const slider = document.getElementById('slider');
-    const restaurada = document.getElementById('restaurada');
-    if(slider) {
-        slider.addEventListener('mousemove', (e) => {
-            let rect = slider.getBoundingClientRect();
-            let x = e.clientX - rect.left;
-            let percent = (x / rect.width) * 100;
-            restaurada.style.width = Math.min(Math.max(percent, 0), 100) + "%";
+    document.addEventListener('DOMContentLoaded', function() {
+        // Lógica do cartão "HOJE"
+        const hoje = new Date().getDay();
+        const cards = document.querySelectorAll('.agenda-item');
+        cards.forEach(card => {
+            if (card.getAttribute('data-dia') == hoje) {
+                card.classList.add('hoje');
+            }
         });
-    }
 
-    // DESTACAR DIA ATUAL NA AGENDA
-    const diaHoje = new Date().getDay();
-    document.querySelectorAll('.agenda-item').forEach(card => {
-        if (card.getAttribute('data-dia') == diaHoje) card.classList.add('hoje');
+        // Lógica do Slider
+        const slider = document.getElementById('slider');
+        const restaurada = document.getElementById('restaurada');
+        const imgInterna = restaurada.querySelector('img');
+
+        const moverDivisor = (e) => {
+            const rect = slider.getBoundingClientRect();
+            let x;
+            
+            if (e.type === 'mousemove') {
+                x = e.clientX - rect.left;
+            } else if (e.type === 'touchmove') {
+                x = e.touches[0].clientX - rect.left;
+            }
+
+            imgInterna.style.width = rect.width + 'px';
+
+            let percentual = (x / rect.width) * 100;
+            if (percentual < 0) percentual = 0;
+            if (percentual > 100) percentual = 100;
+
+            restaurada.style.width = percentual + '%';
+        };
+
+        slider.addEventListener('mousemove', moverDivisor);
+        slider.addEventListener('touchmove', moverDivisor);
+
+        const ajustarTamanho = () => {
+            imgInterna.style.width = slider.offsetWidth + 'px';
+        };
+        
+        window.addEventListener('load', ajustarTamanho);
+        window.addEventListener('resize', ajustarTamanho);
     });
-
-    setInterval(atualizarRelogio, 1000);
-    atualizarRelogio();
-    buscarClima();
 </script>
 
 </body>
