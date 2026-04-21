@@ -414,6 +414,25 @@
     .clima-widget { flex-direction: column; text-align: center; gap: 15px; margin: 10px; }
     .data-hora, .clima-detalhes { text-align: center; }
 }
+
+.previsao-box {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.previsao-item {
+    flex: 1;
+    min-width: 60px;
+    text-align: center;
+    background: rgba(255,255,255,0.15);
+    padding: 8px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+}
         
     </style>
 </head>
@@ -453,6 +472,7 @@
         <span>Vento: <strong id="vento-valor">-- km/h</strong></span>
         <span>Umidade: <strong id="umidade-valor">--%</strong></span>
     </div>
+        <div id="previsao" class="previsao-box"></div>
 </div>
 
 <main>
@@ -663,55 +683,64 @@ function atualizarRelogio() {
 
 async function buscarClima() {
     const cidade = "Arcoverde,BR";
-    const apiKey = "54a7a48f470d2f1425ae20e621892a13";
-
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&units=metric&lang=pt_br&appid=${apiKey}`;
+    const apiKey = "54a7a48f470d2f1425ae20e621892a13"; // coloque sua chave
 
     try {
-        const resposta = await fetch(url);
-        const dados = await resposta.json();
 
-        // Temperatura
-        document.getElementById('temp-valor').innerText = Math.floor(dados.main.temp);
+        // TEMPO ATUAL
+        const atual = await fetch(
+            `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&units=metric&lang=pt_br&appid=${apiKey}`
+        );
 
-        // Descrição
+        const dados = await atual.json();
+
+        document.getElementById('temp-valor').innerText = Math.round(dados.main.temp);
         document.getElementById('clima-desc').innerText = dados.weather[0].description;
+        document.getElementById('vento-valor').innerText = Math.round(dados.wind.speed * 3.6) + " km/h";
+        document.getElementById('umidade-valor').innerText = dados.main.humidity + "%";
 
-        // Vento
-        document.getElementById('vento-valor').innerText = `${dados.wind.speed} km/h`;
-
-        // Umidade
-        document.getElementById('umidade-valor').innerText = `${dados.main.humidity}%`;
-
-        // CONDIÇÃO DO CLIMA
         const condicao = dados.weather[0].main;
-
         let icone = "☀️";
-        let fundo = "linear-gradient(135deg, #0EAFEA, #0b8fc0)";
 
-        if (condicao === "Clouds") {
-            icone = "☁️";
-            fundo = "linear-gradient(135deg, #757f9a, #d7dde8)";
-        } 
-        else if (condicao === "Rain") {
-            icone = "🌧️";
-            fundo = "linear-gradient(135deg, #314755, #26a0da)";
-        } 
-        else if (condicao === "Thunderstorm") {
-            icone = "⛈️";
-            fundo = "linear-gradient(135deg, #141e30, #243b55)";
-        } 
-        else if (condicao === "Clear") {
-            icone = "☀️";
-            fundo = "linear-gradient(135deg, #0EAFEA, #0b8fc0)";
-        }
+        if (condicao === "Clouds") icone = "☁️";
+        if (condicao === "Rain") icone = "🌧️";
+        if (condicao === "Thunderstorm") icone = "⛈️";
 
-        // Atualiza visual
         document.getElementById('clima-icone').innerText = icone;
-        document.getElementById('clima-container').style.background = fundo;
+
+        // PREVISÃO
+        const forecast = await fetch(
+            `https://api.openweathermap.org/data/2.5/forecast?q=${cidade}&units=metric&lang=pt_br&appid=${apiKey}`
+        );
+
+        const prev = await forecast.json();
+
+        let dias = {};
+
+        prev.list.forEach(item => {
+            const data = new Date(item.dt_txt);
+            const dia = data.toLocaleDateString('pt-BR', { weekday: 'short' });
+
+            if (!dias[dia]) dias[dia] = item;
+        });
+
+        let html = "";
+
+        Object.keys(dias).slice(0,6).forEach(dia => {
+            const temp = Math.round(dias[dia].main.temp);
+
+            html += `
+                <div class="previsao-item">
+                    <strong>${dia}</strong><br>
+                    ${temp}°C
+                </div>
+            `;
+        });
+
+        document.getElementById('previsao').innerHTML = html;
 
     } catch (erro) {
-        console.log("Erro ao buscar clima", erro);
+        console.log("Erro clima:", erro);
     }
 }
 
