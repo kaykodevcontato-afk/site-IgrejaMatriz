@@ -235,7 +235,7 @@
         .historia-texto li { margin-bottom: 12px; line-height: 1.4; }
         .historia-texto li strong { color: #0b8fc0; }
         
-        /* ESTILO DO SLIDER CORRIGIDO */
+        /* ESTILO DO SLIDER COM FIX PARA LABEL SUMIR */
         .comparison-slider {
             position: relative;
             width: 100%;
@@ -246,15 +246,25 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             overflow: hidden;
             cursor: ew-resize;
-            line-height: 0; /* Remove espaço abaixo da imagem */
+            line-height: 0;
             flex-shrink: 0;
         }
 
         .comparison-slider img {
             width: 100%;
-            height: auto; /* Mantém a proporção real */
+            height: auto;
             display: block;
             pointer-events: none;
+        }
+
+        /* Camada intermediária para o texto original sumir */
+        .camada-original {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
         }
 
         .img-restaurada {
@@ -264,7 +274,7 @@
             width: 50%;
             height: 100%;
             overflow: hidden;
-            z-index: 2;
+            z-index: 2; /* Fica acima da camada-original */
             border-right: 3px solid #f2d27a;
         }
 
@@ -277,10 +287,19 @@
 
         .label-before, .label-after {
             position: absolute; bottom: 15px; padding: 4px 10px;
-            background: rgba(14, 175, 234, 0.85); color: white; font-size: 10px; border-radius: 4px; z-index: 3; font-weight: bold;
+            background: rgba(14, 175, 234, 0.85); color: white; font-size: 10px; border-radius: 4px; font-weight: bold;
+            white-space: nowrap;
         }
-        .label-before { right: 15px; }
-        .label-after { left: 15px; }
+        
+        .label-before { 
+            right: 15px; 
+            z-index: 1; /* Mesma camada que o conteúdo original */
+        }
+        
+        .label-after { 
+            left: 15px; 
+            z-index: 3; /* Sempre acima da restauração */
+        }
 
         /* RESPONSIVO */
         @media (max-width: 768px) {
@@ -412,7 +431,10 @@
             
             <div class="comparison-slider" id="slider">
                 <img src="FotoPrimeiraAltarCelebracaomissas.png" alt="Foto Original do Altar">
-                <span class="label-before">ORIGINAL</span>
+                
+                <div class="camada-original">
+                    <span class="label-before">ORIGINAL</span>
+                </div>
 
                 <div class="img-restaurada" id="restaurada">
                     <img src="FotoPrimeiroAltarrestauradocomIA.png" alt="Foto Restaurada do Altar">
@@ -435,7 +457,7 @@
             }
         });
 
-        // Lógica do Slider Corrigida
+        // Lógica do Slider
         const slider = document.getElementById('slider');
         const restaurada = document.getElementById('restaurada');
         const imgInterna = restaurada.querySelector('img');
@@ -450,7 +472,7 @@
                 x = e.touches[0].clientX - rect.left;
             }
 
-            // Sincroniza a largura da imagem interna com a largura dinâmica do slider
+            // Sincroniza a largura da imagem interna
             imgInterna.style.width = rect.width + 'px';
 
             let percentual = (x / rect.width) * 100;
@@ -463,7 +485,7 @@
         slider.addEventListener('mousemove', moverDivisor);
         slider.addEventListener('touchmove', moverDivisor);
 
-        // Garante o alinhamento no carregamento e redimensionamento
+        // Ajuste no carregamento e redimensionamento
         const ajustarTamanho = () => {
             imgInterna.style.width = slider.offsetWidth + 'px';
         };
