@@ -53,12 +53,23 @@
             border-radius: 50%;
             padding: 5px;
             border: 2px solid #f2d27a;
+            flex-shrink: 0;
         }
 
-        /* MENU */
+        /* MENU COM ROLAGEM HORIZONTAL NO MOBILE */
         .menu {
             display: flex;
             gap: 20px;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 5px 0;
+            scrollbar-width: none; /* Firefox */
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Esconde barra de rolagem no Chrome/Safari */
+        .menu::-webkit-scrollbar {
+            display: none;
         }
 
         .menu a {
@@ -68,6 +79,7 @@
             font-weight: 500;
             position: relative;
             transition: 0.3s;
+            flex-shrink: 0;
         }
 
         .menu a::after {
@@ -137,7 +149,7 @@
             position: relative;
         }
 
-        /* --- ESTILO PARA O DIA DE HOJE --- */
+        /* ESTILO PARA O DIA DE HOJE */
         .agenda-item.hoje {
             border-top: 6px solid #0EAFEA;
             background-color: #f0faff;
@@ -163,38 +175,33 @@
         .hora { font-size: 1.4rem; color: #b8860b; font-weight: 700; margin: 5px 0; }
         .local { font-size: 0.95rem; color: #666; font-style: italic; }
         
-        /* Destaque fixo (1ª sexta) */
         .destaque-card { background: linear-gradient(135deg, #0EAFEA, #0b8fc0); color: white; border-top: 6px solid #f2d27a; }
         .destaque-card .dia, .destaque-card .hora, .destaque-card .local { color: white; }
 
-        /* YOUTUBE DINÂMICO */
+        /* YOUTUBE */
         .youtube-section { 
-            margin: 80px auto 50px; 
-            max-width: 900px; 
-            background: white; 
-            border-radius: 20px; 
-            overflow: hidden; 
-            display: flex; 
-            flex-wrap: wrap; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
-            border: 1px solid #eee;
-            scroll-margin-top: 100px; 
+            margin: 80px auto 50px; max-width: 900px; background: white; border-radius: 20px; 
+            overflow: hidden; display: flex; flex-wrap: wrap; box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+            border: 1px solid #eee; scroll-margin-top: 100px; 
         }
         .youtube-thumb { flex: 1; min-width: 300px; background: #0EAFEA; display: flex; justify-content: center; align-items: center; position: relative; min-height: 200px; }
         .play-button { width: 70px; height: 70px; background: #FF0000; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 0 20px rgba(255, 0, 0, 0.5); cursor: pointer; transition: 0.3s; }
-        .play-button:hover { transform: scale(1.1); background: #cc0000; }
         .play-button svg { fill: white; width: 30px; margin-left: 5px; }
         .youtube-info { flex: 1.2; padding: 40px; text-align: left; display: flex; flex-direction: column; justify-content: center; }
         .live-badge { display: inline-flex; align-items: center; background: #ffe6e6; color: #ff0000; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; text-transform: uppercase; margin-bottom: 15px; width: fit-content; }
         .dot { height: 8px; width: 8px; background-color: #ff0000; border-radius: 50%; display: inline-block; margin-right: 8px; animation: pulse 1.5s infinite; }
         @keyframes pulse { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7); } 70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(255, 0, 0, 0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); } }
         .btn-assista { background: #FF0000; color: white; text-decoration: none; padding: 12px 25px; border-radius: 30px; font-weight: bold; display: inline-flex; align-items: center; gap: 10px; transition: 0.3s; width: fit-content; }
-        .btn-assista:hover { background: #333; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
 
         /* RESPONSIVO */
         @media (max-width: 768px) {
-            .topo { flex-direction: column; padding: 15px; }
-            .menu { margin-top: 15px; width: 100%; overflow-x: auto; justify-content: center; }
+            .topo { flex-direction: row; flex-wrap: wrap; justify-content: center; padding: 15px 5%; }
+            .nome-site { width: 80%; font-size: 1rem; margin-bottom: 10px; }
+            .menu { 
+                width: 100%; 
+                justify-content: flex-start; 
+                padding: 10px 0;
+            }
             .parallax { height: 300px; background-attachment: scroll; }
             .agenda-grid { grid-template-columns: 1fr; }
             .youtube-info { text-align: center; align-items: center; padding: 30px 20px; }
@@ -205,6 +212,7 @@
 <body>
 
 <header class="topo">
+    <img src="LogoBrasaoDaParoquia.png" alt="Brasão da Paróquia" class="logo">
     <h1 class="nome-site">Paróquia N. Sra. do Livramento</h1>
     <nav class="menu">
         <a href="#">Início</a>
@@ -215,7 +223,6 @@
         <a href="#ao-vivo">Ao Vivo</a>
         <a href="#">Contato</a>
     </nav>
-    <img src="LogoBrasaoDaParoquia.png" alt="Brasão da Paróquia" class="logo">
 </header>
 
 <main>
@@ -277,26 +284,20 @@
             <div class="youtube-info">
                 <div class="live-badge"><span class="dot"></span> Transmissão ao Vivo</div>
                 <h3>Acompanhe de onde estiver</h3>
-                <p>Não pode vir à igreja? Participe das celebrações das <strong>19h</strong> em tempo real através do nosso canal oficial.</p>
+                <p>Não pode vir à igreja? Participe das celebrações em tempo real.</p>
                 <a href="https://www.youtube.com/@PascomLivramento" target="_blank" class="btn-assista">
                     <span>Acessar YouTube</span>
                 </a>
             </div>
         </section>
-
     </section>
 </main>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Pega o dia da semana atual (0 para Domingo, 2 para Terça, etc.)
         const hoje = new Date().getDay();
-        
-        // Seleciona todos os cards de agenda
         const cards = document.querySelectorAll('.agenda-item');
-
         cards.forEach(card => {
-            // Verifica se o atributo data-dia do card é igual ao dia de hoje
             if (card.getAttribute('data-dia') == hoje) {
                 card.classList.add('hoje');
             }
