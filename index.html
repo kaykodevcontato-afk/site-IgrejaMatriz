@@ -41,11 +41,27 @@
             z-index: 1000;
         }
 
+        /* AJUSTE DO NOME E CIDADE */
+        .identificacao {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-grow: 1;
+        }
+
         .nome-site {
             color: white;
             font-size: 1.2rem;
             margin: 0;
             font-weight: bold;
+        }
+
+        .cidade-estado {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-top: 2px;
         }
 
         .logo {
@@ -258,7 +274,7 @@
             border-top: 1px solid #eee;
             padding-top: 40px;
             margin-top: 20px;
-            flex-direction: row-reverse; /* Inverte para criar o efeito zigue-zague */
+            flex-direction: row-reverse; 
         }
 
         .texto-reforma { flex: 1.2; }
@@ -341,7 +357,7 @@
         /* RESPONSIVO */
         @media (max-width: 768px) {
             .topo { flex-direction: row; flex-wrap: wrap; justify-content: center; padding: 15px 5%; }
-            .nome-site { width: 80%; font-size: 1rem; margin-bottom: 10px; }
+            .identificacao { width: 80%; margin-bottom: 10px; }
             .menu { width: 100%; justify-content: flex-start; padding: 10px 0; }
             .parallax { height: 300px; background-attachment: scroll; }
             .agenda-grid { grid-template-columns: 1fr; }
@@ -364,7 +380,10 @@
 
 <header class="topo">
     <img src="LogoBrasaoDaParoquia.png" alt="Brasão da Paróquia" class="logo">
-    <h1 class="nome-site">Paróquia Nª. Sra. do Livramento</h1>
+    <div class="identificacao">
+        <h1 class="nome-site">Paróquia Nª. Sra. do Livramento</h1>
+        <span class="cidade-estado">Arcoverde - PE</span>
+    </div>
     <nav class="menu">
         <a href="#">Início</a>
         <a href="#missas">Missas</a>
@@ -458,7 +477,7 @@
         </div>
     </section>
 
-    <h1 class="titulo" id="a-igreja">História da Igreja</h1>
+    <h1 class="titulo" id="a-igreja">History of Church</h1>
     <span class="linha-azul"></span>
 
     <section class="historia-container">
