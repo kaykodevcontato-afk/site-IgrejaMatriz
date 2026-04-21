@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Horários de Missa - Paróquia N. Sra. do Livramento</title>
     <style>
-        /* FONTE PERSONALIZADA - Lembre-se de conferir o caminho do arquivo */
+        /* FONTE PERSONALIZADA */
         @font-face {
             font-family: 'Peristiwa';
             src: url('Peristiwa.otf') format('opentype');
@@ -111,7 +111,7 @@
             text-shadow: 2px 2px 10px rgba(0,0,0,0.6);
         }
 
-        /* CONTEÚDO */
+        /* --- ATUALIZAÇÃO DA SEÇÃO DE MISSAS PARA LAYOUT EM BLOCOS --- */
         .missa-container {
             padding: 50px 20px;
         }
@@ -132,94 +132,72 @@
         }
 
         .agenda {
-            max-width: 700px;
+            max-width: 1100px; /* Aumentado para caber os blocos lado a lado */
             margin: 0 auto;
         }
 
         .agenda-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Cria colunas automáticas */
+            gap: 20px;
         }
 
         .agenda-item {
             background: white;
-            border-left: 6px solid #d4af37;
-            padding: 20px;
-            border-radius: 12px;
+            border-top: 6px solid #d4af37; /* Destaque no topo em vez da lateral */
+            padding: 25px;
+            border-radius: 15px;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column; /* Conteúdo em coluna dentro do card */
+            justify-content: center;
             align-items: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-            transition: transform 0.2s ease;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+            transition: transform 0.3s ease;
         }
 
         .agenda-item:hover {
-            transform: translateY(-3px);
+            transform: translateY(-5px);
         }
 
         .dia {
             font-weight: bold;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            color: #0b8fc0;
+            margin-bottom: 10px;
+            text-transform: uppercase;
         }
 
         .hora {
-            font-size: 1.2rem;
-            color: #b8860b; /* Dourado levemente mais escuro para leitura */
+            font-size: 1.4rem;
+            color: #b8860b;
             font-weight: 700;
+            margin: 5px 0;
         }
 
         .local {
-            width: 100%;
-            font-size: 0.9rem;
-            color: #777;
-            margin-top: 8px;
+            font-size: 0.95rem;
+            color: #666;
             font-style: italic;
         }
 
-        /* DESTAQUE */
-        .destaque {
-            margin: 40px auto;
-            background: linear-gradient(135deg, #0EAFEA, #d4af37);
+        /* BLOCO DESTAQUE (Vira um bloco da grid também) */
+        .destaque-card {
+            background: linear-gradient(135deg, #0EAFEA, #0b8fc0);
             color: white;
-            padding: 25px;
-            border-radius: 15px;
-            max-width: 500px;
-            box-shadow: 0 6px 20px rgba(14, 175, 234, 0.2);
+            border-top: 6px solid #f2d27a;
         }
 
-        .destaque h3 { margin-top: 0; }
+        .destaque-card .dia, .destaque-card .hora, .destaque-card .local {
+            color: white;
+        }
 
         /* RESPONSIVO */
         @media (max-width: 768px) {
-            .topo {
-                flex-direction: column;
-                padding: 15px;
-            }
-            
-            .menu {
-                margin-top: 15px;
-                width: 100%;
-                overflow-x: auto;
-                padding-bottom: 5px;
-                justify-content: center;
-            }
-
-            .menu a {
-                white-space: nowrap;
-                font-size: 13px;
-            }
-
-            .parallax {
-                height: 300px;
-                background-attachment: scroll; /* Melhor performance em mobile */
-            }
-
-            .agenda-item {
-                flex-direction: column;
-                text-align: center;
-                gap: 5px;
-            }
+            .topo { flex-direction: column; padding: 15px; }
+            .menu { margin-top: 15px; width: 100%; overflow-x: auto; justify-content: center; }
+            .menu a { white-space: nowrap; font-size: 13px; }
+            .parallax { height: 300px; background-attachment: scroll; }
+            .agenda-grid { grid-template-columns: 1fr; } /* No celular, volta a ser uma coluna */
         }
     </style>
 </head>
@@ -227,7 +205,6 @@
 
 <header class="topo">
     <h1 class="nome-site">Paróquia N. Sra. do Livramento</h1>
-
     <nav class="menu">
         <a href="#">Início</a>
         <a href="#">A Igreja</a>
@@ -237,7 +214,6 @@
         <a href="#">Ao Vivo</a>
         <a href="#">Contato</a>
     </nav>
-
     <img src="LogoBrasaoDaParoquia.png" alt="Brasão da Paróquia" class="logo">
 </header>
 
@@ -255,28 +231,51 @@
 
         <div class="agenda">
             <div class="agenda-grid">
+                
                 <div class="agenda-item">
-                    <div>
-                        <span class="dia">Terça-feira</span>
-                        <div class="local">Matriz do Livramento</div>
-                    </div>
+                    <span class="dia">Terça-feira</span>
                     <span class="hora">19h</span>
+                    <span class="local">Matriz do Livramento</span>
                 </div>
 
                 <div class="agenda-item">
-                    <div>
-                        <span class="dia">Quinta-feira</span>
-                        <div class="local">Matriz do Livramento</div>
-                    </div>
+                    <span class="dia">Quinta-feira</span>
+                    <span class="local" style="font-weight:bold; color:#d4af37;">Quinta Eucarística</span>
                     <span class="hora">17h</span>
+                    <span class="local">Matriz do Livramento</span>
                 </div>
+
+                <div class="agenda-item destaque-card">
+                    <span class="dia">1ª Sexta do Mês</span>
+                    <span class="local">Missa do Sagrado Coração</span>
+                    <span class="hora">19h</span>
+                    <span class="local">Matriz do Livramento</span>
+                </div>
+
+                <div class="agenda-item">
+                    <span class="dia">Sábado</span>
+                    <span class="hora">16h30</span>
+                    <span class="local">Com. São Francisco | Sucupira</span>
+                    <hr style="width: 80%; border: 0; border-top: 1px solid #eee; margin: 10px 0;">
+                    <span class="hora">19h</span>
+                    <span class="local">Matriz do Livramento</span>
+                </div>
+
+                <div class="agenda-item">
+                    <span class="dia">Domingo</span>
+                    <span class="hora">09h</span>
+                    <span class="local">Matriz do Livramento</span>
+                    <hr style="width: 80%; border: 0; border-top: 1px solid #eee; margin: 10px 0;">
+                    <span class="hora">19h</span>
+                    <span class="local">Matriz do Livramento</span>
+                </div>
+
             </div>
         </div>
-
-        <aside class="destaque">
-            <h3>1ª Sexta-feira do mês</h3>
-            <p><strong>19h</strong> - Matriz do Livramento</p>
-        </aside>
+        
+        <p style="margin-top: 30px; color: #666; font-size: 0.9rem;">
+            * As missas das 19h são transmitidas pelo canal do YouTube da Paróquia.
+        </p>
     </section>
 </main>
 
