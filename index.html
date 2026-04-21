@@ -3,31 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Horários de Missa - Paróquia N. Sra. do Livramento</title>
+    <title>Paróquia Nossa Senhora do Livramento</title>
+    
     <style>
-        /* FONTE PERSONALIZADA - Lembre-se de conferir o caminho do arquivo */
-        @font-face {
-            font-family: 'Peristiwa';
-            src: url('Peristiwa.otf') format('opentype');
+        /* CONFIGURAÇÕES GERAIS */
+        :root {
+            --azul-primario: #0EAFEA;
+            --azul-escuro: #0b8fc0;
+            --dourado: #d4af37;
+            --dourado-claro: #f2d27a;
+            --cinza-fundo: #f4f7f9;
+            --texto: #333;
         }
 
-        /* FUNDO */
         body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: linear-gradient(to bottom, #ffffff 40%, #eaf8ff);
-            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
-            color: #333;
+            padding: 0;
+            background-color: var(--cinza-fundo);
+            color: var(--texto);
         }
 
-        /* TOPO */
+        /* TOPO / NAVBAR */
         .topo {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: linear-gradient(135deg, #0EAFEA, #0b8fc0, #d4af37);
+            background: linear-gradient(to right, var(--azul-primario), var(--azul-escuro), var(--dourado));
             padding: 10px 5%;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -36,21 +40,10 @@
         .nome-site {
             color: white;
             font-size: 1.2rem;
-            margin: 0;
             font-weight: bold;
+            margin: 0;
         }
 
-        .logo {
-            width: 50px;
-            height: 50px;
-            object-fit: contain;
-            background: white;
-            border-radius: 50%;
-            padding: 5px;
-            border: 2px solid #f2d27a;
-        }
-
-        /* MENU */
         .menu {
             display: flex;
             gap: 20px;
@@ -59,167 +52,151 @@
         .menu a {
             color: white;
             text-decoration: none;
-            font-size: 14px;
+            font-size: 0.9rem;
+            transition: 0.3s;
             font-weight: 500;
-            position: relative;
-            transition: 0.3s;
         }
 
-        .menu a::after {
-            content: "";
-            position: absolute;
-            width: 0%;
-            height: 2px;
-            background: #f2d27a;
-            left: 0;
-            bottom: -5px;
-            transition: 0.3s;
+        .menu a:hover {
+            color: var(--dourado-claro);
         }
 
-        .menu a:hover::after {
-            width: 100%;
+        .logo {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            padding: 5px;
         }
 
-        /* PARALLAX */
+        /* PARALLAX / HERO */
         .parallax {
-            width: 100%;
-            height: 450px;
-            background-image: url("Foto1EntradaIgreja.jpg");
+            height: 350px;
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("Foto1EntradaIgreja.jpg");
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            position: relative;
-        }
-
-        .overlay {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.45);
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
             color: white;
+            text-align: center;
         }
 
-        .overlay h2 {
-            font-family: 'Peristiwa', serif;
-            font-size: clamp(2rem, 5vw, 3rem);
+        .parallax h2 {
+            font-size: 2.5rem;
             margin: 0;
-            letter-spacing: 2px;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.6);
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
         }
 
-        /* CONTEÚDO */
-        .missa-container {
-            padding: 50px 20px;
-        }
-
-        .titulo {
-            font-size: 2.2rem;
-            color: #0b8fc0;
-            margin-bottom: 5px;
-        }
-
-        .linha-azul {
-            display: block;
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(to right, #d4af37, #f2d27a);
-            margin: 10px auto 30px;
-            border-radius: 10px;
-        }
-
-        .agenda {
-            max-width: 700px;
+        /* GRID DE MISSAS (BLOCK LAYOUT) */
+        .missa-section {
+            padding: 60px 5%;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        .agenda-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+        .titulo-missas {
+            text-align: center;
+            color: var(--azul-escuro);
+            font-size: 2.2rem;
+            margin-bottom: 10px;
         }
 
-        .agenda-item {
+        .linha-decorativa {
+            width: 80px;
+            height: 4px;
+            background: var(--dourado);
+            margin: 0 auto 40px;
+            border-radius: 2px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        /* ESTILO DO CARD */
+        .card {
             background: white;
-            border-left: 6px solid #d4af37;
-            padding: 20px;
-            border-radius: 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-            transition: transform 0.2s ease;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border-top: 6px solid var(--dourado);
+            transition: 0.3s;
         }
 
-        .agenda-item:hover {
-            transform: translateY(-3px);
+        .card:hover {
+            transform: translateY(-10px);
         }
 
-        .dia {
+        .card h3 {
+            color: var(--azul-primario);
+            font-size: 1.5rem;
+            margin-top: 0;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .card .info-item {
+            margin: 15px 0;
+        }
+
+        .card .hora {
+            font-size: 1.4rem;
             font-weight: bold;
-            font-size: 1.1rem;
+            color: #444;
+            display: block;
         }
 
-        .hora {
-            font-size: 1.2rem;
-            color: #b8860b; /* Dourado levemente mais escuro para leitura */
-            font-weight: 700;
-        }
-
-        .local {
-            width: 100%;
+        .card .local {
             font-size: 0.9rem;
             color: #777;
-            margin-top: 8px;
             font-style: italic;
         }
 
-        /* DESTAQUE */
-        .destaque {
-            margin: 40px auto;
-            background: linear-gradient(135deg, #0EAFEA, #d4af37);
-            color: white;
-            padding: 25px;
-            border-radius: 15px;
-            max-width: 500px;
-            box-shadow: 0 6px 20px rgba(14, 175, 234, 0.2);
+        /* BLOCO DESTAQUE (QUINTA / SEXTA) */
+        .destaque-card {
+            background: linear-gradient(135deg, #fff, #fff9e6);
+            border-top-color: var(--azul-primario);
         }
 
-        .destaque h3 { margin-top: 0; }
+        /* AVISO DO YOUTUBE */
+        .youtube-box {
+            margin-top: 40px;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 5px solid #ff0000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            font-weight: 500;
+        }
 
-        /* RESPONSIVO */
+        .youtube-box img {
+            width: 30px;
+        }
+
+        /* RODAPÉ / CONTATO */
+        .footer-info {
+            background: #fff;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* RESPONSIVIDADE */
         @media (max-width: 768px) {
-            .topo {
-                flex-direction: column;
-                padding: 15px;
-            }
-            
-            .menu {
-                margin-top: 15px;
-                width: 100%;
-                overflow-x: auto;
-                padding-bottom: 5px;
-                justify-content: center;
-            }
-
-            .menu a {
-                white-space: nowrap;
-                font-size: 13px;
-            }
-
-            .parallax {
-                height: 300px;
-                background-attachment: scroll; /* Melhor performance em mobile */
-            }
-
-            .agenda-item {
-                flex-direction: column;
-                text-align: center;
-                gap: 5px;
-            }
+            .topo { flex-direction: column; text-align: center; padding: 15px; }
+            .menu { display: none; } /* Oculto para simplificar no mobile */
+            .parallax h2 { font-size: 1.8rem; }
+            .parallax { background-attachment: scroll; height: 250px; }
         }
     </style>
 </head>
@@ -227,57 +204,90 @@
 
 <header class="topo">
     <h1 class="nome-site">Paróquia N. Sra. do Livramento</h1>
-
     <nav class="menu">
         <a href="#">Início</a>
-        <a href="#">A Igreja</a>
         <a href="#missas">Missas</a>
+        <a href="#">A Igreja</a>
         <a href="#">Doação</a>
-        <a href="#">Galeria</a>
-        <a href="#">Ao Vivo</a>
         <a href="#">Contato</a>
     </nav>
-
-    <img src="LogoBrasaoDaParoquia.png" alt="Brasão da Paróquia" class="logo">
+    <img src="LogoBrasaoDaParoquia.png" alt="Brasão" class="logo">
 </header>
 
-<main>
-    <section class="parallax">
-        <div class="overlay">
-            <h2>Paróquia Nossa Senhora do Livramento</h2>
-            <p>Seja bem-vindo à nossa comunidade</p>
-        </div>
-    </section>
+<section class="parallax">
+    <div>
+        <h2>Santa Missa e Adoração</h2>
+        <p>Confira nossos horários de celebrações</p>
+    </div>
+</section>
 
-    <section id="missas" class="missa-container">
-        <h1 class="titulo">Santa Missa</h1>
-        <span class="linha-azul"></span>
+<main id="missas" class="missa-section">
+    <h2 class="titulo-missas">Horários Semanais</h2>
+    <div class="linha-decorativa"></div>
 
-        <div class="agenda">
-            <div class="agenda-grid">
-                <div class="agenda-item">
-                    <div>
-                        <span class="dia">Terça-feira</span>
-                        <div class="local">Matriz do Livramento</div>
-                    </div>
-                    <span class="hora">19h</span>
-                </div>
-
-                <div class="agenda-item">
-                    <div>
-                        <span class="dia">Quinta-feira</span>
-                        <div class="local">Matriz do Livramento</div>
-                    </div>
-                    <span class="hora">17h</span>
-                </div>
+    <div class="grid-container">
+        <div class="card">
+            <h3>Terça-feira</h3>
+            <div class="info-item">
+                <span class="hora">19h</span>
+                <span class="local">Matriz do Livramento</span>
             </div>
         </div>
 
-        <aside class="destaque">
-            <h3>1ª Sexta-feira do mês</h3>
-            <p><strong>19h</strong> - Matriz do Livramento</p>
-        </aside>
-    </section>
+        <div class="card destaque-card">
+            <h3>Quinta-feira</h3>
+            <div class="info-item">
+                <strong style="color: var(--dourado);">Quinta Eucarística</strong><br>
+                <span class="local">Exposição: 07h30 às 16h</span>
+            </div>
+            <div class="info-item">
+                <span class="hora">17h</span>
+                <span class="local">Santa Missa - Matriz</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>1ª Sexta do Mês</h3>
+            <div class="info-item">
+                <strong style="color: var(--azul-escuro);">Sagrado Coração de Jesus</strong><br>
+                <span class="hora">19h</span>
+                <span class="local">Matriz do Livramento</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Sábado</h3>
+            <div class="info-item">
+                <span class="hora">16h30min</span>
+                <span class="local">Com. São Francisco | Sucupira</span>
+            </div>
+            <div class="info-item" style="border-top: 1px solid #eee; padding-top: 10px;">
+                <span class="hora">19h</span>
+                <span class="local">Matriz do Livramento</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Domingo</h3>
+            <div class="info-item">
+                <span class="hora">09h</span>
+                <span class="local">Matriz do Livramento</span>
+            </div>
+            <div class="info-item" style="border-top: 1px solid #eee; padding-top: 10px;">
+                <span class="hora">19h</span>
+                <span class="local">Matriz do Livramento</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="youtube-box">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" alt="YouTube">
+        <span>As missas das <strong>19h</strong> são transmitidas no canal: <strong>PasCom Livramento Arcoverde</strong></span>
+    </div>
+
+    <div class="footer-info">
+        <p><strong>Confissões:</strong> Informações na Secretaria Paroquial ou pelo WhatsApp: <strong>(87) 9 9158-7001</strong></p>
+    </div>
 </main>
 
 </body>
