@@ -222,6 +222,26 @@
 
         .btn-assista { background: #FF0000; color: white; text-decoration: none; padding: 12px 25px; border-radius: 30px; font-weight: bold; display: inline-flex; align-items: center; gap: 10px; transition: 0.3s; width: fit-content; }
 
+        /* SEÇÃO HISTÓRIA (A IGREJA) */
+        .historia-container {
+            max-width: 1100px; margin: 50px auto 100px; padding: 40px;
+            display: flex; align-items: center; gap: 40px; text-align: left;
+            background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            scroll-margin-top: 100px;
+        }
+        .historia-texto { flex: 1.2; }
+        .historia-texto h2 { color: #0b8fc0; font-family: 'Peristiwa', serif; font-size: 2.5rem; margin-bottom: 15px; }
+        .historia-texto p { line-height: 1.8; color: #555; font-size: 1.1rem; margin-bottom: 15px; }
+        
+        .historia-fotos { flex: 1; display: flex; flex-direction: column; gap: 20px; }
+        .foto-box { position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border: 4px solid white; }
+        .foto-box img { width: 100%; display: block; transition: 0.5s; }
+        .foto-box:hover img { transform: scale(1.05); }
+        .legenda-foto { 
+            position: absolute; bottom: 0; background: rgba(14, 175, 234, 0.85); 
+            color: white; width: 100%; padding: 10px; font-size: 13px; font-weight: bold; text-align: center;
+        }
+
         /* RESPONSIVO */
         @media (max-width: 768px) {
             .topo { flex-direction: row; flex-wrap: wrap; justify-content: center; padding: 15px 5%; }
@@ -231,6 +251,7 @@
             .agenda-grid { grid-template-columns: 1fr; }
             .youtube-info { text-align: center; align-items: center; padding: 30px 20px; }
             .youtube-thumb { min-height: 200px; }
+            .historia-container { flex-direction: column; text-align: center; padding: 20px; margin: 30px 15px; }
         }
     </style>
 </head>
@@ -243,7 +264,7 @@
         <a href="#">Início</a>
         <a href="#missas">Missas</a>
         <a href="#ao-vivo">Ao Vivo</a>
-        <a href="#">A Igreja</a>
+        <a href="#a-igreja">A Igreja</a>
         <a href="#">Galeria</a>
         <a href="#">Doação</a>
         <a href="#">Contato</a>
@@ -327,6 +348,29 @@
                 </a>
             </div>
         </section>
+
+        <section id="a-igreja" class="historia-container">
+            <div class="historia-texto">
+                <h2>Nossa História</h2>
+                <p>
+                    A Igreja Matriz de Nossa Senhora do Livramento é o coração espiritual de Arcoverde. Sua história confunde-se com o próprio crescimento da cidade, erguida com a fé e o esforço da comunidade local.
+                </p>
+                <p>
+                    Desde os primeiros tijolos até a imponente estrutura que vemos hoje, cada detalhe da Matriz conta uma trajetória de devoção que atravessa gerações, sendo um marco arquitetônico e religioso no Sertão de Pernambuco.
+                </p>
+            </div>
+            <div class="historia-fotos">
+                <div class="foto-box">
+                    <img src="IgrejaAntiga.jpg" alt="Igreja Matriz Antigamente">
+                    <div class="legenda-foto">COMO ERA ANTES</div>
+                </div>
+                <div class="foto-box">
+                    <img src="Foto1EntradaIgreja.jpg" alt="Igreja Matriz Atualmente">
+                    <div class="legenda-foto">DIAS ATUAIS</div>
+                </div>
+            </div>
+        </section>
+
     </section>
 </main>
 
