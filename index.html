@@ -128,7 +128,15 @@
 
         /* MISSAS GRID */
         .missa-container { padding: 50px 20px; }
-        .titulo { font-size: 2.2rem; color: #0b8fc0; margin-bottom: 5px; }
+        
+        .titulo { 
+            font-size: 2.2rem; 
+            color: #0b8fc0; 
+            margin-bottom: 5px; 
+            /* Ajuste para a rolagem não ficar colada no topo/atrás do menu */
+            scroll-margin-top: 100px; 
+        }
+
         .linha-azul { display: block; width: 60px; height: 4px; background: linear-gradient(to right, #d4af37, #f2d27a); margin: 10px auto 30px; border-radius: 10px; }
         .agenda { max-width: 1100px; margin: 0 auto; }
         .agenda-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
@@ -224,10 +232,9 @@
 
         /* SEÇÃO HISTÓRIA (A IGREJA) */
         .historia-container {
-            max-width: 1100px; margin: 50px auto 100px; padding: 40px;
+            max-width: 1100px; margin: 0 auto 100px; padding: 40px;
             display: flex; align-items: flex-start; gap: 40px; text-align: left;
             background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            scroll-margin-top: 100px;
         }
         .historia-texto { flex: 1.2; }
         .historia-texto p { line-height: 1.6; color: #555; font-size: 1.05rem; margin-bottom: 15px; }
@@ -235,7 +242,7 @@
         .historia-texto li { margin-bottom: 12px; line-height: 1.4; }
         .historia-texto li strong { color: #0b8fc0; }
         
-        /* ESTILO DO SLIDER COM FIX PARA LABEL SUMIR */
+        /* ESTILO DO SLIDER */
         .comparison-slider {
             position: relative;
             width: 100%;
@@ -257,7 +264,6 @@
             pointer-events: none;
         }
 
-        /* Camada intermediária para o texto original sumir */
         .camada-original {
             position: absolute;
             top: 0;
@@ -274,7 +280,7 @@
             width: 50%;
             height: 100%;
             overflow: hidden;
-            z-index: 2; /* Fica acima da camada-original */
+            z-index: 2;
             border-right: 3px solid #f2d27a;
         }
 
@@ -291,15 +297,8 @@
             white-space: nowrap;
         }
         
-        .label-before { 
-            right: 15px; 
-            z-index: 1; /* Mesma camada que o conteúdo original */
-        }
-        
-        .label-after { 
-            left: 15px; 
-            z-index: 3; /* Sempre acima da restauração */
-        }
+        .label-before { right: 15px; z-index: 1; }
+        .label-after { left: 15px; z-index: 3; }
 
         /* RESPONSIVO */
         @media (max-width: 768px) {
@@ -388,62 +387,62 @@
                 </div>
             </div>
         </div>
-
-        <section id="ao-vivo" class="youtube-section">
-            <div class="youtube-thumb">
-                <iframe 
-                    src="https://www.youtube.com/embed/WIKrWRck6ZU" 
-                    title="Última Transmissão Paróquia Livramento" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
-            </div>
-            <div class="youtube-info">
-                <div class="live-badge"><span class="dot"></span> Transmissão ao Vivo</div>
-                <h3>Acompanhe de onde estiver</h3>
-                <span class="live-horario">Todas as celebrações às 19h</span>
-                <p>Assista à última celebração diretamente aqui ou acompanhe em tempo real pelo canal oficial do Youtube.</p>
-                <a href="https://www.youtube.com/@PascomLivramento" target="_blank" class="btn-assista">
-                    <span>Acessar Canal Youtube</span>
-                </a>
-            </div>
-        </section>
-
-        <h1 class="titulo">História da Igreja</h1>
-        <span class="linha-azul"></span>
-
-        <section id="a-igreja" class="historia-container">
-            <div class="historia-texto">
-                <p>A Paróquia de Nossa Senhora do Livramento em Arcoverde foi criada em <strong>21 de agosto de 1919</strong> por Dom José Antônio de Oliveira Lopes, desmembrada da Diocese de Pesqueira. Com raízes na devoção iniciada em 1865 com uma imagem vinda de Portugal, a paróquia cresceu junto com a cidade, sendo fundamental na fé local.</p>
-                
-                <ul>
-                    <li><strong>Origem da Devoção:</strong> A veneração a Nossa Senhora do Livramento começou com uma imagem trazida de Portugal por um fazendeiro em 1865, instalada na antiga Fazenda Olhos d'Água dos Bredos.</li>
-                    <li><strong>Criação Oficial:</strong> A freguesia foi oficialmente criada em 21 de agosto de 1919, sob decreto de Monsenhor D. José Antônio de Oliveira Lopes.</li>
-                    <li><strong>Igreja Matriz:</strong> Em 1920, a igrejinha era simples, sem bancos, e evoluiu ao longo do século, tornando-se a paróquia central da cidade, que mais tarde mudou de nome para Arcoverde.</li>
-                    <li><strong>Centenário:</strong> A paróquia celebrou seus 100 anos de criação com uma peregrinação da réplica da imagem em 2019, destacando a forte religiosidade local.</li>
-                    <li><strong>Padroeira:</strong> Nossa Senhora do Livramento é a padroeira de Arcoverde, com a festa principal celebrada em 23 de setembro.</li>
-                </ul>
-
-                <p style="font-style: italic; margin-top: 20px; color: #777;">
-                    <strong>Sobre o Primeiro Altar:</strong> Entendemos que, pelo estilo do Altar, a Missa era celebrada com o celebrante de costas para a assembleia, como determinava a antiga liturgia, sendo toda realizada em latim.
-                </p>
-            </div>
-            
-            <div class="comparison-slider" id="slider">
-                <img src="FotoPrimeiraAltarCelebracaomissas.png" alt="Foto Original do Altar">
-                
-                <div class="camada-original">
-                    <span class="label-before">ORIGINAL</span>
-                </div>
-
-                <div class="img-restaurada" id="restaurada">
-                    <img src="FotoPrimeiroAltarrestauradocomIA.png" alt="Foto Restaurada do Altar">
-                    <span class="label-after">RESTAURAÇÃO IA</span>
-                </div>
-            </div>
-        </section>
-
     </section>
+
+    <section id="ao-vivo" class="youtube-section">
+        <div class="youtube-thumb">
+            <iframe 
+                src="https://www.youtube.com/embed/WIKrWRck6ZU" 
+                title="Última Transmissão Paróquia Livramento" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
+        <div class="youtube-info">
+            <div class="live-badge"><span class="dot"></span> Transmissão ao Vivo</div>
+            <h3>Acompanhe de onde estiver</h3>
+            <span class="live-horario">Todas as celebrações às 19h</span>
+            <p>Assista à última celebração diretamente aqui ou acompanhe em tempo real pelo canal oficial do Youtube.</p>
+            <a href="https://www.youtube.com/@PascomLivramento" target="_blank" class="btn-assista">
+                <span>Acessar Canal Youtube</span>
+            </a>
+        </div>
+    </section>
+
+    <h1 class="titulo" id="a-igreja">História da Igreja</h1>
+    <span class="linha-azul"></span>
+
+    <section class="historia-container">
+        <div class="historia-texto">
+            <p>A Paróquia de Nossa Senhora do Livramento em Arcoverde foi criada em <strong>21 de agosto de 1919</strong> por Dom José Antônio de Oliveira Lopes, desmembrada da Diocese de Pesqueira. Com raízes na devoção iniciada em 1865 com uma imagem vinda de Portugal, a paróquia cresceu junto com a cidade, sendo fundamental na fé local.</p>
+            
+            <ul>
+                <li><strong>Origem da Devoção:</strong> A veneração a Nossa Senhora do Livramento começou com uma imagem trazida de Portugal por um fazendeiro em 1865, instalada na antiga Fazenda Olhos d'Água dos Bredos.</li>
+                <li><strong>Criação Oficial:</strong> A freguesia foi oficialmente criada em 21 de agosto de 1919, sob decreto de Monsenhor D. José Antônio de Oliveira Lopes.</li>
+                <li><strong>Igreja Matriz:</strong> Em 1920, a igrejinha era simples, sem bancos, e evoluiu ao longo do século, tornando-se a paróquia central da cidade, que mais tarde mudou de nome para Arcoverde.</li>
+                <li><strong>Centenário:</strong> A paróquia celebrou seus 100 anos de criação com uma peregrinação da réplica da imagem em 2019, destacando a forte religiosidade local.</li>
+                <li><strong>Padroeira:</strong> Nossa Senhora do Livramento é a padroeira de Arcoverde, com a festa principal celebrada em 23 de setembro.</li>
+            </ul>
+
+            <p style="font-style: italic; margin-top: 20px; color: #777;">
+                <strong>Sobre o Primeiro Altar:</strong> Entendemos que, pelo estilo do Altar, a Missa era celebrada com o celebrante de costas para a assembleia, como determinava a antiga liturgia, sendo toda realizada em latim.
+            </p>
+        </div>
+        
+        <div class="comparison-slider" id="slider">
+            <img src="FotoPrimeiraAltarCelebracaomissas.png" alt="Foto Original do Altar">
+            
+            <div class="camada-original">
+                <span class="label-before">ORIGINAL</span>
+            </div>
+
+            <div class="img-restaurada" id="restaurada">
+                <img src="FotoPrimeiroAltarrestauradocomIA.png" alt="Foto Restaurada do Altar">
+                <span class="label-after">RESTAURAÇÃO IA</span>
+            </div>
+        </div>
+    </section>
+
 </main>
 
 <script>
@@ -472,7 +471,6 @@
                 x = e.touches[0].clientX - rect.left;
             }
 
-            // Sincroniza a largura da imagem interna
             imgInterna.style.width = rect.width + 'px';
 
             let percentual = (x / rect.width) * 100;
@@ -485,7 +483,6 @@
         slider.addEventListener('mousemove', moverDivisor);
         slider.addEventListener('touchmove', moverDivisor);
 
-        // Ajuste no carregamento e redimensionamento
         const ajustarTamanho = () => {
             imgInterna.style.width = slider.offsetWidth + 'px';
         };
