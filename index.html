@@ -41,11 +41,23 @@
             z-index: 1000;
         }
 
-        .nome-site {
+        .container-titulo {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
             color: white;
+        }
+
+        .nome-site {
             font-size: 1.2rem;
             margin: 0;
             font-weight: bold;
+        }
+
+        .localizacao-topo {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            margin: 0;
         }
 
         .logo {
@@ -124,6 +136,13 @@
             margin: 0;
             letter-spacing: 2px;
             text-shadow: 2px 2px 10px rgba(0,0,0,0.6);
+        }
+
+        .overlay .subtitulo-parallax {
+            font-size: 1.2rem;
+            margin-top: 5px;
+            font-weight: 300;
+            letter-spacing: 1px;
         }
 
         /* MISSAS GRID */
@@ -258,7 +277,7 @@
             border-top: 1px solid #eee;
             padding-top: 40px;
             margin-top: 20px;
-            flex-direction: row-reverse; /* Inverte para criar o efeito zigue-zague */
+            flex-direction: row-reverse;
         }
 
         .texto-reforma { flex: 1.2; }
@@ -341,7 +360,7 @@
         /* RESPONSIVO */
         @media (max-width: 768px) {
             .topo { flex-direction: row; flex-wrap: wrap; justify-content: center; padding: 15px 5%; }
-            .nome-site { width: 80%; font-size: 1rem; margin-bottom: 10px; }
+            .container-titulo { width: 80%; align-items: center; margin-bottom: 10px; }
             .menu { width: 100%; justify-content: flex-start; padding: 10px 0; }
             .parallax { height: 300px; background-attachment: scroll; }
             .agenda-grid { grid-template-columns: 1fr; }
@@ -364,7 +383,10 @@
 
 <header class="topo">
     <img src="LogoBrasaoDaParoquia.png" alt="Brasão da Paróquia" class="logo">
-    <h1 class="nome-site">Paróquia Nª. Sra. do Livramento</h1>
+    <div class="container-titulo">
+        <h1 class="nome-site">Paróquia Nª. Sra. do Livramento</h1>
+        <p class="localizacao-topo">Arcoverde - PE</p>
+    </div>
     <nav class="menu">
         <a href="#">Início</a>
         <a href="#missas">Missas</a>
@@ -380,6 +402,7 @@
     <section class="parallax">
         <div class="overlay">
             <h2>Paróquia Nossa Senhora do Livramento</h2>
+            <p class="subtitulo-parallax">Arcoverde - PE</p>
             <p>Sejam bem-vindos</p>
         </div>
     </section>
