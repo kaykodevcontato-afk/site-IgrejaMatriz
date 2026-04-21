@@ -6,6 +6,7 @@
     <title>Igreja Matriz - Paróquia Nª. Sra. do Livramento</title>
 
     <link rel="icon" type="image/png" href="LogoBrasaoDaParoquia.png">
+
     <style>
         /* ROLAGEM SUAVE */
         html {
@@ -58,20 +59,18 @@
             flex-shrink: 0;
         }
 
-        /* MENU COM ROLAGEM HORIZONTAL NO MOBILE */
+        /* MENU */
         .menu {
             display: flex;
             gap: 20px;
             overflow-x: auto;
             white-space: nowrap;
             padding: 5px 0;
-            scrollbar-width: none; /* Firefox */
+            scrollbar-width: none;
             -webkit-overflow-scrolling: touch;
         }
 
-        .menu::-webkit-scrollbar {
-            display: none;
-        }
+        .menu::-webkit-scrollbar { display: none; }
 
         .menu a {
             color: white;
@@ -94,9 +93,7 @@
             transition: 0.3s;
         }
 
-        .menu a:hover::after {
-            width: 100%;
-        }
+        .menu a:hover::after { width: 100%; }
 
         /* PARALLAX */
         .parallax {
@@ -150,7 +147,6 @@
             position: relative;
         }
 
-        /* ESTILO PARA O DIA DE HOJE */
         .agenda-item.hoje {
             border-top: 6px solid #0EAFEA;
             background-color: #f0faff;
@@ -169,29 +165,33 @@
             border-radius: 20px;
             font-size: 12px;
             font-weight: bold;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
 
         .dia { font-weight: bold; font-size: 1.2rem; color: #0b8fc0; margin-bottom: 10px; text-transform: uppercase; }
         .hora { font-size: 1.4rem; color: #b8860b; font-weight: 700; margin: 5px 0; }
         .local { font-size: 0.95rem; color: #666; font-style: italic; }
         
-        /* ESTILO PARA A EXPOSIÇÃO DO SANTÍSSIMO */
+        /* CAIXA DE EXPOSIÇÃO ATUALIZADA COM HORÁRIO EM AZUL */
         .exposicao-box {
-            background: #fffcf0;
-            border: 1px dashed #d4af37;
+            background: #f0faff;
+            border: 1px dashed #0EAFEA;
             border-radius: 10px;
             padding: 10px;
             margin: 10px 0;
             width: 90%;
         }
-        .exposicao-box strong { color: #b8860b; font-size: 0.9rem; }
-        .exposicao-box span { display: block; font-size: 1rem; font-weight: bold; color: #333; }
+        .exposicao-box strong { color: #0b8fc0; font-size: 0.9rem; }
+        .exposicao-box span { 
+            display: block; 
+            font-size: 1.1rem; 
+            font-weight: bold; 
+            color: #0EAFEA; /* COR AZUL SOLICITADA */
+        }
 
         .destaque-card { background: linear-gradient(135deg, #0EAFEA, #0b8fc0); color: white; border-top: 6px solid #f2d27a; }
         .destaque-card .dia, .destaque-card .hora, .destaque-card .local { color: white; }
 
-        /* YOUTUBE */
+        /* YOUTUBE SECTION */
         .youtube-section { 
             margin: 80px auto 50px; max-width: 900px; background: white; border-radius: 20px; 
             overflow: hidden; display: flex; flex-wrap: wrap; box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
@@ -201,24 +201,23 @@
         .play-button { width: 70px; height: 70px; background: #FF0000; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 0 20px rgba(255, 0, 0, 0.5); cursor: pointer; transition: 0.3s; }
         .play-button svg { fill: white; width: 30px; margin-left: 5px; }
         .youtube-info { flex: 1.2; padding: 40px; text-align: left; display: flex; flex-direction: column; justify-content: center; }
-        .live-badge { display: inline-flex; align-items: center; background: #ffe6e6; color: #ff0000; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; text-transform: uppercase; margin-bottom: 15px; width: fit-content; }
+        
+        .live-badge { display: inline-flex; align-items: center; background: #ffe6e6; color: #ff0000; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; text-transform: uppercase; margin-bottom: 10px; width: fit-content; }
         .dot { height: 8px; width: 8px; background-color: #ff0000; border-radius: 50%; display: inline-block; margin-right: 8px; animation: pulse 1.5s infinite; }
         @keyframes pulse { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7); } 70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(255, 0, 0, 0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); } }
+        
+        .live-horario { color: #b8860b; font-weight: bold; font-size: 1.1rem; margin-bottom: 15px; display: block; }
+
         .btn-assista { background: #FF0000; color: white; text-decoration: none; padding: 12px 25px; border-radius: 30px; font-weight: bold; display: inline-flex; align-items: center; gap: 10px; transition: 0.3s; width: fit-content; }
 
         /* RESPONSIVO */
         @media (max-width: 768px) {
             .topo { flex-direction: row; flex-wrap: wrap; justify-content: center; padding: 15px 5%; }
             .nome-site { width: 80%; font-size: 1rem; margin-bottom: 10px; }
-            .menu { 
-                width: 100%; 
-                justify-content: flex-start; 
-                padding: 10px 0;
-            }
+            .menu { width: 100%; justify-content: flex-start; padding: 10px 0; }
             .parallax { height: 300px; background-attachment: scroll; }
             .agenda-grid { grid-template-columns: 1fr; }
             .youtube-info { text-align: center; align-items: center; padding: 30px 20px; }
-            .agenda-item.hoje { transform: scale(1.02); }
         }
     </style>
 </head>
@@ -307,6 +306,7 @@
             <div class="youtube-info">
                 <div class="live-badge"><span class="dot"></span> Transmissão ao Vivo</div>
                 <h3>Acompanhe de onde estiver</h3>
+                <span class="live-horario">Todas as celebrações às 19h</span>
                 <p>Não pode vir à igreja? Participe das celebrações em tempo real.</p>
                 <a href="https://www.youtube.com/@PascomLivramento" target="_blank" class="btn-assista">
                     <span>Acessar YouTube</span>
