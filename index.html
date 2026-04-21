@@ -122,11 +122,48 @@
         .linha-azul { display: block; width: 60px; height: 4px; background: linear-gradient(to right, #d4af37, #f2d27a); margin: 10px auto 30px; border-radius: 10px; }
         .agenda { max-width: 1100px; margin: 0 auto; }
         .agenda-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .agenda-item { background: white; border-top: 6px solid #d4af37; padding: 25px; border-radius: 15px; display: flex; flex-direction: column; justify-content: center; align-items: center; box-shadow: 0 6px 18px rgba(0,0,0,0.06); transition: transform 0.3s ease; }
-        .agenda-item:hover { transform: translateY(-5px); }
+        
+        .agenda-item { 
+            background: white; 
+            border-top: 6px solid #d4af37; 
+            padding: 25px; 
+            border-radius: 15px; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            box-shadow: 0 6px 18px rgba(0,0,0,0.06); 
+            transition: 0.3s ease;
+            position: relative;
+        }
+
+        /* --- ESTILO PARA O DIA DE HOJE --- */
+        .agenda-item.hoje {
+            border-top: 6px solid #0EAFEA;
+            background-color: #f0faff;
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(14, 175, 234, 0.2);
+            z-index: 2;
+        }
+
+        .agenda-item.hoje::before {
+            content: "HOJE";
+            position: absolute;
+            top: -15px;
+            background: #0EAFEA;
+            color: white;
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
         .dia { font-weight: bold; font-size: 1.2rem; color: #0b8fc0; margin-bottom: 10px; text-transform: uppercase; }
         .hora { font-size: 1.4rem; color: #b8860b; font-weight: 700; margin: 5px 0; }
         .local { font-size: 0.95rem; color: #666; font-style: italic; }
+        
+        /* Destaque fixo (1ª sexta) */
         .destaque-card { background: linear-gradient(135deg, #0EAFEA, #0b8fc0); color: white; border-top: 6px solid #f2d27a; }
         .destaque-card .dia, .destaque-card .hora, .destaque-card .local { color: white; }
 
@@ -141,7 +178,6 @@
             flex-wrap: wrap; 
             box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
             border: 1px solid #eee;
-            /* Evita que o card fique colado no topo ao clicar no menu */
             scroll-margin-top: 100px; 
         }
         .youtube-thumb { flex: 1; min-width: 300px; background: #0EAFEA; display: flex; justify-content: center; align-items: center; position: relative; min-height: 200px; }
@@ -162,6 +198,7 @@
             .parallax { height: 300px; background-attachment: scroll; }
             .agenda-grid { grid-template-columns: 1fr; }
             .youtube-info { text-align: center; align-items: center; padding: 30px 20px; }
+            .agenda-item.hoje { transform: scale(1.02); }
         }
     </style>
 </head>
@@ -195,24 +232,24 @@
 
         <div class="agenda">
             <div class="agenda-grid">
-                <div class="agenda-item">
+                <div class="agenda-item" data-dia="2">
                     <span class="dia">Terça-feira</span>
                     <span class="hora">19h</span>
                     <span class="local">Matriz do Livramento</span>
                 </div>
-                <div class="agenda-item">
+                <div class="agenda-item" data-dia="4">
                     <span class="dia">Quinta-feira</span>
                     <span class="local" style="font-weight:bold; color:#d4af37;">Quinta Eucarística</span>
                     <span class="hora">17h</span>
                     <span class="local">Matriz do Livramento</span>
                 </div>
-                <div class="agenda-item destaque-card">
+                <div class="agenda-item destaque-card" data-dia="5">
                     <span class="dia">1ª Sexta do Mês</span>
                     <span class="local">Missa do Sagrado Coração</span>
                     <span class="hora">19h</span>
                     <span class="local">Matriz do Livramento</span>
                 </div>
-                <div class="agenda-item">
+                <div class="agenda-item" data-dia="6">
                     <span class="dia">Sábado</span>
                     <span class="hora">16h30</span>
                     <span class="local">Com. São Francisco | Sucupira</span>
@@ -220,7 +257,7 @@
                     <span class="hora">19h</span>
                     <span class="local">Matriz do Livramento</span>
                 </div>
-                <div class="agenda-item">
+                <div class="agenda-item" data-dia="0">
                     <span class="dia">Domingo</span>
                     <span class="hora">09h</span>
                     <span class="local">Matriz do Livramento</span>
@@ -249,6 +286,23 @@
 
     </section>
 </main>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Pega o dia da semana atual (0 para Domingo, 2 para Terça, etc.)
+        const hoje = new Date().getDay();
+        
+        // Seleciona todos os cards de agenda
+        const cards = document.querySelectorAll('.agenda-item');
+
+        cards.forEach(card => {
+            // Verifica se o atributo data-dia do card é igual ao dia de hoje
+            if (card.getAttribute('data-dia') == hoje) {
+                card.classList.add('hoje');
+            }
+        });
+    });
+</script>
 
 </body>
 </html>
