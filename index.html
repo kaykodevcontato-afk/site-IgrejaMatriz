@@ -9,9 +9,7 @@
 
     <style>
         /* ROLAGEM SUAVE */
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         /* FONTE PERSONALIZADA */
         @font-face {
@@ -41,196 +39,77 @@
             z-index: 1000;
         }
 
-        .nome-site {
-            color: white;
-            font-size: 1.2rem;
-            margin: 0;
-            font-weight: bold;
-        }
-
-        .logo {
-            width: 50px;
-            height: 50px;
-            object-fit: contain;
-            background: white;
-            border-radius: 50%;
-            padding: 5px;
-            border: 2px solid #f2d27a;
-            flex-shrink: 0;
-        }
+        .nome-site { color: white; font-size: 1.2rem; margin: 0; font-weight: bold; }
+        .logo { width: 50px; height: 50px; object-fit: contain; background: white; border-radius: 50%; padding: 5px; border: 2px solid #f2d27a; flex-shrink: 0; }
 
         /* MENU */
-        .menu {
-            display: flex;
-            gap: 20px;
-            overflow-x: auto;
-            white-space: nowrap;
-            padding: 5px 0;
-            scrollbar-width: none;
-            -webkit-overflow-scrolling: touch;
-        }
-
+        .menu { display: flex; gap: 20px; overflow-x: auto; white-space: nowrap; padding: 5px 0; scrollbar-width: none; }
         .menu::-webkit-scrollbar { display: none; }
-
-        .menu a {
-            color: white;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            position: relative;
-            transition: 0.3s;
-            flex-shrink: 0;
-        }
-
-        .menu a::after {
-            content: "";
-            position: absolute;
-            width: 0%;
-            height: 2px;
-            background: #f2d27a;
-            left: 0;
-            bottom: -5px;
-            transition: 0.3s;
-        }
-
+        .menu a { color: white; text-decoration: none; font-size: 14px; font-weight: 500; position: relative; transition: 0.3s; flex-shrink: 0; }
+        .menu a::after { content: ""; position: absolute; width: 0%; height: 2px; background: #f2d27a; left: 0; bottom: -5px; transition: 0.3s; }
         .menu a:hover::after { width: 100%; }
 
         /* PARALLAX */
         .parallax {
-            width: 100%;
-            height: 450px;
+            width: 100%; height: 450px;
             background-image: url("Foto1EntradaIgreja.jpg");
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            background-size: cover; background-position: center; background-attachment: fixed;
             position: relative;
         }
-
         .overlay {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.45);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            color: white;
+            position: absolute; width: 100%; height: 100%; background: rgba(0,0,0,0.45);
+            display: flex; justify-content: center; align-items: center; flex-direction: column; color: white;
         }
+        .overlay h2 { font-family: 'Peristiwa', serif; font-size: clamp(2rem, 5vw, 3rem); margin: 0; letter-spacing: 2px; text-shadow: 2px 2px 10px rgba(0,0,0,0.6); }
 
-        .overlay h2 {
-            font-family: 'Peristiwa', serif;
-            font-size: clamp(2rem, 5vw, 3rem);
-            margin: 0;
-            letter-spacing: 2px;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.6);
+        /* SEÇÃO HISTÓRIA (A IGREJA) */
+        .historia-container {
+            max-width: 1100px; margin: 80px auto; padding: 20px;
+            display: flex; align-items: center; gap: 40px; text-align: left;
+            background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            scroll-margin-top: 100px; /* Evita que o menu cubra o título ao clicar */
+        }
+        .historia-texto { flex: 1.2; }
+        .historia-texto h2 { color: #0b8fc0; font-family: 'Peristiwa', serif; font-size: 2.5rem; margin-bottom: 20px; }
+        .historia-texto p { line-height: 1.8; color: #555; font-size: 1.1rem; }
+        
+        .historia-fotos { flex: 1; display: flex; flex-direction: column; gap: 15px; }
+        .foto-box { position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border: 3px solid white; }
+        .foto-box img { width: 100%; display: block; transition: 0.5s; }
+        .foto-box:hover img { transform: scale(1.05); }
+        .legenda-foto { 
+            position: absolute; bottom: 0; background: rgba(14, 175, 234, 0.8); 
+            color: white; width: 100%; padding: 8px; font-size: 12px; font-weight: bold; text-align: center;
         }
 
         /* MISSAS GRID */
         .missa-container { padding: 50px 20px; }
         .titulo { font-size: 2.2rem; color: #0b8fc0; margin-bottom: 5px; }
         .linha-azul { display: block; width: 60px; height: 4px; background: linear-gradient(to right, #d4af37, #f2d27a); margin: 10px auto 30px; border-radius: 10px; }
-        .agenda { max-width: 1100px; margin: 0 auto; }
-        .agenda-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .agenda-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto; }
         
         .agenda-item { 
-            background: white; 
-            border-top: 6px solid #d4af37; 
-            padding: 25px; 
-            border-radius: 15px; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center; 
-            box-shadow: 0 6px 18px rgba(0,0,0,0.06); 
-            transition: 0.3s ease;
-            position: relative;
+            background: white; border-top: 6px solid #d4af37; padding: 25px; border-radius: 15px; 
+            display: flex; flex-direction: column; justify-content: center; align-items: center; 
+            box-shadow: 0 6px 18px rgba(0,0,0,0.06); transition: 0.3s ease; position: relative;
         }
+        .agenda-item.hoje { border-top: 6px solid #0EAFEA; background-color: #f0faff; transform: translateY(-10px); z-index: 2; }
+        .agenda-item.hoje::before { content: "HOJE"; position: absolute; top: -15px; background: #0EAFEA; color: white; padding: 2px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; }
 
-        .agenda-item.hoje {
-            border-top: 6px solid #0EAFEA;
-            background-color: #f0faff;
-            transform: translateY(-10px);
-            box-shadow: 0 12px 24px rgba(14, 175, 234, 0.2);
-            z-index: 2;
-        }
-
-        .agenda-item.hoje::before {
-            content: "HOJE";
-            position: absolute;
-            top: -15px;
-            background: #0EAFEA;
-            color: white;
-            padding: 2px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        .dia { font-weight: bold; font-size: 1.2rem; color: #0b8fc0; margin-bottom: 10px; text-transform: uppercase; }
+        .dia { font-weight: bold; font-size: 1.2rem; color: #0b8fc0; text-transform: uppercase; }
         .hora { font-size: 1.4rem; color: #b8860b; font-weight: 700; margin: 5px 0; }
-        .local { font-size: 0.95rem; color: #666; font-style: italic; }
         
-        .exposicao-box {
-            background: #f0faff;
-            border: 1px dashed #0EAFEA;
-            border-radius: 10px;
-            padding: 10px;
-            margin: 10px 0;
-            width: 90%;
-        }
-        .exposicao-box strong { color: #0b8fc0; font-size: 0.9rem; }
-        .exposicao-box span { 
-            display: block; 
-            font-size: 1.1rem; 
-            font-weight: bold; 
-            color: #0EAFEA;
-        }
-
-        .destaque-card { background: linear-gradient(135deg, #0EAFEA, #0b8fc0); color: white; border-top: 6px solid #f2d27a; }
-        .destaque-card .dia, .destaque-card .hora, .destaque-card .local { color: white; }
-
         /* SEÇÃO YOUTUBE */
-        .youtube-section { 
-            margin: 80px auto 50px; max-width: 900px; background: white; border-radius: 20px; 
-            overflow: hidden; display: flex; flex-wrap: wrap; box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
-            border: 1px solid #eee; scroll-margin-top: 100px; 
-        }
-        .youtube-thumb { 
-            flex: 1; 
-            min-width: 300px; 
-            background: #000; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            position: relative; 
-            min-height: 280px; 
-        }
-        .youtube-thumb iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
+        .youtube-section { margin: 80px auto 50px; max-width: 900px; background: white; border-radius: 20px; overflow: hidden; display: flex; flex-wrap: wrap; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid #eee; }
+        .youtube-thumb { flex: 1; min-width: 300px; background: #000; min-height: 280px; }
+        .youtube-thumb iframe { width: 100%; height: 100%; border: 0; }
         .youtube-info { flex: 1.2; padding: 40px; text-align: left; display: flex; flex-direction: column; justify-content: center; }
-        
-        .live-badge { display: inline-flex; align-items: center; background: #ffe6e6; color: #ff0000; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; text-transform: uppercase; margin-bottom: 10px; width: fit-content; }
-        .dot { height: 8px; width: 8px; background-color: #ff0000; border-radius: 50%; display: inline-block; margin-right: 8px; animation: pulse 1.5s infinite; }
-        @keyframes pulse { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7); } 70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(255, 0, 0, 0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); } }
-        
-        .live-horario { color: #b8860b; font-weight: bold; font-size: 1.1rem; margin-bottom: 15px; display: block; }
-
-        .btn-assista { background: #FF0000; color: white; text-decoration: none; padding: 12px 25px; border-radius: 30px; font-weight: bold; display: inline-flex; align-items: center; gap: 10px; transition: 0.3s; width: fit-content; }
+        .btn-assista { background: #FF0000; color: white; text-decoration: none; padding: 12px 25px; border-radius: 30px; font-weight: bold; width: fit-content; }
 
         /* RESPONSIVO */
         @media (max-width: 768px) {
-            .topo { flex-direction: row; flex-wrap: wrap; justify-content: center; padding: 15px 5%; }
-            .nome-site { width: 80%; font-size: 1rem; margin-bottom: 10px; }
-            .menu { width: 100%; justify-content: flex-start; padding: 10px 0; }
-            .parallax { height: 300px; background-attachment: scroll; }
-            .agenda-grid { grid-template-columns: 1fr; }
-            .youtube-info { text-align: center; align-items: center; padding: 30px 20px; }
-            .youtube-thumb { min-height: 200px; }
+            .historia-container { flex-direction: column; text-align: center; margin: 40px 20px; }
+            .youtube-info { text-align: center; align-items: center; }
         }
     </style>
 </head>
@@ -241,9 +120,8 @@
     <h1 class="nome-site">Paróquia Nª. Sra. do Livramento</h1>
     <nav class="menu">
         <a href="#">Início</a>
-        <a href="#missas">Missas</a>
+        <a href="#a-igreja">A Igreja</a> <a href="#missas">Missas</a>
         <a href="#ao-vivo">Ao Vivo</a>
-        <a href="#">A Igreja</a>
         <a href="#">Galeria</a>
         <a href="#">Doação</a>
         <a href="#">Contato</a>
@@ -258,73 +136,52 @@
         </div>
     </section>
 
+    <section id="a-igreja" class="historia-container">
+        <div class="historia-texto">
+            <h2>A Igreja Matriz</h2>
+            <p>
+                A Igreja Matriz de Nossa Senhora do Livramento é o coração espiritual de Arcoverde. Sua história confunde-se com o próprio crescimento da cidade. Erguida com a fé e o esforço da comunidade, a paróquia tornou-se o principal marco arquitetônico e religioso da região.
+            </p>
+            <p>
+                Desde os primeiros tijolos até a imponente estrutura que vemos hoje, cada detalhe da Matriz conta uma trajetória de devoção que atravessa gerações, mantendo viva a chama da fé no Sertão do Moxotó.
+            </p>
+        </div>
+        <div class="historia-fotos">
+            <div class="foto-box">
+                <img src="IgrejaAntiga.jpg" alt="Igreja Matriz Antigamente">
+                <div class="legenda-foto">COMO ERA ANTES</div>
+            </div>
+            <div class="foto-box">
+                <img src="Foto1EntradaIgreja.jpg" alt="Igreja Matriz Atualmente">
+                <div class="legenda-foto">DIAS ATUAIS</div>
+            </div>
+        </div>
+    </section>
+
     <section id="missas" class="missa-container">
         <h1 class="titulo">Santa Missa</h1>
         <span class="linha-azul"></span>
-
-        <div class="agenda">
-            <div class="agenda-grid">
-                <div class="agenda-item" data-dia="2">
-                    <span class="dia">Terça-feira</span>
-                    <span class="hora">19h</span>
-                    <span class="local">Matriz do Livramento</span>
-                </div>
-                
-                <div class="agenda-item" data-dia="4">
-                    <span class="dia">Quinta-feira</span>
-                    <span class="local" style="font-weight:bold; color:#d4af37;">Quinta Eucarística</span>
-                    <div class="exposicao-box">
-                        <strong>Exposição do Santíssimo</strong>
-                        <span>07h30 às 16h</span>
-                    </div>
-                    <span class="hora">17h</span>
-                    <span class="local">Matriz do Livramento</span>
-                </div>
-
-                <div class="agenda-item destaque-card" data-dia="5">
-                    <span class="dia">1ª Sexta do Mês</span>
-                    <span class="local">Missa do Sagrado Coração</span>
-                    <span class="hora">19h</span>
-                    <span class="local">Matriz do Livramento</span>
-                </div>
-
-                <div class="agenda-item" data-dia="6">
-                    <span class="dia">Sábado</span>
-                    <span class="hora">16h30</span>
-                    <span class="local">Com. São Francisco | Sucupira</span>
-                    <hr style="width: 80%; border: 0; border-top: 1px solid #eee; margin: 10px 0;">
-                    <span class="hora">19h</span>
-                    <span class="local">Matriz do Livramento</span>
-                </div>
-
-                <div class="agenda-item" data-dia="0">
-                    <span class="dia">Domingo</span>
-                    <span class="hora">09h</span>
-                    <span class="local">Matriz do Livramento</span>
-                    <hr style="width: 80%; border: 0; border-top: 1px solid #eee; margin: 10px 0;">
-                    <span class="hora">19h</span>
-                    <span class="local">Matriz do Livramento</span>
-                </div>
+        <div class="agenda-grid">
+            <div class="agenda-item" data-dia="2">
+                <span class="dia">Terça-feira</span>
+                <span class="hora">19h</span>
+                <span class="local">Matriz do Livramento</span>
+            </div>
+            <div class="agenda-item" data-dia="0">
+                <span class="dia">Domingo</span>
+                <span class="hora">09h e 19h</span>
+                <span class="local">Matriz do Livramento</span>
             </div>
         </div>
 
         <section id="ao-vivo" class="youtube-section">
             <div class="youtube-thumb">
-                <iframe 
-                    src="https://www.youtube.com/embed/WIKrWRck6ZU" 
-                    title="Última Transmissão Paróquia Livramento" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
+                <iframe src="https://www.youtube.com/embed/WIKrWRck6ZU" allowfullscreen></iframe>
             </div>
             <div class="youtube-info">
-                <div class="live-badge"><span class="dot"></span> Transmissão ao Vivo</div>
                 <h3>Acompanhe de onde estiver</h3>
                 <span class="live-horario">Todas as celebrações às 19h</span>
-                <p>Assista à última celebração diretamente aqui ou acompanhe em tempo real pelo canal oficial do Youtube.</p>
-                <a href="https://www.youtube.com/@PascomLivramento" target="_blank" class="btn-assista">
-                    <span>Acessar Canal Youtube</span>
-                </a>
+                <a href="https://www.youtube.com/@PascomLivramento" target="_blank" class="btn-assista">Acessar YouTube</a>
             </div>
         </section>
     </section>
@@ -335,9 +192,7 @@
         const hoje = new Date().getDay();
         const cards = document.querySelectorAll('.agenda-item');
         cards.forEach(card => {
-            if (card.getAttribute('data-dia') == hoje) {
-                card.classList.add('hoje');
-            }
+            if (card.getAttribute('data-dia') == hoje) card.classList.add('hoje');
         });
     });
 </script>
