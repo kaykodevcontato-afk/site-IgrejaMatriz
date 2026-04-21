@@ -133,11 +133,11 @@
             font-size: 2.2rem; 
             color: #0b8fc0; 
             margin-bottom: 5px; 
-            /* Ajuste para a rolagem não ficar colada no topo/atrás do menu */
-            scroll-margin-top: 100px; 
+            scroll-margin-top: 100px; /* Garante que o menu fixo não cubra o título */
         }
 
         .linha-azul { display: block; width: 60px; height: 4px; background: linear-gradient(to right, #d4af37, #f2d27a); margin: 10px auto 30px; border-radius: 10px; }
+        
         .agenda { max-width: 1100px; margin: 0 auto; }
         .agenda-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
         
@@ -200,9 +200,9 @@
 
         /* SEÇÃO YOUTUBE */
         .youtube-section { 
-            margin: 80px auto 50px; max-width: 900px; background: white; border-radius: 20px; 
+            margin: 20px auto 80px; max-width: 900px; background: white; border-radius: 20px; 
             overflow: hidden; display: flex; flex-wrap: wrap; box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
-            border: 1px solid #eee; scroll-margin-top: 100px; 
+            border: 1px solid #eee; 
         }
         .youtube-thumb { 
             flex: 1; 
@@ -338,8 +338,8 @@
         </div>
     </section>
 
-    <section id="missas" class="missa-container">
-        <h1 class="titulo">Santa Missa</h1>
+    <section class="missa-container">
+        <h1 class="titulo" id="missas">Santa Missa</h1>
         <span class="linha-azul"></span>
 
         <div class="agenda">
@@ -389,7 +389,10 @@
         </div>
     </section>
 
-    <section id="ao-vivo" class="youtube-section">
+    <h1 class="titulo" id="ao-vivo">Transmissões ao Vivo</h1>
+    <span class="linha-azul"></span>
+
+    <section class="youtube-section">
         <div class="youtube-thumb">
             <iframe 
                 src="https://www.youtube.com/embed/WIKrWRck6ZU" 
@@ -437,7 +440,7 @@
             </div>
 
             <div class="img-restaurada" id="restaurada">
-                <img src="FotoPrimeiroAltarrestauradocomIA.png" alt="Foto Restaurada do Altar">
+                <img src="primeiro altar foto2 restaurado IA.jpg" alt="Foto Restaurada do Altar">
                 <span class="label-after">RESTAURAÇÃO IA</span>
             </div>
         </div>
@@ -471,6 +474,7 @@
                 x = e.touches[0].clientX - rect.left;
             }
 
+            // Garante que a imagem restaurada tenha o mesmo tamanho da section
             imgInterna.style.width = rect.width + 'px';
 
             let percentual = (x / rect.width) * 100;
@@ -483,6 +487,7 @@
         slider.addEventListener('mousemove', moverDivisor);
         slider.addEventListener('touchmove', moverDivisor);
 
+        // Ajuste de redimensionamento
         const ajustarTamanho = () => {
             imgInterna.style.width = slider.offsetWidth + 'px';
         };
