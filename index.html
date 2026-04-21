@@ -171,7 +171,6 @@
         .hora { font-size: 1.4rem; color: #b8860b; font-weight: 700; margin: 5px 0; }
         .local { font-size: 0.95rem; color: #666; font-style: italic; }
         
-        /* CAIXA DE EXPOSIÇÃO ATUALIZADA COM HORÁRIO EM AZUL */
         .exposicao-box {
             background: #f0faff;
             border: 1px dashed #0EAFEA;
@@ -185,21 +184,34 @@
             display: block; 
             font-size: 1.1rem; 
             font-weight: bold; 
-            color: #0EAFEA; /* COR AZUL SOLICITADA */
+            color: #0EAFEA;
         }
 
         .destaque-card { background: linear-gradient(135deg, #0EAFEA, #0b8fc0); color: white; border-top: 6px solid #f2d27a; }
         .destaque-card .dia, .destaque-card .hora, .destaque-card .local { color: white; }
 
-        /* YOUTUBE SECTION */
+        /* SEÇÃO YOUTUBE */
         .youtube-section { 
             margin: 80px auto 50px; max-width: 900px; background: white; border-radius: 20px; 
             overflow: hidden; display: flex; flex-wrap: wrap; box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
             border: 1px solid #eee; scroll-margin-top: 100px; 
         }
-        .youtube-thumb { flex: 1; min-width: 300px; background: #0EAFEA; display: flex; justify-content: center; align-items: center; position: relative; min-height: 200px; }
-        .play-button { width: 70px; height: 70px; background: #FF0000; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 0 20px rgba(255, 0, 0, 0.5); cursor: pointer; transition: 0.3s; }
-        .play-button svg { fill: white; width: 30px; margin-left: 5px; }
+        .youtube-thumb { 
+            flex: 1; 
+            min-width: 300px; 
+            background: #000; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            position: relative; 
+            min-height: 280px; 
+        }
+        .youtube-thumb iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
         .youtube-info { flex: 1.2; padding: 40px; text-align: left; display: flex; flex-direction: column; justify-content: center; }
         
         .live-badge { display: inline-flex; align-items: center; background: #ffe6e6; color: #ff0000; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; text-transform: uppercase; margin-bottom: 10px; width: fit-content; }
@@ -218,6 +230,7 @@
             .parallax { height: 300px; background-attachment: scroll; }
             .agenda-grid { grid-template-columns: 1fr; }
             .youtube-info { text-align: center; align-items: center; padding: 30px 20px; }
+            .youtube-thumb { min-height: 200px; }
         }
     </style>
 </head>
@@ -260,12 +273,10 @@
                 <div class="agenda-item" data-dia="4">
                     <span class="dia">Quinta-feira</span>
                     <span class="local" style="font-weight:bold; color:#d4af37;">Quinta Eucarística</span>
-                    
                     <div class="exposicao-box">
                         <strong>Exposição do Santíssimo</strong>
                         <span>07h30 às 16h</span>
                     </div>
-
                     <span class="hora">17h</span>
                     <span class="local">Matriz do Livramento</span>
                 </div>
@@ -299,17 +310,20 @@
 
         <section id="ao-vivo" class="youtube-section">
             <div class="youtube-thumb">
-                <div class="play-button">
-                    <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </div>
+                <iframe 
+                    src="https://www.youtube.com/embed/videoseries?list=UU7-u69Nl_V6yV3fW0G5YpLg" 
+                    title="Última Transmissão Paróquia Livramento" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
             </div>
             <div class="youtube-info">
                 <div class="live-badge"><span class="dot"></span> Transmissão ao Vivo</div>
                 <h3>Acompanhe de onde estiver</h3>
                 <span class="live-horario">Todas as celebrações às 19h</span>
-                <p>Não pode vir à igreja? Participe das celebrações em tempo real.</p>
+                <p>Assista à última celebração diretamente aqui ou clique no botão abaixo para interagir no chat do YouTube.</p>
                 <a href="https://www.youtube.com/@PascomLivramento" target="_blank" class="btn-assista">
-                    <span>Acessar YouTube</span>
+                    <span>Acessar Canal Completo</span>
                 </a>
             </div>
         </section>
