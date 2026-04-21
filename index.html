@@ -377,6 +377,44 @@
             .comparison-slider, .foto-container { max-width: 100%; margin: 0 auto; }
             .historia-texto ul { text-align: left; }
         }
+
+.clima-widget {
+    max-width: 1100px;
+    margin: 20px auto;
+    padding: 15px 25px;
+    background: linear-gradient(135deg, #0EAFEA, #0b8fc0);
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.data-hora { text-align: left; }
+#data-atual { display: block; font-size: 0.9rem; opacity: 0.9; text-transform: capitalize; }
+#hora-atual { font-size: 1.8rem; font-weight: bold; }
+
+.clima-status { display: flex; align-items: center; gap: 15px; }
+#temp-valor { font-size: 2.5rem; font-weight: bold; }
+#clima-desc { display: block; font-size: 0.85rem; text-transform: capitalize; opacity: 0.9; }
+
+/* Efeito de pulso para o ícone (Simulando animação) */
+#clima-icone { font-size: 3rem; animation: flutuar 3s ease-in-out infinite; }
+
+@keyframes flutuar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.clima-detalhes { font-size: 0.85rem; text-align: right; line-height: 1.6; }
+
+@media (max-width: 768px) {
+    .clima-widget { flex-direction: column; text-align: center; gap: 15px; margin: 10px; }
+    .data-hora, .clima-detalhes { text-align: center; }
+}
+        
     </style>
 </head>
 <body>
@@ -397,6 +435,25 @@
         <a href="#">Contato</a>
     </nav>
 </header>
+
+    <div id="clima-container" class="clima-widget">
+    <div class="clima-info">
+        <div class="data-hora">
+            <span id="data-atual">Carregando data...</span>
+            <span id="hora-atual">00:00:00</span>
+        </div>
+        <div class="clima-status">
+            <div id="clima-icone"></div> <div class="temp-box">
+                <span id="temp-valor">--</span><span class="unidade">°C</span>
+                <span id="clima-desc">Buscando clima...</span>
+            </div>
+        </div>
+    </div>
+    <div class="clima-detalhes">
+        <span>Vento: <strong id="vento-valor">-- km/h</strong></span>
+        <span>Umidade: <strong id="umidade-valor">--%</strong></span>
+    </div>
+</div>
 
 <main>
     <section class="parallax">
@@ -595,6 +652,50 @@ Com raízes na devoção iniciada em 1865 com uma imagem vinda de Portugal, a pa
         window.addEventListener('load', ajustarTamanho);
         window.addEventListener('resize', ajustarTamanho);
     });
+
+function atualizarRelogio() {
+    const agora = new Date();
+    const opcoesData = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    
+    document.getElementById('data-atual').innerText = agora.toLocaleDateString('pt-BR', opcoesData);
+    document.getElementById('hora-atual').innerText = agora.toLocaleTimeString('pt-BR');
+}
+
+async function buscarClima() {
+    const cidade = "Arcoverde,BR";
+    const apiKey = "SUA_API_KEY_AQUI"; // Você precisa de uma conta gratuita no OpenWeatherMap
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&units=metric&lang=pt_br&appid=${apiKey}`;
+
+    try {
+        // Simulação enquanto você não coloca a API Key:
+        const icons = {
+            "Clear": "☀️", "Clouds": "☁️", "Rain": "🌧️", "Thunderstorm": "⛈️", "Drizzle": "🌦️"
+        };
+
+        // Para teste (Remova após colocar sua API Key real):
+        document.getElementById('temp-valor').innerText = "32";
+        document.getElementById('clima-desc').innerText = "Céu Limpo";
+        document.getElementById('clima-icone').innerText = "☀️";
+        document.getElementById('vento-valor').innerText = "12 km/h";
+        document.getElementById('umidade-valor').innerText = "45%";
+
+        /* Código Real para quando tiver a Key:
+        const resposta = await fetch(url);
+        const dados = await resposta.json();
+        document.getElementById('temp-valor').innerText = Math.floor(dados.main.temp);
+        document.getElementById('clima-desc').innerText = dados.weather[0].description;
+        document.getElementById('vento-valor').innerText = `${dados.wind.speed} km/h`;
+        document.getElementById('umidade-valor').innerText = `${dados.main.humidity}%`;
+        */
+    } catch (erro) {
+        console.log("Erro ao buscar clima", erro);
+    }
+}
+
+setInterval(atualizarRelogio, 1000);
+buscarClima();
+atualizarRelogio();
+    
 </script>
 
 </body>
