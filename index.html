@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Horários de Missa - Paróquia N. Sra. do Livramento</title>
     <style>
+        /* ROLAGEM SUAVE */
+        html {
+            scroll-behavior: smooth;
+        }
+
         /* FONTE PERSONALIZADA */
         @font-face {
             font-family: 'Peristiwa';
@@ -126,7 +131,19 @@
         .destaque-card .dia, .destaque-card .hora, .destaque-card .local { color: white; }
 
         /* YOUTUBE DINÂMICO */
-        .youtube-section { margin: 50px auto; max-width: 900px; background: white; border-radius: 20px; overflow: hidden; display: flex; flex-wrap: wrap; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid #eee; }
+        .youtube-section { 
+            margin: 80px auto 50px; 
+            max-width: 900px; 
+            background: white; 
+            border-radius: 20px; 
+            overflow: hidden; 
+            display: flex; 
+            flex-wrap: wrap; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+            border: 1px solid #eee;
+            /* Evita que o card fique colado no topo ao clicar no menu */
+            scroll-margin-top: 100px; 
+        }
         .youtube-thumb { flex: 1; min-width: 300px; background: #0EAFEA; display: flex; justify-content: center; align-items: center; position: relative; min-height: 200px; }
         .play-button { width: 70px; height: 70px; background: #FF0000; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 0 20px rgba(255, 0, 0, 0.5); cursor: pointer; transition: 0.3s; }
         .play-button:hover { transform: scale(1.1); background: #cc0000; }
@@ -158,7 +175,7 @@
         <a href="#missas">Missas</a>
         <a href="#">Doação</a>
         <a href="#">Galeria</a>
-        <a href="#">Ao Vivo</a>
+        <a href="#ao-vivo">Ao Vivo</a>
         <a href="#">Contato</a>
     </nav>
     <img src="LogoBrasaoDaParoquia.png" alt="Brasão da Paróquia" class="logo">
@@ -214,7 +231,7 @@
             </div>
         </div>
 
-        <section class="youtube-section">
+        <section id="ao-vivo" class="youtube-section">
             <div class="youtube-thumb">
                 <div class="play-button">
                     <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
