@@ -67,7 +67,6 @@
             -webkit-overflow-scrolling: touch;
         }
 
-        /* Esconde barra de rolagem no Chrome/Safari */
         .menu::-webkit-scrollbar {
             display: none;
         }
@@ -133,7 +132,7 @@
         .titulo { font-size: 2.2rem; color: #0b8fc0; margin-bottom: 5px; }
         .linha-azul { display: block; width: 60px; height: 4px; background: linear-gradient(to right, #d4af37, #f2d27a); margin: 10px auto 30px; border-radius: 10px; }
         .agenda { max-width: 1100px; margin: 0 auto; }
-        .agenda-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .agenda-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
         
         .agenda-item { 
             background: white; 
@@ -175,6 +174,18 @@
         .hora { font-size: 1.4rem; color: #b8860b; font-weight: 700; margin: 5px 0; }
         .local { font-size: 0.95rem; color: #666; font-style: italic; }
         
+        /* ESTILO PARA A EXPOSIÇÃO DO SANTÍSSIMO */
+        .exposicao-box {
+            background: #fffcf0;
+            border: 1px dashed #d4af37;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            width: 90%;
+        }
+        .exposicao-box strong { color: #b8860b; font-size: 0.9rem; }
+        .exposicao-box span { display: block; font-size: 1rem; font-weight: bold; color: #333; }
+
         .destaque-card { background: linear-gradient(135deg, #0EAFEA, #0b8fc0); color: white; border-top: 6px solid #f2d27a; }
         .destaque-card .dia, .destaque-card .hora, .destaque-card .local { color: white; }
 
@@ -244,18 +255,27 @@
                     <span class="hora">19h</span>
                     <span class="local">Matriz do Livramento</span>
                 </div>
+                
                 <div class="agenda-item" data-dia="4">
                     <span class="dia">Quinta-feira</span>
                     <span class="local" style="font-weight:bold; color:#d4af37;">Quinta Eucarística</span>
+                    
+                    <div class="exposicao-box">
+                        <strong>Exposição do Santíssimo</strong>
+                        <span>07h30 às 16h</span>
+                    </div>
+
                     <span class="hora">17h</span>
                     <span class="local">Matriz do Livramento</span>
                 </div>
+
                 <div class="agenda-item destaque-card" data-dia="5">
                     <span class="dia">1ª Sexta do Mês</span>
                     <span class="local">Missa do Sagrado Coração</span>
                     <span class="hora">19h</span>
                     <span class="local">Matriz do Livramento</span>
                 </div>
+
                 <div class="agenda-item" data-dia="6">
                     <span class="dia">Sábado</span>
                     <span class="hora">16h30</span>
@@ -264,6 +284,7 @@
                     <span class="hora">19h</span>
                     <span class="local">Matriz do Livramento</span>
                 </div>
+
                 <div class="agenda-item" data-dia="0">
                     <span class="dia">Domingo</span>
                     <span class="hora">09h</span>
