@@ -379,14 +379,14 @@
         }
 
 .clima-widget {
-    max-width: 320px;
-    margin: 20px auto;
-    padding: 12px 15px;
+    max-width: 220px; /* menor */
+    padding: 8px 10px;
+    margin: 10px 0 0 10px; /* encostado abaixo do topo */
     background: linear-gradient(135deg, #0EAFEA, #0b8fc0);
-    border-radius: 12px;
+    border-radius: 10px;
     color: white;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    font-family: 'Segoe UI', sans-serif;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    font-size: 0.8rem;
 }
 
 /* Layout interno */
@@ -398,32 +398,21 @@
 
 /* Ícone */
 #clima-icone {
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
-/* Temperatura */
 .temp-box {
-    font-size: 1.8rem;
-    font-weight: bold;
+    font-size: 1.2rem;
 }
 
-/* Info extra (hora + clima) */
 .info-extra {
-    display: flex;
-    flex-direction: column;
-    font-size: 0.75rem;
-    text-align: right;
-    opacity: 0.9;
+    font-size: 0.65rem;
 }
 
-/* Vento e umidade */
 .clima-detalhes {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 8px;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
 }
-
+        
 @media (max-width: 768px) {
     .clima-widget { flex-direction: column; text-align: center; gap: 15px; margin: 10px; }
     .data-hora, .clima-detalhes { text-align: center; }
