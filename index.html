@@ -403,6 +403,18 @@
     gap: 10px; /* espaço entre itens */
 }
 
+.bloco-icone {
+    display: flex;
+    flex-direction: column; /* ícone em cima, texto embaixo */
+    align-items: center;
+    font-size: 0.65rem;
+}
+
+#clima-desc {
+    margin-top: 2px;
+    text-transform: capitalize;
+}
+
 /* Ícone */
 #clima-icone {
     font-size: 1.5rem;
@@ -412,8 +424,7 @@
     font-size: 1.2rem;
 }
 
-.info-extra {
-    #hora-atual {
+#hora-atual {
     font-size: 1.2rem; /* mesmo tamanho da temperatura */
     font-weight: bold;
 }
@@ -452,16 +463,19 @@
   <div id="clima-container" class="clima-widget">
 
     <div class="clima-mini">
-        <div id="clima-icone"></div>
-        
-        <div class="temp-box">
-            <span id="temp-valor">--</span><span class="unidade">°C</span>
-        </div>
+        <div class="bloco-icone">
+    <div id="clima-icone"></div>
+    <span id="clima-desc">---</span>
+</div>
 
-        <div class="info-extra">
-            <span id="hora-atual">00:00</span>
-            <span id="clima-desc">---</span>
-        </div>
+<div class="temp-box">
+    <span id="temp-valor">--</span><span class="unidade">°C</span>
+</div>
+
+<div class="info-extra">
+    <span id="hora-atual">00:00</span>
+</div>
+        
     </div>
 
     <div class="clima-detalhes">
