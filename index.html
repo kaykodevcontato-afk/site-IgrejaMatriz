@@ -138,13 +138,6 @@
             text-shadow: 2px 2px 10px rgba(0,0,0,0.6);
         }
 
-        .overlay .subtitulo-parallax {
-            font-size: 1.2rem;
-            margin-top: 5px;
-            font-weight: 300;
-            letter-spacing: 1px;
-        }
-
         /* MISSAS GRID */
         .missa-container { padding: 50px 20px; }
         
@@ -197,25 +190,6 @@
         .dia { font-weight: bold; font-size: 1.2rem; color: #0b8fc0; margin-bottom: 10px; text-transform: uppercase; }
         .hora { font-size: 1.4rem; color: #b8860b; font-weight: 700; margin: 5px 0; }
         .local { font-size: 0.95rem; color: #666; font-style: italic; }
-        
-        .exposicao-box {
-            background: #f0faff;
-            border: 1px dashed #0EAFEA;
-            border-radius: 10px;
-            padding: 10px;
-            margin: 10px 0;
-            width: 90%;
-        }
-        .exposicao-box strong { color: #0b8fc0; font-size: 0.9rem; }
-        .exposicao-box span { 
-            display: block; 
-            font-size: 1.1rem; 
-            font-weight: bold; 
-            color: #0EAFEA;
-        }
-
-        .destaque-card { background: linear-gradient(135deg, #0EAFEA, #0b8fc0); color: white; border-top: 6px solid #f2d27a; }
-        .destaque-card .dia, .destaque-card .hora, .destaque-card .local { color: white; }
 
         /* SEÇÃO YOUTUBE */
         .youtube-section { 
@@ -223,210 +197,33 @@
             overflow: hidden; display: flex; flex-wrap: wrap; box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
             border: 1px solid #eee; 
         }
-        .youtube-thumb { 
-            flex: 1; 
-            min-width: 300px; 
-            background: #000; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            position: relative; 
-            min-height: 280px; 
-        }
-        .youtube-thumb iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
+        .youtube-thumb { flex: 1; min-width: 300px; background: #000; min-height: 280px; }
+        .youtube-thumb iframe { width: 100%; height: 100%; border: 0; }
         .youtube-info { flex: 1.2; padding: 40px; text-align: left; display: flex; flex-direction: column; justify-content: center; }
-        
-        .live-badge { display: inline-flex; align-items: center; background: #ffe6e6; color: #ff0000; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; text-transform: uppercase; margin-bottom: 10px; width: fit-content; }
+        .live-badge { display: inline-flex; align-items: center; background: #ffe6e6; color: #ff0000; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; margin-bottom: 10px; width: fit-content; }
         .dot { height: 8px; width: 8px; background-color: #ff0000; border-radius: 50%; display: inline-block; margin-right: 8px; animation: pulse 1.5s infinite; }
-        @keyframes pulse { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7); } 70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(255, 0, 0, 0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); } }
-        
-        .live-horario { color: #b8860b; font-weight: bold; font-size: 1.1rem; margin-bottom: 15px; display: block; }
-
-        .btn-assista { background: #FF0000; color: white; text-decoration: none; padding: 12px 25px; border-radius: 30px; font-weight: bold; display: inline-flex; align-items: center; gap: 10px; transition: 0.3s; width: fit-content; }
+        @keyframes pulse { 0% { transform: scale(0.95); } 70% { transform: scale(1); } 100% { transform: scale(0.95); } }
+        .btn-assista { background: #FF0000; color: white; text-decoration: none; padding: 12px 25px; border-radius: 30px; font-weight: bold; display: inline-flex; align-items: center; gap: 10px; }
 
         /* SEÇÃO HISTÓRIA */
-        .historia-container {
-            max-width: 1100px; margin: 0 auto 100px; padding: 40px;
-            background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            text-align: left;
-        }
-
-        .historia-topo {
-            display: flex;
-            align-items: flex-start;
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
+        .historia-container { max-width: 1100px; margin: 0 auto 100px; padding: 40px; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: left; }
+        .historia-topo { display: flex; align-items: flex-start; gap: 40px; margin-bottom: 40px; }
         .historia-texto { flex: 1.2; }
-        .historia-texto p { line-height: 1.6; color: #555; font-size: 1.05rem; margin-bottom: 15px; }
-        .historia-texto ul { padding-left: 20px; color: #555; list-style-type: square; }
-        .historia-texto li { margin-bottom: 12px; line-height: 1.4; }
-        .historia-texto li strong { color: #0b8fc0; }
+        .historia-texto p { line-height: 1.6; color: #555; font-size: 1.05rem; }
         
-        /* SEÇÃO REFORMA (SEGUNDO ALTAR) */
-        .secao-reforma {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            border-top: 1px solid #eee;
-            padding-top: 40px;
-            margin-top: 20px;
-            flex-direction: row-reverse;
-        }
-
-        .texto-reforma { flex: 1.2; }
-
-        /* SEÇÃO ATUAL (TERCEIRO ALTAR) */
-        .secao-altar-atual {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            border-top: 1px solid #eee;
-            padding-top: 40px;
-            margin-top: 40px;
-        }
-
-        .texto-altar-atual { flex: 1.2; }
-
-        .galeria-historica {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .comparison-slider, .foto-container {
-            width: 100%;
-            max-width: 500px;
-            border-radius: 15px;
-            border: 4px solid white;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            overflow: hidden;
-            position: relative;
-        }
-
-        .comparison-slider { cursor: ew-resize; line-height: 0; }
-
-        .comparison-slider img, .foto-container img {
-            width: 100%;
-            height: auto;
-            display: block;
-            pointer-events: none;
-        }
-
-        .camada-original {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        .img-restaurada {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 50%;
-            height: 100%;
-            overflow: hidden;
-            z-index: 2;
-            border-right: 3px solid #f2d27a;
-        }
-
-        .img-restaurada img {
-            width: 100%; 
-            height: 100%;
-            object-fit: cover;
-            object-position: left;
-        }
-
-        .label-before, .label-after, .label-fixo {
-            position: absolute; bottom: 15px; padding: 4px 10px;
-            background: rgba(14, 175, 234, 0.85); color: white; font-size: 10px; border-radius: 4px; font-weight: bold;
-            white-space: nowrap;
-        }
-        
-        .label-before { right: 15px; z-index: 1; }
-        .label-after { left: 15px; z-index: 3; }
-        .label-fixo { left: 50%; transform: translateX(-50%); bottom: 15px; }
+        .comparison-slider, .foto-container { width: 100%; max-width: 500px; border-radius: 15px; border: 4px solid white; box-shadow: 0 10px 30px rgba(0,0,0,0.2); overflow: hidden; position: relative; }
+        .img-restaurada { position: absolute; top: 0; left: 0; width: 50%; height: 100%; overflow: hidden; z-index: 2; border-right: 3px solid #f2d27a; }
+        .img-restaurada img { width: 100%; height: 100%; object-fit: cover; object-position: left; }
+        .label-before, .label-after, .label-fixo { position: absolute; bottom: 15px; padding: 4px 10px; background: rgba(14, 175, 234, 0.85); color: white; font-size: 10px; border-radius: 4px; font-weight: bold; }
+        .label-before { right: 15px; }
+        .label-after { left: 15px; }
+        .label-fixo { left: 50%; transform: translateX(-50%); }
 
         /* RESPONSIVO */
         @media (max-width: 768px) {
-            .topo { flex-direction: row; flex-wrap: wrap; justify-content: center; padding: 15px 5%; }
-            .container-titulo { width: 80%; align-items: center; margin-bottom: 10px; }
-            .menu { width: 100%; justify-content: flex-start; padding: 10px 0; }
-            .parallax { height: 300px; background-attachment: scroll; }
-            .agenda-grid { grid-template-columns: 1fr; }
-            .youtube-info { text-align: center; align-items: center; padding: 30px 20px; }
-            .youtube-thumb { min-height: 200px; }
-            
-            .historia-topo, .secao-reforma, .secao-altar-atual { 
-                flex-direction: column; 
-                text-align: center; 
-                gap: 20px;
-            }
-            
-            .historia-container { padding: 20px; margin: 30px 15px; }
-            .comparison-slider, .foto-container { max-width: 100%; margin: 0 auto; }
-            .historia-texto ul { text-align: left; }
-        }
-
-        /* CLIMA WIDGET CSS */
-        .clima-widget {
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Centralizado por padrão */
-            margin: 20px auto;
-            max-width: fit-content;
-        }
-
-        .clima-mini {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .bloco-icone {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-size: 0.7rem;
-        }
-
-        #clima-desc {
-            margin-top: 2px;
-            text-transform: capitalize;
-        }
-
-        #clima-icone {
-            font-size: 1.8rem;
-        }
-
-        .temp-box {
-            font-size: 1.4rem;
-            font-weight: bold;
-        }
-
-        #hora-atual {
-            font-size: 1.2rem;
-            font-weight: bold;
-        }
-
-        .clima-detalhes {
-            display: flex;
-            gap: 15px;
-            margin-top: 10px;
-        }
-        
-        @media (max-width: 768px) {
-            .clima-widget { margin: 15px auto; }
+            .historia-topo { flex-direction: column; }
+            .topo { flex-wrap: wrap; justify-content: center; }
+            .menu { width: 100%; justify-content: center; }
         }
     </style>
 </head>
@@ -449,42 +246,6 @@
     </nav>
 </header>
 
-<div id="clima-container" class="clima-widget">
-    <button id="btn-clima" onclick="toggleClima()" style="
-        margin-bottom: 10px;
-        padding: 8px 16px;
-        border: none;
-        border-radius: 20px;
-        background: #0EAFEA;
-        color: white;
-        cursor: pointer;
-        font-weight: bold;
-        transition: 0.3s;
-    ">
-        Ocultar
-    </button>
-
-    <div id="clima-conteudo">
-        <div class="clima-mini">
-            <div class="bloco-icone">
-                <div id="clima-icone"></div>
-                <span id="clima-desc">---</span>
-            </div>
-            <div class="temp-box">
-                <span id="temp-valor">--</span><span class="unidade">°C</span>
-            </div>
-            <div class="info-extra">
-                <span id="hora-atual">00:00</span>
-            </div>
-        </div>
-
-        <div class="clima-detalhes">
-            <span>🌬️ <strong id="vento-valor">--</strong></span>
-            <span>💧 <strong id="umidade-valor">--</strong></span>
-        </div>
-    </div>
-</div>
-        
 <main>
     <section class="parallax">
         <div class="overlay">
@@ -496,7 +257,6 @@
     <section class="missa-container">
         <h1 class="titulo" id="missas">Santa Missa</h1>
         <span class="linha-azul"></span>
-
         <div class="agenda">
             <div class="agenda-grid">
                 <div class="agenda-item" data-dia="2">
@@ -504,117 +264,52 @@
                     <span class="hora">19h</span>
                     <span class="local">Matriz do Livramento</span>
                 </div>
-                
                 <div class="agenda-item" data-dia="4">
                     <span class="dia">Quinta-feira</span>
                     <span class="local" style="font-weight:bold; color:#d4af37;">Quinta Eucarística</span>
-                    <div class="exposicao-box">
-                        <strong>Exposição do Santíssimo</strong>
-                        <span>07h30 às 16h</span>
-                    </div>
+                    <div class="exposicao-box"><strong>Exposição do Santíssimo</strong><span>07h30 às 16h</span></div>
                     <span class="hora">17h</span>
                     <span class="local">Matriz do Livramento</span>
                 </div>
-
-                <div class="agenda-item destaque-card" data-dia="5">
-                    <span class="dia">1ª Sexta do Mês</span>
-                    <span class="local">Missa do Sagrado Coração</span>
-                    <span class="hora">19h</span>
-                    <span class="local">Matriz do Livramento</span>
-                </div>
-
-                <div class="agenda-item" data-dia="6">
-                    <span class="dia">Sábado</span>
-                    <span class="hora">16h30</span>
-                    <span class="local">Com. São Francisco | Sucupira</span>
-                    <hr style="width: 80%; border: 0; border-top: 1px solid #eee; margin: 10px 0;">
-                    <span class="hora">19h</span>
-                    <span class="local">Matriz do Livramento</span>
-                </div>
-
-                <div class="agenda-item" data-dia="0">
+                <div class="agenda-item destaque-card" data-dia="0">
                     <span class="dia">Domingo</span>
-                    <span class="hora">09h</span>
-                    <span class="local">Matriz do Livramento</span>
-                    <hr style="width: 80%; border: 0; border-top: 1px solid #eee; margin: 10px 0;">
-                    <span class="hora">19h</span>
+                    <span class="hora">09h e 19h</span>
                     <span class="local">Matriz do Livramento</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <h1 class="titulo" id="ao-vivo">Transmissões ao Vivo</h1>
-    <span class="linha-azul"></span>
-
-    <section class="youtube-section">
+    <section class="youtube-section" id="ao-vivo">
         <div class="youtube-thumb">
-            <iframe 
-                src="https://www.youtube.com/embed/WIKrWRck6ZU" 
-                title="Última Transmissão Paróquia Livramento" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-            </iframe>
+            <iframe src="https://www.youtube.com/embed/WIKrWRck6ZU" title="Live" allowfullscreen></iframe>
         </div>
         <div class="youtube-info">
-            <div class="live-badge"><span class="dot"></span> Transmissão ao Vivo</div>
-            <h3>Acompanhe de onde estiver</h3>
-            <span class="live-horario">Todas as celebrações às 19h</span>
-            <p>Assista à última celebração diretamente aqui ou acompanhe em tempo real pelo canal oficial do Youtube.</p>
-            <a href="https://www.youtube.com/@PascomLivramento" target="_blank" class="btn-assista">
-                <span>Acessar Canal Youtube</span>
-            </a>
+            <div class="live-badge"><span class="dot"></span> Ao Vivo</div>
+            <h3>Transmissões Oficiais</h3>
+            <span class="live-horario">Celebrações Diárias às 19h</span>
+            <a href="https://www.youtube.com/@PascomLivramento" target="_blank" class="btn-assista">YouTube Oficial</a>
         </div>
     </section>
 
-    <h1 class="titulo" id="a-igreja">História da Igreja</h1>
-    <span class="linha-azul"></span>
-
-    <section class="historia-container">
+    <section class="historia-container" id="a-igreja">
+        <h1 class="titulo">Nossa História</h1>
         <div class="historia-topo">
             <div class="historia-texto">
-                <p>A Paróquia de Nossa Senhora do Livramento em Arcoverde foi criada em <strong>21 de agosto de 1919</strong> por Dom José Antônio de Oliveira Lopes, desmembrada da Diocese de Pesqueira.</p>
+                <p>A Paróquia de Nossa Senhora do Livramento em Arcoverde foi criada em 1919. A devoção começou em 1865 com uma imagem vinda de Portugal.</p>
                 <ul>
-                    <li><strong>Origem da Devoção:</strong> A veneração a Nossa Senhora do Livramento começou com uma imagem trazida de Portugal em 1865.</li>
-                    <li><strong>Criação Oficial:</strong> A freguesia foi oficialmente criada em 21 de agosto de 1919.</li>
-                    <li><strong>Igreja Matriz:</strong> Em 1920, a igrejinha era simples e evoluiu ao longo do século.</li>
-                    <li><strong>Centenário:</strong> Celebrou seus 100 anos em 2019.</li>
+                    <li><strong>Origem:</strong> Imagem trazida de Portugal em 1865.</li>
+                    <li><strong>Criação:</strong> Oficializada em 21 de agosto de 1919.</li>
+                    <li><strong>Centenário:</strong> Celebrado com grande festa em 2019.</li>
                 </ul>
             </div>
-
-            <div class="galeria-historica">
-                <div class="comparison-slider" id="slider">
-                    <img src="FotoPrimeiraAltarCelebracaomissas.png" alt="Foto Original do Altar">
-                    <div class="camada-original">
-                        <span class="label-before">ORIGINAL</span>
-                    </div>
-                    <div class="img-restaurada" id="restaurada">
-                        <img src="FotoPrimeiroAltarrestauradocomIA.png" alt="Foto Restaurada do Altar">
-                        <span class="label-after">RESTAURAÇÃO IA</span>
-                    </div>
+            <div class="comparison-slider" id="slider">
+                <img src="FotoPrimeiraAltarCelebracaomissas.png" alt="Original">
+                <div class="img-restaurada" id="restaurada">
+                    <img src="FotoPrimeiroAltarrestauradocomIA.png" alt="Restaurada">
                 </div>
-            </div>
-        </div>
-
-        <div class="secao-reforma">
-            <div class="texto-reforma">
-                <h3 style="color: #0b8fc0;">A Reforma Litúrgica</h3>
-                <p>Posteriormente, houve a Reforma do Altar Principal para acompanhar as diretrizes do Vaticano II.</p>
-            </div>
-            <div class="foto-container">
-                <img src="FotoSegundoAltar.png" alt="Segundo Altar da Matriz">
-                <span class="label-fixo">SEGUNDO ALTAR (PÓS-REFORMA)</span>
-            </div>
-        </div>
-
-        <div class="secao-altar-atual">
-            <div class="foto-container">
-                <img src="FotoTerceiroAltarAtual.jpeg" alt="Novo Altar Mor da Paróquia">
-                <span class="label-fixo">ALTAR MOR ATUAL</span>
-            </div>
-            <div class="texto-altar-atual">
-                <h3 style="color: #0b8fc0;">O Novo Altar Mor</h3>
-                <p>Esta nova fase representa o resgate da imponência sacra, unindo tradição estética com a funcionalidade litúrgica atual.</p>
+                <span class="label-before">ORIGINAL</span>
+                <span class="label-after">IA</span>
             </div>
         </div>
     </section>
@@ -631,80 +326,9 @@
             }
         });
 
-        // Lógica do Slider
+        // Lógica do Slider de História
         const slider = document.getElementById('slider');
-        const restaurada = document.getElementById('restaurada');
-        const imgInterna = restaurada.querySelector('img');
-
-        const moverDivisor = (e) => {
-            const rect = slider.getBoundingClientRect();
-            let x;
-            if (e.type === 'mousemove') { x = e.clientX - rect.left; } 
-            else if (e.type === 'touchmove') { x = e.touches[0].clientX - rect.left; }
-
-            imgInterna.style.width = rect.width + 'px';
-            let percentual = (x / rect.width) * 100;
-            if (percentual < 0) percentual = 0;
-            if (percentual > 100) percentual = 100;
-            restaurada.style.width = percentual + '%';
-        };
-
-        slider.addEventListener('mousemove', moverDivisor);
-        slider.addEventListener('touchmove', moverDivisor);
-
-        const ajustarTamanho = () => {
-            imgInterna.style.width = slider.offsetWidth + 'px';
-        };
-        window.addEventListener('load', ajustarTamanho);
-        window.addEventListener('resize', ajustarTamanho);
-    });
-
-    function atualizarRelogio() {
-        const agora = new Date();
-        document.getElementById('hora-atual').innerText = agora.toLocaleTimeString('pt-BR');
-    }
-
-    async function buscarClima() {
-        const cidade = "Arcoverde,BR";
-        const apiKey = "54a7a48f470d2f1425ae20e621892a13";
-        try {
-            const atual = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cidade}&units=metric&lang=pt_br&appid=${apiKey}`);
-            const dados = await atual.json();
-
-            document.getElementById('temp-valor').innerText = Math.round(dados.main.temp);
-            document.getElementById('clima-desc').innerText = dados.weather[0].description;
-            document.getElementById('vento-valor').innerText = Math.round(dados.wind.speed * 3.6) + " km/h";
-            document.getElementById('umidade-valor').innerText = dados.main.humidity + "%";
-
-            const condicao = dados.weather[0].main;
-            let icone = "☀️";
-            if (condicao === "Clouds") icone = "☁️";
-            if (condicao === "Rain") icone = "🌧️";
-            if (condicao === "Thunderstorm") icone = "⛈️";
-            document.getElementById('clima-icone').innerText = icone;
-        } catch (erro) { console.log("Erro clima:", erro); }
-    }
-
-    function toggleClima() {
-        const conteudo = document.getElementById("clima-conteudo");
-        const botao = document.getElementById("btn-clima");
-
-        if (conteudo.style.display === "none") {
-            conteudo.style.display = "block";
-            botao.innerText = "Ocultar";
-            botao.style.background = "#0EAFEA";
-        } else {
-            conteudo.style.display = "none";
-            botao.innerText = "Mostrar Clima ☁️";
-            botao.style.background = "#0b8fc0";
-        }
-    }
-
-    setInterval(atualizarRelogio, 1000);
-    setInterval(buscarClima, 600000);
-    buscarClima();
-    atualizarRelogio();
-</script>
-
-</body>
-</html>
+        const resImg = document.getElementById('restaurada');
+        
+        const move = (e) => {
+            const rect
