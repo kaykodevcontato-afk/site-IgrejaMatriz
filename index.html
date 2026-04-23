@@ -378,15 +378,22 @@
             .historia-texto ul { text-align: left; }
         }
 
+/*clima widget css*/
 .clima-widget {
-    max-width: 220px; /* menor */
+    position: fixed; /* fixa na tela */
+    top: 90px; /* distância do topo (abaixo do header) */
+    left: 15px;
+
+    max-width: 220px;
     padding: 8px 10px;
-    margin: 10px 0 0 10px; /* encostado abaixo do topo */
+    
     background: linear-gradient(135deg, #0EAFEA, #0b8fc0);
     border-radius: 10px;
     color: white;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
     font-size: 0.8rem;
+
+    z-index: 999; /* fica acima da imagem */
 }
 
 /* Layout interno */
