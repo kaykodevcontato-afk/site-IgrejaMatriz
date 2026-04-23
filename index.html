@@ -380,20 +380,10 @@
 
 /*clima widget css*/
 .clima-widget {
-    position: fixed; /* fixa na tela */
-    top: 90px; /* distância do topo (abaixo do header) */
-    left: 15px;
-
-    max-width: 220px;
-    padding: 8px 10px;
-    
-    background: linear-gradient(135deg, #0EAFEA, #0b8fc0);
-    border-radius: 10px;
-    color: white;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-    font-size: 0.8rem;
-
-    z-index: 999; /* fica acima da imagem */
+    position: relative;
+    margin: 20px auto;
+    left: 0;
+    top: 0;
 }
 
 /* Layout interno */
@@ -459,7 +449,20 @@
     </nav>
 </header>
 
-  <div id="clima-container" class="clima-widget">
+    <button id="btn-clima" onclick="toggleClima()" style="
+    margin: 15px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 20px;
+    background: #0EAFEA;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+">
+    Mostrar clima ☁️
+</button>
+
+  <div id="clima-container" class="clima-widget" style="display: none;">
 
     <div class="clima-mini">
         <div class="bloco-icone">
@@ -728,6 +731,19 @@ setInterval(buscarClima, 600000); // atualiza clima a cada 10 min
 
 buscarClima();
 atualizarRelogio();
+
+function toggleClima() {
+    const clima = document.getElementById("clima-container");
+    const botao = document.getElementById("btn-clima");
+
+    if (clima.style.display === "none") {
+        clima.style.display = "block";
+        botao.innerText = "Ocultar clima 🌤️";
+    } else {
+        clima.style.display = "none";
+        botao.innerText = "Mostrar clima ☁️";
+    }
+}
     
 </script>
 
