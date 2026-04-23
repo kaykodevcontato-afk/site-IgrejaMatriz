@@ -428,25 +428,6 @@
     .clima-widget { flex-direction: column; text-align: center; gap: 15px; margin: 10px; }
     .data-hora, .clima-detalhes { text-align: center; }
 }
-
-.previsao-box {
-    width: 100%;
-    display: flex;
-    gap: 10px;
-    margin-top: 15px;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-.previsao-item {
-    flex: 1;
-    min-width: 60px;
-    text-align: center;
-    background: rgba(255,255,255,0.15);
-    padding: 8px;
-    border-radius: 10px;
-    font-size: 0.8rem;
-}
         
     </style>
 </head>
@@ -489,8 +470,7 @@
         <span>💧 <strong id="umidade-valor">--</strong></span>
     </div>
 
-    <div id="previsao" class="previsao-box"></div>
-
+    
 </div>
         
 <main>
@@ -725,36 +705,6 @@ async function buscarClima() {
 
         document.getElementById('clima-icone').innerText = icone;
 
-        // PREVISÃO
-        const forecast = await fetch(
-            `https://api.openweathermap.org/data/2.5/forecast?q=${cidade}&units=metric&lang=pt_br&appid=${apiKey}`
-        );
-
-        const prev = await forecast.json();
-
-        let dias = {};
-
-        prev.list.forEach(item => {
-            const data = new Date(item.dt_txt);
-            const dia = data.toLocaleDateString('pt-BR', { weekday: 'short' });
-
-            if (!dias[dia]) dias[dia] = item;
-        });
-
-        let html = "";
-
-        Object.keys(dias).slice(0,6).forEach(dia => {
-            const temp = Math.round(dias[dia].main.temp);
-
-            html += `
-                <div class="previsao-item">
-                    <strong>${dia}</strong><br>
-                    ${temp}°C
-                </div>
-            `;
-        });
-
-        document.getElementById('previsao').innerHTML = html;
 
     } catch (erro) {
         console.log("Erro clima:", erro);
