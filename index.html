@@ -425,13 +425,24 @@
         /* SEÇÃO INSTAGRAM */
         .instagram-container {
             max-width: 1100px;
-            margin: 0 auto 100px;
+            margin: 0 auto 50px;
             padding: 20px;
             background: white;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             border: 1px solid #eee;
         }
+
+        /* SEÇÃO DOAÇÃO (DÍZIMO E OFERTAS) */
+        .doacao-container { padding: 40px 20px 80px; background: transparent; }
+        .doacao-card {
+            max-width: 850px; margin: 0 auto; background: white; border-radius: 20px; padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08); border: 1px solid #eee; display: flex; flex-wrap: wrap; gap: 30px; align-items: center;
+        }
+        .doacao-texto { flex: 1.2; min-width: 300px; text-align: left; }
+        .pix-box { background: #f0faff; border: 2px dashed #0EAFEA; padding: 20px; border-radius: 12px; cursor: pointer; transition: 0.3s; margin-bottom: 20px; }
+        .pix-box:hover { background: #e0f4ff; }
+        .pix-codigo { font-family: 'Courier New', Courier, monospace; font-size: 1.1rem; font-weight: bold; color: #333; display: block; margin-top: 5px; }
 
         /* RESPONSIVO */
         @media (max-width: 768px) {
@@ -452,6 +463,9 @@
             .historia-container { padding: 20px; margin: 30px 15px; }
             .comparison-slider, .foto-container { max-width: 100%; margin: 0 auto; }
             .historia-texto ul { text-align: left; }
+
+            .doacao-card { flex-direction: column; text-align: center; padding: 25px; }
+            .doacao-texto { text-align: center; min-width: 100%; }
         }
         
     </style>
@@ -470,7 +484,8 @@
         <a href="#ao-vivo">Ao Vivo</a>
         <a href="#a-igreja">A Igreja</a>
         <a href="#galeria">Galeria</a>
-        <a href="#">Doação</a>
+        <a href="#instagram">Instagram</a>
+        <a href="#doacao">Doação</a>
         <a href="#">Contato</a>
     </nav>
 </header>
@@ -625,7 +640,7 @@ Com raízes na devoção iniciada em 1865 com uma imagem vinda de Portugal, a pa
         </div>
     </section>
     
-    <h1 class="titulo" id="galeria" style="scroll-margin-top: 120px;">Galeria de Fotos</h1>
+    <h1 class="titulo" id="galeria">Galeria de Fotos</h1>
     <span class="linha-azul"></span>
 
     <section class="galeria-section">
@@ -663,14 +678,59 @@ Com raízes na devoção iniciada em 1865 com uma imagem vinda de Portugal, a pa
         </div>
     </section>
 
+    <h1 class="titulo" id="instagram">Siga-nos no Instagram</h1>
+    <span class="linha-azul"></span>
+
     <section class="instagram-container">
         <script src="https://elfsightcdn.com/platform.js" async></script>
         <div class="elfsight-app-fb046694-b457-4af3-82e6-42be8ae69c5a" data-elfsight-app-lazy></div>
     </section>
 
+    <h1 class="titulo" id="doacao">Dízimo e Ofertas</h1>
+    <span class="linha-azul"></span>
+
+    <section class="doacao-container">
+        <div class="doacao-card">
+            <div class="doacao-texto">
+                <h3>Ajude nossa Paróquia</h3>
+                <p>Sua contribuição sustenta nossas obras de evangelização, projetos sociais e a manutenção da Igreja Matriz.</p>
+                
+                <div class="pix-box" onclick="copiarPix()" title="Clique para copiar a chave">
+                    <strong>Chave PIX (CNPJ):</strong>
+                    <span id="chave-pix" class="pix-codigo">10.714.251/0028-01</span>
+                    <small style="color: #0EAFEA; display: block; margin-top: 8px; font-weight: bold;">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1621/1621635.png" width="14" style="vertical-align: middle;"> CLIQUE PARA COPIAR A CHAVE
+                    </small>
+                </div>
+
+                <div style="background: #f9f9f9; padding: 18px; border-radius: 12px; border: 1px solid #eee; font-size: 0.95rem; color: #444; line-height: 1.6;">
+                    <strong style="color: #0b8fc0; border-bottom: 1px solid #eee; display: block; margin-bottom: 8px;">Dados Bancários (Transferência):</strong>
+                    <strong>Banco:</strong> Caixa Econômica Federal (104)<br>
+                    <strong>Agência:</strong> 0915 | <strong>Operação:</strong> 003<br>
+                    <strong>Conta Corrente:</strong> 2898-2<br>
+                    <strong>Favorecido:</strong> Paróquia N. Sra. do Livramento
+                </div>
+            </div>
+
+            <div style="text-align: center; flex: 1;">
+                <div style="background: white; padding: 15px; border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); display: inline-block; border: 1px solid #f0f0f0;">
+                    <img src="qrcode-pix.png" alt="QR Code Pix" style="width: 190px; display: block; border-radius: 8px;">
+                </div>
+                <p style="font-size: 0.8rem; color: #888; margin-top: 12px; font-style: italic;">Aponte a câmera para doar via App</p>
+            </div>
+        </div>
+    </section>
+
 </main>
 
 <script>
+    function copiarPix() {
+        const chave = "10.714.251/0028-01";
+        navigator.clipboard.writeText(chave).then(() => {
+            alert("Chave PIX (CNPJ) copiada com sucesso! Agora basta colar no seu aplicativo do banco.");
+        });
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
         // Lógica do cartão "HOJE"
         const hoje = new Date().getDay();
@@ -684,38 +744,27 @@ Com raízes na devoção iniciada em 1865 com uma imagem vinda de Portugal, a pa
         // Lógica do Slider
         const slider = document.getElementById('slider');
         const restaurada = document.getElementById('restaurada');
-        const imgInterna = restaurada.querySelector('img');
+        const imgInterna = restaurada ? restaurada.querySelector('img') : null;
 
-        const moverDivisor = (e) => {
-            const rect = slider.getBoundingClientRect();
-            let x;
-            
-            if (e.type === 'mousemove') {
-                x = e.clientX - rect.left;
-            } else if (e.type === 'touchmove') {
-                x = e.touches[0].clientX - rect.left;
-            }
+        if (slider && restaurada && imgInterna) {
+            const moverDivisor = (e) => {
+                const rect = slider.getBoundingClientRect();
+                let x = (e.clientX || (e.touches ? e.touches[0].clientX : 0)) - rect.left;
+                
+                imgInterna.style.width = rect.width + 'px';
+                let percentual = Math.min(Math.max((x / rect.width) * 100, 0), 100);
+                restaurada.style.width = percentual + '%';
+            };
 
-            imgInterna.style.width = rect.width + 'px';
+            slider.addEventListener('mousemove', moverDivisor);
+            slider.addEventListener('touchmove', moverDivisor);
 
-            let percentual = (x / rect.width) * 100;
-            if (percentual < 0) percentual = 0;
-            if (percentual > 100) percentual = 100;
-
-            restaurada.style.width = percentual + '%';
-        };
-
-        slider.addEventListener('mousemove', moverDivisor);
-        slider.addEventListener('touchmove', moverDivisor);
-
-        const ajustarTamanho = () => {
-            if(slider) {
+            const ajustarTamanho = () => {
                 imgInterna.style.width = slider.offsetWidth + 'px';
-            }
-        };
-        
-        window.addEventListener('load', ajustarTamanho);
-        window.addEventListener('resize', ajustarTamanho);
+            };
+            window.addEventListener('load', ajustarTamanho);
+            window.addEventListener('resize', ajustarTamanho);
+        }
     });
 </script>
 
