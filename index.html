@@ -6,7 +6,6 @@
     <title>Igreja Matriz - Paróquia Nossa Senhora do Livramento</title>
 
     <link rel="icon" type="image/png" href="LogoBrasaoDaParoquia.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
         /* ROLAGEM SUAVE */
@@ -72,7 +71,7 @@
             flex-shrink: 0;
         }
 
-        /* MENU (Instagram removido aqui) */
+        /* MENU */
         .menu {
             display: flex;
             gap: 20px;
@@ -360,7 +359,7 @@
 
         /* SEÇÃO GALERIA */
         .galeria-section {
-            padding: 50px 20px 100px;
+            padding: 50px 20px;
             background: #fff;
         }
 
@@ -381,8 +380,6 @@
             text-decoration: none;
             color: inherit;
             border: 1px solid #eee;
-            display: flex;
-            flex-direction: column;
         }
 
         .album-card:hover {
@@ -425,39 +422,15 @@
             margin-top: 5px;
         }
 
-        /* CARD ESPECIAL DO INSTAGRAM NA GALERIA */
-        .album-card.insta-card {
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-            color: white;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
+        /* SEÇÃO INSTAGRAM */
+        .instagram-container {
+            max-width: 1100px;
+            margin: 0 auto 100px;
             padding: 20px;
-            border: none;
-        }
-
-        .insta-card i {
-            font-size: 3rem;
-            margin-bottom: 15px;
-        }
-
-        .insta-card h4 { color: white; font-size: 1.3rem; margin-bottom: 10px; }
-        .insta-card p { font-size: 0.9rem; opacity: 0.9; margin-bottom: 20px; }
-        
-        .btn-insta-link {
-            background: rgba(255,255,255,0.2);
-            border: 2px solid white;
-            color: white;
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-weight: bold;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        .btn-insta-link:hover {
             background: white;
-            color: #dc2743;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
         }
 
         /* RESPONSIVO */
@@ -497,6 +470,7 @@
         <a href="#ao-vivo">Ao Vivo</a>
         <a href="#a-igreja">A Igreja</a>
         <a href="#galeria">Galeria</a>
+        <a href="#instagram">Instagram</a>
         <a href="#">Doação</a>
         <a href="#">Contato</a>
     </nav>
@@ -590,13 +564,20 @@
     <section class="historia-container">
         <div class="historia-topo">
             <div class="historia-texto">
-                <p>A Paróquia de Nossa Senhora do Livramento em Arcoverde foi criada em <strong>21 de agosto de 1919</strong> por Dom José Antônio de Oliveira Lopes, desmembrada da Diocese de Pesqueira.</p>
+                <p>A Paróquia de Nossa Senhora do Livramento em Arcoverde foi criada em <strong>21 de agosto de 1919</strong> por Dom José Antônio de Oliveira Lopes, desmembrada da Diocese de Pesqueira.
+Com raízes na devoção iniciada em 1865 com uma imagem vinda de Portugal, a paróquia cresceu junto com a cidade, sendo fundamental na fé local.</p>
                 
                 <ul>
-                    <li><strong>Origem da Devoção:</strong> A veneração a Nossa Senhora do Livramento começou com uma imagem trazida de Portugal por um fazendeiro em 1865.</li>
-                    <li><strong>Igreja Matriz:</strong> Em 1920, a igrejinha era simples e evoluiu ao longo do século, tornando-se a paróquia central de Arcoverde.</li>
-                    <li><strong>Padroeira:</strong> A festa principal da padroeira é celebrada em 23 de setembro.</li>
+                    <li><strong>Origem da Devoção:</strong> A veneração a Nossa Senhora do Livramento começou com uma imagem trazida de Portugal por um fazendeiro em 1865, instalada na antiga Fazenda Olhos d'Água dos Bredos.</li>
+                    <li><strong>Criação Oficial:</strong> A freguesia foi oficialmente criada em 21 de agosto de 1919, sob decreto de Monsenhor D. José Antônio de Oliveira Lopes.</li>
+                    <li><strong>Igreja Matriz:</strong> Em 1920, a igrejinha era simples, sem bancos, e evoluiu ao longo do século, tornando-se a paróquia central da cidade, que mais tarde mudou de nome para Arcoverde.</li>
+                    <li><strong>Centenário:</strong> A paróquia celebrou seus 100 anos de criação com uma peregrinação da réplica da imagem em 2019, destacando a forte religiosidade local.</li>
+                    <li><strong>Padroeira:</strong> Nossa Senhora do Livramento é a padroeira de Arcoverde, com a festa principal celebrada em 23 de setembro.</li>
                 </ul>
+
+                <p style="font-style: italic; margin-top: 20px; color: #777;">
+                    <strong>Sobre o Primeiro Altar:</strong> Pelo estilo, a Missa era celebrada com o celebrante de costas para a assembleia, conforme a antiga liturgia em latim.
+                </p>
             </div>
 
             <div class="galeria-historica">
@@ -616,16 +597,36 @@
         <div class="secao-reforma">
             <div class="texto-reforma">
                 <h3 style="color: #0b8fc0;">A Reforma Litúrgica</h3>
-                <p>Posteriormente, houve a Reforma do Altar Principal para acompanhar as diretrizes do Vaticano II, com o celebrante de frente para a assembleia.</p>
+                <p>
+                    Posteriormente, houve a <strong>Reforma do Altar Principal</strong> para acompanhar as diretrizes da nova liturgia do <strong>Vaticano II</strong>. O altar tornou-se mais simples, permitindo que o celebrante ficasse de frente para a assembleia, fazendo toda a celebração em língua portuguesa.
+                </p>
             </div>
+            
             <div class="foto-container">
                 <img src="FotoSegundoAltar.png" alt="Segundo Altar da Matriz">
                 <span class="label-fixo">SEGUNDO ALTAR (PÓS-REFORMA)</span>
             </div>
         </div>
+
+        <div class="secao-altar-atual">
+            <div class="foto-container">
+                <img src="FotoTerceiroAltarAtual.jpeg" alt="Novo Altar Mor da Paróquia">
+                <span class="label-fixo">ALTAR MOR ATUAL</span>
+            </div>
+
+            <div class="texto-altar-atual">
+                <h3 style="color: #0b8fc0;">O Novo Altar Mor</h3>
+                <p>
+                    Com alguns detalhes a serem ajustados e finalizados, apresentamos oficialmente o novo <strong>Altar Mor da Paróquia Nossa Senhora do Livramento</strong>.
+                </p>
+                <p>
+                    Esta nova fase representa o resgate da imponência sacra, unindo a tradição estética com a funcionalidade litúrgica atual, servindo como o novo coração espiritual de nossa comunidade.
+                </p>
+            </div>
+        </div>
     </section>
     
-    <h1 class="titulo" id="galeria">Galeria de Fotos</h1>
+    <h1 class="titulo" id="galeria" style="scroll-margin-top: 120px;">Galeria de Fotos</h1>
     <span class="linha-azul"></span>
 
     <section class="galeria-section">
@@ -637,7 +638,7 @@
                 </div>
                 <div class="album-info">
                     <h4>Santa Missa</h4>
-                    <span>Celebrações dominicais</span>
+                    <span>Celebrações dominicais e semanais</span>
                 </div>
             </a>
 
@@ -647,20 +648,28 @@
                 </div>
                 <div class="album-info">
                     <h4>Batizados</h4>
-                    <span>Novos membros da fé</span>
+                    <span>Registros dos novos membros da nossa fé</span>
                 </div>
             </a>
 
-            <div class="album-card insta-card">
-                <i class="fab fa-instagram"></i>
-                <h4>Siga a Paróquia</h4>
-                <p>Veja fotos diárias e avisos importantes em nosso perfil.</p>
-                <a href="https://www.instagram.com/paroquiadolivramento/" target="_blank" class="btn-insta-link">
-                    @paroquiadolivramento
-                </a>
-            </div>
-            
+            <a href="#" class="album-card">
+                <div class="album-thumb">
+                    <img src="CapaAlbumEventos.jpg" alt="Eventos e Festas">
+                </div>
+                <div class="album-info">
+                    <h4>Eventos e Pastorais</h4>
+                    <span>Momentos especiais e encontros comunitários</span>
+                </div>
+            </a>
         </div>
+    </section>
+
+    <h1 class="titulo" id="instagram" style="scroll-margin-top: 120px;">Nosso Instagram</h1>
+    <span class="linha-azul"></span>
+
+    <section class="instagram-container">
+        <script src="https://elfsightcdn.com/platform.js" async></script>
+        <div class="elfsight-app-fb046694-b457-4af3-82e6-42be8ae69c5a" data-elfsight-app-lazy></div>
     </section>
 
 </main>
@@ -679,29 +688,38 @@
         // Lógica do Slider
         const slider = document.getElementById('slider');
         const restaurada = document.getElementById('restaurada');
-        if (slider && restaurada) {
-            const imgInterna = restaurada.querySelector('img');
+        const imgInterna = restaurada.querySelector('img');
 
-            const moverDivisor = (e) => {
-                const rect = slider.getBoundingClientRect();
-                let x;
-                if (e.type === 'mousemove') { x = e.clientX - rect.left; }
-                else { x = e.touches[0].clientX - rect.left; }
-
-                imgInterna.style.width = rect.width + 'px';
-                let percentual = (x / rect.width) * 100;
-                if (percentual < 0) percentual = 0;
-                if (percentual > 100) percentual = 100;
-                restaurada.style.width = percentual + '%';
-            };
-
-            slider.addEventListener('mousemove', moverDivisor);
-            slider.addEventListener('touchmove', moverDivisor);
+        const moverDivisor = (e) => {
+            const rect = slider.getBoundingClientRect();
+            let x;
             
-            window.addEventListener('resize', () => {
+            if (e.type === 'mousemove') {
+                x = e.clientX - rect.left;
+            } else if (e.type === 'touchmove') {
+                x = e.touches[0].clientX - rect.left;
+            }
+
+            imgInterna.style.width = rect.width + 'px';
+
+            let percentual = (x / rect.width) * 100;
+            if (percentual < 0) percentual = 0;
+            if (percentual > 100) percentual = 100;
+
+            restaurada.style.width = percentual + '%';
+        };
+
+        slider.addEventListener('mousemove', moverDivisor);
+        slider.addEventListener('touchmove', moverDivisor);
+
+        const ajustarTamanho = () => {
+            if(slider) {
                 imgInterna.style.width = slider.offsetWidth + 'px';
-            });
-        }
+            }
+        };
+        
+        window.addEventListener('load', ajustarTamanho);
+        window.addEventListener('resize', ajustarTamanho);
     });
 </script>
 
