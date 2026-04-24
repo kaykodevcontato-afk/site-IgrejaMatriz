@@ -357,32 +357,10 @@
         .label-after { left: 15px; z-index: 3; }
         .label-fixo { left: 50%; transform: translateX(-50%); bottom: 15px; }
 
-        /* RESPONSIVO */
-        @media (max-width: 768px) {
-            .topo { flex-direction: row; flex-wrap: wrap; justify-content: center; padding: 15px 5%; }
-            .container-titulo { width: 80%; align-items: center; margin-bottom: 10px; }
-            .menu { width: 100%; justify-content: flex-start; padding: 10px 0; }
-            .parallax { height: 300px; background-attachment: scroll; }
-            .agenda-grid { grid-template-columns: 1fr; }
-            .youtube-info { text-align: center; align-items: center; padding: 30px 20px; }
-            .youtube-thumb { min-height: 200px; }
-            
-            .historia-topo, .secao-reforma, .secao-altar-atual { 
-                flex-direction: column; 
-                text-align: center; 
-                gap: 20px;
-            }
-            
-            .historia-container { padding: 20px; margin: 30px 15px; }
-            .comparison-slider, .foto-container { max-width: 100%; margin: 0 auto; }
-            .historia-texto ul { text-align: left; }
-        }
-
         /* SEÇÃO GALERIA */
         .galeria-section {
             padding: 50px 20px;
             background: #fff;
-            margin-bottom: 80px;
         }
 
         .galeria-grid {
@@ -443,6 +421,38 @@
             display: block;
             margin-top: 5px;
         }
+
+        /* SEÇÃO INSTAGRAM */
+        .instagram-container {
+            max-width: 1100px;
+            margin: 0 auto 100px;
+            padding: 20px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
+        }
+
+        /* RESPONSIVO */
+        @media (max-width: 768px) {
+            .topo { flex-direction: row; flex-wrap: wrap; justify-content: center; padding: 15px 5%; }
+            .container-titulo { width: 80%; align-items: center; margin-bottom: 10px; }
+            .menu { width: 100%; justify-content: flex-start; padding: 10px 0; }
+            .parallax { height: 300px; background-attachment: scroll; }
+            .agenda-grid { grid-template-columns: 1fr; }
+            .youtube-info { text-align: center; align-items: center; padding: 30px 20px; }
+            .youtube-thumb { min-height: 200px; }
+            
+            .historia-topo, .secao-reforma, .secao-altar-atual { 
+                flex-direction: column; 
+                text-align: center; 
+                gap: 20px;
+            }
+            
+            .historia-container { padding: 20px; margin: 30px 15px; }
+            .comparison-slider, .foto-container { max-width: 100%; margin: 0 auto; }
+            .historia-texto ul { text-align: left; }
+        }
         
     </style>
 </head>
@@ -459,7 +469,9 @@
         <a href="#missas">Missas</a>
         <a href="#ao-vivo">Ao Vivo</a>
         <a href="#a-igreja">A Igreja</a>
-        <a href="#galeria">Galeria</a> <a href="#">Doação</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#instagram">Instagram</a>
+        <a href="#">Doação</a>
         <a href="#">Contato</a>
     </nav>
 </header>
@@ -649,8 +661,15 @@ Com raízes na devoção iniciada em 1865 com uma imagem vinda de Portugal, a pa
                     <span>Momentos especiais e encontros comunitários</span>
                 </div>
             </a>
-
         </div>
+    </section>
+
+    <h1 class="titulo" id="instagram" style="scroll-margin-top: 120px;">Nosso Instagram</h1>
+    <span class="linha-azul"></span>
+
+    <section class="instagram-container">
+        <script src="https://elfsightcdn.com/platform.js" async></script>
+        <div class="elfsight-app-fb046694-b457-4af3-82e6-42be8ae69c5a" data-elfsight-app-lazy></div>
     </section>
 
 </main>
@@ -694,7 +713,9 @@ Com raízes na devoção iniciada em 1865 com uma imagem vinda de Portugal, a pa
         slider.addEventListener('touchmove', moverDivisor);
 
         const ajustarTamanho = () => {
-            imgInterna.style.width = slider.offsetWidth + 'px';
+            if(slider) {
+                imgInterna.style.width = slider.offsetWidth + 'px';
+            }
         };
         
         window.addEventListener('load', ajustarTamanho);
