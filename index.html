@@ -600,6 +600,25 @@
 </head>
 <body>
 
+    <button id="btn-teste-sino" style="
+    position: fixed; 
+    bottom: 20px; 
+    right: 20px; 
+    z-index: 9999; 
+    padding: 15px 20px; 
+    background: #d4af37; 
+    color: white; 
+    border: none; 
+    border-radius: 50px; 
+    cursor: pointer; 
+    font-weight: bold; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+">
+    🔔 Testar 4 Badaladas
+</button>
+
+    <audio id="som-sino" src="Somsinohorafundo.mp3" preload="auto"></audio>
+
 <header class="topo">
     <img src="LogoBrasaoDaParoquia.png" alt="Brasão da Paróquia" class="logo">
     <div class="container-titulo">
@@ -822,7 +841,7 @@ Com raízes na devoção iniciada em 1865 com uma imagem vinda de Portugal, a pa
 
             <div style="text-align: center; flex: 1;">
                 <div style="background: white; padding: 15px; border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); display: inline-block; border: 1px solid #f0f0f0;">
-                    <img src="Fotoqrcodev1ck.jpg" alt="QR Code Pix" style="width: 190px; display: block; border-radius: 8px;">
+                    <img src="Fotoqrcodev1ck.png" alt="QR Code Pix" style="width: 190px; display: block; border-radius: 8px;">
                 </div>
                 <p style="font-size: 0.8rem; color: #888; margin-top: 12px; font-style: italic;">Aponte a câmera para doar via App</p>
             </div>
@@ -894,6 +913,7 @@ Com raízes na devoção iniciada em 1865 com uma imagem vinda de Portugal, a pa
 </main>
 
 <script>
+    // 1. FUNÇÃO COPIAR PIX
     function copiarPix() {
         const chave = "10.714.251/0028-01";
         navigator.clipboard.writeText(chave).then(() => {
@@ -901,8 +921,64 @@ Com raízes na devoção iniciada em 1865 com uma imagem vinda de Portugal, a pa
         });
     }
 
+    // 2. LÓGICA DO SINO
+    let tocandoAgora = false;
+
+    function tocarSino(vezes) {
+        if (tocandoAgora) return; 
+        tocandoAgora = true;
+
+        const somSino = document.getElementById('som-sino');
+        let contador = 0;
+
+        function tocarBatida() {
+            if (contador < vezes) {
+                somSino.currentTime = 0; 
+                somSino.play().catch(e => {
+                    console.log("Áudio bloqueado. Clique na página primeiro.");
+                });
+                
+                contador++;
+                setTimeout(tocarBatida, 3000); // Intervalo de 3 segundos entre batidas
+            } else {
+                tocandoAgora = false;
+            }
+        }
+        tocarBatida();
+    }
+
+    // 3. INICIALIZAÇÃO (Quando a página carrega)
     document.addEventListener('DOMContentLoaded', function() {
-        // Lógica do cartão "HOJE"
+        
+        // Configura o Botão de Teste
+        const btnTeste = document.getElementById('btn-teste-sino');
+        if (btnTeste) {
+            btnTeste.addEventListener('click', function() {
+                tocarSino(4); 
+            });
+        }
+
+        // Configura o Relógio (Verifica a cada 1 segundo)
+        setInterval(function() {
+            const agora = new Date();
+            const minutos = agora.getMinutes();
+            const segundos = agora.getSeconds();
+
+            if (minutos === 0 && segundos === 0) {
+                let horas = agora.getHours();
+                let batidas = horas % 12;
+                if (batidas === 0) batidas = 12;
+                tocarSino(batidas);
+            }
+        }, 1000);
+    });
+</script>
+    
+    <script>
+    // Agora o código espera a página carregar para marcar o card
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        // 1. Lógica do cartão "HOJE"
         const hoje = new Date().getDay();
         const cards = document.querySelectorAll('.agenda-item');
         cards.forEach(card => {
