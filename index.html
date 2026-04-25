@@ -913,6 +913,7 @@ Com raízes na devoção iniciada em 1865 com uma imagem vinda de Portugal, a pa
 </main>
 
 <script>
+    // 1. FUNÇÃO COPIAR PIX
     function copiarPix() {
         const chave = "10.714.251/0028-01";
         navigator.clipboard.writeText(chave).then(() => {
@@ -920,64 +921,57 @@ Com raízes na devoção iniciada em 1865 com uma imagem vinda de Portugal, a pa
         });
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
-
- <script>
-    // --- LÓGICA DO SINO (BADALADAS DAS HORAS) ---
-    
+    // 2. LÓGICA DO SINO
     let tocandoAgora = false;
 
     function tocarSino(vezes) {
-        if (tocandoAgora) return; // Evita sobreposição se o script rodar duas vezes
+        if (tocandoAgora) return; 
         tocandoAgora = true;
 
         const somSino = document.getElementById('som-sino');
         let contador = 0;
 
-        // Função que toca uma batida e espera o áudio terminar para tocar a próxima
         function tocarBatida() {
             if (contador < vezes) {
-                somSino.currentTime = 0; // Reinicia o áudio do início
-                somSino.play().catch(e => console.log("Áudio bloqueado pelo navegador."));
+                somSino.currentTime = 0; 
+                somSino.play().catch(e => {
+                    console.log("Áudio bloqueado. Clique na página primeiro.");
+                });
                 
                 contador++;
-
-                // Espera 3 segundos entre uma badalada e outra 
-                // (Ajuste esse tempo conforme a duração do seu arquivo de áudio)
-                setTimeout(tocarBatida, 3000); 
+                setTimeout(tocarBatida, 3000); // Intervalo de 3 segundos entre batidas
             } else {
                 tocandoAgora = false;
             }
         }
-
         tocarBatida();
     }
 
-    function verificarRelogio() {
-        const agora = new Date();
-        const minutos = agora.getMinutes();
-        const segundos = agora.getSeconds();
-        let horas = agora.getHours();
-
-        // Verifica se é o início de qualquer hora (minuto 0 e segundo 0)
-        if (minutos === 0 && segundos === 0) {
-            
-            // Converte formato 24h para 12h (Ex: 13h vira 1h, 00h vira 12h)
-            let batidas = horas % 12;
-            if (batidas === 0) batidas = 12;
-
-            tocarSino(batidas);
+    // 3. INICIALIZAÇÃO (Quando a página carrega)
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        // Configura o Botão de Teste
+        const btnTeste = document.getElementById('btn-teste-sino');
+        if (btnTeste) {
+            btnTeste.addEventListener('click', function() {
+                tocarSino(3); 
+            });
         }
-    }
 
-    // Verifica a cada 1 segundo
-    setInterval(verificarRelogio, 1000);
+        // Configura o Relógio (Verifica a cada 1 segundo)
+        setInterval(function() {
+            const agora = new Date();
+            const minutos = agora.getMinutes();
+            const segundos = agora.getSeconds();
 
-    // Lógica para o botão de teste funcionar
-document.getElementById('btn-teste-sino').addEventListener('click', function() {
-    alert("Iniciando teste de 3 badaladas...");
-    tocarSino(3); 
-});
+            if (minutos === 0 && segundos === 0) {
+                let horas = agora.getHours();
+                let batidas = horas % 12;
+                if (batidas === 0) batidas = 12;
+                tocarSino(batidas);
+            }
+        }, 1000);
+    });
 </script>
     
     <script>
