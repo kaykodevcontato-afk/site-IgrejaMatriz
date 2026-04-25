@@ -600,6 +600,23 @@
 </head>
 <body>
 
+    <button id="btn-teste-sino" style="
+    position: fixed; 
+    bottom: 20px; 
+    right: 20px; 
+    z-index: 9999; 
+    padding: 15px 20px; 
+    background: #d4af37; 
+    color: white; 
+    border: none; 
+    border-radius: 50px; 
+    cursor: pointer; 
+    font-weight: bold; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+">
+    🔔 Testar 3 Badaladas
+</button>
+
     <audio id="som-sino" src="Somsinohorafundo.mp3" preload="auto"></audio>
 
 <header class="topo">
@@ -955,6 +972,12 @@ Com raízes na devoção iniciada em 1865 com uma imagem vinda de Portugal, a pa
 
     // Verifica a cada 1 segundo
     setInterval(verificarRelogio, 1000);
+
+    // Lógica para o botão de teste funcionar
+document.getElementById('btn-teste-sino').addEventListener('click', function() {
+    alert("Iniciando teste de 3 badaladas...");
+    tocarSino(3); 
+});
 </script>
     
     <script>
