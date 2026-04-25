@@ -975,7 +975,10 @@ Com raízes na devoção iniciada em 1865 com uma imagem vinda de Portugal, a pa
 </script>
     
     <script>
-                // Lógica do cartão "HOJE"
+    // Agora o código espera a página carregar para marcar o card
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        // 1. Lógica do cartão "HOJE"
         const hoje = new Date().getDay();
         const cards = document.querySelectorAll('.agenda-item');
         cards.forEach(card => {
