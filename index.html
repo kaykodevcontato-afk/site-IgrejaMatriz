@@ -906,53 +906,55 @@ Com raízes na devoção iniciada em 1865 com uma imagem vinda de Portugal, a pa
     document.addEventListener('DOMContentLoaded', function() {
 
  <script>
-        // --- LÓGICA DO SINO ---
-    function verificarHoraSino() {
+    // --- LÓGICA DO SINO (BADALADAS DAS HORAS) ---
+    
+    let tocandoAgora = false;
+
+    function tocarSino(vezes) {
+        if (tocandoAgora) return; // Evita sobreposição se o script rodar duas vezes
+        tocandoAgora = true;
+
+        const somSino = document.getElementById('som-sino');
+        let contador = 0;
+
+        // Função que toca uma batida e espera o áudio terminar para tocar a próxima
+        function tocarBatida() {
+            if (contador < vezes) {
+                somSino.currentTime = 0; // Reinicia o áudio do início
+                somSino.play().catch(e => console.log("Áudio bloqueado pelo navegador."));
+                
+                contador++;
+
+                // Espera 3 segundos entre uma badalada e outra 
+                // (Ajuste esse tempo conforme a duração do seu arquivo de áudio)
+                setTimeout(tocarBatida, 3000); 
+            } else {
+                tocandoAgora = false;
+            }
+        }
+
+        tocarBatida();
+    }
+
+    function verificarRelogio() {
         const agora = new Date();
         const minutos = agora.getMinutes();
         const segundos = agora.getSeconds();
+        let horas = agora.getHours();
 
-        // Toca apenas quando for exatamente 00 minutos e 00 segundos
+        // Verifica se é o início de qualquer hora (minuto 0 e segundo 0)
         if (minutos === 0 && segundos === 0) {
-            let horas = agora.getHours();
             
-            // Converte para formato 12h (ex: 13h vira 1 batida)
-            if (horas > 12) horas = horas - 12;
-            if (horas === 0) horas = 12;
+            // Converte formato 24h para 12h (Ex: 13h vira 1h, 00h vira 12h)
+            let batidas = horas % 12;
+            if (batidas === 0) batidas = 12;
 
-            let batidasDadas = 0;
-            const audioSino = document.getElementById('som-sino');
-
-            function tocarBatida() {
-                if (batidasDadas < horas) {
-                    audioSino.currentTime = 0; // Reinicia o áudio
-                    audioSino.play().catch(error => {
-                        console.log("O áudio só toca após o usuário interagir com a página.");
-                    });
-                    batidasDadas++;
-                    
-                    // Intervalo de 4 segundos entre as batidas (ajuste se o som for longo)
-                    setTimeout(tocarBatida, 4000); 
-                }
-            }
-            tocarBatida();
+            tocarSino(batidas);
         }
     }
 
-    // Verifica a cada 1 segundo se a hora mudou
-    setInterval(verificarHoraSino, 1000);
-
-    // Destaque do dia "HOJE" nas missas (que estava incompleto no seu código)
-    document.addEventListener('DOMContentLoaded', function() {
-        const diaSemana = new Date().getDay(); // 0 (Dom) a 6 (Sab)
-        const itens = document.querySelectorAll('.agenda-item');
-        
-        itens.forEach(item => {
-            if (parseInt(item.getAttribute('data-dia')) === diaSemana) {
-                item.classList.add('hoje');
-            }
-        });
-    });
+    // Verifica a cada 1 segundo
+    setInterval(verificarRelogio, 1000);
 </script>
     
     <script>
