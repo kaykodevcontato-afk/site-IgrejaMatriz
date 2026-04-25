@@ -467,6 +467,95 @@
             .doacao-card { flex-direction: column; text-align: center; padding: 25px; }
             .doacao-texto { text-align: center; min-width: 100%; }
         }
+
+       /* CONTATO MODERNO */
+.contato-moderno {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 25px;
+    max-width: 1100px;
+    margin: 40px auto 80px;
+    padding: 0 20px;
+}
+
+.card-contato {
+    background: white;
+    border-radius: 20px;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.card-contato:hover {
+    transform: translateY(-8px);
+}
+
+.card-contato i {
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.card-contato h3 {
+    margin-bottom: 10px;
+}
+
+.card-contato p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.card-contato a {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+/* CORES */
+.whatsapp i { color: #25D366; }
+.whatsapp a { background: #25D366; }
+
+.instagram i { color: #E1306C; }
+.instagram a { background: linear-gradient(45deg,#f58529,#dd2a7b,#8134af); }
+
+.youtube i { color: #FF0000; }
+.youtube a { background: #FF0000; }
+
+.local i { color: #0EAFEA; }
+
+        /* RODAPÉ */
+.rodape {
+    background: linear-gradient(135deg, #0EAFEA, #0b8fc0);
+    color: white;
+    text-align: center;
+    padding: 25px 15px;
+    margin-top: 60px;
+}
+
+.rodape p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+}
+
+.rodape .dev strong {
+    color: #f2d27a;
+}
+
+        /*mapa local*/
+        .mapa-container {
+    max-width: 1100px;
+    margin: 0 auto 80px;
+    padding: 0 20px;
+}
+
+.mapa-container iframe {
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
         
     </style>
 </head>
@@ -485,7 +574,7 @@
         <a href="#a-igreja">A Igreja</a>
         <a href="#galeria">Galeria</a>
         <a href="#doacao">Doação</a>
-        <a href="#">Contato</a>
+        <a href="#contato">Contato</a>
     </nav>
 </header>
 
@@ -642,41 +731,6 @@ Com raízes na devoção iniciada em 1865 com uma imagem vinda de Portugal, a pa
     <h1 class="titulo" id="galeria">Galeria de Fotos</h1>
     <span class="linha-azul"></span>
 
-    <section class="galeria-section">
-        <div class="galeria-grid">
-            
-            <a href="#" class="album-card">
-                <div class="album-thumb">
-                    <img src="CapaAlbumMissas.jpg" alt="Missas de Domingo">
-                </div>
-                <div class="album-info">
-                    <h4>Santa Missa</h4>
-                    <span>Celebrações dominicais e semanais</span>
-                </div>
-            </a>
-
-            <a href="#" class="album-card">
-                <div class="album-thumb">
-                    <img src="CapaAlbumBatismo.jpg" alt="Batizados">
-                </div>
-                <div class="album-info">
-                    <h4>Batizados</h4>
-                    <span>Registros dos novos membros da nossa fé</span>
-                </div>
-            </a>
-
-            <a href="#" class="album-card">
-                <div class="album-thumb">
-                    <img src="CapaAlbumEventos.jpg" alt="Eventos e Festas">
-                </div>
-                <div class="album-info">
-                    <h4>Eventos e Pastorais</h4>
-                    <span>Momentos especiais e encontros comunitários</span>
-                </div>
-            </a>
-        </div>
-    </section>
-
     <section class="instagram-container">
         <script src="https://elfsightcdn.com/platform.js" async></script>
         <div class="elfsight-app-fb046694-b457-4af3-82e6-42be8ae69c5a" data-elfsight-app-lazy></div>
@@ -716,6 +770,68 @@ Com raízes na devoção iniciada em 1865 com uma imagem vinda de Portugal, a pa
             </div>
         </div>
     </section>
+
+   <h1 class="titulo" id="contato">Contato</h1>
+<span class="linha-azul"></span>
+
+<section class="contato-moderno">
+
+    <div class="card-contato whatsapp">
+        <i class="fab fa-whatsapp"></i>
+        <h3>WhatsApp</h3>
+        <p>Fale direto com a secretaria</p>
+        <a href="https://wa.me/5587991587001?text=Olá,%20gostaria%20de%20informações%20da%20paróquia" target="_blank">
+            Iniciar conversa
+        </a>
+    </div>
+
+    <div class="card-contato instagram">
+        <i class="fab fa-instagram"></i>
+        <h3>Instagram</h3>
+        <p>Acompanhe nossas atualizações</p>
+        <a href="https://www.instagram.com/paroquiadolivramento/?hl=pt-br" target="_blank">
+            Acessar perfil
+        </a>
+    </div>
+
+    <div class="card-contato youtube">
+        <i class="fab fa-youtube"></i>
+        <h3>YouTube</h3>
+        <p>Assista às transmissões</p>
+        <a href="https://www.youtube.com/@PascomLivramento" target="_blank">
+            Assistir canal
+        </a>
+    </div>
+
+    <div class="card-contato local">
+        <i class="fas fa-map-marker-alt"></i>
+        <h3>Endereço</h3>
+        <p>Praça do Livramento - Centro<br>Arcoverde - PE</p>
+    </div>
+
+</section>
+
+    <h1 class="titulo">Localização</h1>
+<span class="linha-azul"></span>
+
+<section class="mapa-container">
+    <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d243.61606961695725!2d-37.05340592618248!3d-8.41933398296192!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7a81bc280b18d69%3A0x13d550240bcefa19!2sPar%C3%B3quia%20Nossa%20Senhora%20do%20Livramento!5e1!3m2!1spt-BR!2sbr!4v1777137535679!5m2!1spt-BR!2sbr"
+        width="100%" 
+        height="350" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy">
+    </iframe>
+
+<p style="text-align:center; margin-top:15px;">
+        <a href="https://maps.google.com/?q=Paróquia Nossa Senhora do Livramento Arcoverde" target="_blank"
+           style="background:#0EAFEA; color:white; padding:10px 20px; border-radius:20px; text-decoration:none;">
+            📍 Abrir no Google Maps
+        </a>
+    </p>
+
+</section>
 
 </main>
 
@@ -763,6 +879,34 @@ Com raízes na devoção iniciada em 1865 com uma imagem vinda de Portugal, a pa
         }
     });
 </script>
+
+    <script>
+function enviarMensagem(event) {
+    event.preventDefault();
+
+    const nome = document.querySelector('input[type="text"]').value;
+    const email = document.querySelector('input[type="email"]').value;
+    const mensagem = document.querySelector('textarea').value;
+
+    const texto = `Olá, meu nome é ${nome}%0AEmail: ${email}%0AMensagem: ${mensagem}`;
+
+    const url = `https://wa.me/5587991587001?text=${texto}`;
+    window.open(url, '_blank');
+}
+</script>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+<footer class="rodape">
+    <p>© 2026 Paróquia Nossa Senhora do Livramento</p>
+    <p class="dev">
+    👨‍💻 Desenvolvido por: 
+    <strong>Cauã</strong>, 
+    <strong>Kayko</strong>, 
+    <strong>Victor</strong>,
+    <strong>Yam</strong>
+</p>
+</footer>
 
 </body>
 </html>
