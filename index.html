@@ -600,6 +600,8 @@
 </head>
 <body>
 
+    <audio id="som-sino" src="Somsinohorafundo.mp3"></audio>
+
 <header class="topo">
     <img src="LogoBrasaoDaParoquia.png" alt="Brasão da Paróquia" class="logo">
     <div class="container-titulo">
@@ -902,7 +904,59 @@ Com raízes na devoção iniciada em 1865 com uma imagem vinda de Portugal, a pa
     }
 
     document.addEventListener('DOMContentLoaded', function() {
-        // Lógica do cartão "HOJE"
+
+ <script>
+        // --- LÓGICA DO SINO ---
+    function verificarHoraSino() {
+        const agora = new Date();
+        const minutos = agora.getMinutes();
+        const segundos = agora.getSeconds();
+
+        // Toca apenas quando for exatamente 00 minutos e 00 segundos
+        if (minutos === 0 && segundos === 0) {
+            let horas = agora.getHours();
+            
+            // Converte para formato 12h (ex: 13h vira 1 batida)
+            if (horas > 12) horas = horas - 12;
+            if (horas === 0) horas = 12;
+
+            let batidasDadas = 0;
+            const audioSino = document.getElementById('som-sino');
+
+            function tocarBatida() {
+                if (batidasDadas < horas) {
+                    audioSino.currentTime = 0; // Reinicia o áudio
+                    audioSino.play().catch(error => {
+                        console.log("O áudio só toca após o usuário interagir com a página.");
+                    });
+                    batidasDadas++;
+                    
+                    // Intervalo de 4 segundos entre as batidas (ajuste se o som for longo)
+                    setTimeout(tocarBatida, 4000); 
+                }
+            }
+            tocarBatida();
+        }
+    }
+
+    // Verifica a cada 1 segundo se a hora mudou
+    setInterval(verificarHoraSino, 1000);
+
+    // Destaque do dia "HOJE" nas missas (que estava incompleto no seu código)
+    document.addEventListener('DOMContentLoaded', function() {
+        const diaSemana = new Date().getDay(); // 0 (Dom) a 6 (Sab)
+        const itens = document.querySelectorAll('.agenda-item');
+        
+        itens.forEach(item => {
+            if (parseInt(item.getAttribute('data-dia')) === diaSemana) {
+                item.classList.add('hoje');
+            }
+        });
+    });
+</script>
+    
+    <script>
+                // Lógica do cartão "HOJE"
         const hoje = new Date().getDay();
         const cards = document.querySelectorAll('.agenda-item');
         cards.forEach(card => {
