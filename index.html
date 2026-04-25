@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Igreja Matriz - Paróquia Nossa Senhora do Livramento</title>
+    <meta name="description" content="Paróquia Nossa Senhora do Livramento em Arcoverde - horários de missas, transmissões ao vivo, história e contato.">
+<meta name="keywords" content="igreja Arcoverde, missa Arcoverde, Nossa Senhora do Livramento, paróquia">
 
     <link rel="icon" type="image/png" href="LogoBrasaoDaParoquia.png">
 
@@ -556,7 +558,44 @@
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
-        
+
+        /*paroco padre*/
+        .padre-container {
+    max-width: 900px;
+    margin: 40px auto 80px;
+    padding: 0 20px;
+}
+
+.padre-card {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    flex-wrap: wrap;
+}
+
+.padre-card img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #d4af37;
+}
+
+.padre-info {
+    flex: 1;
+    text-align: left;
+}
+
+.padre-info h3 {
+    color: #0b8fc0;
+    margin-bottom: 10px;
+}
+
+        /*ESTRUTURA DO SITE ABAIXO HTML*/
     </style>
 </head>
 <body>
@@ -571,7 +610,8 @@
         <a href="#">Início</a>
         <a href="#missas">Missas</a>
         <a href="#ao-vivo">Ao Vivo</a>
-        <a href="#a-igreja">A Igreja</a>
+        <a href="#a-igreja">História da Igreja</a>
+        <a href="#paroco">Pároco</a>
         <a href="#galeria">Galeria</a>
         <a href="#doacao">Doação</a>
         <a href="#contato">Contato</a>
@@ -727,6 +767,24 @@ Com raízes na devoção iniciada em 1865 com uma imagem vinda de Portugal, a pa
             </div>
         </div>
     </section>
+
+    <h1 class="titulo" id="paroco">Nosso Pároco</h1>
+<span class="linha-azul"></span>
+
+<section class="padre-container">
+    <div class="padre-card">
+        <img src="FotoPadreAdeildoSebastiaoFerreira.jpeg" alt="Padre Adeildo Sebastião Ferreira">
+        
+        <div class="padre-info">
+            <h3>Pe. Adeildo Sebastião Ferreira</h3>
+            <p><strong>Pároco</strong> da Paróquia Nossa Senhora do Livramento</p>
+            <p>
+                Responsável pela condução espiritual da comunidade,
+                celebrações e atividades pastorais da paróquia.
+            </p>
+        </div>
+    </div>
+</section>
     
     <h1 class="titulo" id="galeria">Galeria de Fotos</h1>
     <span class="linha-azul"></span>
@@ -764,7 +822,7 @@ Com raízes na devoção iniciada em 1865 com uma imagem vinda de Portugal, a pa
 
             <div style="text-align: center; flex: 1;">
                 <div style="background: white; padding: 15px; border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); display: inline-block; border: 1px solid #f0f0f0;">
-                    <img src="qrcode-pix.png" alt="QR Code Pix" style="width: 190px; display: block; border-radius: 8px;">
+                    <img src="qrcodepixversao1ck.png" alt="QR Code Pix" style="width: 190px; display: block; border-radius: 8px;">
                 </div>
                 <p style="font-size: 0.8rem; color: #888; margin-top: 12px; font-style: italic;">Aponte a câmera para doar via App</p>
             </div>
@@ -779,7 +837,7 @@ Com raízes na devoção iniciada em 1865 com uma imagem vinda de Portugal, a pa
     <div class="card-contato whatsapp">
         <i class="fab fa-whatsapp"></i>
         <h3>WhatsApp</h3>
-        <p>Fale direto com a secretaria</p>
+        <p>Fale direto com a secretaria paroquial</p>
         <a href="https://wa.me/5587991587001?text=Olá,%20gostaria%20de%20informações%20da%20paróquia" target="_blank">
             Iniciar conversa
         </a>
@@ -806,7 +864,7 @@ Com raízes na devoção iniciada em 1865 com uma imagem vinda de Portugal, a pa
     <div class="card-contato local">
         <i class="fas fa-map-marker-alt"></i>
         <h3>Endereço</h3>
-        <p>Praça do Livramento - Centro<br>Arcoverde - PE</p>
+        <p>Praça do Livramento<br>N° 17 - Centro<br>CEP: 56505-250<br>Arcoverde - PE</p>
     </div>
 
 </section>
@@ -839,7 +897,7 @@ Com raízes na devoção iniciada em 1865 com uma imagem vinda de Portugal, a pa
     function copiarPix() {
         const chave = "10.714.251/0028-01";
         navigator.clipboard.writeText(chave).then(() => {
-            alert("Chave PIX (CNPJ) copiada com sucesso! Agora basta colar no seu aplicativo do banco.");
+            alert("Chave PIX copiada com sucesso!");
         });
     }
 
