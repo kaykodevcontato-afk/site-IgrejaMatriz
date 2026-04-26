@@ -713,6 +713,57 @@
     .moldura-dourada { display: none; }
 }
 
+        /* ESTILO ESPECIAL PARA O HINO */
+.hino-container {
+    background: #fdfaf0;
+    border-left: 5px solid #d4af37;
+    border-right: 5px solid #d4af37; /* Moldura lateral */
+    padding: 40px;
+    border-radius: 20px;
+    margin-top: 25px;
+    text-align: center; /* Centralizado como todo hino */
+}
+
+.hino-header h4 {
+    margin: 0 0 25px 0;
+    color: #b8860b;
+    font-family: 'Peristiwa', serif;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
+.texto-hino .estrofe {
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Destaque para o refrão */
+.refrao {
+    font-weight: bold;
+    color: #0b8fc0 !important;
+    position: relative;
+    padding: 10px 0;
+}
+
+.refrao::before, .refrao::after {
+    content: "—";
+    color: #d4af37;
+    margin: 0 10px;
+}
+
+@media (max-width: 768px) {
+    .hino-container {
+        padding: 20px;
+        border-right: none; /* Simplifica no celular */
+    }
+    .texto-hino .estrofe {
+        font-size: 1rem;
+    }
+}
+
         /*ESTRUTURA DO SITE ABAIXO HTML*/
     </style>
 </head>
@@ -928,21 +979,33 @@ Com raízes na devoção iniciada em 1865 com uma imagem vinda de Portugal, a pa
                 </ul>
             </div>
             
-            <div class="oracao-box">
-    <h4>Oração à Padroeira</h4>
-    <div class="texto-oracao">
-        <p>Ó Senhora do Livramento, vossos filhos,<br>
-        Benigna amparai, e na hora do vil tormento,<br>
-        nossa fé vinde e confortai.</p>
+            <div class="oracao-box hino-container">
+    <div class="hino-header">
+        <img src="https://cdn-icons-png.flaticon.com/512/4601/4601449.png" width="30" style="margin-bottom: 10px; opacity: 0.7;">
+        <h4>Hino à Padroeira</h4>
+    </div>
+    
+    <div class="texto-hino">
+        <p class="estrofe">
+            Ó Senhora do Livramento, vossos filhos,<br>
+            Benigna amparai, e na hora do vil tormento,<br>
+            nossa fé vinde e confortai.
+        </p>
 
-        <p>Vinde ó mãe querida, vinde nos socorrer.<br>
-        As lutas desta vida, ó mãe dai-nos vencer.</p>
+        <p class="estrofe refrao">
+            Vinde ó mãe querida, vinde nos socorrer.<br>
+            As lutas desta vida, ó mãe dai-nos vencer.
+        </p>
 
-        <p>Ao vosso meigo filho, mãe nos apresentai.<br>
-        De nossos vis pecados, o perdão alcançai.</p>
+        <p class="estrofe">
+            Ao vosso meigo filho, mãe nos apresentai.<br>
+            De nossos vis pecados, o perdão alcançai.
+        </p>
 
-        <p>Na hora derradeira, dai-nos vosso Jesus.<br>
-        Que alegre nos receba, lá na eterna luz.</p>
+        <p class="estrofe">
+            Na hora derradeira, dai-nos vosso Jesus.<br>
+            Que alegre nos receba, lá na eterna luz.
+        </p>
     </div>
 </div>
 </section>
