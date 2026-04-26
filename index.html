@@ -595,6 +595,118 @@
     margin-bottom: 10px;
 }
 
+        /* ESTILO SEÇÃO PADROEIRA */
+.padroeira-container {
+    max-width: 1100px;
+    margin: 0 auto 80px;
+    padding: 0 20px;
+}
+
+.padroeira-card {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+    border: 1px solid #eee;
+    flex-wrap: wrap;
+}
+
+.padroeira-foto {
+    flex: 1;
+    min-width: 280px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.padroeira-foto img {
+    width: 100%;
+    max-width: 350px;
+    border-radius: 15px;
+    z-index: 2;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.moldura-dourada {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 370px;
+    height: 100%;
+    border: 2px solid #d4af37;
+    border-radius: 20px;
+    z-index: 1;
+}
+
+.padroeira-info {
+    flex: 1.5;
+    text-align: left;
+    min-width: 300px;
+}
+
+.legenda-padroeira {
+    color: #b8860b;
+    font-style: italic;
+    font-weight: bold;
+    margin-top: -10px;
+    margin-bottom: 20px;
+}
+
+.texto-devocional p {
+    line-height: 1.6;
+    color: #555;
+}
+
+.lista-curiosidades {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.lista-curiosidades li {
+    margin-bottom: 10px;
+    padding-left: 25px;
+    position: relative;
+}
+
+.lista-curiosidades li::before {
+    content: "♰";
+    position: absolute;
+    left: 0;
+    color: #0EAFEA;
+    font-weight: bold;
+}
+
+.oracao-box {
+    background: #fdfaf0;
+    border-left: 5px solid #d4af37;
+    padding: 20px;
+    border-radius: 0 15px 15px 0;
+    margin-top: 25px;
+}
+
+.oracao-box h4 {
+    margin: 0 0 10px 0;
+    color: #d4af37;
+}
+
+.oracao-box p {
+    font-style: italic;
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .padroeira-card { flex-direction: column; text-align: center; padding: 25px; }
+    .padroeira-info { text-align: center; }
+    .lista-curiosidades li { text-align: left; }
+    .moldura-dourada { display: none; }
+}
+
         /*ESTRUTURA DO SITE ABAIXO HTML*/
     </style>
 </head>
@@ -786,6 +898,36 @@ Com raízes na devoção iniciada em 1865 com uma imagem vinda de Portugal, a pa
             </div>
         </div>
     </section>
+
+    <h1 class="titulo" id="padroeira">Nossa Padroeira</h1>
+<span class="linha-azul"></span>
+
+<section class="padroeira-container">
+    <div class="padroeira-card">
+        <div class="padroeira-foto">
+            <img src="FotoPadroeira.jpg" alt="Nossa Senhora do Livramento">
+            <div class="moldura-dourada"></div>
+        </div>
+        <div class="padroeira-info">
+            <h3>Nossa Senhora do Livramento</h3>
+            <p class="legenda-padroeira">"Mãe que nos livra de todos os males"</p>
+            
+            <div class="texto-devocional">
+                <p>A devoção à Virgem do Livramento é o pilar que sustenta a fé do povo de Arcoverde há mais de 150 anos. Ela não é apenas uma imagem, mas o símbolo da proteção divina sobre nossa cidade.</p>
+                <ul class="lista-curiosidades">
+                    <li><strong>Festa Litúrgica:</strong> Celebrada solenemente no dia 23 de Setembro.</li>
+                    <li><strong>Significado:</strong> Representa o auxílio cristão nos momentos de aflição, perigo e pedidos de libertação.</li>
+                    <li><strong>Tradição:</strong> A procissão de encerramento é um dos maiores eventos religiosos do Sertão de Pernambuco.</li>
+                </ul>
+            </div>
+            
+            <div class="oracao-box">
+                <h4>Oração à Padroeira</h4>
+                <p>"Ó Maria, Senhora do Livramento, com vossa proteção, livrai-nos de todos os perigos, das doenças e do pecado. Olhai por nossas famílias e abençoai nossa Arcoverde. Amém!"</p>
+            </div>
+        </div>
+    </div>
+</section>
 
     <h1 class="titulo" id="paroco">Nosso Pároco</h1>
 <span class="linha-azul"></span>
