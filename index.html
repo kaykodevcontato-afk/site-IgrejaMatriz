@@ -696,27 +696,53 @@
 
 /* RESPONSIVO AJUSTADO */
 @media (max-width: 768px) {
+
     .padroeira-card { 
         flex-direction: column; 
         padding: 20px; 
+        text-align: center;
+        align-items: center;
     }
     
     .padroeira-foto {
         width: 100%;
-        margin-bottom: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 25px;
     }
 
-    /* Remove a moldura no celular para não dar conflito com o toque */
-    .moldura-dourada { display: none; }
+    .padroeira-foto img {
+        margin: 0 auto;
+    }
 
+    .padroeira-info {
+        text-align: center;
+        width: 100%;
+    }
+
+    .padroeira-info ul {
+        text-align: left; /* lista continua organizada */
+    }
+
+    .texto-devocional p {
+        text-align: center;
+    }
+
+    /* HINO CENTRALIZADO */
     .hino-container {
-        padding: 20px 10px;
-        border-right: none; /* Deixa apenas a borda da esquerda para ganhar espaço */
+        padding: 20px 15px;
+        text-align: center;
+    }
+
+    .texto-hino {
+        text-align: center;
     }
 
     .texto-hino .estrofe {
-        font-size: 0.95rem; /* Letra levemente menor no celular */
+        text-align: center;
     }
+
 }
 
         /*ESTRUTURA DO SITE ABAIXO HTML*/
