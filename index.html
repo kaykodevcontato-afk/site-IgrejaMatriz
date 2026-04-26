@@ -10,6 +10,10 @@
     <link rel="icon" type="image/png" href="LogoBrasaoDaParoquia.png">
 
     <style>
+        * {
+    box-sizing: border-box;
+        }
+        
         /* ROLAGEM SUAVE */
         html {
             scroll-behavior: smooth;
@@ -609,18 +613,22 @@
     background: white;
     border-radius: 20px;
     padding: 40px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     border: 1px solid #eee;
     flex-wrap: wrap;
+
+    /* 🔧 CORREÇÃO PRINCIPAL */
+    width: 100%;
+    max-width: 100%;
 }
 
 .padroeira-foto {
     flex: 1;
-    min-width: 280px;
+    min-width: 0; /* 🔧 CORREÇÃO PRINCIPAL */
     position: relative;
     display: flex;
     justify-content: center;
-    align-items: center; /* Garante alinhamento central */
+    align-items: center;
 }
 
 .padroeira-foto img {
@@ -663,15 +671,18 @@
 
 /* HINO CORRIGIDO PARA CELULAR E ALINHAMENTO */
 .hino-container {
+    width: 100%;
+    max-width: 100%;
     background: white;
     border: 1px solid #eee;
     border-top: 4px solid #d4af37;
-    padding: 25px 20px;
+    padding: 20px;
     border-radius: 15px;
     margin-top: 25px;
     text-align: center;
     box-shadow: 0 6px 18px rgba(0,0,0,0.05);
 }
+        
 .hino-header h4 {
     margin: 0 0 15px 0;
     color: #0b8fc0;
@@ -697,15 +708,22 @@
 /* RESPONSIVO AJUSTADO */
 @media (max-width: 768px) {
 
+    .padroeira-container {
+        padding: 0 10px; /* 🔧 evita colar nas bordas */
+    }
+
     .padroeira-card { 
         flex-direction: column; 
-        padding: 20px; 
+        padding: 20px 15px; 
         text-align: center;
         align-items: center;
+        width: 100%;
+        max-width: 100%;
     }
     
     .padroeira-foto {
         width: 100%;
+        min-width: 0; /* 🔥 ESSENCIAL */
         display: flex;
         justify-content: center;
         align-items: center;
@@ -713,6 +731,9 @@
     }
 
     .padroeira-foto img {
+        width: 100%;
+        max-width: 280px;
+        display: block;
         margin: 0 auto;
     }
 
@@ -722,25 +743,30 @@
     }
 
     .padroeira-info ul {
-        text-align: left; /* lista continua organizada */
+        text-align: left;
+        padding-left: 18px; /* melhora alinhamento */
     }
 
     .texto-devocional p {
         text-align: center;
     }
 
-    /* HINO CENTRALIZADO */
+    /*  HINO CORRIGIDO */
     .hino-container {
-        padding: 20px 15px;
+        width: 100%;
+        max-width: 100%;
+        padding: 20px 12px;
         text-align: center;
     }
 
     .texto-hino {
+        width: 100%;
         text-align: center;
     }
 
     .texto-hino .estrofe {
         text-align: center;
+        word-break: break-word; /* 🔧 evita estourar */
     }
 
 }
