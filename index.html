@@ -10,10 +10,6 @@
     <link rel="icon" type="image/png" href="LogoBrasaoDaParoquia.png">
 
     <style>
-        * {
-    box-sizing: border-box;
-        }
-        
         /* ROLAGEM SUAVE */
         html {
             scroll-behavior: smooth;
@@ -608,44 +604,39 @@
 
 .padroeira-card {
     display: flex;
-    align-items: flex-start;   /* alinha tudo pelo topo */
-    justify-content: space-between; /* distribui melhor */
+    align-items: center;
     gap: 50px;
     background: white;
     border-radius: 20px;
     padding: 40px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.06);
     border: 1px solid #eee;
     flex-wrap: wrap;
-    width: 100%;
-    max-width: 100%;
 }
 
 .padroeira-foto {
-    flex: 0.9;
-    min-width: 0;
+    flex: 1;
+    min-width: 280px;
     position: relative;
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin-top: 500px; /*  ESSA LINHA resolve o alinhamento */
 }
 
 .padroeira-foto img {
     width: 100%;
-    max-width: 320px; /* Reduzi levemente para caber melhor */
+    max-width: 350px;
     border-radius: 15px;
     z-index: 2;
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
-/* MOLDURA CORRIGIDA: Agora ela se baseia no tamanho da imagem */
 .moldura-dourada {
     position: absolute;
-    top: -10px;
-    width: calc(100% + 20px); /* Abraça a imagem com folga de 10px cada lado */
-    max-width: 340px; /* Ajustado para ser maior que o max-width da img */
-    height: calc(100% + 20px);
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 370px;
+    height: 100%;
     border: 2px solid #d4af37;
     border-radius: 20px;
     z-index: 1;
@@ -653,135 +644,73 @@
 
 .padroeira-info {
     flex: 1.5;
-    text-align: center; /*  CENTRALIZA TUDO */
+    text-align: left;
     min-width: 300px;
-}
-        
-.lista-curiosidades {
-    display: table;
-    margin: 15px auto; /* CENTRALIZA O BLOCO */
-    text-align: left;  /* mantém itens alinhados */
 }
 
 .legenda-padroeira {
     color: #b8860b;
     font-style: italic;
     font-weight: bold;
+    margin-top: -10px;
     margin-bottom: 20px;
 }
 
 .texto-devocional p {
     line-height: 1.6;
     color: #555;
-    text-align: center; /* CENTRALIZA O TEXTO */
-    max-width: 600px;
-    margin: 0 auto; /* centraliza o bloco */
 }
 
-/* HINO CORRIGIDO PARA CELULAR E ALINHAMENTO */
-.hino-container {
-    width: 100%;
-    max-width: 100%;
-    background: white;
-    border: 1px solid #eee;
-    border-top: 4px solid #d4af37;
-    padding: 20px;
-    border-radius: 15px;
+.lista-curiosidades {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.lista-curiosidades li {
+    margin-bottom: 10px;
+    padding-left: 25px;
+    position: relative;
+}
+
+.lista-curiosidades li::before {
+    content: "♰";
+    position: absolute;
+    left: 0;
+    color: #0EAFEA;
+    font-weight: bold;
+}
+
+.oracao-box {
+    background: #fdfaf0;
+    border-left: 5px solid #d4af37;
+    padding: 30px;
+    border-radius: 0 20px 20px 0;
     margin-top: 25px;
-    text-align: center;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.05);
-}
-        
-.hino-header h4 {
-    margin: 0 0 15px 0;
-    color: #0b8fc0;
-    font-size: 1.2rem;
+    box-shadow: inset 0 0 10px rgba(212, 175, 55, 0.1);
 }
 
-.texto-hino .estrofe {
-    font-family: 'Georgia', serif;
-    font-size: 1rem;
+.oracao-box h4 {
+    margin: 0 0 20px 0;
+    color: #d4af37;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.texto-oracao p {
+    font-style: italic;
+    font-size: 1.05rem;
     line-height: 1.6;
     color: #444;
-    margin-bottom: 18px;
+    margin-bottom: 15px; /* Espaço entre as estrofes */
 }
 
-.refrao {
-    font-weight: bold;
-    color: #0EAFEA !important;
-    padding: 10px;
-    background: #f0faff;
-    border-radius: 10px;
-}
-
-/* RESPONSIVO AJUSTADO */
 @media (max-width: 768px) {
-
-    .padroeira-container {
-        padding: 0 10px; /* 🔧 evita colar nas bordas */
-    }
-
-    .padroeira-card { 
-        flex-direction: column; 
-        padding: 20px 15px; 
-        text-align: center;
-        align-items: center;
-        width: 100%;
-        max-width: 100%;
-    }
-    
-   .padroeira-foto {
-    width: 100%;
-    min-width: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    order: 2;
-    margin-top: 10px;   /* controla altura */
-    margin-bottom: -10px; /* aproxima da oração */
-   }
-  
-    .padroeira-foto img {
-        width: 100%;
-        max-width: 280px;
-        display: block;
-        margin: 0 auto;
-    }
-
-    .padroeira-info {
-        text-align: center;
-        width: 100%;
-        order: 1; /* TEXTO fica em cima */
-    }
-
-    .padroeira-info ul {
-        text-align: left;
-        padding-left: 18px; /* melhora alinhamento */
-    }
-
-    .texto-devocional p {
-        text-align: center;
-    }
-
-    /*  HINO CORRIGIDO */
-    .hino-container {
-        width: 100%;
-        max-width: 100%;
-        padding: 20px 12px;
-        text-align: center;
-        margin-top: 35px; /* joga oração pra baixo da foto */
-    }
-
-    .texto-hino {
-        width: 100%;
-        text-align: center;
-    }
-
-    .texto-hino .estrofe {
-        text-align: center;
-        word-break: break-word; /* 🔧 evita estourar */
-    }
-
+    .padroeira-card { flex-direction: column; text-align: center; padding: 25px; }
+    .padroeira-info { text-align: center; }
+    .lista-curiosidades li { text-align: left; }
+    .moldura-dourada { display: none; }
 }
 
         /*ESTRUTURA DO SITE ABAIXO HTML*/
@@ -916,7 +845,7 @@
         <div class="historia-topo">
             <div class="historia-texto">
                 <p>A Paróquia de Nossa Senhora do Livramento em Arcoverde foi criada em <strong>21 de agosto de 1919</strong> por Dom José Antônio de Oliveira Lopes, desmembrada da Diocese de Pesqueira.
-                  Com raízes na devoção iniciada em 1865 com uma imagem vinda de Portugal, a paróquia cresceu junto com a cidade, sendo fundamental na fé local.</p>
+Com raízes na devoção iniciada em 1865 com uma imagem vinda de Portugal, a paróquia cresceu junto com a cidade, sendo fundamental na fé local.</p>
                 
                 <ul>
                     <li><strong>Origem da Devoção:</strong> A veneração a Nossa Senhora do Livramento começou com uma imagem trazida de Portugal por um fazendeiro em 1865, instalada na antiga Fazenda Olhos d'Água dos Bredos.</li>
@@ -976,64 +905,46 @@
             </div>
         </div>
     </section>
-    
- <!-- PARTE SESSAO PADROEIRA -->
-  <h1 class="titulo" id="padroeira">Nossa Padroeira</h1>
+
+    <h1 class="titulo" id="padroeira">Nossa Padroeira</h1>
 <span class="linha-azul"></span>
 
 <section class="padroeira-container">
     <div class="padroeira-card">
-
-        <!-- FOTO -->
         <div class="padroeira-foto">
-            <img src="FotoPadroeira.webp" alt="Nossa Senhora do Livramento">
+            <img src="FotoPadroeira.jpg" alt="Nossa Senhora do Livramento">
             <div class="moldura-dourada"></div>
         </div>
-
-        <!-- TEXTO -->
         <div class="padroeira-info">
             <h3>Nossa Senhora do Livramento</h3>
             <p class="legenda-padroeira">"Mãe que nos livra de todos os males"</p>
             
             <div class="texto-devocional">
                 <p>A devoção à Virgem do Livramento é o pilar que sustenta a fé do povo de Arcoverde há mais de 150 anos. Ela não é apenas uma imagem, mas o símbolo da proteção divina sobre nossa cidade.</p>
-                
                 <ul class="lista-curiosidades">
                     <li><strong>Festa Litúrgica:</strong> Celebrada solenemente no dia 23 de Setembro.</li>
                     <li><strong>Significado:</strong> Representa o auxílio cristão nos momentos de aflição, perigo e pedidos de libertação.</li>
                     <li><strong>Tradição:</strong> A procissão de encerramento é um dos maiores eventos religiosos do Sertão de Pernambuco.</li>
                 </ul>
             </div>
-        </div>
-
-        <!-- ORAÇÃO E HINO AGORA SEPARADO -->
-        <div class="oracao-box hino-container">
-
-            <div class="hino-header">
-                <h4>Oração à Padroeira</h4>
-            </div>
-
-            <div class="texto-hino">
-                <p class="estrofe">Ó Senhora do Livramento, protegei a Cidade de Arcoverde...</p>
-                <p class="estrofe">Livrai-nos de todos os males espirituais...</p>
-                <p class="estrofe">Abençoai, especialmente, os enfermos...</p>
-                <p class="estrofe">Abençoai, também de modo especial...</p>
-            </div>
-
-            <div class="hino-header" style="margin-top: 25px;">
-                <h4>Hino à Padroeira</h4>
-            </div>
             
-            <div class="texto-hino">
-                <p class="estrofe">Ó Senhora do Livramento...</p>
-                <p class="estrofe refrao">Vinde ó mãe querida...</p>
-                <p class="estrofe">Ao vosso meigo filho...</p>
-                <p class="estrofe">Na hora derradeira...</p>
-            </div>
+            <div class="oracao-box">
+    <h4>Oração à Padroeira</h4>
+    <div class="texto-oracao">
+        <p>Ó Senhora do Livramento, vossos filhos,<br>
+        Benigna amparai, e na hora do vil tormento,<br>
+        nossa fé vinde e confortai.</p>
 
-        </div>
+        <p>Vinde ó mãe querida, vinde nos socorrer.<br>
+        As lutas desta vida, ó mãe dai-nos vencer.</p>
 
+        <p>Ao vosso meigo filho, mãe nos apresentai.<br>
+        De nossos vis pecados, o perdão alcançai.</p>
+
+        <p>Na hora derradeira, dai-nos vosso Jesus.<br>
+        Que alegre nos receba, lá na eterna luz.</p>
     </div>
+</div>
 </section>
 
     <h1 class="titulo" id="paroco">Nosso Pároco</h1>
@@ -1058,7 +969,7 @@
     <span class="linha-azul"></span>
 
     <section class="instagram-container">
-        <script src="https://elfsightcdn.com/platform.js" defer></script>
+        <script src="https://elfsightcdn.com/platform.js" async></script>
         <div class="elfsight-app-fb046694-b457-4af3-82e6-42be8ae69c5a" data-elfsight-app-lazy></div>
     </section>
 
