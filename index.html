@@ -609,6 +609,7 @@
 .padroeira-card {
     display: flex;
     align-items: center;
+    justify-content: center; /* CENTRALIZA TODO O CONTEÚDO */
     gap: 50px;
     background: white;
     border-radius: 20px;
@@ -617,14 +618,13 @@
     border: 1px solid #eee;
     flex-wrap: wrap;
 
-    /* 🔧 CORREÇÃO PRINCIPAL */
     width: 100%;
     max-width: 100%;
 }
 
 .padroeira-foto {
-    flex: 1;
-    min-width: 0; /* 🔧 CORREÇÃO PRINCIPAL */
+    flex: 0.9; /* deixa a imagem um pouco menor */
+    min-width: 0;
     position: relative;
     display: flex;
     justify-content: center;
@@ -652,9 +652,15 @@
 }
 
 .padroeira-info {
-    flex: 1.5;
-    text-align: left;
+    flex: 1.3; /* equilibra com a imagem */
+    text-align: center;
     min-width: 300px;
+}
+        
+.lista-curiosidades {
+    display: inline-block;
+    text-align: left; /* mantém lista organizada */
+    margin-top: 15px;
 }
 
 .legenda-padroeira {
