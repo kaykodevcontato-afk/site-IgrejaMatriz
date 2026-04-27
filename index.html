@@ -737,9 +737,10 @@
     justify-content: center;
     align-items: center;
     order: 2;
-    margin-top: 10px;     /* controla altura da foto */
-    margin-bottom: 5px;   /* diminui espaço com a oração */
-}
+    margin-top: 10px;   /* controla altura */
+    margin-bottom: -10px; /* aproxima da oração */
+   }
+  
     .padroeira-foto img {
         width: 100%;
         max-width: 280px;
@@ -750,7 +751,7 @@
     .padroeira-info {
         text-align: center;
         width: 100%;
-        order: 1; /* TEXTO VAI PRA CIMA */
+        order: 1; /* TEXTO fica em cima */
     }
 
     .padroeira-info ul {
@@ -768,6 +769,7 @@
         max-width: 100%;
         padding: 20px 12px;
         text-align: center;
+        margin-top: 35px; /* joga oração pra baixo da foto */
     }
 
     .texto-hino {
