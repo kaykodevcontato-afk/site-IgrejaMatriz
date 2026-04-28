@@ -429,15 +429,16 @@
         }
 
         /* SEÇÃO INSTAGRAM */
-        .instagram-container {
-            max-width: 1100px;
-            margin: 20px auto 50px;
-            padding: 20px;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            border: 1px solid #eee;
-        }
+       .instagram-container {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+        .lightwidget-widget {
+    border-radius: 15px;
+}
 
         /* SEÇÃO DOAÇÃO (DÍZIMO E OFERTAS) */
         .doacao-container { padding: 40px 20px 80px; background: transparent; }
@@ -1072,8 +1073,18 @@ Com raízes na devoção iniciada em 1865 com uma imagem vinda de Portugal, a pa
     <span class="linha-azul"></span>
 
     <section class="instagram-container">
-        <script src="https://cdn.lightwidget.com/widgets/lightwidget.js" defer></script>
-    </section>
+
+    <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
+
+    <iframe 
+        src="https://cdn.lightwidget.com/widgets/SEU_ID_AQUI.html"
+        scrolling="no" 
+        allowtransparency="true" 
+        class="lightwidget-widget"
+        style="width:100%;border:0;overflow:hidden;">
+    </iframe>
+
+</section>
 
     <h1 class="titulo" id="doacao">Dízimo e Ofertas</h1>
     <span class="linha-azul"></span>
