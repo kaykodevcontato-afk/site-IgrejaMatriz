@@ -10,10 +10,6 @@
     <link rel="icon" type="image/png" href="LogoBrasaoDaParoquia.png">
 
     <style>
-        * {
-    box-sizing: border-box;
-        }
-        
         /* ROLAGEM SUAVE */
         html {
             scroll-behavior: smooth;
@@ -600,32 +596,35 @@
 }
 
         /* ESTILO SEÇÃO PADROEIRA */
+.padroeira-container {
+    max-width: 1100px;
+    margin: 0 auto 80px;
+    padding: 0 20px;
+}
+
 .padroeira-card {
     display: flex;
-    align-items: center;  /* Centraliza verticalmente */
-    justify-content: center;
-    gap: 60px;
+    align-items: center;
+    gap: 50px;
     background: white;
     border-radius: 20px;
     padding: 40px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.06);
     border: 1px solid #eee;
     flex-wrap: wrap;
-    min-height: 500px;  /* ← ADICIONEI altura mínima */
 }
 
 .padroeira-foto {
-    flex: 0 0 auto;
+    flex: 1;
+    min-width: 280px;
     position: relative;
     display: flex;
     justify-content: center;
-    align-items: center;
-    align-self: center;  /* ← ADICIONEI: centraliza verticalmente */
 }
 
 .padroeira-foto img {
     width: 100%;
-    max-width: 320px;
+    max-width: 350px;
     border-radius: 15px;
     z-index: 2;
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
@@ -633,79 +632,135 @@
 
 .moldura-dourada {
     position: absolute;
-    top: -10px;
-    left: -10px;
-    width: calc(100% + 20px);
-    max-width: 340px;
-    height: calc(100% + 20px);
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 370px;
+    height: 100%;
     border: 2px solid #d4af37;
     border-radius: 20px;
     z-index: 1;
 }
 
 .padroeira-info {
-    flex: 1;
-    text-align: center;
+    flex: 1.5;
+    text-align: left;
     min-width: 300px;
-    max-width: 600px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;  /* ← Centraliza o conteúdo verticalmente */
-    align-self: center;  /* ← ADICIONEI: centraliza a caixa toda */
-}
-
-.padroeira-info h3 {
-    margin-top: 0;  /* ← ADICIONEI: remove margem superior */
-    margin-bottom: 10px;
 }
 
 .legenda-padroeira {
     color: #b8860b;
     font-style: italic;
     font-weight: bold;
+    margin-top: -10px;
     margin-bottom: 20px;
-    margin-top: 0;  /* ← ADICIONEI */
-}
-
-.texto-devocional {
-    margin-top: 20px;
 }
 
 .texto-devocional p {
     line-height: 1.6;
     color: #555;
-    text-align: center;
-    max-width: 600px;
-    margin: 0 auto 20px;
 }
 
 .lista-curiosidades {
-    display: inline-block;
-    margin: 15px auto;
-    text-align: left;
-    padding-left: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
 }
 
-/* RESPONSIVO */
+.lista-curiosidades li {
+    margin-bottom: 10px;
+    padding-left: 25px;
+    position: relative;
+}
+
+.lista-curiosidades li::before {
+    content: "♰";
+    position: absolute;
+    left: 0;
+    color: #0EAFEA;
+    font-weight: bold;
+}
+
+.oracao-box {
+    background: #fdfaf0;
+    border-left: 5px solid #d4af37;
+    padding: 30px;
+    border-radius: 0 20px 20px 0;
+    margin-top: 25px;
+    box-shadow: inset 0 0 10px rgba(212, 175, 55, 0.1);
+}
+
+.oracao-box h4 {
+    margin: 0 0 20px 0;
+    color: #d4af37;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.texto-oracao p {
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #444;
+    margin-bottom: 15px; /* Espaço entre as estrofes */
+}
+
 @media (max-width: 768px) {
-    .padroeira-card { 
-        flex-direction: column;
+    .padroeira-card { flex-direction: column; text-align: center; padding: 25px; }
+    .padroeira-info { text-align: center; }
+    .lista-curiosidades li { text-align: left; }
+    .moldura-dourada { display: none; }
+}
+
+        /* ESTILO ESPECIAL PARA O HINO */
+.hino-container {
+    background: #fdfaf0;
+    border-left: 5px solid #d4af37;
+    border-right: 5px solid #d4af37; /* Moldura lateral */
+    padding: 40px;
+    border-radius: 20px;
+    margin-top: 25px;
+    text-align: center; /* Centralizado como todo hino */
+}
+
+.hino-header h4 {
+    margin: 0 0 25px 0;
+    color: #b8860b;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
+.texto-hino .estrofe {
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Destaque para o refrão */
+.refrao {
+    font-weight: bold;
+    color: #0b8fc0 !important;
+    position: relative;
+    padding: 10px 0;
+}
+
+.refrao::before, .refrao::after {
+    content: "—";
+    color: #d4af37;
+    margin: 0 10px;
+}
+
+@media (max-width: 768px) {
+    .hino-container {
         padding: 20px;
-        gap: 30px;
-        min-height: auto;  /* ← Remove altura mínima no mobile */
+        border-right: none; /* Simplifica no celular */
     }
-    
-    .padroeira-foto {
-        width: 100%;
-    }
-
-    .padroeira-foto img {
-        max-width: 280px;
-    }
-
-    .padroeira-info {
-        width: 100%;
-        max-width: 100%;
+    .texto-hino .estrofe {
+        font-size: 1rem;
     }
 }
 
@@ -925,34 +980,8 @@ Com raízes na devoção iniciada em 1865 com uma imagem vinda de Portugal, a pa
             </div>
             
             <div class="oracao-box hino-container">
-
-    <!-- ORAÇÃO -->
     <div class="hino-header">
-        
-        <h4>Oração à Padroeira</h4>
-    </div>
-
-    <div class="texto-hino">
-        <p class="estrofe">
-            Ó Senhora do Livramento, protegei a Cidade de Arcoverde que se colocou desde a sua fundação sob a tutela do vosso patrocínio.
-        </p>
-
-        <p class="estrofe">
-            Livrai-nos de todos os males espirituais e temporais reuni todos os cristãos desta comunidade no seio de uma mesma família, que se congrega em torno de Cristo para ser povo de Deus, em marcha, em busca da casa do Pai.
-        </p>
-
-        <p class="estrofe">
-            Abençoai, especialmente, os enfermos, os famintos, os inválidos, os órfãos, as viúvas, os desamparados e os escravos da tirania do egoísmo.
-        </p>
-
-        <p class="estrofe">
-            Abençoai, também de modo especial, aqueles irmãos a quem a comunidade se confiou a missão de pregar o Evangelho e de trabalhar para a vossa Igreja. Amém.
-        </p>
-    </div>
-
-    <!-- HINO -->
-    <div class="hino-header" style="margin-top: 25px;">
-        
+        <img src="https://cdn-icons-png.flaticon.com/512/4601/4601449.png" width="30" style="margin-bottom: 10px; opacity: 0.7;">
         <h4>Hino à Padroeira</h4>
     </div>
     
@@ -978,7 +1007,6 @@ Com raízes na devoção iniciada em 1865 com uma imagem vinda de Portugal, a pa
             Que alegre nos receba, lá na eterna luz.
         </p>
     </div>
-
 </div>
 </section>
 
@@ -1004,7 +1032,7 @@ Com raízes na devoção iniciada em 1865 com uma imagem vinda de Portugal, a pa
     <span class="linha-azul"></span>
 
     <section class="instagram-container">
-        <script src="https://elfsightcdn.com/platform.js" defer></script>
+        <script src="https://elfsightcdn.com/platform.js" async></script>
         <div class="elfsight-app-fb046694-b457-4af3-82e6-42be8ae69c5a" data-elfsight-app-lazy></div>
     </section>
 
