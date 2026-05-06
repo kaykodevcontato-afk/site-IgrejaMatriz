@@ -600,32 +600,27 @@
 }
 
         /* ESTILO SEÇÃO PADROEIRA */
-.padroeira-container {
-    max-width: 1100px;
-    margin: 0 auto 80px;
-    padding: 0 20px;
-}
-
 .padroeira-card {
     display: flex;
-    align-items: center;  /* ← MUDEI: centraliza verticalmente */
-    justify-content: center;  /* ← MUDEI: centraliza horizontalmente */
-    gap: 60px;  /* ← AUMENTEI o espaçamento */
+    align-items: center;  /* Centraliza verticalmente */
+    justify-content: center;
+    gap: 60px;
     background: white;
     border-radius: 20px;
     padding: 40px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     border: 1px solid #eee;
     flex-wrap: wrap;
+    min-height: 500px;  /* ← ADICIONEI altura mínima */
 }
 
 .padroeira-foto {
-    flex: 0 0 auto;  /* ← MUDEI: não cresce nem encolhe */
+    flex: 0 0 auto;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* ← REMOVI o margin-top: 500px que estava quebrando */
+    align-self: center;  /* ← ADICIONEI: centraliza verticalmente */
 }
 
 .padroeira-foto img {
@@ -639,7 +634,7 @@
 .moldura-dourada {
     position: absolute;
     top: -10px;
-    left: -10px;  /* ← ADICIONEI para centralizar */
+    left: -10px;
     width: calc(100% + 20px);
     max-width: 340px;
     height: calc(100% + 20px);
@@ -649,20 +644,19 @@
 }
 
 .padroeira-info {
-    flex: 1;  /* ← SIMPLIFIQUEI */
+    flex: 1;
     text-align: center;
     min-width: 300px;
-    max-width: 600px;  /* ← ADICIONEI limite */
-    display: flex;  /* ← ADICIONEI */
-    flex-direction: column;  /* ← ADICIONEI */
-    justify-content: center;  /* ← ADICIONEI */
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  /* ← Centraliza o conteúdo verticalmente */
+    align-self: center;  /* ← ADICIONEI: centraliza a caixa toda */
 }
-        
-.lista-curiosidades {
-    display: inline-block;  /* ← MUDEI de table para inline-block */
-    margin: 15px auto;
-    text-align: left;
-    padding-left: 20px;  /* ← ADICIONEI */
+
+.padroeira-info h3 {
+    margin-top: 0;  /* ← ADICIONEI: remove margem superior */
+    margin-bottom: 10px;
 }
 
 .legenda-padroeira {
@@ -670,6 +664,11 @@
     font-style: italic;
     font-weight: bold;
     margin-bottom: 20px;
+    margin-top: 0;  /* ← ADICIONEI */
+}
+
+.texto-devocional {
+    margin-top: 20px;
 }
 
 .texto-devocional p {
@@ -677,55 +676,27 @@
     color: #555;
     text-align: center;
     max-width: 600px;
-    margin: 0 auto 20px;  /* ← ADICIONEI margem inferior */
+    margin: 0 auto 20px;
 }
 
-.hino-container {
-    width: 100%;
-    max-width: 100%;
-    background: white;
-    border: 1px solid #eee;
-    border-top: 4px solid #d4af37;
-    padding: 20px;
-    border-radius: 15px;
-    margin-top: 25px;
-    text-align: center;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.05);
-}
-        
-.hino-header h4 {
-    margin: 0 0 15px 0;
-    color: #0b8fc0;
-    font-size: 1.2rem;
+.lista-curiosidades {
+    display: inline-block;
+    margin: 15px auto;
+    text-align: left;
+    padding-left: 20px;
 }
 
-.texto-hino .estrofe {
-    font-family: 'Georgia', serif;
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #444;
-    margin-bottom: 18px;
-}
-
-.refrao {
-    font-weight: bold;
-    color: #0EAFEA !important;
-    padding: 10px;
-    background: #f0faff;
-    border-radius: 10px;
-}
-
-/* RESPONSIVO MELHORADO */
+/* RESPONSIVO */
 @media (max-width: 768px) {
     .padroeira-card { 
         flex-direction: column;
         padding: 20px;
         gap: 30px;
+        min-height: auto;  /* ← Remove altura mínima no mobile */
     }
     
     .padroeira-foto {
         width: 100%;
-        margin: 0;  /* ← Remove qualquer margem no mobile */
     }
 
     .padroeira-foto img {
@@ -736,73 +707,6 @@
         width: 100%;
         max-width: 100%;
     }
-}
-
-/* RESPONSIVO AJUSTADO */
-@media (max-width: 768px) {
-
-    .padroeira-container {
-        padding: 0 10px; /* 🔧 evita colar nas bordas */
-    }
-
-    .padroeira-card { 
-        flex-direction: column; 
-        padding: 20px 15px; 
-        text-align: center;
-        align-items: center;
-        width: 100%;
-        max-width: 100%;
-    }
-    
-    .padroeira-foto {
-        width: 100%;
-        min-width: 0; /* 🔥 ESSENCIAL */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 25px;
-    }
-
-    .padroeira-foto img {
-        width: 100%;
-        max-width: 280px;
-        display: block;
-        margin: 0 auto;
-    }
-
-    .padroeira-info {
-        text-align: center;
-        width: 100%;
-        
-    }
-
-    .padroeira-info ul {
-        text-align: left;
-        padding-left: 18px; /* melhora alinhamento */
-    }
-
-    .texto-devocional p {
-        text-align: center;
-    }
-
-    /*  HINO CORRIGIDO */
-    .hino-container {
-        width: 100%;
-        max-width: 100%;
-        padding: 20px 12px;
-        text-align: center;
-    }
-
-    .texto-hino {
-        width: 100%;
-        text-align: center;
-    }
-
-    .texto-hino .estrofe {
-        text-align: center;
-        word-break: break-word; /* 🔧 evita estourar */
-    }
-
 }
 
         /*ESTRUTURA DO SITE ABAIXO HTML*/
