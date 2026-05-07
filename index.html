@@ -993,6 +993,132 @@
         .rodape p { margin: 5px 0; font-size: 0.9rem; }
         .rodape .dev strong { color: var(--dourado-claro); }
 
+        /* ============== AVISOS & EVENTOS ============== */
+        .avisos-container { max-width: 1100px; margin: 0 auto 80px; padding: 0 20px; }
+        .avisos-intro {
+            text-align: center; max-width: 700px;
+            margin: -10px auto 35px; color: var(--texto-suave); line-height: 1.6;
+        }
+
+        /* Tags de tipo */
+        .aviso-tag {
+            position: absolute; top: 15px; left: 15px; z-index: 2;
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 6px 12px; border-radius: 20px;
+            font-size: 0.75rem; font-weight: bold;
+            text-transform: uppercase; letter-spacing: 0.5px;
+            color: white; backdrop-filter: blur(4px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        .tag-festa   { background: linear-gradient(135deg, var(--dourado), var(--dourado-escuro)); }
+        .tag-evento  { background: linear-gradient(135deg, var(--azul), var(--azul-escuro)); }
+        .tag-aviso   { background: linear-gradient(135deg, #e74c3c, #c0392b); }
+        .tag-foto    { background: linear-gradient(135deg, #8134af, #dd2a7b); }
+
+        /* Card de destaque */
+        .aviso-destaque {
+             display: grid; grid-template-columns: 1fr 1fr;
+             gap: 0; background: white; border-radius: 20px;
+             overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+             border: 1px solid #eee; margin-bottom: 35px;
+             position: relative;
+         }
+         .aviso-destaque::before {
+             content: ""; position: absolute; top: 0; left: 0; right: 0; height: 5px;
+             background: linear-gradient(90deg, var(--azul), var(--dourado), var(--azul));
+             z-index: 3;
+         }
+         .aviso-destaque-img {
+             position: relative; min-height: 320px;
+             background: linear-gradient(135deg, var(--fundo-claro), #fff);
+             overflow: hidden;
+        }
+        .aviso-destaque-img img {
+            width: 100%; height: 100%; object-fit: cover; display: block;
+            transition: 0.5s;
+        }
+        .aviso-destaque:hover .aviso-destaque-img img { transform: scale(1.05); }
+        .aviso-destaque-corpo {
+            padding: 40px; text-align: left;
+            display: flex; flex-direction: column; justify-content: center;
+        }
+        .aviso-eyebrow {
+            display: inline-block; color: var(--dourado-escuro);
+            font-weight: bold; font-size: 0.8rem; letter-spacing: 2px;
+            text-transform: uppercase; margin-bottom: 8px;
+        }
+        .aviso-destaque-corpo h3 {
+            color: var(--azul-escuro); font-size: 1.7rem;
+            margin: 0 0 15px; line-height: 1.3;
+        }
+        .aviso-meta {
+            display: flex; flex-wrap: wrap; gap: 18px;
+            margin-bottom: 18px; color: var(--texto-fraco); font-size: 0.9rem;
+        }
+        .aviso-meta span { display: inline-flex; align-items: center; gap: 6px; }
+        .aviso-meta i { color: var(--dourado); }
+        .aviso-destaque-corpo p {
+            color: var(--texto-suave); line-height: 1.7; margin: 0 0 25px;
+        }
+        .btn-aviso {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: linear-gradient(135deg, var(--azul), var(--azul-escuro));
+            color: white; padding: 12px 24px; border-radius: 30px;
+            text-decoration: none; font-weight: bold;
+            box-shadow: 0 6px 18px rgba(14,175,234,0.3);
+            transition: 0.3s; width: fit-content;
+        }
+        .btn-aviso:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(14,175,234,0.4);
+        }
+        .btn-aviso i { transition: 0.3s; }
+        .btn-aviso:hover i { transform: translateX(4px); }
+
+        /* Grid de cards */
+        .avisos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+            gap: 22px;
+         }
+         .aviso-card {
+           background: white; border-radius: 18px; overflow: hidden;
+           box-shadow: 0 8px 22px rgba(0,0,0,0.06);
+           border: 1px solid #eee; transition: 0.3s;
+           display: flex; flex-direction: column;
+         }
+         .aviso-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 35px rgba(0,0,0,0.1);
+            border-color: var(--dourado-claro);
+         }
+         .aviso-card-img {
+            position: relative; aspect-ratio: 16 / 10;
+            background: var(--fundo-claro); overflow: hidden;
+         }
+         .aviso-card-img img {
+            width: 100%; height: 100%; object-fit: cover;
+            display: block; transition: 0.4s;
+         }
+        .aviso-card:hover .aviso-card-img img { transform: scale(1.08); }
+        .aviso-card-corpo {
+            padding: 22px; text-align: left; flex: 1;
+            display: flex; flex-direction: column;
+        }
+        .aviso-data {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-size: 0.8rem; color: var(--dourado-escuro);
+            font-weight: bold; text-transform: uppercase;
+            letter-spacing: 0.5px; margin-bottom: 10px;
+        }
+        .aviso-card-corpo h4 {
+            margin: 0 0 10px; color: var(--azul-escuro); font-size: 1.15rem;
+        }
+        .aviso-card-corpo p {
+            margin: 0; color: var(--texto-suave);
+            line-height: 1.6; font-size: 0.92rem;
+        }
+
         @media (max-width: 768px) {
             .topo { flex-direction: row; flex-wrap: wrap; justify-content: center; padding: 15px 5%; }
             .container-titulo { width: 80%; align-items: center; margin-bottom: 10px; }
@@ -1064,6 +1190,16 @@
             border: none; border-radius: 50px; cursor: pointer; font-weight: bold;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
+
+            /* sessão de avisos mobile */
+        {
+        .aviso-destaque { grid-template-columns: 1fr; }
+        .aviso-destaque-img { min-height: 220px; }
+        .aviso-destaque-corpo { padding: 28px 22px; }
+        .aviso-destaque-corpo h3 { font-size: 1.4rem; }
+        .aviso-meta { gap: 12px; font-size: 0.85rem; }
+        }
+        
     </style>
 </head>
 <body id="topo">
@@ -1086,6 +1222,7 @@
             <a href="#paroco">Pároco</a>
             <a href="#grupos">Grupos</a>
             <a href="#galeria">Galeria</a>
+            <a href="#avisos">Avisos</a>
             <a href="#doacao">Doação</a>
             <a href="#contato">Contato</a>
         </nav>
@@ -1534,6 +1671,74 @@
                 </p>
             </div>
         </section>
+
+        <section aria-labelledby="avisos">
+    <h2 class="titulo" id="avisos">Avisos & Eventos</h2>
+    <span class="linha-azul" aria-hidden="true"></span>
+
+    <div class="avisos-container">
+        <p class="avisos-intro">Fique por dentro das próximas celebrações, festas e novidades da nossa paróquia.</p>
+
+        <!-- AVISO EM DESTAQUE (o mais importante / próximo) -->
+        <article class="aviso-destaque">
+            <div class="aviso-destaque-img">
+                <img src="AvisoFestaPadroeira.jpg" alt="Festa da Padroeira" loading="lazy">
+                <span class="aviso-tag tag-festa"><i class="fas fa-star" aria-hidden="true"></i> Festa</span>
+            </div>
+            <div class="aviso-destaque-corpo">
+                <span class="aviso-eyebrow">✦ Próximo grande evento</span>
+                <h3>Festa da Padroeira 2025</h3>
+                <div class="aviso-meta">
+                    <span><i class="far fa-calendar" aria-hidden="true"></i> 14 a 23 de Setembro</span>
+                    <span><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Matriz do Livramento</span>
+                </div>
+                <p>Participe da maior celebração do ano em honra a Nossa Senhora do Livramento. Novenas, missas solenes e a tradicional procissão pelas ruas da cidade.</p>
+                <a href="#" class="btn-aviso">
+                    Ver programação <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                </a>
+            </div>
+        </article>
+
+        <!-- GRID DE AVISOS -->
+        <div class="avisos-grid">
+            <article class="aviso-card">
+                <div class="aviso-card-img">
+                    <img src="AvisoQuintaEucaristica.jpg" alt="Quinta Eucarística" loading="lazy">
+                    <span class="aviso-tag tag-evento"><i class="fas fa-calendar-check" aria-hidden="true"></i> Evento</span>
+                </div>
+                <div class="aviso-card-corpo">
+                    <span class="aviso-data"><i class="far fa-clock" aria-hidden="true"></i> Toda Quinta · 07h30 às 17h</span>
+                    <h4>Quinta Eucarística</h4>
+                    <p>Exposição do Santíssimo Sacramento durante todo o dia, encerrando com a Santa Missa.</p>
+                </div>
+            </article>
+
+            <article class="aviso-card">
+                <div class="aviso-card-img">
+                    <img src="AvisoCatequese.jpg" alt="Inscrições da Catequese" loading="lazy">
+                    <span class="aviso-tag tag-aviso"><i class="fas fa-bullhorn" aria-hidden="true"></i> Aviso</span>
+                </div>
+                <div class="aviso-card-corpo">
+                    <span class="aviso-data"><i class="far fa-calendar" aria-hidden="true"></i> Inscrições abertas</span>
+                    <h4>Catequese 2025</h4>
+                    <p>Inscrições abertas para crianças e adolescentes na secretaria paroquial.</p>
+                </div>
+            </article>
+
+            <article class="aviso-card">
+                <div class="aviso-card-img">
+                    <img src="AvisoFotosBatismo.jpg" alt="Galeria de Batismos" loading="lazy">
+                    <span class="aviso-tag tag-foto"><i class="fas fa-camera" aria-hidden="true"></i> Foto</span>
+                </div>
+                <div class="aviso-card-corpo">
+                    <span class="aviso-data"><i class="far fa-calendar" aria-hidden="true"></i> 10 de Novembro</span>
+                    <h4>Batismos Coletivos</h4>
+                    <p>Confira as fotos da celebração dos batismos do último domingo.</p>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
 
         <section aria-labelledby="doacao">
             <h2 class="titulo" id="doacao">Dízimo e Ofertas</h2>
