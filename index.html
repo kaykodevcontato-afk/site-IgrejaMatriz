@@ -176,34 +176,210 @@
         .btn-assista { background: #FF0000; color: white; text-decoration: none; padding: 12px 25px; border-radius: 30px; font-weight: bold; display: inline-flex; align-items: center; gap: 10px; transition: 0.3s; width: fit-content; }
         .btn-assista:hover { background: #cc0000; }
 
-        .historia-container {
-            max-width: 1100px; margin: 0 auto 100px; padding: 40px;
+        /* HISTÓRIA DA IGREJA */
+        .historia-wrapper { max-width: 1100px; margin: 0 auto 100px; padding: 0 20px; }
+
+        .historia-intro {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 40px;
             background: white; border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: left;
+            padding: 45px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            border: 1px solid #eee;
+            margin-bottom: 50px;
+            position: relative; overflow: hidden;
         }
-        .historia-topo { display: flex; align-items: flex-start; gap: 40px; margin-bottom: 40px; }
-        .historia-texto { flex: 1.2; }
-        .historia-texto p { line-height: 1.6; color: var(--texto-suave); font-size: 1.05rem; margin-bottom: 15px; }
-        .historia-texto ul { padding-left: 20px; color: var(--texto-suave); list-style-type: square; }
-        .historia-texto li { margin-bottom: 12px; line-height: 1.4; }
-        .historia-texto li strong { color: var(--azul-escuro); }
-        .nota-altar { font-style: italic; margin-top: 20px; color: #666; }
-        .secao-reforma {
-            display: flex; align-items: center; gap: 40px;
-            border-top: 1px solid #eee; padding-top: 40px; margin-top: 20px;
-            flex-direction: row-reverse;
+        .historia-intro::before {
+            content: ""; position: absolute; top: 0; left: 0; right: 0; height: 5px;
+            background: linear-gradient(90deg, var(--azul), var(--dourado), var(--azul));
         }
-        .texto-reforma { flex: 1.2; }
-        .secao-altar-atual {
-            display: flex; align-items: center; gap: 40px;
-            border-top: 1px solid #eee; padding-top: 40px; margin-top: 40px;
+        .historia-intro-texto { text-align: left; }
+        .intro-eyebrow {
+            display: inline-block; color: var(--dourado-escuro);
+            font-weight: bold; font-size: 0.85rem; letter-spacing: 2px;
+            text-transform: uppercase; margin-bottom: 10px;
         }
-        .texto-altar-atual { flex: 1.2; }
-        .secao-reforma h3, .secao-altar-atual h3 { color: var(--azul-escuro); }
-        .galeria-historica { flex: 1; display: flex; flex-direction: column; gap: 20px; }
+        .historia-intro-texto h3 {
+            color: var(--azul-escuro);
+            font-size: 1.7rem; margin: 0 0 18px; line-height: 1.3;
+        }
+        .historia-intro-texto p {
+            line-height: 1.7; color: var(--texto-suave); margin: 0 0 12px;
+        }
+        .historia-stats {
+            display: flex; flex-direction: column; gap: 15px;
+            justify-content: center;
+        }
+        .stat-item {
+            background: linear-gradient(135deg, #fdfaf0, #ffffff);
+            border: 1px solid #f0e6c4; border-radius: 15px;
+            padding: 20px; text-align: center;
+            transition: 0.3s;
+        }
+        .stat-item:hover { transform: translateY(-3px); border-color: var(--dourado); }
+        .stat-item.destaque {
+            background: linear-gradient(135deg, var(--azul), var(--azul-escuro));
+            border-color: var(--azul-escuro);
+        }
+        .stat-item.destaque .stat-numero,
+        .stat-item.destaque .stat-label { color: white; }
+        .stat-numero {
+            display: block; font-size: 2.2rem; font-weight: 800;
+            color: var(--azul-escuro); line-height: 1;
+        }
+        .stat-label {
+            display: block; margin-top: 6px;
+            font-size: 0.85rem; color: var(--texto-fraco);
+            text-transform: uppercase; letter-spacing: 1px;
+        }
+
+        /* Subtítulos das subseções */
+        .subtitulo-historia {
+            text-align: center; margin: 0 0 30px;
+            font-size: 1.5rem; color: var(--azul-escuro);
+            position: relative; display: flex; align-items: center;
+            justify-content: center; gap: 20px;
+        }
+        .subtitulo-historia::before, .subtitulo-historia::after {
+            content: ""; flex: 1; max-width: 100px;
+            height: 2px; background: linear-gradient(to right, transparent, var(--dourado), transparent);
+        }
+        .subtitulo-historia span {
+            background: white; padding: 0 10px;
+            color: var(--azul-escuro);
+        }
+        .subtitulo-descritivo {
+            text-align: center; max-width: 700px;
+            margin: -15px auto 35px; color: var(--texto-suave);
+            line-height: 1.6;
+        }
+
+        /* TIMELINE */
+        .timeline-bloco { margin-bottom: 70px; }
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+        .timeline::before {
+            content: ""; position: absolute;
+            left: 50%; top: 0; bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--dourado-claro), var(--azul), var(--dourado-claro));
+            transform: translateX(-50%);
+        }
+        .timeline-item {
+            position: relative;
+            width: 50%;
+            padding: 20px 40px;
+            box-sizing: border-box;
+        }
+        .timeline-item:nth-child(odd) { margin-left: 0; padding-right: 50px; text-align: right; }
+        .timeline-item:nth-child(even) { margin-left: 50%; padding-left: 50px; text-align: left; }
+        .timeline-data {
+            position: absolute; top: 25px;
+            background: linear-gradient(135deg, var(--azul), var(--azul-escuro));
+            color: white; font-weight: bold;
+            padding: 8px 16px; border-radius: 20px;
+            font-size: 0.95rem; z-index: 2;
+            box-shadow: 0 4px 12px rgba(14,175,234,0.3);
+            white-space: nowrap;
+        }
+        .timeline-item:nth-child(odd) .timeline-data {
+            right: -45px; transform: translateX(50%);
+        }
+        .timeline-item:nth-child(even) .timeline-data {
+            left: -45px; transform: translateX(-50%);
+        }
+        .timeline-conteudo {
+            background: white; border-radius: 15px;
+            padding: 25px; box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            border: 1px solid #eee;
+            transition: 0.3s; position: relative;
+        }
+        .timeline-conteudo:hover {
+            transform: translateY(-3px); border-color: var(--dourado-claro);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+        }
+        .timeline-conteudo h4 {
+            margin: 0 0 10px; color: var(--azul-escuro); font-size: 1.15rem;
+        }
+        .timeline-conteudo p {
+            margin: 0; color: var(--texto-suave);
+            line-height: 1.6; font-size: 0.95rem;
+        }
+
+        /* OS TRÊS ALTARES */
+        .altares-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .altar-card {
+            background: white; border-radius: 20px; overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+            border: 1px solid #eee;
+            display: flex; flex-direction: column;
+            transition: 0.3s; position: relative;
+        }
+        .altar-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 18px 40px rgba(0,0,0,0.1);
+        }
+        .altar-card.altar-atual {
+            border: 2px solid var(--dourado);
+            box-shadow: 0 15px 35px rgba(212,175,55,0.2);
+        }
+        .altar-numero {
+            position: absolute; top: 15px; left: 15px; z-index: 5;
+            background: white; color: var(--azul-escuro);
+            font-weight: bold; font-size: 1.1rem;
+            width: 42px; height: 42px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border: 2px solid var(--dourado);
+        }
+        .altar-card.altar-atual .altar-numero {
+            background: var(--dourado); color: white;
+        }
+        .altar-imagem {
+            width: 100%; aspect-ratio: 4/3;
+            border-radius: 0 !important; border: none !important;
+            box-shadow: none !important; margin: 0 !important; max-width: 100% !important;
+            overflow: hidden; position: relative;
+        }
+        .altar-imagem img {
+            width: 100%; height: 100%; object-fit: cover;
+        }
+        .altar-corpo {
+            padding: 25px; text-align: left; flex: 1;
+            display: flex; flex-direction: column;
+        }
+        .altar-tag {
+            display: inline-block; background: var(--fundo-claro);
+            color: var(--azul-escuro); padding: 4px 12px;
+            border-radius: 15px; font-size: 0.75rem;
+            font-weight: bold; text-transform: uppercase;
+            letter-spacing: 0.5px; margin-bottom: 10px; align-self: flex-start;
+        }
+        .altar-tag.tag-destaque {
+            background: linear-gradient(135deg, var(--dourado), var(--dourado-claro));
+            color: white;
+        }
+        .altar-corpo h4 {
+            margin: 0 0 12px; color: var(--azul-escuro); font-size: 1.25rem;
+        }
+        .altar-corpo p {
+            margin: 0; color: var(--texto-suave);
+            line-height: 1.6; font-size: 0.95rem;
+        }
+        .label-atual { background: var(--dourado) !important; }
+
+        /* Slider e foto-container dentro de altares */
         .comparison-slider, .foto-container {
-            width: 100%; max-width: 500px; border-radius: 15px;
-            border: 4px solid white; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            width: 100%; max-width: 100%; border-radius: 0;
+            border: none; box-shadow: none;
             overflow: hidden; position: relative;
         }
         .comparison-slider { cursor: ew-resize; line-height: 0; }
@@ -555,12 +731,28 @@
             .agenda-grid { grid-template-columns: 1fr; }
             .youtube-info { text-align: center; align-items: center; padding: 30px 20px; }
             .youtube-thumb { min-height: 200px; }
-            .historia-topo, .secao-reforma, .secao-altar-atual {
-                flex-direction: column; text-align: center; gap: 20px;
+            .historia-intro {
+                grid-template-columns: 1fr; gap: 30px; padding: 30px 25px;
             }
-            .historia-container { padding: 20px; margin: 30px 15px; }
-            .comparison-slider, .foto-container { max-width: 100%; margin: 0 auto; }
-            .historia-texto ul { text-align: left; }
+            .historia-stats { flex-direction: row; flex-wrap: wrap; }
+            .stat-item { flex: 1; min-width: 100px; padding: 15px 10px; }
+            .stat-numero { font-size: 1.6rem; }
+            .stat-label { font-size: 0.7rem; }
+
+            /* Timeline empilhada à esquerda */
+            .timeline::before { left: 20px; }
+            .timeline-item,
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                width: 100%; margin-left: 0;
+                padding: 15px 0 15px 55px; text-align: left;
+            }
+            .timeline-item:nth-child(odd) .timeline-data,
+            .timeline-item:nth-child(even) .timeline-data {
+                left: 20px; right: auto; transform: translateX(-50%);
+                top: 25px;
+            }
+            .subtitulo-historia::before, .subtitulo-historia::after { max-width: 30px; }
             .doacao-card { flex-direction: column; text-align: center; padding: 25px; }
             .doacao-texto { text-align: center; min-width: 100%; }
             .padroeira-card { flex-direction: column; text-align: center; padding: 30px 20px; }
@@ -687,53 +879,124 @@
         <section aria-labelledby="a-igreja">
             <h2 class="titulo" id="a-igreja">História da Igreja</h2>
             <span class="linha-azul" aria-hidden="true"></span>
-            <div class="historia-container">
-                <div class="historia-topo">
-                    <div class="historia-texto">
-                        <p>A Paróquia de Nossa Senhora do Livramento em Arcoverde foi criada em <strong>21 de agosto de 1919</strong> por Dom José Antônio de Oliveira Lopes, desmembrada da Diocese de Pesqueira. Com raízes na devoção iniciada em 1865 com uma imagem vinda de Portugal, a paróquia cresceu junto com a cidade, sendo fundamental na fé local.</p>
-                        <ul>
-                            <li><strong>Origem da Devoção:</strong> A veneração a Nossa Senhora do Livramento começou com uma imagem trazida de Portugal por um fazendeiro em 1865, instalada na antiga Fazenda Olhos d'Água dos Bredos.</li>
-                            <li><strong>Criação Oficial:</strong> A freguesia foi oficialmente criada em 21 de agosto de 1919, sob decreto de Monsenhor D. José Antônio de Oliveira Lopes.</li>
-                            <li><strong>Igreja Matriz:</strong> Em 1920, a igrejinha era simples, sem bancos, e evoluiu ao longo do século, tornando-se a paróquia central da cidade, que mais tarde mudou de nome para Arcoverde.</li>
-                            <li><strong>Centenário:</strong> A paróquia celebrou seus 100 anos de criação com uma peregrinação da réplica da imagem em 2019, destacando a forte religiosidade local.</li>
-                            <li><strong>Padroeira:</strong> Nossa Senhora do Livramento é a padroeira de Arcoverde, com a festa principal celebrada em 23 de setembro.</li>
-                        </ul>
-                        <p class="nota-altar"><strong>Sobre o Primeiro Altar:</strong> Pelo estilo, a Missa era celebrada com o celebrante de costas para a assembleia, conforme a antiga liturgia em latim.</p>
+
+            <div class="historia-wrapper">
+                <!-- INTRODUÇÃO -->
+                <div class="historia-intro">
+                    <div class="historia-intro-texto">
+                        <span class="intro-eyebrow">Mais de 100 anos de fé</span>
+                        <h3>Uma história que se confunde com a de Arcoverde</h3>
+                        <p>A Paróquia de Nossa Senhora do Livramento foi criada em <strong>21 de agosto de 1919</strong> por Dom José Antônio de Oliveira Lopes, desmembrada da Diocese de Pesqueira. Suas raízes remontam a <strong>1865</strong>, quando uma imagem vinda de Portugal iniciou a devoção no sermão pernambucano.</p>
+                        <p>Ao longo dos séculos, a paróquia cresceu junto com a cidade, tornando-se o coração espiritual de Arcoverde.</p>
                     </div>
-                    <div class="galeria-historica">
-                        <div class="comparison-slider" id="slider" role="img" aria-label="Comparação entre foto original e restaurada do primeiro altar">
-                            <img src="FotoPrimeiraAltarCelebracaomissas.png" alt="Foto original do primeiro altar" loading="lazy">
-                            <div class="camada-original">
-                                <span class="label-before">ORIGINAL</span>
+                    <div class="historia-stats">
+                        <div class="stat-item">
+                            <span class="stat-numero">1865</span>
+                            <span class="stat-label">Início da Devoção</span>
+                        </div>
+                        <div class="stat-item destaque">
+                            <span class="stat-numero">1919</span>
+                            <span class="stat-label">Criação da Paróquia</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-numero">100+</span>
+                            <span class="stat-label">Anos de História</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TIMELINE -->
+                <div class="timeline-bloco">
+                    <h3 class="subtitulo-historia"><span>Marcos Históricos</span></h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-data">1865</div>
+                            <div class="timeline-conteudo">
+                                <h4>Origem da Devoção</h4>
+                                <p>Uma imagem trazida de Portugal por um fazendeiro é instalada na antiga Fazenda Olhos d'Água dos Bredos, dando início à veneração a Nossa Senhora do Livramento.</p>
                             </div>
-                            <div class="img-restaurada" id="restaurada">
-                                <img src="FotoPrimeiroAltarrestauradocomIA.png" alt="Foto restaurada do primeiro altar com IA" loading="lazy">
-                                <span class="label-after">RESTAURAÇÃO IA</span>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-data">1919</div>
+                            <div class="timeline-conteudo">
+                                <h4>Criação Oficial da Paróquia</h4>
+                                <p>A freguesia é oficialmente criada em 21 de agosto de 1919, sob decreto de Monsenhor D. José Antônio de Oliveira Lopes.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-data">1920</div>
+                            <div class="timeline-conteudo">
+                                <h4>A Igreja Matriz</h4>
+                                <p>A igrejinha simples, sem bancos, evoluiu ao longo do século até tornar-se a paróquia central da cidade, que mais tarde mudaria de nome para Arcoverde.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-data">2019</div>
+                            <div class="timeline-conteudo">
+                                <h4>Centenário</h4>
+                                <p>A paróquia celebra seus 100 anos com uma peregrinação da réplica da imagem, destacando a forte religiosidade local.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-data">Hoje</div>
+                            <div class="timeline-conteudo">
+                                <h4>Padroeira de Arcoverde</h4>
+                                <p>Nossa Senhora do Livramento é padroeira da cidade, com a festa principal celebrada em 23 de setembro, reunindo milhares de fiéis.</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="secao-reforma">
-                    <div class="texto-reforma">
-                        <h3>A Reforma Litúrgica</h3>
-                        <p>Posteriormente, houve a <strong>Reforma do Altar Principal</strong> para acompanhar as diretrizes da nova liturgia do <strong>Vaticano II</strong>. O altar tornou-se mais simples, permitindo que o celebrante ficasse de frente para a assembleia, fazendo toda a celebração em língua portuguesa.</p>
-                    </div>
-                    <div class="foto-container">
-                        <img src="FotoSegundoAltar.png" alt="Segundo altar da matriz após a reforma litúrgica" loading="lazy">
-                        <span class="label-fixo">SEGUNDO ALTAR (PÓS-REFORMA)</span>
-                    </div>
-                </div>
+                <!-- OS TRÊS ALTARES -->
+                <div class="altares-bloco">
+                    <h3 class="subtitulo-historia"><span>A Evolução do Altar</span></h3>
+                    <p class="subtitulo-descritivo">Ao longo da história, o Altar Mor passou por três grandes momentos, refletindo as transformações litúrgicas e o cuidado de cada geração com a casa de Deus.</p>
 
-                <div class="secao-altar-atual">
-                    <div class="foto-container">
-                        <img src="FotoTerceiroAltarAtual.jpeg" alt="Novo altar mor da paróquia" loading="lazy">
-                        <span class="label-fixo">ALTAR MOR ATUAL</span>
-                    </div>
-                    <div class="texto-altar-atual">
-                        <h3>O Novo Altar Mor</h3>
-                        <p>Com alguns detalhes a serem ajustados e finalizados, apresentamos oficialmente o novo <strong>Altar Mor da Paróquia Nossa Senhora do Livramento</strong>.</p>
-                        <p>Esta nova fase representa o resgate da imponência sacra, unindo a tradição estética com a funcionalidade litúrgica atual, servindo como o novo coração espiritual de nossa comunidade.</p>
+                    <div class="altares-grid">
+                        <article class="altar-card">
+                            <div class="altar-numero">1º</div>
+                            <div class="altar-imagem comparison-slider" id="slider" role="img" aria-label="Comparação entre foto original e restaurada do primeiro altar">
+                                <img src="FotoPrimeiraAltarCelebracaomissas.png" alt="Foto original do primeiro altar" loading="lazy">
+                                <div class="camada-original">
+                                    <span class="label-before">ORIGINAL</span>
+                                </div>
+                                <div class="img-restaurada" id="restaurada">
+                                    <img src="FotoPrimeiroAltarrestauradocomIA.png" alt="Foto restaurada do primeiro altar com IA" loading="lazy">
+                                    <span class="label-after">RESTAURAÇÃO IA</span>
+                                </div>
+                            </div>
+                            <div class="altar-corpo">
+                                <span class="altar-tag">Liturgia em latim</span>
+                                <h4>O Primeiro Altar</h4>
+                                <p>Pelo estilo, a Missa era celebrada com o celebrante de costas para a assembleia, conforme a antiga liturgia em latim. Arraste o slider para ver a restauração feita por IA.</p>
+                            </div>
+                        </article>
+
+                        <article class="altar-card">
+                            <div class="altar-numero">2º</div>
+                            <div class="altar-imagem foto-container">
+                                <img src="FotoSegundoAltar.png" alt="Segundo altar da matriz após a reforma litúrgica" loading="lazy">
+                                <span class="label-fixo">PÓS-REFORMA</span>
+                            </div>
+                            <div class="altar-corpo">
+                                <span class="altar-tag">Vaticano II</span>
+                                <h4>A Reforma Litúrgica</h4>
+                                <p>Para acompanhar as diretrizes da nova liturgia do <strong>Vaticano II</strong>, o altar tornou-se mais simples, permitindo que o celebrante ficasse de frente para a assembleia, com a celebração em língua portuguesa.</p>
+                            </div>
+                        </article>
+
+                        <article class="altar-card altar-atual">
+                            <div class="altar-numero">3º</div>
+                            <div class="altar-imagem foto-container">
+                                <img src="FotoTerceiroAltarAtual.jpeg" alt="Novo altar mor da paróquia" loading="lazy">
+                                <span class="label-fixo label-atual">ATUAL</span>
+                            </div>
+                            <div class="altar-corpo">
+                                <span class="altar-tag tag-destaque">Novo Altar Mor</span>
+                                <h4>O Resgate da Tradição</h4>
+                                <p>Apresentamos oficialmente o novo <strong>Altar Mor</strong>, que une a tradição estética com a funcionalidade litúrgica atual, servindo como o novo coração espiritual de nossa comunidade.</p>
+                            </div>
+                        </article>
                     </div>
                 </div>
             </div>
