@@ -1,452 +1,370 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Igreja Matriz - Paróquia Nossa Senhora do Livramento</title>
+    <title>Paróquia Nossa Senhora do Livramento - Arcoverde/PE</title>
     <meta name="description" content="Paróquia Nossa Senhora do Livramento em Arcoverde - horários de missas, transmissões ao vivo, história e contato.">
-<meta name="keywords" content="igreja Arcoverde, missa Arcoverde, Nossa Senhora do Livramento, paróquia">
+    <meta name="keywords" content="igreja Arcoverde, missa Arcoverde, Nossa Senhora do Livramento, paróquia">
+    <link rel="canonical" href="https://paroquialivramento.com.br/">
+
+    <meta property="og:title" content="Paróquia Nossa Senhora do Livramento - Arcoverde/PE">
+    <meta property="og:description" content="Horários de missas, transmissões ao vivo, história e contato.">
+    <meta property="og:image" content="LogoBrasaoDaParoquia.png">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta name="twitter:card" content="summary_large_image">
 
     <link rel="icon" type="image/png" href="LogoBrasaoDaParoquia.png">
 
-    <style>
-        /* ROLAGEM SUAVE */
-        html {
-            scroll-behavior: smooth;
-        }
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"Church",
+      "name":"Paróquia Nossa Senhora do Livramento",
+      "image":"LogoBrasaoDaParoquia.png",
+      "address":{
+        "@type":"PostalAddress",
+        "streetAddress":"Praça do Livramento, 17",
+        "addressLocality":"Arcoverde",
+        "addressRegion":"PE",
+        "postalCode":"56505-250",
+        "addressCountry":"BR"
+      },
+      "telephone":"+5587991587001",
+      "sameAs":[
+        "https://www.instagram.com/paroquiadolivramento/",
+        "https://www.youtube.com/@PascomLivramento"
+      ]
+    }
+    </script>
 
-        /* FONTE PERSONALIZADA */
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --azul: #0EAFEA;
+            --azul-escuro: #0b8fc0;
+            --dourado: #d4af37;
+            --dourado-claro: #f2d27a;
+            --dourado-escuro: #b8860b;
+            --texto: #333;
+            --texto-suave: #555;
+            --texto-fraco: #666;
+            --fundo-claro: #f0faff;
+        }
+        html { scroll-behavior: smooth; }
         @font-face {
             font-family: 'Peristiwa';
             src: url('Peristiwa.otf') format('opentype');
+            font-display: swap;
         }
-
-        /* FUNDO */
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
             background: linear-gradient(to bottom, #ffffff 40%, #eaf8ff);
             text-align: center;
             margin: 0;
-            color: #333;
+            color: var(--texto);
         }
-
-        /* TOPO */
         .topo {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: linear-gradient(135deg, #0EAFEA, #0b8fc0, #d4af37);
-            padding: 10px 5%;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            display: flex; justify-content: space-between; align-items: center;
+            background: linear-gradient(135deg, var(--azul), var(--azul-escuro), var(--dourado));
+            padding: 10px 5%; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            position: sticky; top: 0; z-index: 1000;
         }
-
-        .container-titulo {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            color: white;
-        }
-
-        .nome-site {
-            font-size: 1.2rem;
-            margin: 0;
-            font-weight: bold;
-        }
-
-        .localizacao-topo {
-            font-size: 0.85rem;
-            opacity: 0.9;
-            margin: 0;
-        }
-
+        .container-titulo { display: flex; flex-direction: column; align-items: flex-start; color: white; }
+        .nome-site { font-size: 1.2rem; margin: 0; font-weight: bold; }
+        .localizacao-topo { font-size: 0.85rem; opacity: 0.9; margin: 0; }
         .logo {
-            width: 50px;
-            height: 50px;
-            object-fit: contain;
-            background: white;
-            border-radius: 50%;
-            padding: 5px;
-            border: 2px solid #f2d27a;
-            flex-shrink: 0;
+            width: 50px; height: 50px; object-fit: contain; background: white;
+            border-radius: 50%; padding: 5px; border: 2px solid var(--dourado-claro); flex-shrink: 0;
         }
-
-        /* MENU */
         .menu {
-            display: flex;
-            gap: 20px;
-            overflow-x: auto;
-            white-space: nowrap;
-            padding: 5px 0;
-            scrollbar-width: none;
-            -webkit-overflow-scrolling: touch;
+            display: flex; gap: 20px; overflow-x: auto; white-space: nowrap;
+            padding: 5px 0; scrollbar-width: none; -webkit-overflow-scrolling: touch;
         }
-
         .menu::-webkit-scrollbar { display: none; }
-
         .menu a {
-            color: white;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            position: relative;
-            transition: 0.3s;
-            flex-shrink: 0;
+            color: white; text-decoration: none; font-size: 14px; font-weight: 500;
+            position: relative; transition: 0.3s; flex-shrink: 0;
         }
-
         .menu a::after {
-            content: "";
-            position: absolute;
-            width: 0%;
-            height: 2px;
-            background: #f2d27a;
-            left: 0;
-            bottom: -5px;
-            transition: 0.3s;
+            content: ""; position: absolute; width: 0%; height: 2px;
+            background: var(--dourado-claro); left: 0; bottom: -5px; transition: 0.3s;
         }
+        .menu a:hover::after, .menu a:focus-visible::after { width: 100%; }
+        .menu a:focus-visible { outline: 2px solid var(--dourado-claro); outline-offset: 4px; border-radius: 2px; }
 
-        .menu a:hover::after { width: 100%; }
-
-        /* PARALLAX */
         .parallax {
-            width: 100%;
-            height: 450px;
-            background-image: url("Foto1EntradaIgreja.jpg");
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            position: relative;
+            width: 100%; height: 450px; background-image: url("Foto1EntradaIgreja.jpg");
+            background-size: cover; background-position: center;
+            background-attachment: fixed; position: relative;
         }
-
         .overlay {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.45);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            color: white;
+            position: absolute; inset: 0; background: rgba(0,0,0,0.45);
+            display: flex; justify-content: center; align-items: center;
+            flex-direction: column; color: white;
         }
-
         .overlay h2 {
-            font-family: 'Peristiwa', serif;
-            font-size: clamp(2rem, 5vw, 3rem);
-            margin: 0;
-            letter-spacing: 2px;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.6);
+            font-family: 'Peristiwa', serif; font-size: clamp(2rem, 5vw, 3rem);
+            margin: 0; letter-spacing: 2px; text-shadow: 2px 2px 10px rgba(0,0,0,0.6);
+        }
+        .overlay .subtitulo-parallax { font-size: 1.2rem; margin-top: 5px; font-weight: 300; letter-spacing: 1px; }
+
+        .titulo {
+            font-size: 2.2rem; color: var(--azul-escuro);
+            margin-bottom: 5px; scroll-margin-top: 160px;
+        }
+        .linha-azul {
+            display: block; width: 60px; height: 4px;
+            background: linear-gradient(to right, var(--dourado), var(--dourado-claro));
+            margin: 10px auto 30px; border-radius: 10px;
         }
 
-        .overlay .subtitulo-parallax {
-            font-size: 1.2rem;
-            margin-top: 5px;
-            font-weight: 300;
-            letter-spacing: 1px;
-        }
-
-        /* MISSAS GRID */
         .missa-container { padding: 50px 20px; }
-        
-        .titulo { 
-            font-size: 2.2rem; 
-            color: #0b8fc0; 
-            margin-bottom: 5px; 
-            scroll-margin-top: 100px; 
-        }
-
-        .linha-azul { display: block; width: 60px; height: 4px; background: linear-gradient(to right, #d4af37, #f2d27a); margin: 10px auto 30px; border-radius: 10px; }
-        
         .agenda { max-width: 1100px; margin: 0 auto; }
         .agenda-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        
-        .agenda-item { 
-            background: white; 
-            border-top: 6px solid #d4af37; 
-            padding: 25px; 
-            border-radius: 15px; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center; 
-            box-shadow: 0 6px 18px rgba(0,0,0,0.06); 
-            transition: 0.3s ease;
-            position: relative;
+        .agenda-item {
+            background: white; border-top: 6px solid var(--dourado);
+            padding: 25px; border-radius: 15px;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.06); transition: 0.3s ease; position: relative;
         }
-
         .agenda-item.hoje {
-            border-top: 6px solid #0EAFEA;
-            background-color: #f0faff;
-            transform: translateY(-10px);
-            box-shadow: 0 12px 24px rgba(14, 175, 234, 0.2);
-            z-index: 2;
+            border-top: 6px solid var(--azul); background-color: var(--fundo-claro);
+            transform: translateY(-10px); box-shadow: 0 12px 24px rgba(14, 175, 234, 0.2); z-index: 2;
         }
-
         .agenda-item.hoje::before {
-            content: "HOJE";
-            position: absolute;
-            top: -15px;
-            background: #0EAFEA;
-            color: white;
-            padding: 2px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
+            content: "HOJE"; position: absolute; top: -15px;
+            background: var(--azul); color: white; padding: 2px 12px;
+            border-radius: 20px; font-size: 12px; font-weight: bold;
         }
-
-        .dia { font-weight: bold; font-size: 1.2rem; color: #0b8fc0; margin-bottom: 10px; text-transform: uppercase; }
-        .hora { font-size: 1.4rem; color: #b8860b; font-weight: 700; margin: 5px 0; }
-        .local { font-size: 0.95rem; color: #666; font-style: italic; }
-        
+        .dia { font-weight: bold; font-size: 1.2rem; color: var(--azul-escuro); margin-bottom: 10px; text-transform: uppercase; }
+        .hora { font-size: 1.4rem; color: var(--dourado-escuro); font-weight: 700; margin: 5px 0; }
+        .local-missa { font-size: 0.95rem; color: var(--texto-fraco); font-style: italic; }
+        .separador-card { width: 80%; border: 0; border-top: 1px solid #eee; margin: 10px 0; }
         .exposicao-box {
-            background: #f0faff;
-            border: 1px dashed #0EAFEA;
-            border-radius: 10px;
-            padding: 10px;
-            margin: 10px 0;
-            width: 90%;
+            background: var(--fundo-claro); border: 1px dashed var(--azul);
+            border-radius: 10px; padding: 10px; margin: 10px 0; width: 90%;
         }
-        .exposicao-box strong { color: #0b8fc0; font-size: 0.9rem; }
-        .exposicao-box span { 
-            display: block; 
-            font-size: 1.1rem; 
-            font-weight: bold; 
-            color: #0EAFEA;
-        }
+        .exposicao-box strong { color: var(--azul-escuro); font-size: 0.9rem; }
+        .exposicao-box span { display: block; font-size: 1.1rem; font-weight: bold; color: var(--azul); }
+        .destaque-card { background: linear-gradient(135deg, var(--azul), var(--azul-escuro)); color: white; border-top: 6px solid var(--dourado-claro); }
+        .destaque-card .dia, .destaque-card .hora, .destaque-card .local-missa { color: white; }
 
-        .destaque-card { background: linear-gradient(135deg, #0EAFEA, #0b8fc0); color: white; border-top: 6px solid #f2d27a; }
-        .destaque-card .dia, .destaque-card .hora, .destaque-card .local { color: white; }
-
-        /* SEÇÃO YOUTUBE */
-        .youtube-section { 
-            margin: 20px auto 80px; max-width: 900px; background: white; border-radius: 20px; 
-            overflow: hidden; display: flex; flex-wrap: wrap; box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
-            border: 1px solid #eee; 
+        .youtube-section {
+            margin: 20px auto 80px; max-width: 900px; background: white;
+            border-radius: 20px; overflow: hidden; display: flex; flex-wrap: wrap;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid #eee;
         }
-        .youtube-thumb { 
-            flex: 1; 
-            min-width: 300px; 
-            background: #000; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            position: relative; 
-            min-height: 280px; 
+        .youtube-thumb {
+            flex: 1; min-width: 300px; background: #000;
+            display: flex; justify-content: center; align-items: center;
+            position: relative; min-height: 280px;
         }
-        .youtube-thumb iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
+        .youtube-thumb iframe { width: 100%; height: 100%; border: 0; }
         .youtube-info { flex: 1.2; padding: 40px; text-align: left; display: flex; flex-direction: column; justify-content: center; }
-        
         .live-badge { display: inline-flex; align-items: center; background: #ffe6e6; color: #ff0000; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; text-transform: uppercase; margin-bottom: 10px; width: fit-content; }
         .dot { height: 8px; width: 8px; background-color: #ff0000; border-radius: 50%; display: inline-block; margin-right: 8px; animation: pulse 1.5s infinite; }
-        @keyframes pulse { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7); } 70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(255, 0, 0, 0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); } }
-        
-        .live-horario { color: #b8860b; font-weight: bold; font-size: 1.1rem; margin-bottom: 15px; display: block; }
-
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(255, 0, 0, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
+        }
+        .live-horario { color: var(--dourado-escuro); font-weight: bold; font-size: 1.1rem; margin-bottom: 15px; display: block; }
         .btn-assista { background: #FF0000; color: white; text-decoration: none; padding: 12px 25px; border-radius: 30px; font-weight: bold; display: inline-flex; align-items: center; gap: 10px; transition: 0.3s; width: fit-content; }
+        .btn-assista:hover { background: #cc0000; }
 
-        /* SEÇÃO HISTÓRIA */
         .historia-container {
             max-width: 1100px; margin: 0 auto 100px; padding: 40px;
-            background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            text-align: left;
+            background: white; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: left;
         }
-
-        .historia-topo {
-            display: flex;
-            align-items: flex-start;
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
+        .historia-topo { display: flex; align-items: flex-start; gap: 40px; margin-bottom: 40px; }
         .historia-texto { flex: 1.2; }
-        .historia-texto p { line-height: 1.6; color: #555; font-size: 1.05rem; margin-bottom: 15px; }
-        .historia-texto ul { padding-left: 20px; color: #555; list-style-type: square; }
+        .historia-texto p { line-height: 1.6; color: var(--texto-suave); font-size: 1.05rem; margin-bottom: 15px; }
+        .historia-texto ul { padding-left: 20px; color: var(--texto-suave); list-style-type: square; }
         .historia-texto li { margin-bottom: 12px; line-height: 1.4; }
-        .historia-texto li strong { color: #0b8fc0; }
-        
-        /* SEÇÃO REFORMA (SEGUNDO ALTAR) */
+        .historia-texto li strong { color: var(--azul-escuro); }
+        .nota-altar { font-style: italic; margin-top: 20px; color: #666; }
         .secao-reforma {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            border-top: 1px solid #eee;
-            padding-top: 40px;
-            margin-top: 20px;
+            display: flex; align-items: center; gap: 40px;
+            border-top: 1px solid #eee; padding-top: 40px; margin-top: 20px;
             flex-direction: row-reverse;
         }
-
         .texto-reforma { flex: 1.2; }
-
-        /* SEÇÃO ATUAL (TERCEIRO ALTAR) */
         .secao-altar-atual {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            border-top: 1px solid #eee;
-            padding-top: 40px;
-            margin-top: 40px;
+            display: flex; align-items: center; gap: 40px;
+            border-top: 1px solid #eee; padding-top: 40px; margin-top: 40px;
         }
-
         .texto-altar-atual { flex: 1.2; }
-
-        .galeria-historica {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
+        .secao-reforma h3, .secao-altar-atual h3 { color: var(--azul-escuro); }
+        .galeria-historica { flex: 1; display: flex; flex-direction: column; gap: 20px; }
         .comparison-slider, .foto-container {
-            width: 100%;
-            max-width: 500px;
-            border-radius: 15px;
-            border: 4px solid white;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            overflow: hidden;
-            position: relative;
+            width: 100%; max-width: 500px; border-radius: 15px;
+            border: 4px solid white; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden; position: relative;
         }
-
         .comparison-slider { cursor: ew-resize; line-height: 0; }
-
-        .comparison-slider img, .foto-container img {
-            width: 100%;
-            height: auto;
-            display: block;
-            pointer-events: none;
+        .comparison-slider > img, .foto-container img {
+            width: 100%; height: auto; display: block; pointer-events: none;
         }
-
-        .camada-original {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
+        .camada-original { position: absolute; inset: 0; z-index: 1; }
         .img-restaurada {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 50%;
-            height: 100%;
-            overflow: hidden;
-            z-index: 2;
-            border-right: 3px solid #f2d27a;
+            position: absolute; top: 0; left: 0; width: 50%; height: 100%;
+            overflow: hidden; z-index: 2; border-right: 3px solid var(--dourado-claro);
         }
-
         .img-restaurada img {
-            width: 100%; 
-            height: 100%;
-            object-fit: cover;
-            object-position: left;
+            width: 100%; height: 100%; object-fit: cover; object-position: left; display: block;
         }
-
         .label-before, .label-after, .label-fixo {
             position: absolute; bottom: 15px; padding: 4px 10px;
-            background: rgba(14, 175, 234, 0.85); color: white; font-size: 10px; border-radius: 4px; font-weight: bold;
-            white-space: nowrap;
+            background: rgba(14, 175, 234, 0.85); color: white;
+            font-size: 10px; border-radius: 4px; font-weight: bold; white-space: nowrap;
         }
-        
         .label-before { right: 15px; z-index: 1; }
         .label-after { left: 15px; z-index: 3; }
-        .label-fixo { left: 50%; transform: translateX(-50%); bottom: 15px; }
+        .label-fixo { left: 50%; transform: translateX(-50%); }
 
-        /* SEÇÃO GALERIA */
-        .galeria-section {
-            padding: 50px 20px;
-            background: #fff;
+        .padroeira-container { max-width: 1100px; margin: 0 auto 80px; padding: 0 20px; }
+        .padroeira-card {
+            display: flex; align-items: center; gap: 50px;
+            background: white; border-radius: 20px; padding: 40px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.06); border: 1px solid #eee; flex-wrap: wrap;
+        }
+        .padroeira-foto { flex: 1; min-width: 280px; position: relative; display: flex; justify-content: center; }
+        .padroeira-foto img {
+            width: 100%; max-width: 350px; border-radius: 15px;
+            z-index: 2; box-shadow: 0 10px 20px rgba(0,0,0,0.2); position: relative;
+        }
+        .moldura-dourada {
+            position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
+            width: 370px; height: 100%; border: 2px solid var(--dourado);
+            border-radius: 20px; z-index: 1;
+        }
+        .padroeira-info { flex: 1.5; text-align: left; min-width: 300px; }
+        .padroeira-info h3 { color: var(--azul-escuro); }
+        .legenda-padroeira {
+            color: var(--dourado-escuro); font-style: italic; font-weight: bold;
+            margin-top: -10px; margin-bottom: 20px;
+        }
+        .texto-devocional p { line-height: 1.6; color: var(--texto-suave); }
+        .lista-curiosidades { list-style: none; padding: 0; margin: 20px 0; }
+        .lista-curiosidades li { margin-bottom: 10px; padding-left: 25px; position: relative; }
+        .lista-curiosidades li::before {
+            content: "♰"; position: absolute; left: 0; color: var(--azul); font-weight: bold;
         }
 
-        .galeria-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            max-width: 1100px;
-            margin: 0 auto;
+        .hino-container {
+            background: #fdfaf0; border-left: 5px solid var(--dourado);
+            border-right: 5px solid var(--dourado); padding: 40px;
+            border-radius: 20px; margin-top: 25px; text-align: center;
         }
-
-        .album-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-            border: 1px solid #eee;
+        .hino-header h4 {
+            margin: 0 0 25px 0; color: var(--dourado-escuro);
+            font-size: 1.5rem; text-transform: uppercase;
         }
-
-        .album-card:hover {
-            transform: translateY(-8px);
+        .texto-hino .estrofe {
+            font-style: italic; font-size: 1.1rem; line-height: 1.8;
+            color: var(--texto); margin-bottom: 20px;
         }
+        .refrao { font-weight: bold; color: var(--azul-escuro) !important; padding: 10px 0; }
+        .refrao::before, .refrao::after { content: "—"; color: var(--dourado); margin: 0 10px; }
 
-        .album-thumb {
-            width: 100%;
-            height: 200px;
-            background-color: #ddd;
-            overflow: hidden;
+        .padre-container { max-width: 900px; margin: 40px auto 80px; padding: 0 20px; }
+        .padre-card {
+            display: flex; align-items: center; gap: 30px;
+            background: white; border-radius: 20px; padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08); flex-wrap: wrap;
         }
-
-        .album-thumb img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: 0.5s;
+        .padre-card img {
+            width: 180px; height: 180px; object-fit: cover;
+            border-radius: 50%; border: 4px solid var(--dourado);
         }
+        .padre-info { flex: 1; text-align: left; min-width: 250px; }
+        .padre-info h3 { color: var(--azul-escuro); margin-bottom: 10px; }
 
-        .album-card:hover .album-thumb img {
-            scale: 1.1;
-        }
-
-        .album-info {
-            padding: 15px;
-            text-align: left;
-        }
-
-        .album-info h4 {
-            margin: 0;
-            color: #0b8fc0;
-            font-size: 1.1rem;
-        }
-
-        .album-info span {
-            font-size: 0.85rem;
-            color: #888;
-            display: block;
-            margin-top: 5px;
-        }
-
-        /* SEÇÃO INSTAGRAM */
         .instagram-container {
-            max-width: 1100px;
-            margin: 20px auto 50px;
-            padding: 20px;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            border: 1px solid #eee;
+            max-width: 1100px; margin: 20px auto 50px; padding: 20px;
+            background: white; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee;
         }
 
-        /* SEÇÃO DOAÇÃO (DÍZIMO E OFERTAS) */
-        .doacao-container { padding: 40px 20px 80px; background: transparent; }
+        .doacao-container { padding: 40px 20px 80px; }
         .doacao-card {
-            max-width: 850px; margin: 0 auto; background: white; border-radius: 20px; padding: 40px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08); border: 1px solid #eee; display: flex; flex-wrap: wrap; gap: 30px; align-items: center;
+            max-width: 850px; margin: 0 auto; background: white;
+            border-radius: 20px; padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08); border: 1px solid #eee;
+            display: flex; flex-wrap: wrap; gap: 30px; align-items: center;
         }
         .doacao-texto { flex: 1.2; min-width: 300px; text-align: left; }
-        .pix-box { background: #f0faff; border: 2px dashed #0EAFEA; padding: 20px; border-radius: 12px; cursor: pointer; transition: 0.3s; margin-bottom: 20px; }
-        .pix-box:hover { background: #e0f4ff; }
-        .pix-codigo { font-family: 'Courier New', Courier, monospace; font-size: 1.1rem; font-weight: bold; color: #333; display: block; margin-top: 5px; }
+        .doacao-texto h3 { color: var(--azul-escuro); }
+        .pix-box {
+            background: var(--fundo-claro); border: 2px dashed var(--azul);
+            padding: 20px; border-radius: 12px; cursor: pointer; transition: 0.3s;
+            margin-bottom: 20px; font: inherit; color: inherit;
+            text-align: left; width: 100%; display: block;
+        }
+        .pix-box:hover, .pix-box:focus-visible { background: #e0f4ff; outline: none; }
+        .pix-codigo { font-family: 'Courier New', Courier, monospace; font-size: 1.1rem; font-weight: bold; color: var(--texto); display: block; margin-top: 5px; }
+        .pix-aviso { color: var(--azul); display: block; margin-top: 8px; font-weight: bold; font-size: 0.85rem; }
+        .dados-bancarios {
+            background: #f9f9f9; padding: 18px; border-radius: 12px;
+            border: 1px solid #eee; font-size: 0.95rem; color: #444; line-height: 1.6;
+        }
+        .dados-bancarios strong.titulo-bancario {
+            color: var(--azul-escuro); border-bottom: 1px solid #eee;
+            display: block; margin-bottom: 8px;
+        }
+        .qr-wrapper { text-align: center; flex: 1; min-width: 220px; }
+        .qr-card {
+            background: white; padding: 15px; border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1); display: inline-block; border: 1px solid #f0f0f0;
+        }
+        .qr-card img { width: 190px; display: block; border-radius: 8px; }
+        .qr-legenda { font-size: 0.8rem; color: var(--texto-fraco); margin-top: 12px; font-style: italic; }
 
-        /* RESPONSIVO */
+        .contato-moderno {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 25px; max-width: 1100px; margin: 40px auto 80px; padding: 0 20px;
+        }
+        .card-contato {
+            background: white; border-radius: 20px; padding: 30px 20px;
+            text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.08); transition: 0.3s;
+        }
+        .card-contato:hover { transform: translateY(-8px); }
+        .card-contato i { font-size: 35px; margin-bottom: 15px; }
+        .card-contato h3 { margin-bottom: 10px; color: var(--azul-escuro); }
+        .card-contato p { font-size: 0.9rem; color: var(--texto-fraco); margin-bottom: 15px; }
+        .card-contato a {
+            display: inline-block; padding: 10px 20px; border-radius: 25px;
+            text-decoration: none; color: white; font-weight: bold;
+        }
+        .whatsapp i { color: #25D366; }
+        .whatsapp a { background: #25D366; }
+        .instagram i { color: #E1306C; }
+        .instagram a { background: linear-gradient(45deg,#f58529,#dd2a7b,#8134af); }
+        .youtube i { color: #FF0000; }
+        .youtube a { background: #FF0000; }
+        .endereco i { color: var(--azul); }
+        .endereco address { font-style: normal; font-size: 0.9rem; color: var(--texto-fraco); }
+
+        .mapa-container { max-width: 1100px; margin: 0 auto 80px; padding: 0 20px; }
+        .mapa-container iframe { border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .btn-maps {
+            background: var(--azul); color: white; padding: 10px 20px;
+            border-radius: 20px; text-decoration: none; display: inline-block;
+        }
+        .btn-maps:hover { background: var(--azul-escuro); }
+
+        .rodape {
+            background: linear-gradient(135deg, var(--azul), var(--azul-escuro));
+            color: white; text-align: center; padding: 25px 15px; margin-top: 60px;
+        }
+        .rodape p { margin: 5px 0; font-size: 0.9rem; }
+        .rodape .dev strong { color: var(--dourado-claro); }
+
         @media (max-width: 768px) {
             .topo { flex-direction: row; flex-wrap: wrap; justify-content: center; padding: 15px 5%; }
             .container-titulo { width: 80%; align-items: center; margin-bottom: 10px; }
@@ -455,815 +373,442 @@
             .agenda-grid { grid-template-columns: 1fr; }
             .youtube-info { text-align: center; align-items: center; padding: 30px 20px; }
             .youtube-thumb { min-height: 200px; }
-            
-            .historia-topo, .secao-reforma, .secao-altar-atual { 
-                flex-direction: column; 
-                text-align: center; 
-                gap: 20px;
+            .historia-topo, .secao-reforma, .secao-altar-atual {
+                flex-direction: column; text-align: center; gap: 20px;
             }
-            
             .historia-container { padding: 20px; margin: 30px 15px; }
             .comparison-slider, .foto-container { max-width: 100%; margin: 0 auto; }
             .historia-texto ul { text-align: left; }
-
             .doacao-card { flex-direction: column; text-align: center; padding: 25px; }
             .doacao-texto { text-align: center; min-width: 100%; }
+            .padroeira-card { flex-direction: column; text-align: center; padding: 25px; }
+            .padroeira-info { text-align: center; }
+            .lista-curiosidades li { text-align: left; }
+            .moldura-dourada { display: none; }
+            .hino-container { padding: 20px; border-right: none; }
+            .texto-hino .estrofe { font-size: 1rem; }
+            .titulo { scroll-margin-top: 200px; }
         }
 
-       /* CONTATO MODERNO */
-.contato-moderno {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 25px;
-    max-width: 1100px;
-    margin: 40px auto 80px;
-    padding: 0 20px;
-}
-
-.card-contato {
-    background: white;
-    border-radius: 20px;
-    padding: 30px 20px;
-    text-align: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    transition: 0.3s;
-}
-
-.card-contato:hover {
-    transform: translateY(-8px);
-}
-
-.card-contato i {
-    font-size: 35px;
-    margin-bottom: 15px;
-}
-
-.card-contato h3 {
-    margin-bottom: 10px;
-}
-
-.card-contato p {
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 15px;
-}
-
-.card-contato a {
-    display: inline-block;
-    padding: 10px 20px;
-    border-radius: 25px;
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-}
-
-/* CORES */
-.whatsapp i { color: #25D366; }
-.whatsapp a { background: #25D366; }
-
-.instagram i { color: #E1306C; }
-.instagram a { background: linear-gradient(45deg,#f58529,#dd2a7b,#8134af); }
-
-.youtube i { color: #FF0000; }
-.youtube a { background: #FF0000; }
-
-.local i { color: #0EAFEA; }
-
-        /* RODAPÉ */
-.rodape {
-    background: linear-gradient(135deg, #0EAFEA, #0b8fc0);
-    color: white;
-    text-align: center;
-    padding: 25px 15px;
-    margin-top: 60px;
-}
-
-.rodape p {
-    margin: 5px 0;
-    font-size: 0.9rem;
-}
-
-.rodape .dev strong {
-    color: #f2d27a;
-}
-
-        /*mapa local*/
-        .mapa-container {
-    max-width: 1100px;
-    margin: 0 auto 80px;
-    padding: 0 20px;
-}
-
-.mapa-container iframe {
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-
-        /*paroco padre*/
-        .padre-container {
-    max-width: 900px;
-    margin: 40px auto 80px;
-    padding: 0 20px;
-}
-
-.padre-card {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    background: white;
-    border-radius: 20px;
-    padding: 25px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    flex-wrap: wrap;
-}
-
-.padre-card img {
-    width: 180px;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 4px solid #d4af37;
-}
-
-.padre-info {
-    flex: 1;
-    text-align: left;
-}
-
-.padre-info h3 {
-    color: #0b8fc0;
-    margin-bottom: 10px;
-}
-
-        /* ESTILO SEÇÃO PADROEIRA */
-.padroeira-container {
-    max-width: 1100px;
-    margin: 0 auto 80px;
-    padding: 0 20px;
-}
-
-.padroeira-card {
-    display: flex;
-    align-items: center;
-    gap: 50px;
-    background: white;
-    border-radius: 20px;
-    padding: 40px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.06);
-    border: 1px solid #eee;
-    flex-wrap: wrap;
-}
-
-.padroeira-foto {
-    flex: 1;
-    min-width: 280px;
-    position: relative;
-    display: flex;
-    justify-content: center;
-}
-
-.padroeira-foto img {
-    width: 100%;
-    max-width: 350px;
-    border-radius: 15px;
-    z-index: 2;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-}
-
-.moldura-dourada {
-    position: absolute;
-    top: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 370px;
-    height: 100%;
-    border: 2px solid #d4af37;
-    border-radius: 20px;
-    z-index: 1;
-}
-
-.padroeira-info {
-    flex: 1.5;
-    text-align: left;
-    min-width: 300px;
-}
-
-.legenda-padroeira {
-    color: #b8860b;
-    font-style: italic;
-    font-weight: bold;
-    margin-top: -10px;
-    margin-bottom: 20px;
-}
-
-.texto-devocional p {
-    line-height: 1.6;
-    color: #555;
-}
-
-.lista-curiosidades {
-    list-style: none;
-    padding: 0;
-    margin: 20px 0;
-}
-
-.lista-curiosidades li {
-    margin-bottom: 10px;
-    padding-left: 25px;
-    position: relative;
-}
-
-.lista-curiosidades li::before {
-    content: "♰";
-    position: absolute;
-    left: 0;
-    color: #0EAFEA;
-    font-weight: bold;
-}
-
-.oracao-box {
-    background: #fdfaf0;
-    border-left: 5px solid #d4af37;
-    padding: 30px;
-    border-radius: 0 20px 20px 0;
-    margin-top: 25px;
-    box-shadow: inset 0 0 10px rgba(212, 175, 55, 0.1);
-}
-
-.oracao-box h4 {
-    margin: 0 0 20px 0;
-    color: #d4af37;
-    font-size: 1.3rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.texto-oracao p {
-    font-style: italic;
-    font-size: 1.05rem;
-    line-height: 1.6;
-    color: #444;
-    margin-bottom: 15px; /* Espaço entre as estrofes */
-}
-
-@media (max-width: 768px) {
-    .padroeira-card { flex-direction: column; text-align: center; padding: 25px; }
-    .padroeira-info { text-align: center; }
-    .lista-curiosidades li { text-align: left; }
-    .moldura-dourada { display: none; }
-}
-
-        /* ESTILO ESPECIAL PARA O HINO */
-.hino-container {
-    background: #fdfaf0;
-    border-left: 5px solid #d4af37;
-    border-right: 5px solid #d4af37; /* Moldura lateral */
-    padding: 40px;
-    border-radius: 20px;
-    margin-top: 25px;
-    text-align: center; /* Centralizado como todo hino */
-}
-
-.hino-header h4 {
-    margin: 0 0 25px 0;
-    color: #b8860b;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 1.5rem;
-    text-transform: uppercase;
-}
-
-.texto-hino .estrofe {
-    font-style: italic;
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-/* Destaque para o refrão */
-.refrao {
-    font-weight: bold;
-    color: #0b8fc0 !important;
-    position: relative;
-    padding: 10px 0;
-}
-
-.refrao::before, .refrao::after {
-    content: "—";
-    color: #d4af37;
-    margin: 0 10px;
-}
-
-@media (max-width: 768px) {
-    .hino-container {
-        padding: 20px;
-        border-right: none; /* Simplifica no celular */
-    }
-    .texto-hino .estrofe {
-        font-size: 1rem;
-    }
-}
-
-        /*ESTRUTURA DO SITE ABAIXO HTML*/
+        #btn-teste-sino { display: none; }
+        body.debug #btn-teste-sino {
+            display: block; position: fixed; bottom: 20px; right: 20px; z-index: 9999;
+            padding: 15px 20px; background: var(--dourado); color: white;
+            border: none; border-radius: 50px; cursor: pointer; font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
     </style>
 </head>
-<body>
+<body id="topo">
 
-    <button id="btn-teste-sino" style="
-    position: fixed; 
-    bottom: 20px; 
-    right: 20px; 
-    z-index: 9999; 
-    padding: 15px 20px; 
-    background: #d4af37; 
-    color: white; 
-    border: none; 
-    border-radius: 50px; 
-    cursor: pointer; 
-    font-weight: bold; 
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-">
-    🔔 Testar 4 Badaladas
-</button>
-
+    <button id="btn-teste-sino" type="button" aria-label="Testar 4 badaladas do sino">🔔 Testar 4 Badaladas</button>
     <audio id="som-sino" src="Somsinohorafundo.mp3" preload="auto"></audio>
 
-<header class="topo">
-    <img src="LogoBrasaoDaParoquia.png" alt="Brasão da Paróquia" class="logo">
-    <div class="container-titulo">
-        <h1 class="nome-site">Paróquia Nossa Senhora do Livramento</h1>
-        <p class="localizacao-topo">Arcoverde - PE</p>
-    </div>
-    <nav class="menu">
-        <a href="#">Início</a>
-        <a href="#missas">Missas</a>
-        <a href="#ao-vivo">Ao Vivo</a>
-        <a href="#a-igreja">História da Igreja</a>
-        <a href="#padroeira">Padroeira</a>
-        <a href="#paroco">Pároco</a>
-        <a href="#galeria">Galeria</a>
-        <a href="#doacao">Doação</a>
-        <a href="#contato">Contato</a>
-    </nav>
-</header>
-
-<main>
-    <section class="parallax">
-        <div class="overlay">
-            <h2>Paróquia Nossa Senhora do Livramento</h2>
-            <p>Sejam bem-vindos</p>
+    <header class="topo">
+        <img src="LogoBrasaoDaParoquia.png" alt="Brasão da Paróquia Nossa Senhora do Livramento" class="logo" width="50" height="50">
+        <div class="container-titulo">
+            <h1 class="nome-site">Paróquia Nossa Senhora do Livramento</h1>
+            <p class="localizacao-topo">Arcoverde - PE</p>
         </div>
-    </section>
+        <nav class="menu" aria-label="Menu principal">
+            <a href="#topo">Início</a>
+            <a href="#missas">Missas</a>
+            <a href="#ao-vivo">Ao Vivo</a>
+            <a href="#a-igreja">História</a>
+            <a href="#padroeira">Padroeira</a>
+            <a href="#paroco">Pároco</a>
+            <a href="#galeria">Galeria</a>
+            <a href="#doacao">Doação</a>
+            <a href="#contato">Contato</a>
+        </nav>
+    </header>
 
-    <section class="missa-container">
-        <h1 class="titulo" id="missas">Santa Missa</h1>
-        <span class="linha-azul"></span>
-
-        <div class="agenda">
-            <div class="agenda-grid">
-                <div class="agenda-item" data-dia="2">
-                    <span class="dia">Terça-feira</span>
-                    <span class="hora">19h</span>
-                    <span class="local">Matriz do Livramento</span>
-                </div>
-                
-                <div class="agenda-item" data-dia="4">
-                    <span class="dia">Quinta-feira</span>
-                    <span class="local" style="font-weight:bold; color:#d4af37;">Quinta Eucarística</span>
-                    <div class="exposicao-box">
-                        <strong>Exposição do Santíssimo</strong>
-                        <span>07h30 às 16h</span>
-                    </div>
-                    <span class="hora">17h</span>
-                    <span class="local">Matriz do Livramento</span>
-                </div>
-
-                <div class="agenda-item destaque-card" data-dia="5">
-                    <span class="dia">1ª Sexta do Mês</span>
-                    <span class="local">Missa do Sagrado Coração</span>
-                    <span class="hora">19h</span>
-                    <span class="local">Matriz do Livramento</span>
-                </div>
-
-                <div class="agenda-item" data-dia="6">
-                    <span class="dia">Sábado</span>
-                    <span class="hora">16h30</span>
-                    <span class="local">Com. São Francisco | Sucupira</span>
-                    <hr style="width: 80%; border: 0; border-top: 1px solid #eee; margin: 10px 0;">
-                    <span class="hora">19h</span>
-                    <span class="local">Matriz do Livramento</span>
-                </div>
-
-                <div class="agenda-item" data-dia="0">
-                    <span class="dia">Domingo</span>
-                    <span class="hora">09h</span>
-                    <span class="local">Matriz do Livramento</span>
-                    <hr style="width: 80%; border: 0; border-top: 1px solid #eee; margin: 10px 0;">
-                    <span class="hora">19h</span>
-                    <span class="local">Matriz do Livramento</span>
-                </div>
+    <main>
+        <section class="parallax" aria-label="Boas-vindas">
+            <div class="overlay">
+                <h2>Paróquia Nossa Senhora do Livramento</h2>
+                <p class="subtitulo-parallax">Sejam bem-vindos</p>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <h1 class="titulo" id="ao-vivo">Transmissões ao Vivo</h1>
-    <span class="linha-azul"></span>
-
-    <section class="youtube-section">
-        <div class="youtube-thumb">
-            <iframe 
-                src="https://www.youtube.com/embed/WIKrWRck6ZU" 
-                title="Última Transmissão Paróquia Livramento" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-            </iframe>
-        </div>
-        <div class="youtube-info">
-            <div class="live-badge"><span class="dot"></span> Transmissão ao Vivo</div>
-            <h3>Acompanhe de onde estiver</h3>
-            <span class="live-horario">Todas as celebrações às 19h</span>
-            <p>Assista à última celebração diretamente aqui ou acompanhe em tempo real pelo canal oficial do Youtube.</p>
-            <a href="https://www.youtube.com/@PascomLivramento" target="_blank" class="btn-assista">
-                <span>Acessar Canal Youtube</span>
-            </a>
-        </div>
-    </section>
-
-    <h1 class="titulo" id="a-igreja">História da Igreja</h1>
-    <span class="linha-azul"></span>
-
-    <section class="historia-container">
-        <div class="historia-topo">
-            <div class="historia-texto">
-                <p>A Paróquia de Nossa Senhora do Livramento em Arcoverde foi criada em <strong>21 de agosto de 1919</strong> por Dom José Antônio de Oliveira Lopes, desmembrada da Diocese de Pesqueira.
-Com raízes na devoção iniciada em 1865 com uma imagem vinda de Portugal, a paróquia cresceu junto com a cidade, sendo fundamental na fé local.</p>
-                
-                <ul>
-                    <li><strong>Origem da Devoção:</strong> A veneração a Nossa Senhora do Livramento começou com uma imagem trazida de Portugal por um fazendeiro em 1865, instalada na antiga Fazenda Olhos d'Água dos Bredos.</li>
-                    <li><strong>Criação Oficial:</strong> A freguesia foi oficialmente criada em 21 de agosto de 1919, sob decreto de Monsenhor D. José Antônio de Oliveira Lopes.</li>
-                    <li><strong>Igreja Matriz:</strong> Em 1920, a igrejinha era simples, sem bancos, e evoluiu ao longo do século, tornando-se a paróquia central da cidade, que mais tarde mudou de nome para Arcoverde.</li>
-                    <li><strong>Centenário:</strong> A paróquia celebrou seus 100 anos de criação com uma peregrinação da réplica da imagem em 2019, destacando a forte religiosidade local.</li>
-                    <li><strong>Padroeira:</strong> Nossa Senhora do Livramento é a padroeira de Arcoverde, com a festa principal celebrada em 23 de setembro.</li>
-                </ul>
-
-                <p style="font-style: italic; margin-top: 20px; color: #777;">
-                    <strong>Sobre o Primeiro Altar:</strong> Pelo estilo, a Missa era celebrada com o celebrante de costas para a assembleia, conforme a antiga liturgia em latim.
-                </p>
-            </div>
-
-            <div class="galeria-historica">
-                <div class="comparison-slider" id="slider">
-                    <img src="FotoPrimeiraAltarCelebracaomissas.png" alt="Foto Original do Altar">
-                    <div class="camada-original">
-                        <span class="label-before">ORIGINAL</span>
+        <section class="missa-container" aria-labelledby="missas">
+            <h2 class="titulo" id="missas">Santa Missa</h2>
+            <span class="linha-azul" aria-hidden="true"></span>
+            <div class="agenda">
+                <div class="agenda-grid">
+                    <div class="agenda-item" data-dia="2">
+                        <span class="dia">Terça-feira</span>
+                        <span class="hora">19h</span>
+                        <span class="local-missa">Matriz do Livramento</span>
                     </div>
-                    <div class="img-restaurada" id="restaurada">
-                        <img src="FotoPrimeiroAltarrestauradocomIA.png" alt="Foto Restaurada do Altar">
-                        <span class="label-after">RESTAURAÇÃO IA</span>
+                    <div class="agenda-item" data-dia="4">
+                        <span class="dia">Quinta-feira</span>
+                        <span class="local-missa" style="font-weight:bold; color:var(--dourado);">Quinta Eucarística</span>
+                        <div class="exposicao-box">
+                            <strong>Exposição do Santíssimo</strong>
+                            <span>07h30 às 16h</span>
+                        </div>
+                        <span class="hora">17h</span>
+                        <span class="local-missa">Matriz do Livramento</span>
+                    </div>
+                    <div class="agenda-item destaque-card" data-dia="5" data-primeira-do-mes="true">
+                        <span class="dia">1ª Sexta do Mês</span>
+                        <span class="local-missa">Missa do Sagrado Coração</span>
+                        <span class="hora">19h</span>
+                        <span class="local-missa">Matriz do Livramento</span>
+                    </div>
+                    <div class="agenda-item" data-dia="6">
+                        <span class="dia">Sábado</span>
+                        <span class="hora">16h30</span>
+                        <span class="local-missa">Com. São Francisco | Sucupira</span>
+                        <hr class="separador-card">
+                        <span class="hora">19h</span>
+                        <span class="local-missa">Matriz do Livramento</span>
+                    </div>
+                    <div class="agenda-item" data-dia="0">
+                        <span class="dia">Domingo</span>
+                        <span class="hora">09h</span>
+                        <span class="local-missa">Matriz do Livramento</span>
+                        <hr class="separador-card">
+                        <span class="hora">19h</span>
+                        <span class="local-missa">Matriz do Livramento</span>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="secao-reforma">
-            <div class="texto-reforma">
-                <h3 style="color: #0b8fc0;">A Reforma Litúrgica</h3>
-                <p>
-                    Posteriormente, houve a <strong>Reforma do Altar Principal</strong> para acompanhar as diretrizes da nova liturgia do <strong>Vaticano II</strong>. O altar tornou-se mais simples, permitindo que o celebrante ficasse de frente para a assembleia, fazendo toda a celebração em língua portuguesa.
-                </p>
-            </div>
-            
-            <div class="foto-container">
-                <img src="FotoSegundoAltar.png" alt="Segundo Altar da Matriz">
-                <span class="label-fixo">SEGUNDO ALTAR (PÓS-REFORMA)</span>
-            </div>
-        </div>
-
-        <div class="secao-altar-atual">
-            <div class="foto-container">
-                <img src="FotoTerceiroAltarAtual.jpeg" alt="Novo Altar Mor da Paróquia">
-                <span class="label-fixo">ALTAR MOR ATUAL</span>
-            </div>
-
-            <div class="texto-altar-atual">
-                <h3 style="color: #0b8fc0;">O Novo Altar Mor</h3>
-                <p>
-                    Com alguns detalhes a serem ajustados e finalizados, apresentamos oficialmente o novo <strong>Altar Mor da Paróquia Nossa Senhora do Livramento</strong>.
-                </p>
-                <p>
-                    Esta nova fase representa o resgate da imponência sacra, unindo a tradição estética com a funcionalidade litúrgica atual, servindo como o novo coração espiritual de nossa comunidade.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <h1 class="titulo" id="padroeira">Nossa Padroeira</h1>
-<span class="linha-azul"></span>
-
-<section class="padroeira-container">
-    <div class="padroeira-card">
-        <div class="padroeira-foto">
-            <img src="FotoPadroeira.webp" alt="Nossa Senhora do Livramento">
-            <div class="moldura-dourada"></div>
-        </div>
-        <div class="padroeira-info">
-            <h3>Nossa Senhora do Livramento</h3>
-            <p class="legenda-padroeira">"Mãe que nos livra de todos os males"</p>
-            
-            <div class="texto-devocional">
-                <p>A devoção à Virgem do Livramento é o pilar que sustenta a fé do povo de Arcoverde há mais de 150 anos. Ela não é apenas uma imagem, mas o símbolo da proteção divina sobre nossa cidade.</p>
-                <ul class="lista-curiosidades">
-                    <li><strong>Festa Litúrgica:</strong> Celebrada solenemente no dia 23 de Setembro.</li>
-                    <li><strong>Significado:</strong> Representa o auxílio cristão nos momentos de aflição, perigo e pedidos de libertação.</li>
-                    <li><strong>Tradição:</strong> A procissão de encerramento é um dos maiores eventos religiosos do Sertão de Pernambuco.</li>
-                </ul>
-            </div>
-            
-            <div class="oracao-box hino-container">
-    <div class="hino-header">
-        <img src="https://cdn-icons-png.flaticon.com/512/4601/4601449.png" width="30" style="margin-bottom: 10px; opacity: 0.7;">
-        <h4>Hino à Padroeira</h4>
-    </div>
-    
-    <div class="texto-hino">
-        <p class="estrofe">
-            Ó Senhora do Livramento, vossos filhos,<br>
-            Benigna amparai, e na hora do vil tormento,<br>
-            nossa fé vinde e confortai.
-        </p>
-
-        <p class="estrofe refrao">
-            Vinde ó mãe querida, vinde nos socorrer.<br>
-            As lutas desta vida, ó mãe dai-nos vencer.
-        </p>
-
-        <p class="estrofe">
-            Ao vosso meigo filho, mãe nos apresentai.<br>
-            De nossos vis pecados, o perdão alcançai.
-        </p>
-
-        <p class="estrofe">
-            Na hora derradeira, dai-nos vosso Jesus.<br>
-            Que alegre nos receba, lá na eterna luz.
-        </p>
-    </div>
-</div>
-</section>
-
-    <h1 class="titulo" id="paroco">Nosso Pároco</h1>
-<span class="linha-azul"></span>
-
-<section class="padre-container">
-    <div class="padre-card">
-        <img src="FotoPadreAdeildoSebastiaoFerreira.jpeg" alt="Padre Adeildo Sebastião Ferreira">
-        
-        <div class="padre-info">
-            <h3>Pe. Adeildo Sebastião Ferreira</h3>
-            <p><strong>Pároco</strong> da Paróquia Nossa Senhora do Livramento</p>
-            <p>
-                Responsável pela condução espiritual da comunidade,
-                celebrações e atividades pastorais da paróquia.
-            </p>
-        </div>
-    </div>
-</section>
-    
-    <h1 class="titulo" id="galeria">Galeria de Fotos</h1>
-    <span class="linha-azul"></span>
-
-    <section class="instagram-container">
-        <script src="https://elfsightcdn.com/platform.js" async></script>
-        <div class="elfsight-app-fb046694-b457-4af3-82e6-42be8ae69c5a" data-elfsight-app-lazy></div>
-    </section>
-
-    <h1 class="titulo" id="doacao">Dízimo e Ofertas</h1>
-    <span class="linha-azul"></span>
-
-    <section class="doacao-container">
-        <div class="doacao-card">
-            <div class="doacao-texto">
-                <h3>Ajude nossa Paróquia</h3>
-                <p>Sua contribuição sustenta nossas obras de evangelização, projetos sociais e a manutenção da Igreja Matriz.</p>
-                
-                <div class="pix-box" onclick="copiarPix()" title="Clique para copiar a chave">
-                    <strong>Chave PIX (CNPJ):</strong>
-                    <span id="chave-pix" class="pix-codigo">10.714.251/0028-01</span>
-                    <small style="color: #0EAFEA; display: block; margin-top: 8px; font-weight: bold;">
-                        <img src="https://cdn-icons-png.flaticon.com/512/1621/1621635.png" width="14" style="vertical-align: middle;"> CLIQUE PARA COPIAR A CHAVE
-                    </small>
+        <section aria-labelledby="ao-vivo">
+            <h2 class="titulo" id="ao-vivo">Transmissões ao Vivo</h2>
+            <span class="linha-azul" aria-hidden="true"></span>
+            <div class="youtube-section">
+                <div class="youtube-thumb">
+                    <iframe src="https://www.youtube.com/embed/WIKrWRck6ZU"
+                        title="Última Transmissão Paróquia Livramento" loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
                 </div>
-
-                <div style="background: #f9f9f9; padding: 18px; border-radius: 12px; border: 1px solid #eee; font-size: 0.95rem; color: #444; line-height: 1.6;">
-                    <strong style="color: #0b8fc0; border-bottom: 1px solid #eee; display: block; margin-bottom: 8px;">Dados Bancários (Transferência):</strong>
-                    <strong>Banco:</strong> Caixa Econômica Federal (104)<br>
-                    <strong>Agência:</strong> 0915 | <strong>Operação:</strong> 003<br>
-                    <strong>Conta Corrente:</strong> 2898-2<br>
-                    <strong>Favorecido:</strong> Paróquia N. Sra. do Livramento
+                <div class="youtube-info">
+                    <div class="live-badge"><span class="dot" aria-hidden="true"></span> Transmissão ao Vivo</div>
+                    <h3>Acompanhe de onde estiver</h3>
+                    <span class="live-horario">Todas as celebrações às 19h</span>
+                    <p>Assista à última celebração diretamente aqui ou acompanhe em tempo real pelo canal oficial do YouTube.</p>
+                    <a href="https://www.youtube.com/@PascomLivramento" target="_blank" rel="noopener" class="btn-assista">
+                        <span>Acessar Canal YouTube</span>
+                    </a>
                 </div>
             </div>
+        </section>
 
-            <div style="text-align: center; flex: 1;">
-                <div style="background: white; padding: 15px; border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); display: inline-block; border: 1px solid #f0f0f0;">
-                    <img src="Fotoqrcodev1ck.png" alt="QR Code Pix" style="width: 190px; display: block; border-radius: 8px;">
+        <section aria-labelledby="a-igreja">
+            <h2 class="titulo" id="a-igreja">História da Igreja</h2>
+            <span class="linha-azul" aria-hidden="true"></span>
+            <div class="historia-container">
+                <div class="historia-topo">
+                    <div class="historia-texto">
+                        <p>A Paróquia de Nossa Senhora do Livramento em Arcoverde foi criada em <strong>21 de agosto de 1919</strong> por Dom José Antônio de Oliveira Lopes, desmembrada da Diocese de Pesqueira. Com raízes na devoção iniciada em 1865 com uma imagem vinda de Portugal, a paróquia cresceu junto com a cidade, sendo fundamental na fé local.</p>
+                        <ul>
+                            <li><strong>Origem da Devoção:</strong> A veneração a Nossa Senhora do Livramento começou com uma imagem trazida de Portugal por um fazendeiro em 1865, instalada na antiga Fazenda Olhos d'Água dos Bredos.</li>
+                            <li><strong>Criação Oficial:</strong> A freguesia foi oficialmente criada em 21 de agosto de 1919, sob decreto de Monsenhor D. José Antônio de Oliveira Lopes.</li>
+                            <li><strong>Igreja Matriz:</strong> Em 1920, a igrejinha era simples, sem bancos, e evoluiu ao longo do século, tornando-se a paróquia central da cidade, que mais tarde mudou de nome para Arcoverde.</li>
+                            <li><strong>Centenário:</strong> A paróquia celebrou seus 100 anos de criação com uma peregrinação da réplica da imagem em 2019, destacando a forte religiosidade local.</li>
+                            <li><strong>Padroeira:</strong> Nossa Senhora do Livramento é a padroeira de Arcoverde, com a festa principal celebrada em 23 de setembro.</li>
+                        </ul>
+                        <p class="nota-altar"><strong>Sobre o Primeiro Altar:</strong> Pelo estilo, a Missa era celebrada com o celebrante de costas para a assembleia, conforme a antiga liturgia em latim.</p>
+                    </div>
+                    <div class="galeria-historica">
+                        <div class="comparison-slider" id="slider" role="img" aria-label="Comparação entre foto original e restaurada do primeiro altar">
+                            <img src="FotoPrimeiraAltarCelebracaomissas.png" alt="Foto original do primeiro altar" loading="lazy">
+                            <div class="camada-original">
+                                <span class="label-before">ORIGINAL</span>
+                            </div>
+                            <div class="img-restaurada" id="restaurada">
+                                <img src="FotoPrimeiroAltarrestauradocomIA.png" alt="Foto restaurada do primeiro altar com IA" loading="lazy">
+                                <span class="label-after">RESTAURAÇÃO IA</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <p style="font-size: 0.8rem; color: #888; margin-top: 12px; font-style: italic;">Aponte a câmera para doar via App</p>
+
+                <div class="secao-reforma">
+                    <div class="texto-reforma">
+                        <h3>A Reforma Litúrgica</h3>
+                        <p>Posteriormente, houve a <strong>Reforma do Altar Principal</strong> para acompanhar as diretrizes da nova liturgia do <strong>Vaticano II</strong>. O altar tornou-se mais simples, permitindo que o celebrante ficasse de frente para a assembleia, fazendo toda a celebração em língua portuguesa.</p>
+                    </div>
+                    <div class="foto-container">
+                        <img src="FotoSegundoAltar.png" alt="Segundo altar da matriz após a reforma litúrgica" loading="lazy">
+                        <span class="label-fixo">SEGUNDO ALTAR (PÓS-REFORMA)</span>
+                    </div>
+                </div>
+
+                <div class="secao-altar-atual">
+                    <div class="foto-container">
+                        <img src="FotoTerceiroAltarAtual.jpeg" alt="Novo altar mor da paróquia" loading="lazy">
+                        <span class="label-fixo">ALTAR MOR ATUAL</span>
+                    </div>
+                    <div class="texto-altar-atual">
+                        <h3>O Novo Altar Mor</h3>
+                        <p>Com alguns detalhes a serem ajustados e finalizados, apresentamos oficialmente o novo <strong>Altar Mor da Paróquia Nossa Senhora do Livramento</strong>.</p>
+                        <p>Esta nova fase representa o resgate da imponência sacra, unindo a tradição estética com a funcionalidade litúrgica atual, servindo como o novo coração espiritual de nossa comunidade.</p>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-   <h1 class="titulo" id="contato">Contato</h1>
-<span class="linha-azul"></span>
+        <section aria-labelledby="padroeira">
+            <h2 class="titulo" id="padroeira">Nossa Padroeira</h2>
+            <span class="linha-azul" aria-hidden="true"></span>
+            <div class="padroeira-container">
+                <div class="padroeira-card">
+                    <div class="padroeira-foto">
+                        <img src="FotoPadroeira.webp" alt="Imagem de Nossa Senhora do Livramento" loading="lazy">
+                        <div class="moldura-dourada" aria-hidden="true"></div>
+                    </div>
+                    <div class="padroeira-info">
+                        <h3>Nossa Senhora do Livramento</h3>
+                        <p class="legenda-padroeira">"Mãe que nos livra de todos os males"</p>
+                        <div class="texto-devocional">
+                            <p>A devoção à Virgem do Livramento é o pilar que sustenta a fé do povo de Arcoverde há mais de 150 anos. Ela não é apenas uma imagem, mas o símbolo da proteção divina sobre nossa cidade.</p>
+                            <ul class="lista-curiosidades">
+                                <li><strong>Festa Litúrgica:</strong> Celebrada solenemente no dia 23 de Setembro.</li>
+                                <li><strong>Significado:</strong> Representa o auxílio cristão nos momentos de aflição, perigo e pedidos de libertação.</li>
+                                <li><strong>Tradição:</strong> A procissão de encerramento é um dos maiores eventos religiosos do Sertão de Pernambuco.</li>
+                            </ul>
+                        </div>
+                        <div class="hino-container">
+                            <div class="hino-header">
+                                <img src="https://cdn-icons-png.flaticon.com/512/4601/4601449.png" width="30" height="30" alt="" aria-hidden="true" style="margin-bottom: 10px; opacity: 0.7;" loading="lazy">
+                                <h4>Hino à Padroeira</h4>
+                            </div>
+                            <div class="texto-hino">
+                                <p class="estrofe">
+                                    Ó Senhora do Livramento, vossos filhos,<br>
+                                    Benigna amparai, e na hora do vil tormento,<br>
+                                    nossa fé vinde e confortai.
+                                </p>
+                                <p class="estrofe refrao">
+                                    Vinde ó mãe querida, vinde nos socorrer.<br>
+                                    As lutas desta vida, ó mãe dai-nos vencer.
+                                </p>
+                                <p class="estrofe">
+                                    Ao vosso meigo filho, mãe nos apresentai.<br>
+                                    De nossos vis pecados, o perdão alcançai.
+                                </p>
+                                <p class="estrofe">
+                                    Na hora derradeira, dai-nos vosso Jesus.<br>
+                                    Que alegre nos receba, lá na eterna luz.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<section class="contato-moderno">
+        <section aria-labelledby="paroco">
+            <h2 class="titulo" id="paroco">Nosso Pároco</h2>
+            <span class="linha-azul" aria-hidden="true"></span>
+            <div class="padre-container">
+                <div class="padre-card">
+                    <img src="FotoPadreAdeildoSebastiaoFerreira.jpeg" alt="Padre Adeildo Sebastião Ferreira" width="180" height="180" loading="lazy">
+                    <div class="padre-info">
+                        <h3>Pe. Adeildo Sebastião Ferreira</h3>
+                        <p><strong>Pároco</strong> da Paróquia Nossa Senhora do Livramento</p>
+                        <p>Responsável pela condução espiritual da comunidade, celebrações e atividades pastorais da paróquia.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <div class="card-contato whatsapp">
-        <i class="fab fa-whatsapp"></i>
-        <h3>WhatsApp</h3>
-        <p>Fale direto com a secretaria paroquial</p>
-        <a href="https://wa.me/5587991587001?text=Olá,%20gostaria%20de%20informações%20da%20paróquia" target="_blank">
-            Iniciar conversa
-        </a>
-    </div>
+        <section aria-labelledby="galeria">
+            <h2 class="titulo" id="galeria">Galeria de Fotos</h2>
+            <span class="linha-azul" aria-hidden="true"></span>
+            <div class="instagram-container">
+                <script src="https://elfsightcdn.com/platform.js" async></script>
+                <div class="elfsight-app-fb046694-b457-4af3-82e6-42be8ae69c5a" data-elfsight-app-lazy></div>
+            </div>
+        </section>
 
-    <div class="card-contato instagram">
-        <i class="fab fa-instagram"></i>
-        <h3>Instagram</h3>
-        <p>Acompanhe nossas atualizações</p>
-        <a href="https://www.instagram.com/paroquiadolivramento/?hl=pt-br" target="_blank">
-            Acessar perfil
-        </a>
-    </div>
+        <section aria-labelledby="doacao">
+            <h2 class="titulo" id="doacao">Dízimo e Ofertas</h2>
+            <span class="linha-azul" aria-hidden="true"></span>
+            <div class="doacao-container">
+                <div class="doacao-card">
+                    <div class="doacao-texto">
+                        <h3>Ajude nossa Paróquia</h3>
+                        <p>Sua contribuição sustenta nossas obras de evangelização, projetos sociais e a manutenção da Igreja Matriz.</p>
+                        <button type="button" class="pix-box" id="btn-pix" title="Clique para copiar a chave PIX">
+                            <strong>Chave PIX (CNPJ):</strong>
+                            <span id="chave-pix" class="pix-codigo">10.714.251/0028-01</span>
+                            <span class="pix-aviso">
+                                <i class="fas fa-copy" aria-hidden="true"></i> CLIQUE PARA COPIAR A CHAVE
+                            </span>
+                        </button>
+                        <div class="dados-bancarios">
+                            <strong class="titulo-bancario">Dados Bancários (Transferência):</strong>
+                            <strong>Banco:</strong> Caixa Econômica Federal (104)<br>
+                            <strong>Agência:</strong> 0915 | <strong>Operação:</strong> 003<br>
+                            <strong>Conta Corrente:</strong> 2898-2<br>
+                            <strong>Favorecido:</strong> Paróquia N. Sra. do Livramento
+                        </div>
+                    </div>
+                    <div class="qr-wrapper">
+                        <div class="qr-card">
+                            <img src="Fotoqrcodev1ck.png" alt="QR Code para doação via PIX" width="190" height="190" loading="lazy">
+                        </div>
+                        <p class="qr-legenda">Aponte a câmera para doar via App</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <div class="card-contato youtube">
-        <i class="fab fa-youtube"></i>
-        <h3>YouTube</h3>
-        <p>Assista às transmissões</p>
-        <a href="https://www.youtube.com/@PascomLivramento" target="_blank">
-            Assistir canal
-        </a>
-    </div>
+        <section aria-labelledby="contato">
+            <h2 class="titulo" id="contato">Contato</h2>
+            <span class="linha-azul" aria-hidden="true"></span>
+            <div class="contato-moderno">
+                <div class="card-contato whatsapp">
+                    <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                    <h3>WhatsApp</h3>
+                    <p>Fale direto com a secretaria paroquial</p>
+                    <a href="https://wa.me/5587991587001?text=Olá,%20gostaria%20de%20informações%20da%20paróquia" target="_blank" rel="noopener">Iniciar conversa</a>
+                </div>
+                <div class="card-contato instagram">
+                    <i class="fab fa-instagram" aria-hidden="true"></i>
+                    <h3>Instagram</h3>
+                    <p>Acompanhe nossas atualizações</p>
+                    <a href="https://www.instagram.com/paroquiadolivramento/?hl=pt-br" target="_blank" rel="noopener">Acessar perfil</a>
+                </div>
+                <div class="card-contato youtube">
+                    <i class="fab fa-youtube" aria-hidden="true"></i>
+                    <h3>YouTube</h3>
+                    <p>Assista às transmissões</p>
+                    <a href="https://www.youtube.com/@PascomLivramento" target="_blank" rel="noopener">Assistir canal</a>
+                </div>
+                <div class="card-contato endereco">
+                    <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                    <h3>Endereço</h3>
+                    <address>
+                        Praça do Livramento<br>
+                        N° 17 - Centro<br>
+                        CEP: 56505-250<br>
+                        Arcoverde - PE
+                    </address>
+                </div>
+            </div>
+        </section>
 
-    <div class="card-contato local">
-        <i class="fas fa-map-marker-alt"></i>
-        <h3>Endereço</h3>
-        <p>Praça do Livramento<br>N° 17 - Centro<br>CEP: 56505-250<br>Arcoverde - PE</p>
-    </div>
+        <section aria-labelledby="localizacao">
+            <h2 class="titulo" id="localizacao">Localização</h2>
+            <span class="linha-azul" aria-hidden="true"></span>
+            <div class="mapa-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d243.61606961695725!2d-37.05340592618248!3d-8.41933398296192!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7a81bc280b18d69%3A0x13d550240bcefa19!2sPar%C3%B3quia%20Nossa%20Senhora%20do%20Livramento!5e1!3m2!1spt-BR!2sbr!4v1777137535679!5m2!1spt-BR!2sbr"
+                    title="Mapa da Paróquia Nossa Senhora do Livramento"
+                    width="100%" height="350" style="border:0;" allowfullscreen loading="lazy"></iframe>
+                <p style="text-align:center; margin-top:15px;">
+                    <a href="https://maps.google.com/?q=Paróquia Nossa Senhora do Livramento Arcoverde" target="_blank" rel="noopener" class="btn-maps">
+                        📍 Abrir no Google Maps
+                    </a>
+                </p>
+            </div>
+        </section>
+    </main>
 
-</section>
+    <footer class="rodape">
+        <p>© 2026 Paróquia Nossa Senhora do Livramento</p>
+        <p class="dev">
+            👨‍💻 Desenvolvido por:
+            <strong>Cauã</strong>, <strong>Kayko</strong>, <strong>Victor</strong>, <strong>Yam</strong>
+        </p>
+    </footer>
 
-    <h1 class="titulo">Localização</h1>
-<span class="linha-azul"></span>
+    <script>
+    (function () {
+        'use strict';
 
-<section class="mapa-container">
-    <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d243.61606961695725!2d-37.05340592618248!3d-8.41933398296192!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7a81bc280b18d69%3A0x13d550240bcefa19!2sPar%C3%B3quia%20Nossa%20Senhora%20do%20Livramento!5e1!3m2!1spt-BR!2sbr!4v1777137535679!5m2!1spt-BR!2sbr"
-        width="100%" 
-        height="350" 
-        style="border:0;" 
-        allowfullscreen="" 
-        loading="lazy">
-    </iframe>
-
-<p style="text-align:center; margin-top:15px;">
-        <a href="https://maps.google.com/?q=Paróquia Nossa Senhora do Livramento Arcoverde" target="_blank"
-           style="background:#0EAFEA; color:white; padding:10px 20px; border-radius:20px; text-decoration:none;">
-            📍 Abrir no Google Maps
-        </a>
-    </p>
-
-</section>
-
-</main>
-
-<script>
-    // 1. FUNÇÃO COPIAR PIX
-    function copiarPix() {
-        const chave = "10.714.251/0028-01";
-        navigator.clipboard.writeText(chave).then(() => {
-            alert("Chave PIX copiada com sucesso!");
-        });
-    }
-
-    // 2. LÓGICA DO SINO
-    let tocandoAgora = false;
-
-    function tocarSino(vezes) {
-        if (tocandoAgora) return; 
-        tocandoAgora = true;
-
-        const somSino = document.getElementById('som-sino');
-        let contador = 0;
-
-        function tocarBatida() {
-            if (contador < vezes) {
-                somSino.currentTime = 0; 
-                somSino.play().catch(e => {
-                    console.log("Áudio bloqueado. Clique na página primeiro.");
-                });
-                
-                contador++;
-                setTimeout(tocarBatida, 3000); // Intervalo de 3 segundos entre batidas
-            } else {
-                tocandoAgora = false;
-            }
+        if (new URLSearchParams(location.search).has('debug')) {
+            document.body.classList.add('debug');
         }
-        tocarBatida();
-    }
 
-    // 3. INICIALIZAÇÃO (Quando a página carrega)
-    document.addEventListener('DOMContentLoaded', function() {
-        
-        // Configura o Botão de Teste
-        const btnTeste = document.getElementById('btn-teste-sino');
-        if (btnTeste) {
-            btnTeste.addEventListener('click', function() {
-                tocarSino(4); 
+        const btnPix = document.getElementById('btn-pix');
+        if (btnPix) {
+            btnPix.addEventListener('click', async function () {
+                const chave = document.getElementById('chave-pix').textContent.trim();
+                const aviso = btnPix.querySelector('.pix-aviso');
+                const original = aviso.innerHTML;
+                try {
+                    await navigator.clipboard.writeText(chave);
+                    aviso.innerHTML = '✅ CHAVE COPIADA!';
+                    setTimeout(() => { aviso.innerHTML = original; }, 2000);
+                } catch (e) {
+                    alert('Chave PIX: ' + chave);
+                }
             });
         }
 
-        // Configura o Relógio (Verifica a cada 1 segundo)
-        setInterval(function() {
-            const agora = new Date();
-            const minutos = agora.getMinutes();
-            const segundos = agora.getSeconds();
+        let tocandoAgora = false;
+        function tocarSino(vezes) {
+            if (tocandoAgora) return;
+            tocandoAgora = true;
+            const somSino = document.getElementById('som-sino');
+            let contador = 0;
+            (function tocarBatida() {
+                if (contador < vezes) {
+                    somSino.currentTime = 0;
+                    somSino.play().catch(() => {});
+                    contador++;
+                    setTimeout(tocarBatida, 3000);
+                } else {
+                    tocandoAgora = false;
+                }
+            })();
+        }
 
-            if (minutos === 0 && segundos === 0) {
-                let horas = agora.getHours();
-                let batidas = horas % 12;
+        const btnTeste = document.getElementById('btn-teste-sino');
+        if (btnTeste) btnTeste.addEventListener('click', () => tocarSino(4));
+
+        setInterval(() => {
+            const agora = new Date();
+            if (agora.getMinutes() === 0 && agora.getSeconds() === 0) {
+                let batidas = agora.getHours() % 12;
                 if (batidas === 0) batidas = 12;
                 tocarSino(batidas);
             }
         }, 1000);
-    });
-</script>
-    
-    <script>
-    // Agora o código espera a página carregar para marcar o card
-    document.addEventListener('DOMContentLoaded', function() {
-        
-        // 1. Lógica do cartão "HOJE"
-        const hoje = new Date().getDay();
-        const cards = document.querySelectorAll('.agenda-item');
-        cards.forEach(card => {
-            if (card.getAttribute('data-dia') == hoje) {
+
+        // Marcar card "HOJE" — trata corretamente "1ª Sexta do Mês"
+        const hoje = new Date();
+        const diaSemana = hoje.getDay();
+        const ehPrimeiraSemana = hoje.getDate() <= 7;
+
+        document.querySelectorAll('.agenda-item').forEach(card => {
+            const dia = parseInt(card.dataset.dia, 10);
+            const apenasPrimeira = card.dataset.primeiraDoMes === 'true';
+            if (dia === diaSemana) {
+                if (apenasPrimeira && !ehPrimeiraSemana) return;
                 card.classList.add('hoje');
             }
         });
 
-        // Lógica do Slider
+        // Slider antes/depois
         const slider = document.getElementById('slider');
         const restaurada = document.getElementById('restaurada');
         const imgInterna = restaurada ? restaurada.querySelector('img') : null;
-
         if (slider && restaurada && imgInterna) {
+            const ajustarTamanho = () => { imgInterna.style.width = slider.offsetWidth + 'px'; };
             const moverDivisor = (e) => {
                 const rect = slider.getBoundingClientRect();
-                let x = (e.clientX || (e.touches ? e.touches[0].clientX : 0)) - rect.left;
-                
-                imgInterna.style.width = rect.width + 'px';
-                let percentual = Math.min(Math.max((x / rect.width) * 100, 0), 100);
+                const clientX = e.clientX || (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
+                const x = clientX - rect.left;
+                const percentual = Math.min(Math.max((x / rect.width) * 100, 0), 100);
                 restaurada.style.width = percentual + '%';
             };
-
-            slider.addEventListener('mousemove', moverDivisor);
-            slider.addEventListener('touchmove', moverDivisor);
-
-            const ajustarTamanho = () => {
-                imgInterna.style.width = slider.offsetWidth + 'px';
-            };
+            ajustarTamanho();
             window.addEventListener('load', ajustarTamanho);
             window.addEventListener('resize', ajustarTamanho);
+            slider.addEventListener('mousemove', moverDivisor);
+            slider.addEventListener('touchmove', moverDivisor, { passive: true });
         }
-    });
-</script>
-
-    <script>
-function enviarMensagem(event) {
-    event.preventDefault();
-
-    const nome = document.querySelector('input[type="text"]').value;
-    const email = document.querySelector('input[type="email"]').value;
-    const mensagem = document.querySelector('textarea').value;
-
-    const texto = `Olá, meu nome é ${nome}%0AEmail: ${email}%0AMensagem: ${mensagem}`;
-
-    const url = `https://wa.me/5587991587001?text=${texto}`;
-    window.open(url, '_blank');
-}
-</script>
-
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-
-<footer class="rodape">
-    <p>© 2026 Paróquia Nossa Senhora do Livramento</p>
-    <p class="dev">
-    👨‍💻 Desenvolvido por: 
-    <strong>Cauã</strong>, 
-    <strong>Kayko</strong>, 
-    <strong>Victor</strong>,
-    <strong>Yam</strong>
-</p>
-</footer>
-
+    })();
+    </script>
 </body>
 </html>
