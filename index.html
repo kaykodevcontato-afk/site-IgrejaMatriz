@@ -565,6 +565,50 @@
         .padre-info { flex: 1; text-align: left; min-width: 250px; }
         .padre-info h3 { color: var(--azul-escuro); margin-bottom: 10px; }
 
+        /* MOVIMENTOS, PASTORAIS E GRUPOS */
+        .grupos-container { max-width: 1100px; margin: 0 auto 80px; padding: 0 20px; }
+        .grupos-intro {
+            text-align: center; max-width: 700px;
+            margin: -10px auto 35px; color: var(--texto-suave);
+            line-height: 1.6;
+        }
+        .grupos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 18px;
+        }
+        .grupo-item {
+            background: white; border-radius: 16px;
+            padding: 22px 18px; text-align: center;
+            border: 1px solid #eee;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--dourado);
+            transition: 0.3s; position: relative;
+            display: flex; flex-direction: column; align-items: center; gap: 10px;
+        }
+        .grupo-item:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 30px rgba(14,175,234,0.15);
+            border-top-color: var(--azul);
+        }
+        .grupo-icone {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 56px; height: 56px; border-radius: 50%;
+            background: linear-gradient(135deg, #fdfaf0, #ffffff);
+            border: 2px solid var(--dourado-claro);
+            color: var(--dourado-escuro); font-size: 1.3rem;
+            transition: 0.3s;
+        }
+        .grupo-item:hover .grupo-icone {
+            border-color: var(--azul);
+            color: var(--azul-escuro);
+            transform: scale(1.05);
+        }
+        .grupo-item h4 {
+            margin: 0; color: var(--azul-escuro);
+            font-size: 0.98rem; line-height: 1.3;
+        }
+
         /* GALERIA INSTAGRAM */
         .galeria-container { max-width: 1100px; margin: 0 auto 80px; padding: 0 20px; }
 
@@ -1030,6 +1074,7 @@
             <a href="#a-igreja">História</a>
             <a href="#padroeira">Padroeira</a>
             <a href="#paroco">Pároco</a>
+            <a href="#grupos">Grupos</a>
             <a href="#galeria">Galeria</a>
             <a href="#doacao">Doação</a>
             <a href="#contato">Contato</a>
@@ -1335,6 +1380,52 @@
                         <h3>Pe. Adeildo Sebastião Ferreira</h3>
                         <p><strong>Pároco</strong> da Paróquia Nossa Senhora do Livramento</p>
                         <p>Responsável pela condução espiritual da comunidade, celebrações e atividades pastorais da paróquia.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section aria-labelledby="grupos">
+            <h2 class="titulo" id="grupos">Movimentos, Pastorais e Grupos</h2>
+            <span class="linha-azul" aria-hidden="true"></span>
+            <div class="grupos-container">
+                <p class="grupos-intro">A vida da nossa paróquia se faz na comunhão de muitos corações. Conheça os movimentos, pastorais e grupos que servem nossa comunidade.</p>
+                <div class="grupos-grid">
+                    <div class="grupo-item">
+                        <span class="grupo-icone" aria-hidden="true"><i class="fas fa-heart"></i></span>
+                        <h4>Grupo Mãe da Ternura</h4>
+                    </div>
+                    <div class="grupo-item">
+                        <span class="grupo-icone" aria-hidden="true"><i class="fas fa-music"></i></span>
+                        <h4>Grupo Musical Sta. Cecília</h4>
+                    </div>
+                    <div class="grupo-item">
+                        <span class="grupo-icone" aria-hidden="true"><i class="fas fa-pray"></i></span>
+                        <h4>Homens do Terço</h4>
+                    </div>
+                    <div class="grupo-item">
+                        <span class="grupo-icone" aria-hidden="true"><i class="fas fa-cross"></i></span>
+                        <h4>Irmãs Religiosas</h4>
+                    </div>
+                    <div class="grupo-item">
+                        <span class="grupo-icone" aria-hidden="true"><i class="fas fa-crown"></i></span>
+                        <h4>Legião de Maria</h4>
+                    </div>
+                    <div class="grupo-item">
+                        <span class="grupo-icone" aria-hidden="true"><i class="fas fa-bible"></i></span>
+                        <h4>Ministros da Palavra</h4>
+                    </div>
+                    <div class="grupo-item">
+                        <span class="grupo-icone" aria-hidden="true"><i class="fas fa-dove"></i></span>
+                        <h4>Movimento Jesus Misericordioso</h4>
+                    </div>
+                    <div class="grupo-item">
+                        <span class="grupo-icone" aria-hidden="true"><i class="fas fa-star"></i></span>
+                        <h4>Movimento Mãe Rainha</h4>
+                    </div>
+                    <div class="grupo-item">
+                        <span class="grupo-icone" aria-hidden="true"><i class="fas fa-hands-helping"></i></span>
+                        <h4>Movimento Voc. Vicentino</h4>
                     </div>
                 </div>
             </div>
