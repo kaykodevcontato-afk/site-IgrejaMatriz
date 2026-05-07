@@ -227,64 +227,150 @@
         .label-after { left: 15px; z-index: 3; }
         .label-fixo { left: 50%; transform: translateX(-50%); }
 
+        /* PADROEIRA - CARD APRESENTAÇÃO */
         .padroeira-container { max-width: 1100px; margin: 0 auto 80px; padding: 0 20px; }
         .padroeira-card {
             display: flex; align-items: center; gap: 50px;
-            background: white; border-radius: 20px; padding: 40px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.06); border: 1px solid #eee; flex-wrap: wrap;
+            background: white; border-radius: 20px; padding: 50px 40px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+            border: 1px solid #eee; flex-wrap: wrap;
+            position: relative; overflow: hidden;
+        }
+        .padroeira-card::before {
+            content: ""; position: absolute; top: 0; left: 0; right: 0; height: 5px;
+            background: linear-gradient(90deg, var(--azul), var(--dourado), var(--azul));
         }
         .padroeira-foto {
             flex: 1; min-width: 280px;
-            display: flex; justify-content: center; align-items: center;
-            padding: 15px;
+            display: flex; justify-content: center; align-items: center; padding: 15px;
         }
         .padroeira-foto-wrapper {
-            position: relative;
-            display: inline-block;
-            max-width: 350px;
-            width: 100%;
+            position: relative; display: inline-block; max-width: 320px; width: 100%;
         }
         .padroeira-foto-wrapper img {
             width: 100%; display: block; border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 15px 35px rgba(11, 143, 192, 0.25);
             position: relative; z-index: 2;
         }
         .moldura-dourada {
-            position: absolute;
-            inset: -15px;
+            position: absolute; inset: -15px;
             border: 2px solid var(--dourado);
-            border-radius: 20px;
-            z-index: 1;
-            pointer-events: none;
+            border-radius: 20px; z-index: 1; pointer-events: none;
         }
+        .moldura-dourada::before, .moldura-dourada::after {
+            content: "✦"; position: absolute;
+            color: var(--dourado); background: white; padding: 0 8px;
+            font-size: 14px;
+        }
+        .moldura-dourada::before { top: -10px; left: 50%; transform: translateX(-50%); }
+        .moldura-dourada::after { bottom: -10px; left: 50%; transform: translateX(-50%); }
+
         .padroeira-info { flex: 1.5; text-align: left; min-width: 300px; }
-        .padroeira-info h3 { color: var(--azul-escuro); }
+        .badge-padroeira {
+            display: inline-block; background: var(--fundo-claro);
+            color: var(--azul-escuro); border: 1px solid var(--azul);
+            padding: 5px 14px; border-radius: 20px;
+            font-size: 0.8rem; font-weight: bold; letter-spacing: 1px;
+            margin-bottom: 12px; text-transform: uppercase;
+        }
+        .padroeira-info h3 {
+            color: var(--azul-escuro); font-size: 1.8rem; margin: 0 0 8px;
+        }
         .legenda-padroeira {
             color: var(--dourado-escuro); font-style: italic; font-weight: bold;
-            margin-top: -10px; margin-bottom: 20px;
+            margin: 0 0 20px;
         }
-        .texto-devocional p { line-height: 1.6; color: var(--texto-suave); }
-        .lista-curiosidades { list-style: none; padding: 0; margin: 20px 0; }
-        .lista-curiosidades li { margin-bottom: 10px; padding-left: 25px; position: relative; }
-        .lista-curiosidades li::before {
-            content: "♰"; position: absolute; left: 0; color: var(--azul); font-weight: bold;
+        .texto-devocional p { line-height: 1.7; color: var(--texto-suave); margin: 0 0 25px; }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px; margin-top: 20px;
+        }
+        .info-item {
+            background: linear-gradient(135deg, #fdfaf0, #ffffff);
+            border: 1px solid #f0e6c4;
+            border-radius: 12px; padding: 15px 12px;
+            text-align: center; transition: 0.3s;
+        }
+        .info-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 18px rgba(212, 175, 55, 0.15);
+            border-color: var(--dourado);
+        }
+        .info-icone { display: block; font-size: 1.6rem; margin-bottom: 6px; }
+        .info-item strong {
+            display: block; color: var(--azul-escuro);
+            font-size: 0.85rem; margin-bottom: 4px;
+        }
+        .info-item span:not(.info-icone) {
+            display: block; font-size: 0.85rem; color: var(--texto-fraco); line-height: 1.4;
         }
 
-        .hino-container {
-            background: #fdfaf0; border-left: 5px solid var(--dourado);
-            border-right: 5px solid var(--dourado); padding: 40px;
-            border-radius: 20px; margin-top: 25px; text-align: center;
+        /* DEVOÇÃO - HINO E ORAÇÃO */
+        .devocao-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px; margin-top: 40px;
         }
-        .hino-header h4 {
-            margin: 0 0 25px 0; color: var(--dourado-escuro);
-            font-size: 1.5rem; text-transform: uppercase;
+        .devocao-card {
+            background: white;
+            border-radius: 20px; overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+            border: 1px solid #eee;
+            display: flex; flex-direction: column;
+            transition: 0.3s;
         }
-        .texto-hino .estrofe {
-            font-style: italic; font-size: 1.1rem; line-height: 1.8;
-            color: var(--texto); margin-bottom: 20px;
+        .devocao-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.1);
         }
-        .refrao { font-weight: bold; color: var(--azul-escuro) !important; padding: 10px 0; }
-        .refrao::before, .refrao::after { content: "—"; color: var(--dourado); margin: 0 10px; }
+        .devocao-cabecalho {
+            padding: 30px 30px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #fdfaf0 0%, #ffffff 100%);
+            border-bottom: 2px dashed var(--dourado-claro);
+        }
+        .devocao-icone {
+            display: inline-block; font-size: 2.2rem;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 4px 8px rgba(212, 175, 55, 0.3));
+        }
+        .devocao-cabecalho h3 {
+            margin: 0; color: var(--azul-escuro);
+            font-size: 1.4rem; letter-spacing: 0.5px;
+        }
+        .devocao-subtitulo {
+            display: block; margin-top: 5px;
+            font-size: 0.85rem; color: var(--dourado-escuro);
+            font-style: italic; font-weight: 600;
+        }
+        .devocao-corpo {
+            padding: 30px;
+            text-align: center;
+            flex: 1;
+        }
+        .devocao-corpo .estrofe {
+            font-style: italic; font-size: 1rem; line-height: 1.8;
+            color: var(--texto); margin: 0 0 18px;
+        }
+        .devocao-hino .devocao-corpo .estrofe { font-size: 1.05rem; }
+        .devocao-oracao .devocao-corpo .estrofe { text-align: left; }
+        .refrao {
+            font-weight: bold; color: var(--azul-escuro) !important;
+            padding: 12px 15px; background: var(--fundo-claro);
+            border-radius: 10px; border-left: 3px solid var(--azul);
+            border-right: 3px solid var(--azul);
+        }
+        .refrao::before, .refrao::after {
+            content: "—"; color: var(--dourado); margin: 0 8px;
+        }
+        .amem {
+            text-align: center; font-weight: bold;
+            color: var(--dourado-escuro); font-size: 1.3rem;
+            letter-spacing: 3px; margin: 20px 0 0;
+            padding-top: 15px; border-top: 1px solid #eee;
+        }
 
         .padre-container { max-width: 900px; margin: 40px auto 80px; padding: 0 20px; }
         .padre-card {
@@ -395,12 +481,15 @@
             .historia-texto ul { text-align: left; }
             .doacao-card { flex-direction: column; text-align: center; padding: 25px; }
             .doacao-texto { text-align: center; min-width: 100%; }
-            .padroeira-card { flex-direction: column; text-align: center; padding: 25px; }
+            .padroeira-card { flex-direction: column; text-align: center; padding: 30px 20px; }
             .padroeira-info { text-align: center; }
-            .lista-curiosidades li { text-align: left; }
-            .moldura-dourada { display: none; }
-            .hino-container { padding: 20px; border-right: none; }
-            .texto-hino .estrofe { font-size: 1rem; }
+            .badge-padroeira { margin-left: auto; margin-right: auto; }
+            .padroeira-foto-wrapper { max-width: 260px; }
+            .moldura-dourada { inset: -10px; }
+            .devocao-grid { grid-template-columns: 1fr; gap: 20px; }
+            .devocao-corpo { padding: 25px 20px; }
+            .devocao-oracao .devocao-corpo .estrofe { text-align: center; }
+            .refrao::before, .refrao::after { display: none; }
             .titulo { scroll-margin-top: 200px; }
         }
 
@@ -571,7 +660,9 @@
         <section aria-labelledby="padroeira">
             <h2 class="titulo" id="padroeira">Nossa Padroeira</h2>
             <span class="linha-azul" aria-hidden="true"></span>
+
             <div class="padroeira-container">
+                <!-- CARD DE APRESENTAÇÃO -->
                 <div class="padroeira-card">
                     <div class="padroeira-foto">
                         <div class="padroeira-foto-wrapper">
@@ -580,42 +671,75 @@
                         </div>
                     </div>
                     <div class="padroeira-info">
+                        <span class="badge-padroeira">✦ Padroeira de Arcoverde ✦</span>
                         <h3>Nossa Senhora do Livramento</h3>
                         <p class="legenda-padroeira">"Mãe que nos livra de todos os males"</p>
                         <div class="texto-devocional">
                             <p>A devoção à Virgem do Livramento é o pilar que sustenta a fé do povo de Arcoverde há mais de 150 anos. Ela não é apenas uma imagem, mas o símbolo da proteção divina sobre nossa cidade.</p>
-                            <ul class="lista-curiosidades">
-                                <li><strong>Festa Litúrgica:</strong> Celebrada solenemente no dia 23 de Setembro.</li>
-                                <li><strong>Significado:</strong> Representa o auxílio cristão nos momentos de aflição, perigo e pedidos de libertação.</li>
-                                <li><strong>Tradição:</strong> A procissão de encerramento é um dos maiores eventos religiosos do Sertão de Pernambuco.</li>
-                            </ul>
                         </div>
-                        <div class="hino-container">
-                            <div class="hino-header">
-                                <img src="https://cdn-icons-png.flaticon.com/512/4601/4601449.png" width="30" height="30" alt="" aria-hidden="true" style="margin-bottom: 10px; opacity: 0.7;" loading="lazy">
-                                <h4>Hino à Padroeira</h4>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <span class="info-icone">📅</span>
+                                <strong>Festa Litúrgica</strong>
+                                <span>23 de Setembro</span>
                             </div>
-                            <div class="texto-hino">
-                                <p class="estrofe">
-                                    Ó Senhora do Livramento, vossos filhos,<br>
-                                    Benigna amparai, e na hora do vil tormento,<br>
-                                    nossa fé vinde e confortai.
-                                </p>
-                                <p class="estrofe refrao">
-                                    Vinde ó mãe querida, vinde nos socorrer.<br>
-                                    As lutas desta vida, ó mãe dai-nos vencer.
-                                </p>
-                                <p class="estrofe">
-                                    Ao vosso meigo filho, mãe nos apresentai.<br>
-                                    De nossos vis pecados, o perdão alcançai.
-                                </p>
-                                <p class="estrofe">
-                                    Na hora derradeira, dai-nos vosso Jesus.<br>
-                                    Que alegre nos receba, lá na eterna luz.
-                                </p>
+                            <div class="info-item">
+                                <span class="info-icone">🕊️</span>
+                                <strong>Significado</strong>
+                                <span>Auxílio nos momentos de aflição</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-icone">⛪</span>
+                                <strong>Tradição</strong>
+                                <span>Maior procissão do Sertão de PE</span>
                             </div>
                         </div>
                     </div>
+                </div>
+
+                <!-- CARDS HINO E ORAÇÃO LADO A LADO -->
+                <div class="devocao-grid">
+                    <article class="devocao-card devocao-hino">
+                        <div class="devocao-cabecalho">
+                            <span class="devocao-icone" aria-hidden="true">🎵</span>
+                            <h3>Hino à Padroeira</h3>
+                            <span class="devocao-subtitulo">Cântico tradicional</span>
+                        </div>
+                        <div class="devocao-corpo">
+                            <p class="estrofe">
+                                Ó Senhora do Livramento, vossos filhos,<br>
+                                Benigna amparai, e na hora do vil tormento,<br>
+                                nossa fé vinde e confortai.
+                            </p>
+                            <p class="estrofe refrao">
+                                Vinde ó mãe querida, vinde nos socorrer.<br>
+                                As lutas desta vida, ó mãe dai-nos vencer.
+                            </p>
+                            <p class="estrofe">
+                                Ao vosso meigo filho, mãe nos apresentai.<br>
+                                De nossos vis pecados, o perdão alcançai.
+                            </p>
+                            <p class="estrofe">
+                                Na hora derradeira, dai-nos vosso Jesus.<br>
+                                Que alegre nos receba, lá na eterna luz.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="devocao-card devocao-oracao">
+                        <div class="devocao-cabecalho">
+                            <span class="devocao-icone" aria-hidden="true">🙏</span>
+                            <h3>Oração à Padroeira</h3>
+                            <span class="devocao-subtitulo">Pela cidade de Arcoverde</span>
+                        </div>
+                        <div class="devocao-corpo">
+                            <p class="estrofe">Ó Senhora do Livramento, protegei a Cidade de Arcoverde que se colocou desde a sua fundação sob a tutela do vosso patrocínio.</p>
+                            <p class="estrofe">Livrai-nos de todos os males espirituais e temporais; reuni todos os cristãos desta comunidade no seio de uma mesma família, que se congrega em torno de Cristo para ser povo de Deus, em marcha, em busca da casa do Pai.</p>
+                            <p class="estrofe">Abençoai, especialmente, os enfermos, os famintos, os inválidos, os órfãos, as viúvas, os desamparados e os escravos da tirania do egoísmo.</p>
+                            <p class="estrofe">Abençoai, também de modo especial, aqueles irmãos a quem a comunidade confiou a missão de pregar o Evangelho e de trabalhar para a vossa Igreja.</p>
+                            <p class="amem">Amém.</p>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
