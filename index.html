@@ -415,7 +415,9 @@
             box-shadow: 0 15px 35px rgba(0,0,0,0.06);
             border: 1px solid #eee; flex-wrap: wrap;
             position: relative; overflow: hidden;
+            box-sizing: border-box;
         }
+        .padroeira-card *, .padroeira-card *::before, .padroeira-card *::after { box-sizing: border-box; }
         .padroeira-card::before {
             content: ""; position: absolute; top: 0; left: 0; right: 0; height: 5px;
             background: linear-gradient(90deg, var(--azul), var(--dourado), var(--azul));
@@ -1035,14 +1037,19 @@
             .banco-grid { grid-template-columns: 1fr; }
             .banco-cabecalho { flex-direction: column; text-align: center; gap: 8px; }
 
-            .padroeira-card { flex-direction: column; text-align: center; padding: 30px 18px; gap: 25px; }
-            .padroeira-foto { min-width: 0; width: 100%; padding: 8px; }
-            .padroeira-info { text-align: center; min-width: 0; width: 100%; }
+            .padroeira-card { flex-direction: column; text-align: center; padding: 30px 18px; gap: 25px; align-items: center; justify-content: center; }
+            .padroeira-foto { min-width: 0; width: 100%; padding: 8px; display: flex; justify-content: center; }
+            .padroeira-info { text-align: center; min-width: 0; width: 100%; display: flex; flex-direction: column; align-items: center; }
             .padroeira-info h3 { font-size: 1.5rem; }
-            .badge-padroeira { margin-left: auto; margin-right: auto; }
+            .padroeira-info > * { width: 100%; }
+            .legenda-padroeira, .texto-devocional p { text-align: center; }
+            .badge-padroeira { margin-left: auto; margin-right: auto; width: auto; }
             .padroeira-foto-wrapper { max-width: 240px; margin: 0 auto; }
             .moldura-dourada { inset: -10px; }
             .texto-devocional p { word-wrap: break-word; }
+            /* Centraliza grid de info quando o número de itens é ímpar */
+            .info-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); justify-content: center; max-width: 360px; margin-left: auto; margin-right: auto; }
+            .info-grid .info-item:nth-child(3):last-child { grid-column: 1 / -1; max-width: 60%; margin: 0 auto; }
             .devocao-grid { grid-template-columns: 1fr; gap: 20px; }
             .devocao-corpo { padding: 25px 20px; }
             .devocao-oracao .devocao-corpo .estrofe { text-align: center; }
