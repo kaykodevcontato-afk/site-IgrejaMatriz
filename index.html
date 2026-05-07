@@ -233,15 +233,29 @@
             background: white; border-radius: 20px; padding: 40px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.06); border: 1px solid #eee; flex-wrap: wrap;
         }
-        .padroeira-foto { flex: 1; min-width: 280px; position: relative; display: flex; justify-content: center; }
-        .padroeira-foto img {
-            width: 100%; max-width: 350px; border-radius: 15px;
-            z-index: 2; box-shadow: 0 10px 20px rgba(0,0,0,0.2); position: relative;
+        .padroeira-foto {
+            flex: 1; min-width: 280px;
+            display: flex; justify-content: center; align-items: center;
+            padding: 15px;
+        }
+        .padroeira-foto-wrapper {
+            position: relative;
+            display: inline-block;
+            max-width: 350px;
+            width: 100%;
+        }
+        .padroeira-foto-wrapper img {
+            width: 100%; display: block; border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            position: relative; z-index: 2;
         }
         .moldura-dourada {
-            position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
-            width: 370px; height: 100%; border: 2px solid var(--dourado);
-            border-radius: 20px; z-index: 1;
+            position: absolute;
+            inset: -15px;
+            border: 2px solid var(--dourado);
+            border-radius: 20px;
+            z-index: 1;
+            pointer-events: none;
         }
         .padroeira-info { flex: 1.5; text-align: left; min-width: 300px; }
         .padroeira-info h3 { color: var(--azul-escuro); }
@@ -560,8 +574,10 @@
             <div class="padroeira-container">
                 <div class="padroeira-card">
                     <div class="padroeira-foto">
-                        <img src="FotoPadroeira.webp" alt="Imagem de Nossa Senhora do Livramento" loading="lazy">
-                        <div class="moldura-dourada" aria-hidden="true"></div>
+                        <div class="padroeira-foto-wrapper">
+                            <img src="FotoPadroeira.webp" alt="Imagem de Nossa Senhora do Livramento" loading="lazy">
+                            <div class="moldura-dourada" aria-hidden="true"></div>
+                        </div>
                     </div>
                     <div class="padroeira-info">
                         <h3>Nossa Senhora do Livramento</h3>
