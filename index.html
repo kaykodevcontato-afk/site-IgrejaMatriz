@@ -209,6 +209,30 @@
 
         /* Quando está ao vivo */
         .youtube-thumb.ao-vivo .live-placeholder { display: none; }
+
+        /* Menu "Ao Vivo" pulsante quando está ao vivo */
+        #menu-ao-vivo.menu-live-on {
+            color: #ff0000 !important;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        #menu-ao-vivo.menu-live-on::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #ff0000;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 0 0 rgba(255,0,0,0.7);
+            animation: menu-live-pulso 1.4s ease-out infinite;
+        }
+        @keyframes menu-live-pulso {
+            0%   { box-shadow: 0 0 0 0 rgba(255,0,0,0.7); }
+            70%  { box-shadow: 0 0 0 10px rgba(255,0,0,0); }
+            100% { box-shadow: 0 0 0 0 rgba(255,0,0,0); }
+        }
         .youtube-thumb:not(.ao-vivo) iframe { display: none; }
         .youtube-info { flex: 1.2; padding: 40px; text-align: left; display: flex; flex-direction: column; justify-content: center; }
         .live-badge { display: inline-flex; align-items: center; background: #ffe6e6; color: #ff0000; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; text-transform: uppercase; margin-bottom: 10px; width: fit-content; }
@@ -1200,7 +1224,7 @@
         <nav class="menu" aria-label="Menu principal">
             <a href="#topo">Início</a>
             <a href="#missas">Missas</a>
-            <a href="#ao-vivo">Ao Vivo</a>
+            <a href="#ao-vivo" id="menu-ao-vivo">Ao Vivo</a>
             <a href="#a-igreja">História</a>
             <a href="#padroeira">Padroeira</a>
             <a href="#paroco">Pároco</a>
@@ -2115,6 +2139,8 @@
         var oEmbedUrl = 'https://www.youtube.com/oembed?url=https://www.youtube.com/live/' + CHANNEL_ID + '&format=json';
 
         function setAoVivo(ativo) {
+            var menuLink = document.getElementById('menu-ao-vivo');
+            if (menuLink) menuLink.classList.toggle('menu-live-on', !!ativo);
             if (ativo) {
                 container.classList.add('ao-vivo');
                 badge.style.background = '#ffe6e6';
