@@ -159,11 +159,57 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid #eee;
         }
         .youtube-thumb {
-            flex: 1; min-width: 300px; background: #000;
+            flex: 1; min-width: 300px; background: linear-gradient(135deg, #0a1628, #122a45);
             display: flex; justify-content: center; align-items: center;
             position: relative; min-height: 280px;
+            overflow: hidden;
         }
-        .youtube-thumb iframe { width: 100%; height: 100%; border: 0; }
+        .youtube-thumb iframe { width: 100%; height: 100%; border: 0; position: relative; z-index: 2; }
+
+        /* Estado sem live - placeholder bonito */
+        .live-placeholder {
+            position: absolute; inset: 0;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            z-index: 1; gap: 16px;
+            background: linear-gradient(135deg, #0a1628 0%, #0d2137 40%, #122a45 100%);
+        }
+        .live-placeholder-logo {
+            width: 80px; height: 80px; object-fit: contain;
+            border-radius: 50%; padding: 8px;
+            background: rgba(255,255,255,0.08);
+            border: 2px solid rgba(212,175,55,0.3);
+            animation: live-logo-pulso 3s ease-in-out infinite;
+        }
+        @keyframes live-logo-pulso {
+            0%, 100% { box-shadow: 0 0 15px rgba(212,175,55,0.2); transform: scale(1); }
+            50% { box-shadow: 0 0 30px rgba(212,175,55,0.4); transform: scale(1.05); }
+        }
+        .live-placeholder-texto {
+            color: rgba(255,255,255,0.7); font-size: 0.85rem;
+            letter-spacing: 1px; text-align: center; line-height: 1.5;
+        }
+        .live-placeholder-texto strong {
+            display: block; color: white; font-size: 1rem;
+            margin-bottom: 4px;
+        }
+        .live-placeholder-sino {
+            display: inline-flex; align-items: center; gap: 8px;
+            margin-top: 4px; padding: 8px 18px;
+            background: rgba(255,0,0,0.15); border: 1px solid rgba(255,0,0,0.3);
+            border-radius: 20px; color: #ff6b6b; font-size: 0.78rem;
+            font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .live-placeholder-sino i { animation: live-sino-swing 2s ease-in-out infinite; }
+        @keyframes live-sino-swing {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(15deg); }
+            75% { transform: rotate(-15deg); }
+        }
+
+        /* Quando está ao vivo */
+        .youtube-thumb.ao-vivo .live-placeholder { display: none; }
+        .youtube-thumb:not(.ao-vivo) iframe { display: none; }
         .youtube-info { flex: 1.2; padding: 40px; text-align: left; display: flex; flex-direction: column; justify-content: center; }
         .live-badge { display: inline-flex; align-items: center; background: #ffe6e6; color: #ff0000; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; text-transform: uppercase; margin-bottom: 10px; width: fit-content; }
         .dot { height: 8px; width: 8px; background-color: #ff0000; border-radius: 50%; display: inline-block; margin-right: 8px; animation: pulse 1.5s infinite; }
@@ -1223,17 +1269,33 @@
             <h2 class="titulo" id="ao-vivo">Transmissões ao Vivo</h2>
             <span class="linha-azul" aria-hidden="true"></span>
             <div class="youtube-section">
-                <div class="youtube-thumb">
-                    <iframe src="https://www.youtube.com/embed/WIKrWRck6ZU"
-                        title="Última Transmissão Paróquia Livramento" loading="lazy"
+                <div class="youtube-thumb" id="live-container">
+                    <!-- Placeholder quando não há live -->
+                    <div class="live-placeholder" id="live-placeholder">
+                        <img src="LogoBrasaoDaParoquia.png" alt="Brasão da Paróquia" class="live-placeholder-logo">
+                        <div class="live-placeholder-texto">
+                            <strong>Nenhuma transmissão ao vivo</strong>
+                            Acompanhe as celebrações diárias às 19h
+                        </div>
+                        <span class="live-placeholder-sino">
+                            <i class="fas fa-bell" aria-hidden="true"></i> Ative o sino no YouTube
+                        </span>
+                    </div>
+                    <!-- Iframe da live (visível só quando ao vivo) -->
+                    <iframe id="live-iframe"
+                        src="https://www.youtube.com/embed/live_stream?channel=UCal8oRz466j8dcv26cWMmQw&autoplay=1&mute=1"
+                        title="Transmissão ao Vivo - Paróquia Livramento" loading="lazy"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen></iframe>
                 </div>
                 <div class="youtube-info">
-                    <div class="live-badge"><span class="dot" aria-hidden="true"></span> Transmissão ao Vivo</div>
-                    <h3>Acompanhe de onde estiver</h3>
+                    <div class="live-badge" id="live-badge-status">
+                        <span class="dot" aria-hidden="true" id="live-dot"></span>
+                        <span id="live-badge-texto">Transmissão ao Vivo</span>
+                    </div>
+                    <h3 id="live-titulo">Acompanhe de onde estiver</h3>
                     <span class="live-horario">Todas as celebrações às 19h</span>
-                    <p>Assista à última celebração diretamente aqui ou acompanhe em tempo real pelo canal oficial do YouTube.</p>
+                    <p id="live-descricao">Assista à última celebração diretamente aqui ou acompanhe em tempo real pelo canal oficial do YouTube.</p>
                     <a href="https://www.youtube.com/@PascomLivramento" target="_blank" rel="noopener" class="btn-assista">
                         <span>Acessar Canal YouTube</span>
                     </a>
@@ -2031,6 +2093,81 @@
         lbImg.addEventListener('dblclick', function() {
             if (scale > 1.1) { resetar(); } else { scale = 2.5; posX = 0; posY = 0; aplicarTransform(); }
         });
+    })();
+    </script>
+
+    <script>
+    /* ============== DETECÇÃO DE LIVE NO YOUTUBE ============== */
+    (function() {
+        var container = document.getElementById('live-container');
+        var iframe = document.getElementById('live-iframe');
+        var placeholder = document.getElementById('live-placeholder');
+        var badge = document.getElementById('live-badge-status');
+        var badgeTexto = document.getElementById('live-badge-texto');
+        var dot = document.getElementById('live-dot');
+        var titulo = document.getElementById('live-titulo');
+        var descricao = document.getElementById('live-descricao');
+        if (!container || !iframe) return;
+
+        var CHANNEL_ID = 'UCal8oRz466j8dcv26cWMmQw';
+        var liveUrl = 'https://www.youtube.com/embed/live_stream?channel=' + CHANNEL_ID;
+        var oEmbedUrl = 'https://www.youtube.com/oembed?url=https://www.youtube.com/live/' + CHANNEL_ID + '&format=json';
+
+        function setAoVivo(ativo) {
+            if (ativo) {
+                container.classList.add('ao-vivo');
+                badge.style.background = '#ffe6e6';
+                badge.style.color = '#ff0000';
+                dot.style.background = '#ff0000';
+                badgeTexto.textContent = 'AO VIVO AGORA';
+                titulo.textContent = '\uD83D\uDD34 Estamos ao vivo!';
+                descricao.textContent = 'A celebração está acontecendo agora! Acompanhe em tempo real.';
+            } else {
+                container.classList.remove('ao-vivo');
+                badge.style.background = 'rgba(14,175,234,0.1)';
+                badge.style.color = 'var(--azul-escuro)';
+                dot.style.background = 'var(--azul)';
+                dot.style.animation = 'none';
+                badgeTexto.textContent = 'Fora do ar';
+                titulo.textContent = 'Acompanhe de onde estiver';
+                descricao.textContent = 'Quando houver uma transmissão ao vivo, ela aparecerá automaticamente aqui. Ative o sininho no YouTube para ser notificado!';
+            }
+        }
+
+        function verificarLive() {
+            // Método 1: Tentar oEmbed
+            fetch(oEmbedUrl, { mode: 'cors' })
+                .then(function(r) {
+                    if (r.ok) {
+                        setAoVivo(true);
+                        iframe.src = liveUrl + '&autoplay=1&mute=0';
+                    } else {
+                        setAoVivo(false);
+                    }
+                })
+                .catch(function() {
+                    // Se o oEmbed falhar, tenta via thumbnail da live
+                    var img = new Image();
+                    img.onload = function() {
+                        // Se a imagem carregou e tem tamanho real, provavelmente há live
+                        if (img.naturalWidth > 120) {
+                            setAoVivo(true);
+                            iframe.src = liveUrl + '&autoplay=1&mute=0';
+                        } else {
+                            setAoVivo(false);
+                        }
+                    };
+                    img.onerror = function() { setAoVivo(false); };
+                    img.src = 'https://img.youtube.com/vi_webp/' + CHANNEL_ID + '/maxresdefault.webp';
+                });
+        }
+
+        // Verificar imediatamente
+        setAoVivo(false); // Começa mostrando placeholder
+        verificarLive();
+
+        // Reverificar a cada 2 minutos
+        setInterval(verificarLive, 120000);
     })();
     </script>
 
