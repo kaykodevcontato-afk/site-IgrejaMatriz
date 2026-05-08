@@ -1002,7 +1002,8 @@
             .parallax { height: 300px; background-attachment: scroll; background-position: center 65%; }
             .agenda-grid { grid-template-columns: 1fr; }
             .youtube-info { text-align: center; align-items: center; padding: 30px 20px; }
-            .youtube-thumb { min-height: 200px; }
+            .youtube-thumb { min-height: auto !important; overflow: visible !important; }
+            .live-placeholder { position: relative !important; inset: auto !important; padding: 40px 20px !important; border-radius: 20px 20px 0 0; }
             .historia-intro { grid-template-columns: 1fr; gap: 30px; padding: 30px 25px; }
             .historia-stats { flex-direction: row; flex-wrap: wrap; }
             .stat-item { flex: 1; min-width: 100px; padding: 15px 10px; }
@@ -1654,7 +1655,7 @@
                     <article class="aviso-card">
                         <div class="aviso-card-img" data-lightbox="BatismoFoto02.jpg" data-alt="Galeria de Batismos">
                             <img src="BatismoFoto02.jpg" alt="Galeria de Batismos" loading="lazy">
-                            <span class="aviso-tag tag-foto"><i class="fas fa-camera" aria-hidden="true"></i> Foto</span>
+                            <span class="aviso-tag tag-aviso"><i class="fas fa-bullhorn" aria-hidden="true"></i> Aviso</span>
                             <span class="zoom-hint"><i class="fas fa-search-plus"></i></span>
                         </div>
                         <div class="aviso-card-corpo">
