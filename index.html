@@ -1294,7 +1294,7 @@
                         <span class="dot" aria-hidden="true" id="live-dot"></span>
                         <span id="live-badge-texto">Transmissão ao Vivo</span>
                     </div>
-                    <h3 id="live-titulo">Acompanhe a Transmisão ao vivo</h3>
+                    <h3 id="live-titulo">Acompanhe de onde estiver</h3>
                     <span class="live-horario">Todas as celebrações às 19h</span>
                     <p id="live-descricao">Assista à última celebração diretamente aqui ou acompanhe em tempo real pelo canal oficial do YouTube.</p>
                     <a href="https://www.youtube.com/@PascomLivramento" target="_blank" rel="noopener" class="btn-assista">
@@ -1655,7 +1655,7 @@
                     <article class="aviso-card">
                         <div class="aviso-card-img" data-lightbox="BatismoFoto02.jpg" data-alt="Galeria de Batismos">
                             <img src="BatismoFoto02.jpg" alt="Galeria de Batismos" loading="lazy">
-                            <span class="aviso-tag tag-aviso"><i class="fas fa-bullhorn" aria-hidden="true"></i> Aviso</span>
+                            <span class="aviso-tag tag-foto"><i class="fas fa-camera" aria-hidden="true"></i> Foto</span>
                             <span class="zoom-hint"><i class="fas fa-search-plus"></i></span>
                         </div>
                         <div class="aviso-card-corpo">
@@ -2135,32 +2135,50 @@
             }
         }
 
-        function verificarLive() {
-            // Método 1: Tentar oEmbed
-            fetch(oEmbedUrl, { mode: 'cors' })
-                .then(function(r) {
-                    if (r.ok) {
-                        setAoVivo(true);
-                        iframe.src = liveUrl + '&autoplay=1&mute=0';
+        // Lista de proxies CORS (tenta um, depois outro se falhar)
+        var PROXIES = [
+            'https://corsproxy.io/?url=',
+            'https://api.allorigins.win/raw?url=',
+            'https://api.codetabs.com/v1/proxy/?quest='
+        ];
+        var liveCanalUrl = 'https://www.youtube.com/channel/' + CHANNEL_ID + '/live';
+
+        function ativarLive(videoId) {
+            setAoVivo(true);
+            // Usa o video ID específico para garantir que toca a live atual
+            var src = 'https://www.youtube-nocookie.com/embed/' + videoId + '?autoplay=1&mute=1&rel=0&playsinline=1';
+            if (iframe.src.indexOf(videoId) === -1) {
+                iframe.src = src;
+            }
+        }
+
+        function tentarProxy(idx) {
+            if (idx >= PROXIES.length) { setAoVivo(false); return; }
+            var url = PROXIES[idx] + encodeURIComponent(liveCanalUrl);
+            fetch(url, { cache: 'no-store' })
+                .then(function(r) { return r.ok ? r.text() : Promise.reject(); })
+                .then(function(html) {
+                    // Se está ao vivo, a página contém "isLiveBroadcast":true ou "isLive":true
+                    var aoVivo = /\"isLiveBroadcast\"\s*:\s*true/.test(html) ||
+                                 /\"isLive\"\s*:\s*true/.test(html) ||
+                                 /\"liveBroadcastDetails\"\s*:\s*\{[^}]*\"isLiveNow\"\s*:\s*true/.test(html);
+                    if (!aoVivo) { setAoVivo(false); return; }
+                    // Extrai o videoId da live
+                    var m = html.match(/\"videoId\"\s*:\s*\"([\w-]{11})\"/) ||
+                            html.match(/\/watch\?v=([\w-]{11})/);
+                    if (m && m[1]) {
+                        ativarLive(m[1]);
                     } else {
-                        setAoVivo(false);
+                        // Sabemos que está ao vivo, mas não pegamos o ID — usa embed por canal
+                        setAoVivo(true);
+                        iframe.src = liveUrl.replace('www.youtube.com','www.youtube-nocookie.com') + '&autoplay=1&mute=1';
                     }
                 })
-                .catch(function() {
-                    // Se o oEmbed falhar, tenta via thumbnail da live
-                    var img = new Image();
-                    img.onload = function() {
-                        // Se a imagem carregou e tem tamanho real, provavelmente há live
-                        if (img.naturalWidth > 120) {
-                            setAoVivo(true);
-                            iframe.src = liveUrl + '&autoplay=1&mute=0';
-                        } else {
-                            setAoVivo(false);
-                        }
-                    };
-                    img.onerror = function() { setAoVivo(false); };
-                    img.src = 'https://img.youtube.com/vi_webp/' + CHANNEL_ID + '/maxresdefault.webp';
-                });
+                .catch(function() { tentarProxy(idx + 1); });
+        }
+
+        function verificarLive() {
+            tentarProxy(0);
         }
 
         // Verificar imediatamente
