@@ -876,6 +876,79 @@
             font-style: italic;
         }
 
+        /* ============== LIGHTBOX FULLSCREEN COM PINCH-TO-ZOOM ============== */
+        .lightbox-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(0,0,0,0.92);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            align-items: center;
+            justify-content: center;
+            touch-action: none;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        .lightbox-overlay.ativo { display: flex; }
+        .lightbox-overlay img {
+            max-width: 95vw;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 0 40px rgba(0,0,0,0.5);
+            transform-origin: center center;
+            will-change: transform;
+            transition: none;
+            cursor: grab;
+        }
+        .lightbox-overlay img:active { cursor: grabbing; }
+        .lightbox-fechar {
+            position: absolute;
+            top: 18px; right: 22px;
+            background: rgba(255,255,255,0.15);
+            border: 2px solid rgba(255,255,255,0.4);
+            color: white;
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+            z-index: 10000;
+            transition: 0.2s;
+            backdrop-filter: blur(4px);
+        }
+        .lightbox-fechar:hover { background: rgba(255,255,255,0.3); transform: scale(1.1); }
+        .lightbox-dica {
+            position: absolute;
+            bottom: 20px;
+            left: 50%; transform: translateX(-50%);
+            color: rgba(255,255,255,0.6);
+            font-size: 0.8rem;
+            display: flex; align-items: center; gap: 8px;
+            pointer-events: none;
+            transition: opacity 0.5s;
+        }
+        .lightbox-dica i { font-size: 1.1rem; }
+
+        /* Indicador visual de zoom clicável nas imagens */
+        .aviso-destaque-img, .aviso-card-img { cursor: zoom-in; position: relative; }
+        .zoom-hint {
+            position: absolute;
+            bottom: 10px; right: 10px;
+            background: rgba(0,0,0,0.55);
+            color: white;
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.8rem;
+            pointer-events: none;
+            opacity: 0.8;
+            z-index: 2;
+            backdrop-filter: blur(3px);
+        }
+
         @media (max-width: 768px) {
             .topo { flex-direction: row; flex-wrap: wrap; justify-content: center; padding: 15px 5%; }
             .container-titulo { width: 80%; align-items: center; margin-bottom: 10px; }
@@ -1354,9 +1427,10 @@
                 <p class="avisos-intro">Fique por dentro das próximas celebrações, festas e novidades da nossa paróquia.</p>
 
                 <article class="aviso-destaque">
-                    <div class="aviso-destaque-img">
+                    <div class="aviso-destaque-img" data-lightbox="FestaPadroeiraFoto01.jpg" data-alt="Festa de Nossa Senhora do Livramento">
                         <img src="FestaPadroeiraFoto01.jpg" alt="Festa de Nossa Senhora do Livramento" loading="lazy">
                         <span class="aviso-tag tag-festa"><i class="fas fa-star" aria-hidden="true"></i> Festa</span>
+                        <span class="zoom-hint"><i class="fas fa-search-plus"></i></span>
                     </div>
                     <div class="aviso-destaque-corpo">
                         <span class="aviso-eyebrow">✦ Maior celebração do ano</span>
@@ -1387,9 +1461,10 @@
 
                 <div class="avisos-grid">
                     <article class="aviso-card">
-                        <div class="aviso-card-img">
+                        <div class="aviso-card-img" data-lightbox="EucaristiaSantissimoFoto01.jpg" data-alt="Quinta Eucarística">
                             <img src="EucaristiaSantissimoFoto01.jpg" alt="Quinta Eucarística" loading="lazy">
                             <span class="aviso-tag tag-evento"><i class="fas fa-calendar-check" aria-hidden="true"></i> Evento</span>
+                            <span class="zoom-hint"><i class="fas fa-search-plus"></i></span>
                         </div>
                         <div class="aviso-card-corpo">
                             <span class="aviso-data"><i class="far fa-clock" aria-hidden="true"></i> Quinta-feira · 07h30 às 17h</span>
@@ -1403,9 +1478,10 @@
                     </article>
 
                     <article class="aviso-card">
-                        <div class="aviso-card-img">
+                        <div class="aviso-card-img" data-lightbox="CatequeseFoto01.jpg" data-alt="Inscrições da Catequese">
                             <img src="CatequeseFoto01.jpg" alt="Inscrições da Catequese" loading="lazy">
                             <span class="aviso-tag tag-aviso"><i class="fas fa-bullhorn" aria-hidden="true"></i> Aviso</span>
+                            <span class="zoom-hint"><i class="fas fa-search-plus"></i></span>
                         </div>
                         <div class="aviso-card-corpo">
                             <span class="aviso-data"><i class="far fa-calendar" aria-hidden="true"></i> Domingos às 08h00</span>
@@ -1422,9 +1498,10 @@
                     </article>
 
                     <article class="aviso-card">
-                        <div class="aviso-card-img">
+                        <div class="aviso-card-img" data-lightbox="BatismoFoto02.jpg" data-alt="Galeria de Batismos">
                             <img src="BatismoFoto02.jpg" alt="Galeria de Batismos" loading="lazy">
                             <span class="aviso-tag tag-foto"><i class="fas fa-camera" aria-hidden="true"></i> Foto</span>
+                            <span class="zoom-hint"><i class="fas fa-search-plus"></i></span>
                         </div>
                         <div class="aviso-card-corpo">
                             <span class="aviso-data"><i class="far fa-calendar" aria-hidden="true"></i> Aos domingos</span>
@@ -1677,6 +1754,191 @@
             slider.addEventListener('mousemove', moverDivisor);
             slider.addEventListener('touchmove', moverDivisor, { passive: true });
         }
+    })();
+    </script>
+    <!-- Lightbox Fullscreen com Pinch-to-Zoom -->
+    <div class="lightbox-overlay" id="lightbox-overlay" aria-hidden="true" role="dialog" aria-label="Visualizar foto">
+        <button class="lightbox-fechar" id="lightbox-fechar" aria-label="Fechar">&times;</button>
+        <img id="lightbox-img" src="" alt="">
+        <div class="lightbox-dica" id="lightbox-dica">
+            <i class="fas fa-hand-pointer"></i> Use dois dedos para dar zoom
+        </div>
+    </div>
+
+    <script>
+    /* ============== LIGHTBOX COM PINCH-TO-ZOOM ============== */
+    (function() {
+        const overlay = document.getElementById('lightbox-overlay');
+        const lbImg = document.getElementById('lightbox-img');
+        const btnFechar = document.getElementById('lightbox-fechar');
+        const dica = document.getElementById('lightbox-dica');
+        if (!overlay || !lbImg) return;
+
+        let scale = 1, posX = 0, posY = 0;
+        let startScale = 1, startDist = 0;
+        let startX = 0, startY = 0, startPosX = 0, startPosY = 0;
+        let isDragging = false;
+        let dicaTimer;
+
+        function aplicarTransform() {
+            lbImg.style.transform = 'translate(' + posX + 'px, ' + posY + 'px) scale(' + scale + ')';
+        }
+
+        function resetar() {
+            scale = 1; posX = 0; posY = 0;
+            aplicarTransform();
+        }
+
+        function abrir(src, alt) {
+            lbImg.src = src;
+            lbImg.alt = alt || '';
+            resetar();
+            overlay.classList.add('ativo');
+            overlay.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            // Mostrar dica e esconder depois de 3s
+            if (dica) {
+                dica.style.opacity = '1';
+                clearTimeout(dicaTimer);
+                dicaTimer = setTimeout(function() { dica.style.opacity = '0'; }, 3000);
+            }
+        }
+
+        function fechar() {
+            overlay.classList.remove('ativo');
+            overlay.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+            lbImg.src = '';
+        }
+
+        // Abrir ao clicar nas imagens com data-lightbox
+        document.querySelectorAll('[data-lightbox]').forEach(function(el) {
+            el.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                abrir(el.getAttribute('data-lightbox'), el.getAttribute('data-alt'));
+            });
+        });
+
+        // Fechar
+        btnFechar.addEventListener('click', fechar);
+        overlay.addEventListener('click', function(e) {
+            if (e.target === overlay) fechar();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && overlay.classList.contains('ativo')) fechar();
+        });
+
+        // Distância entre dois toques
+        function getDist(touches) {
+            var dx = touches[0].clientX - touches[1].clientX;
+            var dy = touches[0].clientY - touches[1].clientY;
+            return Math.sqrt(dx * dx + dy * dy);
+        }
+
+        // Centro entre dois toques
+        function getCenter(touches) {
+            return {
+                x: (touches[0].clientX + touches[1].clientX) / 2,
+                y: (touches[0].clientY + touches[1].clientY) / 2
+            };
+        }
+
+        // TOUCH — Pinch-to-zoom + drag com um dedo
+        lbImg.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            if (e.touches.length === 2) {
+                startDist = getDist(e.touches);
+                startScale = scale;
+            } else if (e.touches.length === 1) {
+                isDragging = true;
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+                startPosX = posX;
+                startPosY = posY;
+            }
+        }, { passive: false });
+
+        lbImg.addEventListener('touchmove', function(e) {
+            e.preventDefault();
+            if (e.touches.length === 2) {
+                var dist = getDist(e.touches);
+                scale = Math.min(Math.max(startScale * (dist / startDist), 1), 6);
+                aplicarTransform();
+                if (dica) dica.style.opacity = '0';
+            } else if (e.touches.length === 1 && isDragging && scale > 1) {
+                posX = startPosX + (e.touches[0].clientX - startX);
+                posY = startPosY + (e.touches[0].clientY - startY);
+                aplicarTransform();
+            }
+        }, { passive: false });
+
+        lbImg.addEventListener('touchend', function(e) {
+            if (e.touches.length < 2) {
+                startDist = 0;
+            }
+            if (e.touches.length === 0) {
+                isDragging = false;
+                // Se o zoom voltou a 1, centralizar
+                if (scale <= 1.05) {
+                    scale = 1; posX = 0; posY = 0;
+                    aplicarTransform();
+                }
+            }
+        });
+
+        // MOUSE — scroll para zoom + drag
+        var mouseDown = false, mStartX = 0, mStartY = 0, mStartPosX = 0, mStartPosY = 0;
+
+        overlay.addEventListener('wheel', function(e) {
+            if (!overlay.classList.contains('ativo')) return;
+            e.preventDefault();
+            var delta = e.deltaY > 0 ? 0.9 : 1.1;
+            scale = Math.min(Math.max(scale * delta, 1), 6);
+            if (scale <= 1.05) { scale = 1; posX = 0; posY = 0; }
+            aplicarTransform();
+        }, { passive: false });
+
+        lbImg.addEventListener('mousedown', function(e) {
+            if (scale > 1) {
+                mouseDown = true;
+                mStartX = e.clientX;
+                mStartY = e.clientY;
+                mStartPosX = posX;
+                mStartPosY = posY;
+                e.preventDefault();
+            }
+        });
+
+        window.addEventListener('mousemove', function(e) {
+            if (mouseDown) {
+                posX = mStartPosX + (e.clientX - mStartX);
+                posY = mStartPosY + (e.clientY - mStartY);
+                aplicarTransform();
+            }
+        });
+
+        window.addEventListener('mouseup', function() { mouseDown = false; });
+
+        // Duplo toque para resetar zoom
+        var lastTap = 0;
+        lbImg.addEventListener('touchend', function(e) {
+            var now = Date.now();
+            if (now - lastTap < 300 && e.touches.length === 0) {
+                if (scale > 1.1) {
+                    resetar();
+                } else {
+                    scale = 2.5; posX = 0; posY = 0;
+                    aplicarTransform();
+                }
+            }
+            lastTap = now;
+        });
+
+        // Duplo clique mouse
+        lbImg.addEventListener('dblclick', function() {
+            if (scale > 1.1) { resetar(); } else { scale = 2.5; posX = 0; posY = 0; aplicarTransform(); }
+        });
     })();
     </script>
 </body>
