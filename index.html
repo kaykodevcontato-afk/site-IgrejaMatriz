@@ -1045,9 +1045,101 @@
             box-shadow: 0 0 10px rgba(255,215,0,0.6);
             transform: scale(1.08);
         }
+        /* ============== PRELOADER / SPLASH SCREEN ============== */
+        .preloader {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            background: linear-gradient(135deg, #0a1628 0%, #0d2137 40%, #122a45 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+        .preloader.esconder {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        .preloader-logo-wrap {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .preloader-logo-wrap img {
+            width: 90px;
+            height: auto;
+            position: relative;
+            z-index: 2;
+            filter: drop-shadow(0 0 8px rgba(212,175,55,0.3));
+            transition: filter 0.5s ease, transform 0.5s ease;
+        }
+        /* Anel dourado girando */
+        .preloader-anel {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            border-top: 3px solid var(--dourado, #d4af37);
+            border-right: 3px solid var(--dourado-claro, #f2d27a);
+            animation: preloader-girar 1.2s linear infinite;
+            box-shadow: 0 0 20px rgba(212,175,55,0.15);
+        }
+        .preloader-anel2 {
+            position: absolute;
+            inset: 8px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            border-bottom: 2px solid var(--dourado-escuro, #b8860b);
+            border-left: 2px solid var(--dourado, #d4af37);
+            animation: preloader-girar 1.8s linear infinite reverse;
+            opacity: 0.7;
+        }
+        @keyframes preloader-girar {
+            0%   { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .preloader-texto {
+            margin-top: 28px;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+        /* Estado: brilho forte ao concluir */
+        .preloader.brilhar .preloader-logo-wrap img {
+            filter: drop-shadow(0 0 30px rgba(212,175,55,1)) drop-shadow(0 0 60px rgba(242,210,122,0.8)) brightness(1.3);
+            transform: scale(1.15);
+        }
+        .preloader.brilhar .preloader-anel,
+        .preloader.brilhar .preloader-anel2 {
+            animation: none;
+            border-color: var(--dourado-claro, #f2d27a);
+            box-shadow: 0 0 40px rgba(212,175,55,0.6);
+            transition: all 0.4s ease;
+        }
+        .preloader.brilhar .preloader-texto {
+            color: var(--dourado-claro, #f2d27a);
+            transition: color 0.3s;
+        }
     </style>
 </head>
 <body id="topo">
+
+    <!-- Preloader / Splash Screen -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-logo-wrap">
+            <div class="preloader-anel"></div>
+            <div class="preloader-anel2"></div>
+            <img src="LogoBrasaoDaParoquia.png" alt="Brasão da Paróquia" width="90" height="90">
+        </div>
+        <p class="preloader-texto">Carregando...</p>
+    </div>
 
     <button id="btn-teste-sino" type="button" aria-label="Testar 4 badaladas do sino">🔔 Testar 4 Badaladas</button>
     <audio id="som-sino" src="Somsinohorafundo.mp3" preload="auto"></audio>
@@ -1939,6 +2031,42 @@
         lbImg.addEventListener('dblclick', function() {
             if (scale > 1.1) { resetar(); } else { scale = 2.5; posX = 0; posY = 0; aplicarTransform(); }
         });
+    })();
+    </script>
+
+    <script>
+    /* ============== PRELOADER CONTROLLER ============== */
+    (function() {
+        var pre = document.getElementById('preloader');
+        if (!pre) return;
+
+        function concluir() {
+            // 1. Brilho forte
+            pre.classList.add('brilhar');
+            // 2. Após o brilho, esconde
+            setTimeout(function() {
+                pre.classList.add('esconder');
+                // 3. Remove do DOM após a transição
+                setTimeout(function() {
+                    pre.remove();
+                }, 700);
+            }, 800);
+        }
+
+        // Esperar tudo carregar (imagens, fontes, etc)
+        window.addEventListener('load', function() {
+            // Garante um mínimo de 1.2s de exibição para não piscar
+            var tempoMin = 1200;
+            var inicio = performance.timing ? performance.timing.navigationStart : (Date.now() - 1000);
+            var passado = Date.now() - inicio;
+            var restante = Math.max(tempoMin - passado, 0);
+            setTimeout(concluir, restante);
+        });
+
+        // Fallback: se por algum motivo o load não dispara em 6s
+        setTimeout(function() {
+            if (pre.parentNode) concluir();
+        }, 6000);
     })();
     </script>
 </body>
