@@ -2273,77 +2273,75 @@
     })();
     </script>
 
-            <script>
-        function abrirModalMaeTernura() {
-            document.getElementById('modalMaeTernura').style.display = 'flex';
-        }
-        
-        function fecharModalMaeTernura() {
-            document.getElementById('modalMaeTernura').style.display = 'none';
-        }
-        
-        // Fechar clicando fora
-        document.getElementById('modalMaeTernura').addEventListener('click', function(e) {
-            if (e.target === this) fecharModalMaeTernura();
-        });
-        </script>
-
     <script>
-        // Modal Santa Cecília
+        // ==================== FUNÇÕES DOS MODAIS ====================
+        
+        let modalAberto = false;
+        
+        function abrirModal(id) {
+            const modal = document.getElementById(id);
+            if (!modal) return;
+            
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';   // ← Impede scroll da página
+            modalAberto = true;
+        }
+        
+        function fecharModal(id) {
+            const modal = document.getElementById(id);
+            if (!modal) return;
+            
+            modal.style.display = 'none';
+            document.body.style.overflow = '';         // ← Libera o scroll novamente
+            modalAberto = false;
+        }
+        
+        // Fechar clicando fora do conteúdo
+        function initModalFecharFora(id) {
+            const modal = document.getElementById(id);
+            if (modal) {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        fecharModal(id);
+                    }
+                });
+            }
+        }
+        
+        // ==================== ABRIR MODAIS ====================
+        
+        function abrirModalMaeTernura() {
+            abrirModal('modalMaeTernura');
+        }
+        
         function abrirModalSantaCecilia() {
-            document.getElementById('modalSantaCecilia').style.display = 'flex';
-            // Ajusta o slider após abrir o modal
-            setTimeout(inicializarSliderCecilia, 300);
+            abrirModal('modalSantaCecilia');
+            setTimeout(inicializarSliderCecilia, 300); // slider da Sta. Cecília
         }
         
-        function fecharModalSantaCecilia() {
-            document.getElementById('modalSantaCecilia').style.display = 'none';
-        }
-        
-        // Inicializa o slider do modal
-        function inicializarSliderCecilia() {
-            const slider = document.getElementById('slider-cecilia');
-            const restaurada = document.getElementById('restaurada-cecilia');
-            if (!slider || !restaurada) return;
-        
-            const imgInterna = restaurada.querySelector('img');
-            const ajustarTamanho = () => {
-                if (imgInterna) imgInterna.style.width = slider.offsetWidth + 'px';
-            };
-        
-            const moverDivisor = (e) => {
-                const rect = slider.getBoundingClientRect();
-                const clientX = e.clientX || (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
-                let x = clientX - rect.left;
-                const percentual = Math.min(Math.max((x / rect.width) * 100, 0), 100);
-                restaurada.style.width = percentual + '%';
-            };
-        
-            ajustarTamanho();
-            window.addEventListener('resize', ajustarTamanho);
-            slider.addEventListener('mousemove', moverDivisor);
-            slider.addEventListener('touchmove', moverDivisor, { passive: true });
-        }
-        
-        // Fechar modal clicando fora
-        document.getElementById('modalSantaCecilia').addEventListener('click', function(e) {
-            if (e.target === this) fecharModalSantaCecilia();
-        });
-        </script>
-
-        <script>
-        // Modal Homens do Terço
         function abrirModalHomensDoTerco() {
-            document.getElementById('modalHomensDoTerco').style.display = 'flex';
+            abrirModal('modalHomensDoTerco');
         }
         
-        function fecharModalHomensDoTerco() {
-            document.getElementById('modalHomensDoTerco').style.display = 'none';
-        }
+        // ==================== INICIALIZAÇÃO ====================
         
-        // Fechar clicando fora
-        document.getElementById('modalHomensDoTerco').addEventListener('click', function(e) {
-            if (e.target === this) fecharModalHomensDoTerco();
+        document.addEventListener('DOMContentLoaded', function() {
+            initModalFecharFora('modalMaeTernura');
+            initModalFecharFora('modalSantaCecilia');
+            initModalFecharFora('modalHomensDoTerco');
+            
+            // Fechar com tecla ESC
+            document.addEventListener('keydown', function(e) {
+                if (e.key === "Escape" && modalAberto) {
+                    // Fecha todos os modais abertos
+                    document.querySelectorAll('.lightbox-overlay').forEach(modal => {
+                        if (modal.style.display === 'flex') {
+                            modal.style.display = 'none';
+                        }
+                    });
+                    document.body.style.overflow = '';
+                }
+            });
         });
         </script>
     
