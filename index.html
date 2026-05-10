@@ -2283,7 +2283,7 @@
             if (!modal) return;
             
             modal.style.display = 'flex';
-            document.body.style.overflow = 'hidden';   // ← Impede scroll da página
+            document.body.style.overflow = 'hidden';
             modalAberto = true;
         }
         
@@ -2292,20 +2292,60 @@
             if (!modal) return;
             
             modal.style.display = 'none';
-            document.body.style.overflow = '';         // ← Libera o scroll novamente
+            document.body.style.overflow = '';
             modalAberto = false;
         }
         
-        // Fechar clicando fora do conteúdo
+        // Fechar clicando fora
         function initModalFecharFora(id) {
             const modal = document.getElementById(id);
             if (modal) {
                 modal.addEventListener('click', function(e) {
-                    if (e.target === modal) {
-                        fecharModal(id);
-                    }
+                    if (e.target === modal) fecharModal(id);
                 });
             }
+        }
+        
+        // ==================== SLIDER SANTA CECÍLIA ====================
+        
+        function inicializarSliderCecilia() {
+            const slider = document.getElementById('slider-cecilia');
+            const restauradaDiv = document.getElementById('restaurada-cecilia');
+            
+            if (!slider || !restauradaDiv) {
+                console.log("Slider não encontrado - tentando novamente em 500ms");
+                setTimeout(inicializarSliderCecilia, 500);
+                return;
+            }
+        
+            const imgRestaurada = restauradaDiv.querySelector('img');
+        
+            const ajustarTamanho = () => {
+                if (imgRestaurada) {
+                    imgRestaurada.style.width = slider.offsetWidth + 'px';
+                }
+            };
+        
+            const moverDivisor = (e) => {
+                const rect = slider.getBoundingClientRect();
+                const clientX = e.clientX || (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
+                let x = clientX - rect.left;
+                let percentual = (x / rect.width) * 100;
+                percentual = Math.max(0, Math.min(100, percentual));
+                restauradaDiv.style.width = percentual + '%';
+            };
+        
+            // Inicializa
+            ajustarTamanho();
+            restauradaDiv.style.width = '50%'; // começa no meio
+        
+            // Eventos
+            slider.addEventListener('mousemove', moverDivisor);
+            slider.addEventListener('touchmove', moverDivisor, { passive: true });
+            window.addEventListener('resize', ajustarTamanho);
+            
+            // Clique também funciona (útil no mobile)
+            slider.addEventListener('click', moverDivisor);
         }
         
         // ==================== ABRIR MODAIS ====================
@@ -2316,7 +2356,7 @@
         
         function abrirModalSantaCecilia() {
             abrirModal('modalSantaCecilia');
-            setTimeout(inicializarSliderCecilia, 300); // slider da Sta. Cecília
+            setTimeout(inicializarSliderCecilia, 450); // mais tempo para carregar
         }
         
         function abrirModalHomensDoTerco() {
@@ -2330,10 +2370,9 @@
             initModalFecharFora('modalSantaCecilia');
             initModalFecharFora('modalHomensDoTerco');
             
-            // Fechar com tecla ESC
+            // Fechar com ESC
             document.addEventListener('keydown', function(e) {
                 if (e.key === "Escape" && modalAberto) {
-                    // Fecha todos os modais abertos
                     document.querySelectorAll('.lightbox-overlay').forEach(modal => {
                         if (modal.style.display === 'flex') {
                             modal.style.display = 'none';
@@ -2382,52 +2421,49 @@
         </div>
 
                 <!-- Modal Grupo Musical Santa Cecília -->
-            <div id="modalSantaCecilia" class="lightbox-overlay" style="display:none; background:rgba(0,0,0,0.92);">
-                <div style="max-width: 900px; width: 92%; background:white; border-radius:20px; overflow:hidden; position:relative; max-height:92vh; display:flex; flex-direction:column;">
-                    
-                    <!-- Cabeçalho -->
-                    <div style="background: linear-gradient(135deg, var(--azul), var(--azul-escuro)); color:white; padding:20px 30px; text-align:center;">
-                        <h3 style="margin:0;">Grupo Musical Santa Cecília</h3>
-                    </div>
-            
-                    <div style="padding:25px; overflow-y:auto; flex:1;">
+                <div id="modalSantaCecilia" class="lightbox-overlay" style="display:none; background:rgba(0,0,0,0.92);">
+                    <div style="max-width: 920px; width: 92%; background:white; border-radius:20px; overflow:hidden; position:relative; max-height:94vh; display:flex; flex-direction:column;">
                         
-                        <!-- Slider de comparação -->
-                        <div class="comparison-slider" id="slider-cecilia" role="img" aria-label="Foto original e restaurada de Santa Cecília">
-                            <img src="SantaCecíliaOriginal.png" alt="Foto original de Santa Cecília" loading="lazy">
-                            <div class="camada-original">
-                                <span class="label-before">ORIGINAL</span>
-                            </div>
-                            <div class="img-restaurada" id="restaurada-cecilia">
-                                <img src="SantaCecíliarealRestauradaIA.png" alt="Foto restaurada com IA de Santa Cecília" loading="lazy">
-                                <span class="label-after">RESTAURADA COM IA</span>
-                            </div>
+                        <div style="background: linear-gradient(135deg, var(--azul), var(--azul-escuro)); color:white; padding:20px 30px; text-align:center;">
+                            <h3 style="margin:0;">Grupo Musical Santa Cecília</h3>
                         </div>
-            
-                        <h4 style="color:var(--azul-escuro); margin:25px 0 15px; text-align:center;">Santa Cecília - Padroeira dos Músicos</h4>
-            
-                        <div style="line-height:1.75; color:var(--texto-suave); font-size:1.02rem;">
-                            <p><strong>Quem foi Santa Cecília?</strong></p>
-                            <p>A Santa Cecília história começa na Roma antiga, em uma das famílias mais nobres, a Gens Caecilia. Educada entre costumes pagãos, recebeu de Deus a graça de conhecer a fé cristã e viver segundo o Evangelho.</p>
-                            <p>Seu caráter nobre a afastava das abominações pagãs. Em busca da pureza, consagrou a vida a Deus com um voto de castidade, ligando-se espiritualmente a Cristo como uma esposa fiel.</p>
+                
+                        <div style="padding:25px; overflow-y:auto; flex:1;">
                             
-                            <p>Santa Cecília história é um exemplo de fé inabalável, pureza e coragem. Sua vida se entrelaça com a música, o martírio e a fidelidade a Cristo.</p>
-            
-                            <p><strong>Casamento forçado e fidelidade a Cristo</strong></p>
-                            <p>Na Santa Cecília história, seus pais a prometeram em casamento a Valeriano, um jovem romano pagão. Durante as núpcias, ela revelou ao noivo que era cristã e guardava um voto sagrado de castidade. Disse ainda que um anjo a protegia.</p>
-                            <p>Valeriano, impressionado, procurou o Papa Urbano, que o instruiu na fé e o batizou. Após o batismo, viu o anjo ao lado de Cecília, trazendo coroas de flores e lírios, símbolo de pureza e martírio. Também Tibúrcio, irmão de Valeriano, se converteu após o milagre.</p>
+                            <!-- SLIDER - Mesma estrutura do Altar da História -->
+                            <div class="comparison-slider" id="slider-cecilia" role="img" aria-label="Comparação Original e Restaurada">
+                                <img src="FotoOriginalSantaCecilia.jpg" 
+                                     alt="Foto original Santa Cecília" 
+                                     loading="lazy">
+                                
+                                <div class="camada-original">
+                                    <span class="label-before">ORIGINAL</span>
+                                </div>
+                                
+                                <div class="img-restaurada" id="restaurada-cecilia">
+                                    <img src="FotoRestauradaSantaCeciliaIA.jpg" 
+                                         alt="Foto restaurada com IA" 
+                                         loading="lazy">
+                                    <span class="label-after">RESTAURADA COM IA</span>
+                                </div>
+                            </div>
+                
+                            <h4 style="color:var(--azul-escuro); margin:25px 0 15px; text-align:center;">Santa Cecília - Padroeira dos Músicos</h4>
+                
+                            <div style="line-height:1.75; color:var(--texto-suave);">
+                                <!-- Seu texto aqui -->
+                                <p><strong>Quem foi Santa Cecília?</strong> ...</p>
+                            </div>
                         </div>
-                    </div>
-            
-                    <!-- Rodapé -->
-                    <div style="padding:20px; text-align:center; border-top:1px solid #eee; background:#f8f9fa;">
-                        <button onclick="fecharModalSantaCecilia()" 
-                                style="background:var(--azul-escuro); color:white; border:none; padding:12px 35px; border-radius:30px; font-weight:bold; cursor:pointer;">
-                            Fechar
-                        </button>
+                
+                        <div style="padding:20px; text-align:center; border-top:1px solid #eee;">
+                            <button onclick="fecharModalSantaCecilia()" 
+                                    style="background:var(--azul-escuro); color:white; border:none; padding:12px 35px; border-radius:30px; font-weight:bold;">
+                                Fechar
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
 
                     <!-- Modal Homens do Terço -->
                     <div id="modalHomensDoTerco" class="lightbox-overlay" style="display:none; background:rgba(0,0,0,0.92);">
