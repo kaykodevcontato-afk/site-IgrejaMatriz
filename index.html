@@ -1552,24 +1552,33 @@
         </section>
 
         <section aria-labelledby="grupos">
-            <h2 class="titulo" id="grupos">Movimentos, Pastorais e Grupos</h2>
-            <span class="linha-azul" aria-hidden="true"></span>
-            <div class="grupos-container">
-                <p class="grupos-intro">A vida da nossa paróquia se faz na comunhão de muitos corações. Conheça os movimentos, pastorais e grupos que servem nossa comunidade.</p>
-                <div class="grupos-grid">
-                    <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-heart"></i></span><h4>Grupo Mãe da Ternura</h4></div>
-                    <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-music"></i></span><h4>Grupo Musical Sta. Cecília</h4></div>
-                    <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-pray"></i></span><h4>Homens do Terço</h4></div>
-                    <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-cross"></i></span><h4>Irmãs Religiosas</h4></div>
-                    <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-crown"></i></span><h4>Legião de Maria</h4></div>
-                    <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-bible"></i></span><h4>Ministros da Palavra</h4></div>
-                    <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-wine-glass"></i></span><h4>Ministros da Eucaristia</h4></div>
-                    <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-dove"></i></span><h4>Movimento Jesus Misericordioso</h4></div>
-                    <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-star"></i></span><h4>Movimento Mãe Rainha</h4></div>
-                    <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-hands-helping"></i></span><h4>Movimento Voc. Vicentino</h4></div>
-                </div>
+    <h2 class="titulo" id="grupos">Movimentos, Pastorais e Grupos</h2>
+    <span class="linha-azul" aria-hidden="true"></span>
+    <div class="grupos-container">
+        <p class="grupos-intro">A vida da nossa paróquia se faz na comunhão de muitos corações. Conheça os movimentos, pastorais e grupos que servem nossa comunidade.</p>
+        
+        <div class="grupos-grid">
+            
+            <!-- === GRUPO MÃE DA TERNURA (ESPECIAL) === -->
+            <div class="grupo-item" style="cursor: pointer;" onclick="abrirModalMaeTernura()">
+                <span class="grupo-icone" aria-hidden="true"><i class="fas fa-heart"></i></span>
+                <h4>Grupo Mãe da Ternura</h4>
+                <small style="color:var(--azul); font-size:0.8rem;">Clique para saber mais</small>
             </div>
-        </section>
+
+            <!-- Outros grupos (mantidos iguais) -->
+            <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-music"></i></span><h4>Grupo Musical Sta. Cecília</h4></div>
+            <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-pray"></i></span><h4>Homens do Terço</h4></div>
+            <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-cross"></i></span><h4>Irmãs Religiosas</h4></div>
+            <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-crown"></i></span><h4>Legião de Maria</h4></div>
+            <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-bible"></i></span><h4>Ministros da Palavra</h4></div>
+            <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-wine-glass"></i></span><h4>Ministros da Eucaristia</h4></div>
+            <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-dove"></i></span><h4>Movimento Jesus Misericordioso</h4></div>
+            <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-star"></i></span><h4>Movimento Mãe Rainha</h4></div>
+            <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-hands-helping"></i></span><h4>Movimento Voc. Vicentino</h4></div>
+        </div>
+    </div>
+</section>
 
         <section aria-labelledby="galeria">
             <h2 class="titulo" id="galeria">Galeria de Fotos</h2>
@@ -2251,5 +2260,57 @@
         }, 6000);
     })();
     </script>
+
+            <script>
+        function abrirModalMaeTernura() {
+            document.getElementById('modalMaeTernura').style.display = 'flex';
+        }
+        
+        function fecharModalMaeTernura() {
+            document.getElementById('modalMaeTernura').style.display = 'none';
+        }
+        
+        // Fechar clicando fora
+        document.getElementById('modalMaeTernura').addEventListener('click', function(e) {
+            if (e.target === this) fecharModalMaeTernura();
+        });
+        </script>
+    
+        <!-- Modal Mãe da Ternura -->
+        <div id="modalMaeTernura" class="lightbox-overlay" style="display:none; background:rgba(0,0,0,0.9);">
+            <div style="max-width: 800px; width: 90%; background:white; border-radius:20px; overflow:hidden; position:relative;">
+                
+                <!-- Cabeçalho -->
+                <div style="background: linear-gradient(135deg, var(--azul), var(--azul-escuro)); color:white; padding:20px 25px; text-align:center;">
+                    <h3 style="margin:0;">Grupo Mãe da Ternura</h3>
+                </div>
+        
+                <!-- Conteúdo -->
+                <div style="padding:25px; max-height:70vh; overflow-y:auto;">
+                    <img src="https://via.placeholder.com/800x450/0EAFEA/ffffff?text=Ícone+Mãe+da+Ternura" 
+                         alt="Virgem Maria Mãe da Ternura" 
+                         style="width:100%; border-radius:12px; margin-bottom:20px;">
+                    
+                    <h4 style="color:var(--azul-escuro); margin:20px 0 15px;">A Virgem Maria – Mãe da Ternura</h4>
+                    
+                    <p style="line-height:1.7; color:var(--texto-suave);">
+                        O Movimento da Transfiguração tem a sua relação mariana especialmente a partir da forma como Maria é revelada no evangelho de João. O ícone de Maria Mãe da Ternura revela Maria com um olhar sofrido, e, ao invés dela estar abraçando o Menino Jesus, é Jesus que a abraça para consolá-la. Neste ícone percebemos que Maria acompanha Jesus no seu coração, desde a sua concepção até a sua ressurreição. Ela, assim, está unida a ele em todo o tempo e com todo o seu coração. Podemos dizer que ela vivenciou a mística mais profunda e intensa que uma criatura pode ter na sua vida com Deus. Desta forma, ela foi divinizada; ela é a criatura transfigurada por excelência.
+                    </p>
+                    
+                    <p style="line-height:1.7; color:var(--texto-suave); margin-top:15px;">
+                        Maria, a Mãe da Ternura, é, para nós do Movimento, tão profundamente ligada à pessoa de Jesus, que não poderíamos dizer que ela é apenas um aspecto da nossa espiritualidade, ou uma devoção simplesmente. Ela é, na verdade, parte integrante e essencial na busca da nossa comunhão com Deus, na pessoa de Jesus. Por desígnio de Deus, não podemos nos unir plenamente a Jesus sem aquela que diz: “eles não têm mais vinho”. E também diz: “fazei tudo o que ele vos disser.” (Jo 2, 3.5).
+                    </p>
+                </div>
+        
+                <!-- Rodapé do modal -->
+                <div style="padding:15px 25px; text-align:center; border-top:1px solid #eee;">
+                    <button onclick="fecharModalMaeTernura()" 
+                            style="background:var(--azul-escuro); color:white; border:none; padding:12px 30px; border-radius:30px; font-weight:bold; cursor:pointer;">
+                        Fechar
+                    </button>
+                </div>
+            </div>
+        </div>
+    
 </body>
 </html>
