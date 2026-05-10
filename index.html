@@ -1552,45 +1552,24 @@
         </section>
 
         <section aria-labelledby="grupos">
-    <h2 class="titulo" id="grupos">Movimentos, Pastorais e Grupos</h2>
-    <span class="linha-azul" aria-hidden="true"></span>
-    <div class="grupos-container">
-        <p class="grupos-intro">A vida da nossa paróquia se faz na comunhão de muitos corações. Conheça os movimentos, pastorais e grupos que servem nossa comunidade.</p>
-        
-        <div class="grupos-grid">
-            
-            <!-- Grupo Mãe da Ternura -->
-            <div class="grupo-item" style="cursor: pointer;" onclick="abrirModal('modalMaeTernura')">
-                <span class="grupo-icone" aria-hidden="true"><i class="fas fa-heart"></i></span>
-                <h4>Grupo Mãe da Ternura</h4>
-                <small style="color:var(--azul); font-size:0.8rem;">Clique para saber mais</small>
+            <h2 class="titulo" id="grupos">Movimentos, Pastorais e Grupos</h2>
+            <span class="linha-azul" aria-hidden="true"></span>
+            <div class="grupos-container">
+                <p class="grupos-intro">A vida da nossa paróquia se faz na comunhão de muitos corações. Conheça os movimentos, pastorais e grupos que servem nossa comunidade.</p>
+                <div class="grupos-grid">
+                    <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-heart"></i></span><h4>Grupo Mãe da Ternura</h4></div>
+                    <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-music"></i></span><h4>Grupo Musical Sta. Cecília</h4></div>
+                    <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-pray"></i></span><h4>Homens do Terço</h4></div>
+                    <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-cross"></i></span><h4>Irmãs Religiosas</h4></div>
+                    <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-crown"></i></span><h4>Legião de Maria</h4></div>
+                    <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-bible"></i></span><h4>Ministros da Palavra</h4></div>
+                    <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-wine-glass"></i></span><h4>Ministros da Eucaristia</h4></div>
+                    <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-dove"></i></span><h4>Movimento Jesus Misericordioso</h4></div>
+                    <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-star"></i></span><h4>Movimento Mãe Rainha</h4></div>
+                    <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-hands-helping"></i></span><h4>Movimento Voc. Vicentino</h4></div>
+                </div>
             </div>
-
-            <!-- Grupo Musical Sta. Cecília (com slider) -->
-            <div class="grupo-item" style="cursor: pointer;" onclick="abrirModalSantaCecilia()">
-                <span class="grupo-icone" aria-hidden="true"><i class="fas fa-music"></i></span>
-                <h4>Grupo Musical Sta. Cecília</h4>
-                <small style="color:var(--azul); font-size:0.8rem;">Clique para saber mais</small>
-            </div>
-
-            <!-- Homens do Terço -->
-            <div class="grupo-item" style="cursor: pointer;" onclick="abrirModal('modalHomensDoTerco')">
-                <span class="grupo-icone" aria-hidden="true"><i class="fas fa-pray"></i></span>
-                <h4>Homens do Terço</h4>
-                <small style="color:var(--azul); font-size:0.8rem;">Clique para saber mais</small>
-            </div>
-
-            <!-- Outros grupos (exemplo) -->
-            <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-cross"></i></span><h4>Irmãs Religiosas</h4></div>
-            <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-crown"></i></span><h4>Legião de Maria</h4></div>
-            <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-bible"></i></span><h4>Ministros da Palavra</h4></div>
-            <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-wine-glass"></i></span><h4>Ministros da Eucaristia</h4></div>
-            <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-dove"></i></span><h4>Movimento Jesus Misericordioso</h4></div>
-            <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-star"></i></span><h4>Movimento Mãe Rainha</h4></div>
-            <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-hands-helping"></i></span><h4>Movimento Voc. Vicentino</h4></div>
-        </div>
-    </div>
-</section>
+        </section>
 
         <section aria-labelledby="galeria">
             <h2 class="titulo" id="galeria">Galeria de Fotos</h2>
@@ -2272,137 +2251,5 @@
         }, 6000);
     })();
     </script>
-
-    <script>
-let modalAberto = false;
-
-function abrirModal(id) {
-    const modal = document.getElementById(id);
-    if (!modal) return;
-    modal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-    modalAberto = true;
-}
-
-function fecharModal(id) {
-    const modal = document.getElementById(id);
-    if (!modal) return;
-    modal.style.display = 'none';
-    document.body.style.overflow = '';
-    modalAberto = false;
-}
-
-// Slider Santa Cecília
-function inicializarSliderCecilia() {
-    const slider = document.getElementById('slider-cecilia');
-    const restauradaDiv = document.getElementById('restaurada-cecilia');
-    if (!slider || !restauradaDiv) return;
-
-    const ajustar = () => {
-        const img = restauradaDiv.querySelector('img');
-        if (img) img.style.width = slider.offsetWidth + 'px';
-    };
-
-    const mover = (e) => {
-        const rect = slider.getBoundingClientRect();
-        const x = (e.clientX || (e.touches && e.touches[0].clientX) || 0) - rect.left;
-        let perc = (x / rect.width) * 100;
-        restauradaDiv.style.width = Math.max(0, Math.min(100, perc)) + '%';
-    };
-
-    ajustar();
-    restauradaDiv.style.width = '50%';
-
-    slider.addEventListener('mousemove', mover);
-    slider.addEventListener('touchmove', mover, { passive: true });
-    slider.addEventListener('click', mover);
-    window.addEventListener('resize', ajustar);
-}
-
-function abrirModalSantaCecilia() {
-    abrirModal('modalSantaCecilia');
-    setTimeout(inicializarSliderCecilia, 400);
-}
-
-// Fechar clicando fora + ESC
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.lightbox-overlay').forEach(modal => {
-        modal.addEventListener('click', e => {
-            if (e.target === modal) fecharModal(modal.id);
-        });
-    });
-
-    document.addEventListener('keydown', e => {
-        if (e.key === "Escape" && modalAberto) {
-            document.querySelectorAll('.lightbox-overlay').forEach(m => {
-                if (m.style.display === 'flex') m.style.display = 'none';
-            });
-            document.body.style.overflow = '';
-        }
-    });
-});
-</script>
-
-        <!-- Modal Mãe da Ternura -->
-<div id="modalMaeTernura" class="lightbox-overlay" style="display:none;">
-    <div style="max-width: 800px; width: 90%; background:white; border-radius:20px; overflow:hidden;">
-        <div style="background: linear-gradient(135deg, var(--azul), var(--azul-escuro)); color:white; padding:20px; text-align:center;">
-            <h3 style="margin:0;">Grupo Mãe da Ternura</h3>
-        </div>
-        <div style="padding:25px; max-height:70vh; overflow-y:auto;">
-            <img src="FotoMaeDaTernura.jpg" alt="Mãe da Ternura" style="width:100%; border-radius:12px; margin-bottom:20px;">
-            <h4 style="color:var(--azul-escuro);">A Virgem Maria – Mãe da Ternura</h4>
-            <p style="line-height:1.7; color:var(--texto-suave);">Seu texto completo aqui...</p>
-        </div>
-        <div style="padding:15px; text-align:center; border-top:1px solid #eee;">
-            <button onclick="fecharModal('modalMaeTernura')" style="background:var(--azul-escuro); color:white; border:none; padding:12px 30px; border-radius:30px; cursor:pointer;">Fechar</button>
-        </div>
-    </div>
-</div>
-
-<!-- Modal Santa Cecília (com slider) -->
-<div id="modalSantaCecilia" class="lightbox-overlay" style="display:none;">
-    <div style="max-width: 920px; width: 92%; background:white; border-radius:20px; overflow:hidden; max-height:94vh; display:flex; flex-direction:column;">
-        <div style="background: linear-gradient(135deg, var(--azul), var(--azul-escuro)); color:white; padding:20px; text-align:center;">
-            <h3 style="margin:0;">Grupo Musical Santa Cecília</h3>
-        </div>
-        <div style="padding:25px; overflow-y:auto; flex:1;">
-            <div class="comparison-slider" id="slider-cecilia">
-                <img src="FotoOriginalSantaCecilia.jpg" alt="Original" loading="lazy">
-                <div class="camada-original"><span class="label-before">ORIGINAL</span></div>
-                <div class="img-restaurada" id="restaurada-cecilia">
-                    <img src="FotoRestauradaSantaCeciliaIA.jpg" alt="Restaurada IA" loading="lazy">
-                    <span class="label-after">RESTAURADA COM IA</span>
-                </div>
-            </div>
-            <h4 style="color:var(--azul-escuro); text-align:center; margin:20px 0;">Santa Cecília - Padroeira dos Músicos</h4>
-            <div style="line-height:1.75; color:var(--texto-suave);">
-                <!-- Cole aqui o texto completo da Santa Cecília -->
-            </div>
-        </div>
-        <div style="padding:20px; text-align:center; border-top:1px solid #eee;">
-            <button onclick="fecharModal('modalSantaCecilia')" style="background:var(--azul-escuro); color:white; border:none; padding:12px 35px; border-radius:30px; cursor:pointer;">Fechar</button>
-        </div>
-    </div>
-</div>
-
-<!-- Modal Homens do Terço -->
-<div id="modalHomensDoTerco" class="lightbox-overlay" style="display:none;">
-    <div style="max-width: 850px; width: 92%; background:white; border-radius:20px; overflow:hidden; max-height:92vh; display:flex; flex-direction:column;">
-        <div style="background: linear-gradient(135deg, var(--azul), var(--azul-escuro)); color:white; padding:22px; text-align:center;">
-            <h3 style="margin:0;">Homens do Terço</h3>
-        </div>
-        <div style="padding:25px; overflow-y:auto; flex:1;">
-            <img src="HomensDoTerço.png" alt="Homens do Terço" style="max-width:100%; border-radius:15px; box-shadow:0 10px 25px rgba(0,0,0,0.15);">
-            <div style="line-height:1.8; color:var(--texto-suave); margin-top:20px;">
-                <!-- Seu texto completo aqui -->
-            </div>
-        </div>
-        <div style="padding:20px; text-align:center; border-top:1px solid #eee;">
-            <button onclick="fecharModal('modalHomensDoTerco')" style="background:var(--azul-escuro); color:white; border:none; padding:13px 40px; border-radius:30px; cursor:pointer;">Fechar</button>
-        </div>
-    </div>
-</div>
-    
 </body>
 </html>
