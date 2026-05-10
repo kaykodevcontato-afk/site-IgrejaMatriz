@@ -1551,46 +1551,25 @@
             </div>
         </section>
 
-       <section aria-labelledby="grupos">
-    <h2 class="titulo" id="grupos">Movimentos, Pastorais e Grupos</h2>
-    <span class="linha-azul" aria-hidden="true"></span>
-    <div class="grupos-container">
-        <p class="grupos-intro">A vida da nossa paróquia se faz na comunhão de muitos corações. Conheça os movimentos, pastorais e grupos que servem nossa comunidade.</p>
-        
-        <div class="grupos-grid">
-            
-            <!-- Grupo Mãe da Ternura -->
-            <div class="grupo-item" style="cursor: pointer;" onclick="abrirModalMaeTernura()">
-                <span class="grupo-icone" aria-hidden="true"><i class="fas fa-heart"></i></span>
-                <h4>Grupo Mãe da Ternura</h4>
-                <small style="color:var(--azul); font-size:0.8rem;">Clique para saber mais</small>
+        <section aria-labelledby="grupos">
+            <h2 class="titulo" id="grupos">Movimentos, Pastorais e Grupos</h2>
+            <span class="linha-azul" aria-hidden="true"></span>
+            <div class="grupos-container">
+                <p class="grupos-intro">A vida da nossa paróquia se faz na comunhão de muitos corações. Conheça os movimentos, pastorais e grupos que servem nossa comunidade.</p>
+                <div class="grupos-grid">
+                    <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-heart"></i></span><h4>Grupo Mãe da Ternura</h4></div>
+                    <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-music"></i></span><h4>Grupo Musical Sta. Cecília</h4></div>
+                    <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-pray"></i></span><h4>Homens do Terço</h4></div>
+                    <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-cross"></i></span><h4>Irmãs Religiosas</h4></div>
+                    <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-crown"></i></span><h4>Legião de Maria</h4></div>
+                    <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-bible"></i></span><h4>Ministros da Palavra</h4></div>
+                    <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-wine-glass"></i></span><h4>Ministros da Eucaristia</h4></div>
+                    <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-dove"></i></span><h4>Movimento Jesus Misericordioso</h4></div>
+                    <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-star"></i></span><h4>Movimento Mãe Rainha</h4></div>
+                    <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-hands-helping"></i></span><h4>Movimento Voc. Vicentino</h4></div>
+                </div>
             </div>
-
-            <!-- === GRUPO MUSICAL STA. CECÍLIA (NOVO) === -->
-            <div class="grupo-item" style="cursor: pointer;" onclick="abrirModalSantaCecilia()">
-                <span class="grupo-icone" aria-hidden="true"><i class="fas fa-music"></i></span>
-                <h4>Grupo Musical Sta. Cecília</h4>
-                <small style="color:var(--azul); font-size:0.8rem;">Clique para saber mais</small>
-            </div>
-
-            <!-- === HOMENS DO TERÇO === -->
-            <div class="grupo-item" style="cursor: pointer;" onclick="abrirModalHomensDoTerco()">
-                <span class="grupo-icone" aria-hidden="true"><i class="fas fa-pray"></i></span>
-                <h4>Homens do Terço</h4>
-                <small style="color:var(--azul); font-size:0.8rem;">Clique para saber mais</small>
-            </div>
-
-            <!-- Outros grupos -->
-            <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-cross"></i></span><h4>Irmãs Religiosas</h4></div>
-            <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-crown"></i></span><h4>Legião de Maria</h4></div>
-            <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-bible"></i></span><h4>Ministros da Palavra</h4></div>
-            <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-wine-glass"></i></span><h4>Ministros da Eucaristia</h4></div>
-            <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-dove"></i></span><h4>Movimento Jesus Misericordioso</h4></div>
-            <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-star"></i></span><h4>Movimento Mãe Rainha</h4></div>
-            <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-hands-helping"></i></span><h4>Movimento Voc. Vicentino</h4></div>
-        </div>
-    </div>
-</section>
+        </section>
 
         <section aria-labelledby="galeria">
             <h2 class="titulo" id="galeria">Galeria de Fotos</h2>
@@ -2272,242 +2251,5 @@
         }, 6000);
     })();
     </script>
-
-    <script>
-        // ==================== FUNÇÕES DOS MODAIS ====================
-        
-        let modalAberto = false;
-        
-        function abrirModal(id) {
-            const modal = document.getElementById(id);
-            if (!modal) return;
-            
-            modal.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-            modalAberto = true;
-        }
-        
-        function fecharModal(id) {
-            const modal = document.getElementById(id);
-            if (!modal) return;
-            
-            modal.style.display = 'none';
-            document.body.style.overflow = '';
-            modalAberto = false;
-        }
-        
-        // Fechar clicando fora
-        function initModalFecharFora(id) {
-            const modal = document.getElementById(id);
-            if (modal) {
-                modal.addEventListener('click', function(e) {
-                    if (e.target === modal) fecharModal(id);
-                });
-            }
-        }
-        
-        // ==================== SLIDER SANTA CECÍLIA ====================
-        
-        function inicializarSliderCecilia() {
-            const slider = document.getElementById('slider-cecilia');
-            const restauradaDiv = document.getElementById('restaurada-cecilia');
-            
-            if (!slider || !restauradaDiv) {
-                console.log("Slider não encontrado - tentando novamente em 500ms");
-                setTimeout(inicializarSliderCecilia, 500);
-                return;
-            }
-        
-            const imgRestaurada = restauradaDiv.querySelector('img');
-        
-            const ajustarTamanho = () => {
-                if (imgRestaurada) {
-                    imgRestaurada.style.width = slider.offsetWidth + 'px';
-                }
-            };
-        
-            const moverDivisor = (e) => {
-                const rect = slider.getBoundingClientRect();
-                const clientX = e.clientX || (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
-                let x = clientX - rect.left;
-                let percentual = (x / rect.width) * 100;
-                percentual = Math.max(0, Math.min(100, percentual));
-                restauradaDiv.style.width = percentual + '%';
-            };
-        
-            // Inicializa
-            ajustarTamanho();
-            restauradaDiv.style.width = '50%'; // começa no meio
-        
-            // Eventos
-            slider.addEventListener('mousemove', moverDivisor);
-            slider.addEventListener('touchmove', moverDivisor, { passive: true });
-            window.addEventListener('resize', ajustarTamanho);
-            
-            // Clique também funciona (útil no mobile)
-            slider.addEventListener('click', moverDivisor);
-        }
-        
-        // ==================== ABRIR MODAIS ====================
-        
-        function abrirModalMaeTernura() {
-            abrirModal('modalMaeTernura');
-        }
-        
-        function abrirModalSantaCecilia() {
-            abrirModal('modalSantaCecilia');
-            setTimeout(inicializarSliderCecilia, 450); // mais tempo para carregar
-        }
-        
-        function abrirModalHomensDoTerco() {
-            abrirModal('modalHomensDoTerco');
-        }
-        
-        // ==================== INICIALIZAÇÃO ====================
-        
-        document.addEventListener('DOMContentLoaded', function() {
-            initModalFecharFora('modalMaeTernura');
-            initModalFecharFora('modalSantaCecilia');
-            initModalFecharFora('modalHomensDoTerco');
-            
-            // Fechar com ESC
-            document.addEventListener('keydown', function(e) {
-                if (e.key === "Escape" && modalAberto) {
-                    document.querySelectorAll('.lightbox-overlay').forEach(modal => {
-                        if (modal.style.display === 'flex') {
-                            modal.style.display = 'none';
-                        }
-                    });
-                    document.body.style.overflow = '';
-                }
-            });
-        });
-        </script>
-    
-        <!-- Modal Mãe da Ternura -->
-        <div id="modalMaeTernura" class="lightbox-overlay" style="display:none; background:rgba(0,0,0,0.9);">
-            <div style="max-width: 800px; width: 90%; background:white; border-radius:20px; overflow:hidden; position:relative;">
-                
-                <!-- Cabeçalho -->
-                <div style="background: linear-gradient(135deg, var(--azul), var(--azul-escuro)); color:white; padding:20px 25px; text-align:center;">
-                    <h3 style="margin:0;">Grupo Mãe da Ternura</h3>
-                </div>
-        
-                <!-- Conteúdo -->
-                <div style="padding:25px; max-height:70vh; overflow-y:auto;">
-                    <img src="FotoMaeDaTernura.jpg" 
-                         alt="Virgem Maria Mãe da Ternura" 
-                         style="width:100%; border-radius:12px; margin-bottom:20px;">
-                    
-                    <h4 style="color:var(--azul-escuro); margin:20px 0 15px;">A Virgem Maria – Mãe da Ternura</h4>
-                    
-                    <p style="line-height:1.7; color:var(--texto-suave);">
-                        O Movimento da Transfiguração tem a sua relação mariana especialmente a partir da forma como Maria é revelada no evangelho de João. O ícone de Maria Mãe da Ternura revela Maria com um olhar sofrido, e, ao invés dela estar abraçando o Menino Jesus, é Jesus que a abraça para consolá-la. Neste ícone percebemos que Maria acompanha Jesus no seu coração, desde a sua concepção até a sua ressurreição. Ela, assim, está unida a ele em todo o tempo e com todo o seu coração. Podemos dizer que ela vivenciou a mística mais profunda e intensa que uma criatura pode ter na sua vida com Deus. Desta forma, ela foi divinizada; ela é a criatura transfigurada por excelência.
-                    </p>
-                    
-                    <p style="line-height:1.7; color:var(--texto-suave); margin-top:15px;">
-                        Maria, a Mãe da Ternura, é, para nós do Movimento, tão profundamente ligada à pessoa de Jesus, que não poderíamos dizer que ela é apenas um aspecto da nossa espiritualidade, ou uma devoção simplesmente. Ela é, na verdade, parte integrante e essencial na busca da nossa comunhão com Deus, na pessoa de Jesus. Por desígnio de Deus, não podemos nos unir plenamente a Jesus sem aquela que diz: “eles não têm mais vinho”. E também diz: “fazei tudo o que ele vos disser.” (Jo 2, 3.5).
-                    </p>
-                </div>
-        
-                <!-- Rodapé do modal -->
-                <div style="padding:15px 25px; text-align:center; border-top:1px solid #eee;">
-                    <button onclick="fecharModalMaeTernura()" 
-                            style="background:var(--azul-escuro); color:white; border:none; padding:12px 30px; border-radius:30px; font-weight:bold; cursor:pointer;">
-                        Fechar
-                    </button>
-                </div>
-            </div>
-        </div>
-
-                <!-- Modal Grupo Musical Santa Cecília -->
-                <div id="modalSantaCecilia" class="lightbox-overlay" style="display:none; background:rgba(0,0,0,0.92);">
-                    <div style="max-width: 920px; width: 92%; background:white; border-radius:20px; overflow:hidden; position:relative; max-height:94vh; display:flex; flex-direction:column;">
-                        
-                        <div style="background: linear-gradient(135deg, var(--azul), var(--azul-escuro)); color:white; padding:20px 30px; text-align:center;">
-                            <h3 style="margin:0;">Grupo Musical Santa Cecília</h3>
-                        </div>
-                
-                        <div style="padding:25px; overflow-y:auto; flex:1;">
-                            
-                            <!-- SLIDER - Mesma estrutura do Altar da História -->
-                            <div class="comparison-slider" id="slider-cecilia" role="img" aria-label="Comparação Original e Restaurada">
-                                <img src="FotoOriginalSantaCecilia.jpg" 
-                                     alt="Foto original Santa Cecília" 
-                                     loading="lazy">
-                                
-                                <div class="camada-original">
-                                    <span class="label-before">ORIGINAL</span>
-                                </div>
-                                
-                                <div class="img-restaurada" id="restaurada-cecilia">
-                                    <img src="FotoRestauradaSantaCeciliaIA.jpg" 
-                                         alt="Foto restaurada com IA" 
-                                         loading="lazy">
-                                    <span class="label-after">RESTAURADA COM IA</span>
-                                </div>
-                            </div>
-                
-                            <h4 style="color:var(--azul-escuro); margin:25px 0 15px; text-align:center;">Santa Cecília - Padroeira dos Músicos</h4>
-                
-                            <div style="line-height:1.75; color:var(--texto-suave);">
-                                <!-- Seu texto aqui -->
-                                <p><strong>Quem foi Santa Cecília?</strong> ...</p>
-                            </div>
-                        </div>
-                
-                        <div style="padding:20px; text-align:center; border-top:1px solid #eee;">
-                            <button onclick="fecharModalSantaCecilia()" 
-                                    style="background:var(--azul-escuro); color:white; border:none; padding:12px 35px; border-radius:30px; font-weight:bold;">
-                                Fechar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                    <!-- Modal Homens do Terço -->
-                    <div id="modalHomensDoTerco" class="lightbox-overlay" style="display:none; background:rgba(0,0,0,0.92);">
-                        <div style="max-width: 850px; width: 92%; background:white; border-radius:20px; overflow:hidden; position:relative; max-height:92vh; display:flex; flex-direction:column;">
-                            
-                            <!-- Cabeçalho -->
-                            <div style="background: linear-gradient(135deg, var(--azul), var(--azul-escuro)); color:white; padding:22px 30px; text-align:center;">
-                                <h3 style="margin:0;">Homens do Terço</h3>
-                            </div>
-                    
-                            <div style="padding:25px 30px; overflow-y:auto; flex:1;">
-                                
-                                <!-- Foto única -->
-                                <div style="text-align:center; margin-bottom:25px;">
-                                    <img src="HomensDoTerço.png" 
-                                         alt="Homens do Terço - Paróquia Nossa Senhora do Livramento" 
-                                         style="max-width:100%; border-radius:15px; box-shadow: 0 10px 25px rgba(0,0,0,0.15);"
-                                         loading="lazy">
-                                </div>
-                    
-                                <div style="line-height:1.8; color:var(--texto-suave); font-size:1.03rem;">
-                                    <p><strong>O Terço dos Homens</strong> representa sinal e presença da fé, evangelização e oração.</p>
-                                    <p>Sua missão é <strong>“Resgatar, para o seio da Igreja de Cristo, homens de todas as idades”</strong>, pois a presença masculina na Igreja é imprescindível para a formação da família e da sociedade cristã.</p>
-                                    
-                                    <p>É um movimento em que homens se reúnem para rezar o Santo Terço nas comunidades e paróquias, em sintonia com as intenções e apelos da Igreja Católica.</p>
-                    
-                                    <h4 style="color:var(--azul-escuro); margin:25px 0 12px;">História</h4>
-                                    <p>O Terço dos Homens iniciou-se em <strong>1936</strong>, quando Frei Peregrino, em missão na cidade de Itabi (Sergipe), convidou os homens a rezarem o Santo Terço.</p>
-                                    <p>O movimento se espalhou pelo Brasil, chegando a Pernambuco em <strong>1997</strong> e a Fortaleza em <strong>2003</strong>, expandindo-se cada vez mais por todo o país e pelo mundo.</p>
-                    
-                                    <h4 style="color:var(--azul-escuro); margin:25px 0 12px;">Terço dos Homens – Mãe Rainha</h4>
-                                    <p>Nos anos 1990, surgiu o Terço dos Homens – Mãe Rainha, iniciativa associada ao Movimento Apostólico de Schoenstatt. Um pequeno grupo de homens rezava o Terço pelas ruas, enquanto as esposas participavam da Campanha da Mãe Peregrina em Maceió.</p>
-                                </div>
-                            </div>
-                    
-                            <!-- Rodapé -->
-                            <div style="padding:20px; text-align:center; border-top:1px solid #eee; background:#f8f9fa;">
-                                <button onclick="fecharModalHomensDoTerco()" 
-                                        style="background:var(--azul-escuro); color:white; border:none; padding:13px 40px; border-radius:30px; font-weight:bold; cursor:pointer;">
-                                    Fechar
-                                </button>
-                            </div>
-                        </div>
-                    </div>           
-    
 </body>
 </html>
