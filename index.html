@@ -1573,8 +1573,14 @@
                 <small style="color:var(--azul); font-size:0.8rem;">Clique para saber mais</small>
             </div>
 
+            <!-- === HOMENS DO TERÇO === -->
+            <div class="grupo-item" style="cursor: pointer;" onclick="abrirModalHomensDoTerco()">
+                <span class="grupo-icone" aria-hidden="true"><i class="fas fa-pray"></i></span>
+                <h4>Homens do Terço</h4>
+                <small style="color:var(--azul); font-size:0.8rem;">Clique para saber mais</small>
+            </div>
+
             <!-- Outros grupos -->
-            <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-pray"></i></span><h4>Homens do Terço</h4></div>
             <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-cross"></i></span><h4>Irmãs Religiosas</h4></div>
             <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-crown"></i></span><h4>Legião de Maria</h4></div>
             <div class="grupo-item"><span class="grupo-icone" aria-hidden="true"><i class="fas fa-bible"></i></span><h4>Ministros da Palavra</h4></div>
@@ -2324,6 +2330,22 @@
             if (e.target === this) fecharModalSantaCecilia();
         });
         </script>
+
+        <script>
+        // Modal Homens do Terço
+        function abrirModalHomensDoTerco() {
+            document.getElementById('modalHomensDoTerco').style.display = 'flex';
+        }
+        
+        function fecharModalHomensDoTerco() {
+            document.getElementById('modalHomensDoTerco').style.display = 'none';
+        }
+        
+        // Fechar clicando fora
+        document.getElementById('modalHomensDoTerco').addEventListener('click', function(e) {
+            if (e.target === this) fecharModalHomensDoTerco();
+        });
+        </script>
     
         <!-- Modal Mãe da Ternura -->
         <div id="modalMaeTernura" class="lightbox-overlay" style="display:none; background:rgba(0,0,0,0.9);">
@@ -2408,6 +2430,50 @@
                     </div>
                 </div>
             </div>
+
+                    <!-- Modal Homens do Terço -->
+                    <div id="modalHomensDoTerco" class="lightbox-overlay" style="display:none; background:rgba(0,0,0,0.92);">
+                        <div style="max-width: 850px; width: 92%; background:white; border-radius:20px; overflow:hidden; position:relative; max-height:92vh; display:flex; flex-direction:column;">
+                            
+                            <!-- Cabeçalho -->
+                            <div style="background: linear-gradient(135deg, var(--azul), var(--azul-escuro)); color:white; padding:22px 30px; text-align:center;">
+                                <h3 style="margin:0;">Homens do Terço</h3>
+                            </div>
+                    
+                            <div style="padding:25px 30px; overflow-y:auto; flex:1;">
+                                
+                                <!-- Foto única -->
+                                <div style="text-align:center; margin-bottom:25px;">
+                                    <img src="FotoHomensDoTerco.jpg" 
+                                         alt="Homens do Terço - Paróquia Nossa Senhora do Livramento" 
+                                         style="max-width:100%; border-radius:15px; box-shadow: 0 10px 25px rgba(0,0,0,0.15);"
+                                         loading="lazy">
+                                </div>
+                    
+                                <div style="line-height:1.8; color:var(--texto-suave); font-size:1.03rem;">
+                                    <p><strong>O Terço dos Homens</strong> representa sinal e presença da fé, evangelização e oração.</p>
+                                    <p>Sua missão é <strong>“Resgatar, para o seio da Igreja de Cristo, homens de todas as idades”</strong>, pois a presença masculina na Igreja é imprescindível para a formação da família e da sociedade cristã.</p>
+                                    
+                                    <p>É um movimento em que homens se reúnem para rezar o Santo Terço nas comunidades e paróquias, em sintonia com as intenções e apelos da Igreja Católica.</p>
+                    
+                                    <h4 style="color:var(--azul-escuro); margin:25px 0 12px;">História</h4>
+                                    <p>O Terço dos Homens iniciou-se em <strong>1936</strong>, quando Frei Peregrino, em missão na cidade de Itabi (Sergipe), convidou os homens a rezarem o Santo Terço.</p>
+                                    <p>O movimento se espalhou pelo Brasil, chegando a Pernambuco em <strong>1997</strong> e a Fortaleza em <strong>2003</strong>, expandindo-se cada vez mais por todo o país e pelo mundo.</p>
+                    
+                                    <h4 style="color:var(--azul-escuro); margin:25px 0 12px;">Terço dos Homens – Mãe Rainha</h4>
+                                    <p>Nos anos 1990, surgiu o Terço dos Homens – Mãe Rainha, iniciativa associada ao Movimento Apostólico de Schoenstatt. Um pequeno grupo de homens rezava o Terço pelas ruas, enquanto as esposas participavam da Campanha da Mãe Peregrina em Maceió.</p>
+                                </div>
+                            </div>
+                    
+                            <!-- Rodapé -->
+                            <div style="padding:20px; text-align:center; border-top:1px solid #eee; background:#f8f9fa;">
+                                <button onclick="fecharModalHomensDoTerco()" 
+                                        style="background:var(--azul-escuro); color:white; border:none; padding:13px 40px; border-radius:30px; font-weight:bold; cursor:pointer;">
+                                    Fechar
+                                </button>
+                            </div>
+                        </div>
+                    </div>           
     
 </body>
 </html>
