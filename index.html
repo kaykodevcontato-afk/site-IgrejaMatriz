@@ -2121,100 +2121,113 @@
     })();
     </script>
 
-    <script>
-    /* ============== DETECÇÃO DE LIVE NO YOUTUBE ============== */
-    (function() {
-        var container = document.getElementById('live-container');
-        var iframe = document.getElementById('live-iframe');
-        var placeholder = document.getElementById('live-placeholder');
-        var badge = document.getElementById('live-badge-status');
-        var badgeTexto = document.getElementById('live-badge-texto');
-        var dot = document.getElementById('live-dot');
-        var titulo = document.getElementById('live-titulo');
-        var descricao = document.getElementById('live-descricao');
-        if (!container || !iframe) return;
-
-        var CHANNEL_ID = 'UCal8oRz466j8dcv26cWMmQw';
-        var liveUrl = 'https://www.youtube.com/embed/live_stream?channel=' + CHANNEL_ID;
-        var oEmbedUrl = 'https://www.youtube.com/oembed?url=https://www.youtube.com/live/' + CHANNEL_ID + '&format=json';
-
-        function setAoVivo(ativo) {
-            var menuLink = document.getElementById('menu-ao-vivo');
-            if (menuLink) menuLink.classList.toggle('menu-live-on', !!ativo);
-            if (ativo) {
-                container.classList.add('ao-vivo');
-                badge.style.background = '#ffe6e6';
-                badge.style.color = '#ff0000';
-                dot.style.background = '#ff0000';
-                badgeTexto.textContent = 'AO VIVO AGORA';
-                titulo.textContent = '\uD83D\uDD34 Estamos ao vivo!';
-                descricao.textContent = 'A celebração está acontecendo agora! Acompanhe em tempo real.';
-            } else {
-                container.classList.remove('ao-vivo');
-                badge.style.background = 'rgba(14,175,234,0.1)';
-                badge.style.color = 'var(--azul-escuro)';
-                dot.style.background = 'var(--azul)';
-                dot.style.animation = 'none';
-                badgeTexto.textContent = 'Fora do ar';
-                titulo.textContent = 'Acompanhe de onde estiver';
-                descricao.textContent = 'Quando houver uma transmissão ao vivo, ela aparecerá automaticamente aqui. Ative o sininho no YouTube para ser notificado!';
-            }
-        }
-
-        // Lista de proxies CORS (tenta um, depois outro se falhar)
-        var PROXIES = [
-            'https://corsproxy.io/?url=',
-            'https://api.allorigins.win/raw?url=',
-            'https://api.codetabs.com/v1/proxy/?quest='
-        ];
-        var liveCanalUrl = 'https://www.youtube.com/channel/' + CHANNEL_ID + '/live';
-
-        function ativarLive(videoId) {
-            setAoVivo(true);
-            // Usa o video ID específico para garantir que toca a live atual
-            var src = 'https://www.youtube-nocookie.com/embed/' + videoId + '?autoplay=1&mute=1&rel=0&playsinline=1';
-            if (iframe.src.indexOf(videoId) === -1) {
-                iframe.src = src;
-            }
-        }
-
-        function tentarProxy(idx) {
-            if (idx >= PROXIES.length) { setAoVivo(false); return; }
-            var url = PROXIES[idx] + encodeURIComponent(liveCanalUrl);
-            fetch(url, { cache: 'no-store' })
-                .then(function(r) { return r.ok ? r.text() : Promise.reject(); })
-                .then(function(html) {
-                    // Se está ao vivo, a página contém "isLiveBroadcast":true ou "isLive":true
-                    var aoVivo = /\"isLiveBroadcast\"\s*:\s*true/.test(html) ||
-                                 /\"isLive\"\s*:\s*true/.test(html) ||
-                                 /\"liveBroadcastDetails\"\s*:\s*\{[^}]*\"isLiveNow\"\s*:\s*true/.test(html);
-                    if (!aoVivo) { setAoVivo(false); return; }
-                    // Extrai o videoId da live
-                    var m = html.match(/\"videoId\"\s*:\s*\"([\w-]{11})\"/) ||
-                            html.match(/\/watch\?v=([\w-]{11})/);
-                    if (m && m[1]) {
-                        ativarLive(m[1]);
+          <script>
+        /* ============== DETECÇÃO DE LIVE NO YOUTUBE - VERSÃO MELHORADA ============== */
+        (function() {
+            const container = document.getElementById('live-container');
+            const iframe = document.getElementById('live-iframe');
+            const placeholder = document.getElementById('live-placeholder');
+            const badge = document.getElementById('live-badge-status');
+            const badgeTexto = document.getElementById('live-badge-texto');
+            const titulo = document.getElementById('live-titulo');
+            const descricao = document.getElementById('live-descricao');
+        
+            if (!container || !iframe) return;
+        
+            // === CONFIGURAÇÃO CORRETA ===
+            const HANDLE = '@PascomLivramento';
+            const CHANNEL_URL = 'https://www.youtube.com/@PascomLivramento/live';
+            const EMBED_LIVE_URL = 'https://www.youtube.com/embed/live_stream?channel=UCal8oRz466j8dcv26cWMmQw';
+        
+            function setAoVivo(ativo, videoId = null) {
+                const menuLink = document.getElementById('menu-ao-vivo');
+                if (menuLink) menuLink.classList.toggle('menu-live-on', !!ativo);
+        
+                if (ativo) {
+                    container.classList.add('ao-vivo');
+                    badge.style.background = '#ffe6e6';
+                    badge.style.color = '#ff0000';
+                    badgeTexto.textContent = 'AO VIVO AGORA';
+                    titulo.textContent = '🔴 Estamos ao vivo!';
+                    descricao.textContent = 'A celebração está acontecendo agora! Acompanhe em tempo real.';
+        
+                    // Usa embed direto com videoId se disponível
+                    if (videoId) {
+                        iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&rel=0&playsinline=1`;
                     } else {
-                        // Sabemos que está ao vivo, mas não pegamos o ID — usa embed por canal
-                        setAoVivo(true);
-                        iframe.src = liveUrl.replace('www.youtube.com','www.youtube-nocookie.com') + '&autoplay=1&mute=1';
+                        iframe.src = EMBED_LIVE_URL + '&autoplay=1&mute=1';
                     }
-                })
-                .catch(function() { tentarProxy(idx + 1); });
-        }
-
-        function verificarLive() {
-            tentarProxy(0);
-        }
-
-        // Verificar imediatamente
-        setAoVivo(false); // Começa mostrando placeholder
-        verificarLive();
-
-        // Reverificar a cada 2 minutos
-        setInterval(verificarLive, 120000);
-    })();
-    </script>
+                } else {
+                    container.classList.remove('ao-vivo');
+                    badge.style.background = 'rgba(14,175,234,0.1)';
+                    badge.style.color = 'var(--azul-escuro)';
+                    badgeTexto.textContent = 'Fora do ar';
+                    titulo.textContent = 'Acompanhe de onde estiver';
+                    descricao.textContent = 'Quando houver transmissão ao vivo, ela aparecerá automaticamente aqui.';
+                    iframe.src = "https://www.youtube.com/@PascomLivramento/featured"; // volta ao estado normal
+                }
+            }
+        
+            // === Nova estratégia mais confiável ===
+            async function verificarLive() {
+                try {
+                    // 1. Tentativa principal via YouTube oEmbed + fetch
+                    const response = await fetch(`https://www.youtube.com/oembed?url=${encodeURIComponent(CHANNEL_URL)}&format=json`, {
+                        cache: 'no-store'
+                    });
+        
+                    if (response.ok) {
+                        // Se chegou aqui com sucesso, geralmente significa que está ao vivo
+                        const data = await response.json();
+                        
+                        // Tenta pegar o videoId da live atual
+                        const videoMatch = CHANNEL_URL.match(/v=([\w-]{11})/) || 
+                                         data.html?.match(/embed\/([\w-]{11})/);
+                        
+                        const videoId = videoMatch ? videoMatch[1] : null;
+                        setAoVivo(true, videoId);
+                        return;
+                    }
+                } catch (e) {}
+        
+                // 2. Fallback: tentar proxy (caso o oembed bloqueie)
+                const proxies = [
+                    'https://corsproxy.io/?',
+                    'https://api.allorigins.win/raw?url=',
+                    'https://api.codetabs.com/v1/proxy/?quest='
+                ];
+        
+                for (const proxy of proxies) {
+                    try {
+                        const res = await fetch(proxy + encodeURIComponent(CHANNEL_URL), { cache: 'no-store' });
+                        if (!res.ok) continue;
+        
+                        const html = await res.text();
+        
+                        const isLive = /"isLiveBroadcast":\s*true|"isLive":\s*true|"liveBroadcastDetails"[^}]*"isLiveNow":\s*true/.test(html);
+        
+                        if (isLive) {
+                            const videoIdMatch = html.match(/"videoId"\s*:\s*"([\w-]{11})"/) || 
+                                               html.match(/watch\?v=([\w-]{11})/);
+                            setAoVivo(true, videoIdMatch ? videoIdMatch[1] : null);
+                            return;
+                        }
+                    } catch (e) {}
+                }
+        
+                // Se nenhuma tentativa deu live
+                setAoVivo(false);
+            }
+        
+            // Inicialização
+            setAoVivo(false);
+            verificarLive();
+        
+            // Verifica a cada 90 segundos
+            setInterval(verificarLive, 90000);
+        
+        })();
+        </script>
 
     <script>
     /* ============== PRELOADER CONTROLLER ============== */
